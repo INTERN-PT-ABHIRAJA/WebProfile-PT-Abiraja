@@ -1,193 +1,13 @@
-/* 
-body {
-  font-family: 'Poppins';
-}
-html, body {
-  overflow-x: hidden;
-}
-
-
-.navbar-brand img {
-  height: 50px; 
-}
-
-@media screen and (max-width: 380px) {  
-  .head{
-    display: none;
-  }
-
-}
-
-@media screen and (max-width: 720px) {  
-  .hide{
-    display: none;
-  }
-  
-}
-
-
-.hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)), 
-  url('../img/section/hero.webp');
-  background-size: cover;
-  background-position: center;
-  height: 90vh;
-  width: 100vw;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-.hero-content {
-  text-align: center;
-  color: white;
-  border-radius: 10px;
-}
-
-.kuning{
-  color: #ffd500;
-}
-
-.container-kotak {
-  display: flex;
-  gap: 5%; 
-  flex-wrap: wrap; 
-  justify-content: center; 
-  align-items: center; 
-}
-
-.kotak {
-  width: 20%;
-  height: 20%;
-  background-color: transparent; 
-}
-
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 15px;
-  margin-bottom: 20px;
-}
-
-
-.page-section-2 {
-  padding-bottom: 10%;
-  padding-top: 4%;
-  height: 50vh;
-}
-.logo img {
-  max-width: 50%;
-  height: auto;
-  margin-left: 30%;
-}
-.deskripsi-PT {
-  display: flex;
-  flex-direction: column;
-  text-align: justify;
-}
-
-.deskripsi-PT button{
-  background-color: #ffd500;
-  color: #0d4e49;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 30vh;
-}
-
-
-.page-section-33 {
-  background: #27445D;
-  height: 75vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.carousel-item {
-  position: relative;
-  text-align: center;
-}
-
-
-.carousel-container {
-  position: relative;
-  text-align: center;
-}
-
-.carousel-title {
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.carousel img {
-  border-radius: 10px;
-  width: 30vw;
-  height: 50vh;
-  object-fit: cover;
-}
-
-.page-section-33 h1{
-  font-family: monospace;
-  font-size: 400%;
-}
-
-.page-section-33 h2{
-  font-size: 150%;
-  margin-top: 5%;
-}
-
-.krem{
-  color: #ddc69d;
-}
-
-.deskripsi-section3{
-  display: flex;
-  flex-direction: column;
-  text-align: justify;
-  width: 80vh;
-  margin-right: 20px;
-
-}
-
-.deskripsi-section3 button{
-  background-color: #108512;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 30vh;
-  
-}
-
-.judul-sc3{
-  width: 80vh;
-  
-} */
-
-
-
 body {
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
 }
 
-/* Smooth Scrolling */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Navbar Styles */
 .navbar-brand img {
   height: 50px;
   transition: transform 0.3s ease;
@@ -290,7 +110,7 @@ html {
 }
 
 .logo img {
-  max-width: 70%;
+  max-width: 50%;
   height: auto;
   transition: transform 0.5s ease;
 }
@@ -325,7 +145,6 @@ html {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Success Stories Section */
 .page-section-33 {
   background: linear-gradient(135deg, #27445D, #1a2f3d);
   padding: 5rem 0;
@@ -334,13 +153,11 @@ html {
 }
 
 .page-section-33::before {
- 
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('../img/section/hero.webp') center/cover;
   opacity: 0.05;
   z-index: 0;
 }
@@ -364,7 +181,6 @@ html {
 }
 
 .carousel img {
-
   border-radius: 10px;
   width: 100%;
   height: 400px;
@@ -373,7 +189,6 @@ html {
 }
 
 .carousel-item.active img {
-  
   transform: scale(1);
 }
 
@@ -395,7 +210,6 @@ html {
   opacity: 1;
 }
 
-/* Team Section */
 .team-section {
   padding: 5rem 0;
   background-color: #f8f9fa;
@@ -472,7 +286,6 @@ html {
   margin-bottom: 0;
 }
 
-/* Products Section */
 .products-section {
   padding: 5rem 0;
   background: linear-gradient(to right, #f8f9fa, #e9ecef);
@@ -550,7 +363,6 @@ html {
   font-size: 18px;
 }
 
-/* Contact Section */
 .contact-section {
   padding: 5rem 0;
   background-color: #0d4e49;
