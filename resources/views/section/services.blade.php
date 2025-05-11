@@ -1,11 +1,9 @@
-@extends('welcome')
-@section ('content')
 <section class="contact-section" id="contact">
-            <div class="container">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="fw-bold mb-3">Hubungi Kami</h2>
-                    <p class="text-white-50 mx-auto" style="max-width: 700px;">Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau ingin bekerja sama.</p>
-                </div>
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="fw-bold mb-3">Hubungi Kami</h2>
+            <p class="text-white-50 mx-auto" style="max-width: 700px;">Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau ingin bekerja sama.</p>
+        </div>
                 
                 <div class="row">
                     <div class="col-lg-5" data-aos="fade-right">
@@ -72,4 +70,3 @@
                 </div>
             </div>
         </section>
-@endsection
