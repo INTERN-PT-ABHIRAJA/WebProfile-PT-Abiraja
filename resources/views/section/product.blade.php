@@ -1,11 +1,9 @@
-@include('welcome')
-@section('content')
 <section class="products-section" id="products">
-            <div class="container">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="fw-bold mb-3">Layanan Kami</h2>
-                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami menawarkan berbagai layanan berkualitas untuk memenuhi kebutuhan Anda.</p>
-                </div>
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="fw-bold mb-3">Layanan Kami</h2>
+            <p class="text-muted mx-auto" style="max-width: 700px;">Kami menawarkan berbagai layanan berkualitas untuk memenuhi kebutuhan Anda.</p>
+        </div>
                 
                 <div class="row">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
@@ -108,4 +106,3 @@
                 </div>
             </div>
         </section>
-@endsection
