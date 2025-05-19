@@ -23,19 +23,26 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav ms-auto w-100 justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link text-black fw-bold" href="#home">BERANDA</a>
+                            <a class="nav-link text-black fw-bold" href="#home">{{ __('site.beranda') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black fw-bold" href="#about">TENTANG KAMI</a>
+                            <a class="nav-link text-black fw-bold" href="#about">{{ __('site.tentang_kami') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black fw-bold" href="#team">MITRA</a>
+                            <a class="nav-link text-black fw-bold" href="#team">{{ __('site.mitra') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black fw-bold" href="#products">LAYANAN KAMI</a>
+                            <a class="nav-link text-black fw-bold" href="#products">{{ __('site.layanan_kami') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black fw-bold" href="#contact">KONTAK</a>
+                            <a class="nav-link text-black fw-bold" href="#contact">{{ __('site.kontak') }}</a>
+                        </li>
+                        <li class="nav-item d-flex align-items-center ms-2">
+                            <div class="language-switch-container">
+                                <a class="language-switch-link {{ App::getLocale() == 'id' ? 'active' : '' }}" href="{{ route('language.switch', 'id') }}">ID</a>
+                                <span class="language-divider">|</span>
+                                <a class="language-switch-link {{ App::getLocale() == 'en' ? 'active' : '' }}" href="{{ route('language.switch', 'en') }}">EN</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

@@ -1,8 +1,8 @@
 <section class="products-section" id="products">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="fw-bold mb-3">Layanan Kami</h2>
-            <p class="text-muted mx-auto" style="max-width: 700px;">Kami menawarkan berbagai layanan berkualitas untuk memenuhi kebutuhan Anda.</p>
+            <h2 class="fw-bold mb-3">{{ __('site.layanan_kami') }}</h2>
+            <p class="text-muted mx-auto" style="max-width: 700px;">{{ App::isLocale('id') ? 'Kami menawarkan berbagai layanan berkualitas untuk memenuhi kebutuhan Anda.' : 'We offer various quality services to meet your needs.' }}</p>
         </div>
                 
                 <div class="row">
@@ -10,15 +10,15 @@
                         <div class="product-card">
                             <div class="product-img">
                                 <img src="assets/img/portfolio/lada.jpg" alt="Product">
-                                <div class="product-badge">Populer</div>
+                                <div class="product-badge">{{ __('site.popular') }}</div>
                             </div>
                             <div class="product-info">
-                                <h4>Program Pendidikan Komprehensif</h4>
-                                <p>Solusi pendidikan lengkap untuk sekolah dan institusi pendidikan.</p>
+                                <h4>{{ __('site.service_education_title') }}</h4>
+                                <p>{{ __('site.service_education_desc') }}</p>
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 5.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
                             </div>
                         </div>
                     </div>
@@ -29,12 +29,12 @@
                                 <img src="assets/img/portfolio/jamur.jpg" alt="Product">
                             </div>
                             <div class="product-info">
-                                <h4>Paket Branding UMKM</h4>
-                                <p>Tingkatkan citra bisnis Anda dengan paket branding lengkap.</p>
+                                <h4>{{ __('site.service_branding_title') }}</h4>
+                                <p>{{ __('site.service_branding_desc') }}</p>
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 3.500.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
                             </div>
                         </div>
                     </div>
@@ -45,12 +45,12 @@
                                 <img src="assets/img/portfolio/kayu.jpg" alt="Product">
                             </div>
                             <div class="product-info">
-                                <h4>Konsultasi Keuangan Bisnis</h4>
-                                <p>Dapatkan saran keuangan profesional untuk mengembangkan bisnis Anda.</p>
+                                <h4>{{ __('site.service_finance_title') }}</h4>
+                                <p>{{ __('site.service_finance_desc') }}</p>
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 2.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
                             </div>
                         </div>
                     </div>
@@ -61,12 +61,12 @@
                                 <img src="assets/img/portfolio/kayu2.jpg" alt="Product">
                             </div>
                             <div class="product-info">
-                                <h4>Produk Kerajinan Kayu</h4>
-                                <p>Kerajinan kayu berkualitas tinggi dengan desain eksklusif.</p>
+                                <h4>{{ __('site.service_woodcraft_title') }}</h4>
+                                <p>{{ __('site.service_woodcraft_desc') }}</p>
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 1.500.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
                             </div>
                         </div>
                     </div>
@@ -75,15 +75,15 @@
                         <div class="product-card">
                             <div class="product-img">
                                 <img src="assets/img/portfolio/sawah.jpg" alt="Product">
-                                <div class="product-badge">Hemat</div>
+                                <div class="product-badge">{{ __('site.discount') }}</div>
                             </div>
                             <div class="product-info">
-                                <h4>Konsultasi Pertanian</h4>
-                                <p>Solusi pertanian modern untuk meningkatkan hasil panen Anda.</p>
+                                <h4>{{ __('site.service_agriculture_title') }}</h4>
+                                <p>{{ __('site.service_agriculture_desc') }}</p>
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 1.200.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
                             </div>
                         </div>
                     </div>
@@ -94,12 +94,12 @@
                                 <img src="assets/img/portfolio/lada.jpg" alt="Product">
                             </div>
                             <div class="product-info">
-                                <h4>Jasa Boga Premium</h4>
-                                <p>Layanan katering berkualitas untuk acara perusahaan dan pribadi.</p>
+                                <h4>{{ __('site.service_catering_title') }}</h4>
+                                <p>{{ __('site.service_catering_desc') }}</p>
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 8.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
                             </div>
                         </div>
                     </div>
