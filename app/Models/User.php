@@ -73,4 +73,14 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->role === 'admin' || $this->role === 'owner';
     }
+
+    /**
+     * Get the name that should be displayed in Filament.
+     *
+     * @return string
+     */
+    public function getFilamentName(): string
+    {
+        return $this->nama ?? 'User';
+    }
 }
