@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +20,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
     <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">    <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/language-switcher.css">
 </head>
-<body>
-    @include('partials.header-new')
+<body>    @include('partials.header-new')
+      @if(session('locale_changed'))
+    <div class="language-notification alert alert-dark alert-dismissible fade show m-0" style="border-radius:0; position: relative; z-index: 1030; background-color: rgba(0,0,0,0.8); color: white;">
+        <div class="container">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+            <i class="fas fa-check-circle me-2"></i>
+            {{ App::isLocale('id') ? 'Bahasa: Indonesia' : 'Language: English' }}
+        </div>
+    </div>
+    @endif
     
     <main>
         @yield('content')

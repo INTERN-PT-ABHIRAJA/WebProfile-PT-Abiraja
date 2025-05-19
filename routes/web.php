@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\FilamentAuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,30 +20,18 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+// Translator page route
+Route::get('/translator', function () {
+    return view('translator');
+});
+
 // Debug route to check if routing is working
 Route::get('/debug-filament', function () {
     return 'Filament debug route is working. Try accessing /admin for the admin panel.';
 });
 
-// Custom admin route for testing
-Route::get('/admin-test', function () {
-    return redirect('/admin');
-});
+// Language switching routes
+Route::get('language/{locale}', [LanguageController::class, 'switchLang'])->name('language.switch');
 
-// Direct test of admin login URL
-Route::get('/admin-login-test', function () {
-    return redirect('/admin/login');
-});
-
-// Manual admin login route
-Route::get('/manual-admin-login', function () {
-    return view('filament.login');
-});
-
-// Custom Filament Auth Routes
-Route::get('/admin/login', [FilamentAuthController::class, 'showLoginForm'])->name('filament.auth.login');
-Route::post('/admin/login', [FilamentAuthController::class, 'login']);
-Route::post('/admin/logout', [FilamentAuthController::class, 'logout'])->name('filament.auth.logout');
-
-// Admin Dashboard
-Route::get('/admin', [App\Http\Controllers\AdminDashboardController::class, 'index'])->middleware('auth');
+// Note: All admin routes are now handled by Filament directly
+// No custom routes that might override Filament's built-in functionality
