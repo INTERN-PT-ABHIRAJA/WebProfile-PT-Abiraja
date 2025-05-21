@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="500px" viewBox="0 0 800 500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Video Poster</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#4F46E5" offset="0%"></stop>
+            <stop stop-color="#7C3AED" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Video-Poster" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Background" fill="url(#linearGradient-1)" x="0" y="0" width="800" height="500"></rect>
+        <circle id="Circle1" fill="#FFFFFF" opacity="0.15" cx="200" cy="100" r="60"></circle>
+        <circle id="Circle2" fill="#FFFFFF" opacity="0.1" cx="650" cy="400" r="100"></circle>
+        <g id="Play-Button" transform="translate(350.000000, 200.000000)">
+            <circle id="Button-BG" fill="#FFFFFF" opacity="0.2" cx="50" cy="50" r="50"></circle>
+            <path d="M75,50 L35,70 L35,30 L75,50 Z" id="Triangle" fill="#FFFFFF"></path>
+        </g>
+        <text id="Play-Video" font-family="Arial-BoldMT, Arial" font-size="24" font-weight="bold" fill="#FFFFFF">
+            <tspan x="344" y="330">Play Video</tspan>
+        </text>
+    </g>
+</svg>

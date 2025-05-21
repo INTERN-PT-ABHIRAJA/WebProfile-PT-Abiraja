@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kategori extends Model
+class Kategori extends Model
 {
     use HasFactory;
 
@@ -23,4 +23,10 @@ class kategori extends Model
         'nama_kategori',
         'deskripsi_kategori',
     ];
+
+    // Relationships
+    public function anakPerusahaan()
+    {
+        return $this->hasMany(AnakPerusahaan::class, 'id_kategori');
+    }
 }

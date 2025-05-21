@@ -9,6 +9,12 @@ class Media extends Model
 {
     use HasFactory;
 
+    // Define the table name
+    protected $table = 'media';
+
+    // Define the primary key
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'title',
         'description',
