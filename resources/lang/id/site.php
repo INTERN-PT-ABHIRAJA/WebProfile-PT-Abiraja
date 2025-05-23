@@ -97,8 +97,8 @@ return [
     'hero_image_alt' => 'Ilustrasi solusi dan layanan bisnis',
 
     // Tambahan untuk Hero Section Revamp
-    'hero_multiservice_title' => 'Solusi Multi-Layanan Inovatif & Berorientasi Hasil',
-    'hero_multiservice_subtitle' => 'PT Abhiraja Giovanni Tryamanda hadir untuk mendukung kesuksesan Anda melalui konsultasi pendidikan, branding & digital marketing, keuangan & pajak, hingga manajemen KOL. Kami berkomitmen menyediakan layanan berkualitas tinggi, membangun hubungan jangka panjang berbasis kepercayaan dan integritas, serta mendukung perkembangan holistik bisnis Anda.',
+    'hero_multiservice_title' => 'Bangun Masa Depan Anda Bersama Layanan & Produk Unggulan Kami',
+    'hero_multiservice_subtitle' => 'PT Abhiraja Giovanni Tryamanda hadir untuk mendukung kesuksesan Anda melalui konsultasi <em>pendidikan</em>, <em>branding & digital marketing</em>, <em>keuangan & pajak</em>, hingga <em>manajemen KOL</em>. Kami berkomitmen menyediakan layanan berkualitas tinggi, membangun hubungan jangka panjang berbasis <em>kepercayaan</em> dan <em>integritas</em>, serta mendukung perkembangan <em>holistik</em> bisnis Anda.',
     'hero_cta_contact_now' => 'Hubungi Kami Sekarang',
     'hero_cta_see_services' => 'Lihat Semua Layanan',
     'service_education_alt' => 'Ilustrasi Konsultasi Pendidikan',

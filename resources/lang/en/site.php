@@ -60,8 +60,8 @@ return [
 
     // Hero Section (New)
     'hero_main_title' => 'Empowering Your Business with Innovative Solutions',
-    'hero_multiservice_title' => 'Innovative & Result-Oriented Multi-Service Solutions',
-    'hero_multiservice_subtitle' => 'We are here to support your success through education consulting, branding & digital marketing, finance & tax consulting, to KOL management. We are committed to providing high-quality services, building long-term relationships based on trust and integrity, and supporting the holistic development of your business.',
+    'hero_multiservice_title' => 'Build Your Future with Our Premier Services & Products',
+    'hero_multiservice_subtitle' => 'We are here to support your success through <em>education consulting</em>, <em>branding & digital marketing</em>, <em>finance & tax consulting</em>, to <em>KOL management</em>. We are committed to providing high-quality services, building long-term relationships based on <em>trust</em> and <em>integrity</em>, and supporting the <em>holistic</em> development of your business.',
     'hero_cta_contact_now' => 'Contact Us Now',
     'hero_cta_see_services' => 'See All Services',
     'service_education_alt' => 'Education Consulting Illustration',

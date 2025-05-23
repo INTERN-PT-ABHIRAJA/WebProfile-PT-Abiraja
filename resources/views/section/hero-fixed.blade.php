@@ -72,6 +72,14 @@
             color: var(--forest-green);
             margin-bottom: 1.5rem;
             line-height: 1.3;
+            display: flex; /* Untuk ikon di samping judul */
+            align-items: center; /* Untuk ikon di samping judul */
+        }
+
+        .hero-multiservice-title .title-icon { /* Gaya untuk ikon judul */
+            margin-right: 10px; /* Jarak ikon dari teks */
+            font-size: 0.8em; /* Ukuran ikon relatif terhadap judul */
+            color: var(--secondary-accent); /* Warna ikon */
         }
         
         .hero-multiservice-subtitle {
@@ -81,15 +89,20 @@
             line-height: 1.7;
             max-width: 550px; /* Batasi lebar agar mudah dibaca */
         }
+
+        .hero-multiservice-subtitle em { /* Gaya untuk teks yang ditandai <em> */
+            font-style: italic;
+            color: var(--secondary-accent-dark); /* Warna berbeda untuk penekanan */
+        }
         
         .hero-multiservice .btn-primary {
             background-color: var(--secondary-accent);
             border-color: var(--secondary-accent);
             color: white;
-            padding: 0.75rem 1.8rem; /* Padding tombol */
+            padding: 0.9rem 2.2rem; /* Padding tombol diperbesar */
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            font-size: 1.1rem; /* Ukuran font tombol diperbesar */
+            transition: all 0.3s ease-in-out; /* Transisi sudah ada, pastikan durasi dan easing sesuai */
             box-shadow: 0 4px 15px rgba(255, 183, 77, 0.3); /* Shadow disesuaikan dengan warna baru */
         }
         
@@ -98,6 +111,10 @@
             border-color: var(--secondary-accent-dark);
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(255, 183, 77, 0.4); /* Shadow disesuaikan */
+        }
+
+        .hero-multiservice .btn-primary .btn-icon { /* Gaya untuk ikon tombol */
+            margin-right: 8px;
         }
         
         .hero-multiservice .btn-outline-secondary {
@@ -150,19 +167,19 @@
 
         @media (max-width: 991.98px) {
             .hero-multiservice {
-                text-align: center;
-                padding: 4rem 0;
+                padding: 4rem 0; /* Kurangi padding di layar kecil */
+                min-height: auto; /* Hapus min-height agar lebih fleksibel */
             }
             .hero-multiservice-title {
-                font-size: 2.4rem;
+                font-size: 2.4rem; /* Sesuaikan ukuran judul */
             }
             .hero-multiservice-subtitle {
-                font-size: 1.1rem;
-                margin-left: auto;
-                margin-right: auto;
+                font-size: 1.05rem; /* Sesuaikan ukuran subjudul */
+                max-width: none; /* Hapus batasan lebar */
             }
             .hero-multiservice .text-content {
-                margin-bottom: 3rem;
+                text-align: center; /* Pusatkan teks di layar kecil */
+                margin-bottom: 2rem; /* Beri jarak ke carousel */
             }
             .service-carousel .carousel-item img {
                 max-height: 350px; 
@@ -172,9 +189,11 @@
             .hero-multiservice-title {
                 font-size: 2rem;
             }
-             .hero-multiservice .btn-primary, .hero-multiservice .btn-outline-secondary {
-                width: 100%;
-                margin-bottom: 1rem;
+            .hero-multiservice .btn-primary, .hero-multiservice .btn-outline-secondary {
+                padding: 0.7rem 1.5rem; /* Sesuaikan padding tombol */
+                font-size: 0.95rem; /* Sesuaikan font tombol */
+                width: 100%; /* Tombol memenuhi lebar */
+                margin-bottom: 0.5rem; /* Jarak antar tombol jika bertumpuk */
             }
             .hero-multiservice .btn-outline-secondary {
                 margin-bottom: 0;
@@ -192,11 +211,20 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 text-content" data-aos="fade-right" data-aos-duration="1000">
-                    <h1 class="hero-multiservice-title">{{ __('site.hero_multiservice_title') }}</h1>
-                    <p class="hero-multiservice-subtitle">{{ __('site.hero_multiservice_subtitle') }}</p>
+                    <h1 class="hero-multiservice-title">
+                         <i class="fas fa-star title-icon"></i> {{ __('site.hero_multiservice_title') }}<!-- Ikon ditambahkan di sini -->
+                    </h1>
+                    <p class="hero-multiservice-subtitle">
+                        {!! __('site.hero_multiservice_subtitle') !!} 
+                    </p>
                     <div class="cta-buttons">
-                        <a href="#kontak" class="btn btn-primary btn-lg me-lg-3 mb-3 mb-lg-0">{{ __('site.hero_cta_contact_now') }}</a>
-                        <a href="#layanan" class="btn btn-outline-secondary btn-lg">{{ __('site.hero_cta_see_services') }}</a>
+                        <a href="#contact" class="btn btn-primary me-2 mb-2">
+                            <i class="fas fa-phone btn-icon"></i> <!-- Ikon ditambahkan di sini -->
+                            {{ __('site.hero_cta_contact_now') }}
+                        </a>
+                        <a href="#services" class="btn btn-outline-secondary mb-2">
+                            {{ __('site.hero_cta_see_services') }}
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-6 carousel-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -206,6 +234,8 @@
                             <button type="button" data-bs-target="#serviceCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#serviceCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             <button type="button" data-bs-target="#serviceCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            {{-- Tambahkan lebih banyak indikator jika ada lebih banyak item --}}
+                            {{-- Tambahkan indikator lain jika ada lebih banyak item --}}
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
