@@ -14,6 +14,8 @@
             --cream:rgb(255, 255, 255);       /* Warna latar belakang lembut */
             --dark-text: #333333;   /* Warna teks utama */
             --light-gray: #f8f9fa;  /* Warna abu-abu terang */
+            --secondary-accent: #FFB74D; /* Warna aksen sekunder baru - Oranye Lembut */
+            --secondary-accent-dark: #E69500; /* Oranye lebih gelap untuk hover */
             --bs-primary: var(--forest-green); /* Override Bootstrap primary */
             --bs-secondary: var(--light-green); /* Override Bootstrap secondary */
         }
@@ -44,7 +46,7 @@
             height: 200%;
             background-image: 
                 radial-gradient(circle at 15% 25%, var(--light-green, #4c956c) 0%, transparent 8%),
-                radial-gradient(circle at 85% 75%, var(--light-green, #4c956c) 0%, transparent 10%);
+                radial-gradient(circle at 85% 75%, var(--secondary-accent, #FFB74D) 0%, transparent 10%); /* Menggunakan warna aksen sekunder */
             opacity: 0.1;
             animation: subtleShine 20s infinite linear;
             z-index: 0;
@@ -81,26 +83,26 @@
         }
         
         .hero-multiservice .btn-primary {
-            background-color: var(--forest-green);
-            border-color: var(--forest-green);
+            background-color: var(--secondary-accent);
+            border-color: var(--secondary-accent);
             color: white;
             padding: 0.75rem 1.8rem; /* Padding tombol */
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 110, 73, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 183, 77, 0.3); /* Shadow disesuaikan dengan warna baru */
         }
         
         .hero-multiservice .btn-primary:hover {
-            background-color: var(--light-green);
-            border-color: var(--light-green);
+            background-color: var(--secondary-accent-dark);
+            border-color: var(--secondary-accent-dark);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 110, 73, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 183, 77, 0.4); /* Shadow disesuaikan */
         }
         
         .hero-multiservice .btn-outline-secondary {
-            color: var(--forest-green);
-            border-color: var(--forest-green);
+            color: var(--secondary-accent);
+            border-color: var(--secondary-accent);
             padding: 0.75rem 1.8rem;
             font-weight: 600;
             font-size: 1rem;
@@ -108,7 +110,7 @@
         }
         
         .hero-multiservice .btn-outline-secondary:hover {
-            background-color: var(--forest-green);
+            background-color: var(--secondary-accent);
             color: white;
             transform: translateY(-3px);
         }
@@ -127,7 +129,7 @@
         
         /* Styling untuk indikator carousel (opsional, jika ingin custom) */
         .service-carousel .carousel-indicators [data-bs-target] {
-            background-color: var(--light-green);
+            background-color: var(--secondary-accent); /* Menggunakan warna aksen sekunder */
             width: 12px;
             height: 12px;
             border-radius: 50%;
@@ -135,7 +137,7 @@
             opacity: 0.7;
         }
         .service-carousel .carousel-indicators .active {
-            background-color: var(--forest-green);
+            background-color: var(--forest-green); /* Warna utama untuk indikator aktif */
             opacity: 1;
         }
 
