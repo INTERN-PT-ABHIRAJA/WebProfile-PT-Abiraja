@@ -9,204 +9,247 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         :root {
-            --forest-green: #2c6e49;
-            --light-green: #4c956c;
-            --cream: #fefee3;
-            --light-gray: #f8f9fa;
+            --forest-green: #2c6e49; /* Warna utama perusahaan */
+            --light-green: #4c956c; /* Warna aksen */
+            --cream:rgb(255, 255, 255);       /* Warna latar belakang lembut */
+            --dark-text: #333333;   /* Warna teks utama */
+            --light-gray: #f8f9fa;  /* Warna abu-abu terang */
+            --bs-primary: var(--forest-green); /* Override Bootstrap primary */
+            --bs-secondary: var(--light-green); /* Override Bootstrap secondary */
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Poppins lebih modern */
             background-color: #ffffff;
-        }
+            color: var(--dark-text);
+        }   
         
-        .hero {
+        .hero-multiservice {
             position: relative;
-            min-height: 100vh;
+            min-height: 90vh; /* Sedikit lebih pendek dari 100vh agar tidak selalu full screen */
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%);
+            padding: 6rem 0; /* Padding atas bawah */
+            background-color: var(--white); /* Latar belakang section diubah menjadi abu-abu muda */
             overflow: hidden;
         }
         
-        .hero::before {
+        /* Hapus ::before yang lama jika ada, atau sesuaikan */
+        .hero-multiservice::before {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 20%, var(--light-green) 0%, transparent 10%),
-                radial-gradient(circle at 80% 70%, var(--light-green) 0%, transparent 8%),
-                radial-gradient(circle at 10% 80%, var(--light-green) 0%, transparent 5%);
-            opacity: 0.07;
+            top: -50%; 
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                radial-gradient(circle at 15% 25%, var(--light-green, #4c956c) 0%, transparent 8%),
+                radial-gradient(circle at 85% 75%, var(--light-green, #4c956c) 0%, transparent 10%);
+            opacity: 0.1;
+            animation: subtleShine 20s infinite linear;
             z-index: 0;
         }
+
+        @keyframes subtleShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         
-        .hero-content {
+        .hero-multiservice .container {
             position: relative;
             z-index: 2;
-            text-align: center;
-            padding: 2rem;
-            max-width: 1200px;
+            /* background-color: #fff; */ /* Latar belakang kontainer konten menjadi putih */
+            /* padding: 2.5rem; */ /* Tambahkan padding di dalam kontainer */
+            /* border-radius: 12px; */ /* Sudut yang membulat untuk kontainer */
+            /* box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08); */ /* Shadow yang halus untuk efek kedalaman */
         }
         
-        .hero h1 {
+        .hero-multiservice-title {
+            font-size: 2.8rem; /* Ukuran headline */
+            font-weight: 700; /* Lebih tebal */
             color: var(--forest-green);
-            font-size: 2.8rem;
-            letter-spacing: -0.5px;
             margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
+            line-height: 1.3;
         }
         
-        .hero h1::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+        .hero-multiservice-subtitle {
+            font-size: 1.15rem; /* Ukuran subheadline */
+            color: #555;
+            margin-bottom: 2.5rem; /* Jarak ke CTA */
+            line-height: 1.7;
+            max-width: 550px; /* Batasi lebar agar mudah dibaca */
+        }
+        
+        .hero-multiservice .btn-primary {
             background-color: var(--forest-green);
-            border-radius: 2px;
-        }
-        
-        .hero p {
-            color: var(--forest-green);
-            font-size: 1.4rem;
-            font-weight: 300;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .service-grid-bottom {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .service-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 1.5rem 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
-            border: 1px solid rgba(44, 110, 73, 0.1);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(44, 110, 73, 0.1);
             border-color: var(--forest-green);
+            color: white;
+            padding: 0.75rem 1.8rem; /* Padding tombol */
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 110, 73, 0.2);
         }
         
-        .service-card i {
-            font-size: 2rem;
+        .hero-multiservice .btn-primary:hover {
+            background-color: var(--light-green);
+            border-color: var(--light-green);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 110, 73, 0.3);
+        }
+        
+        .hero-multiservice .btn-outline-secondary {
             color: var(--forest-green);
-            margin-bottom: 1rem;
+            border-color: var(--forest-green);
+            padding: 0.75rem 1.8rem;
+            font-weight: 600;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
         
-        .service-card:hover i {
-            transform: scale(1.2);
+        .hero-multiservice .btn-outline-secondary:hover {
+            background-color: var(--forest-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .service-carousel .carousel-item {
+            transition: transform 0.8s ease-in-out, opacity 0.8s ease; /* Transisi lebih halus */
+        }
+
+        .service-carousel .carousel-item img {
+            max-height: 450px; /* Kontrol tinggi gambar carousel */
+            width: auto;
+            margin: auto; /* Pusatkan gambar jika lebih kecil dari container */
+            object-fit: contain; /* Pastikan gambar tidak terpotong */
+            border-radius: 15px; /* Sudut membulat untuk gambar */
         }
         
-        .service-card div {
-            font-weight: 600;
-            color: #333;
-            font-size: 0.9rem;
+        /* Styling untuk indikator carousel (opsional, jika ingin custom) */
+        .service-carousel .carousel-indicators [data-bs-target] {
+            background-color: var(--light-green);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0.7;
         }
-        
-        @media (max-width: 992px) {
-            .service-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .service-grid-bottom {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
+        .service-carousel .carousel-indicators .active {
+            background-color: var(--forest-green);
+            opacity: 1;
         }
-        
-        @media (max-width: 576px) {
-            .service-grid, .service-grid-bottom {
-                grid-template-columns: 1fr;
+
+        /* Hapus styling .hero lama jika tidak terpakai lagi */
+        /* .hero { ... } */
+        /* .hero-content { ... } */
+        /* .hero h1 { ... } */
+        /* .hero p { ... } */
+        /* .service-grid { ... } */
+
+        @media (max-width: 991.98px) {
+            .hero-multiservice {
+                text-align: center;
+                padding: 4rem 0;
             }
-            
-            .hero h1 {
-                font-size: 1.8rem;
+            .hero-multiservice-title {
+                font-size: 2.4rem;
             }
-            
-            .hero p {
+            .hero-multiservice-subtitle {
                 font-size: 1.1rem;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-multiservice .text-content {
+                margin-bottom: 3rem;
+            }
+            .service-carousel .carousel-item img {
+                max-height: 350px; 
             }
         }
+        @media (max-width: 767.98px) {
+            .hero-multiservice-title {
+                font-size: 2rem;
+            }
+             .hero-multiservice .btn-primary, .hero-multiservice .btn-outline-secondary {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            .hero-multiservice .btn-outline-secondary {
+                margin-bottom: 0;
+            }
+            .service-carousel .carousel-item img {
+                max-height: 300px; 
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="hero" id="home">
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-            <p data-aos="fade-up" data-aos-delay="200">{{ App::isLocale('id') ? 'Mitra Strategis untuk Kesuksesan Anda' : 'Your Strategic Partner for Success' }}</p>
-            
-            <div class="service-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-university"></i>
-                    <div>{{ App::isLocale('id') ? 'PENDIDIKAN' : 'EDUCATION' }}</div>
+    <!-- New Hero Section -->
+    <div class="hero-multiservice" id="home-new">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-content" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="hero-multiservice-title">{{ __('site.hero_multiservice_title') }}</h1>
+                    <p class="hero-multiservice-subtitle">{{ __('site.hero_multiservice_subtitle') }}</p>
+                    <div class="cta-buttons">
+                        <a href="#kontak" class="btn btn-primary btn-lg me-lg-3 mb-3 mb-lg-0">{{ __('site.hero_cta_contact_now') }}</a>
+                        <a href="#layanan" class="btn btn-outline-secondary btn-lg">{{ __('site.hero_cta_see_services') }}</a>
+                    </div>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-user"></i>
-                    <div>BRANDING</div>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <i class="fas fa-money-bill"></i>
-                    <div>{{ App::isLocale('id') ? 'KEUANGAN' : 'FINANCE' }}</div>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <i class="fas fa-tasks"></i>
-                    <div>{{ App::isLocale('id') ? 'MANAJEMEN' : 'MANAGEMENT' }}</div>
-                </div>
-            </div>
-            
-            <div class="service-grid-bottom">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
-                    <i class="fas fa-hammer"></i>
-                    <div>{{ App::isLocale('id') ? 'STUDIO KAYU' : 'WOOD STUDIO' }}</div>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="800">
-                    <i class="fas fa-tree"></i>
-                    <div>{{ App::isLocale('id') ? 'PERTANIAN' : 'AGRICULTURE' }}</div>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="900">
-                    <i class="fas fa-hamburger"></i>
-                    <div>{{ App::isLocale('id') ? 'JASA BOGA' : 'CATERING' }}</div>
+                <div class="col-lg-6 carousel-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div id="serviceCarousel" class="carousel slide service-carousel" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#serviceCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#serviceCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#serviceCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#serviceCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="{{ asset('assets/img/hero/konsultan-pendidikan-illustration.svg') }}" class="d-block w-100" alt="{{ __('site.service_education_alt') }}">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/hero/branding-illustration.svg') }}" class="d-block w-100" alt="{{ __('site.service_branding_alt') }}">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/hero/keuangan-pajak-illustration.svg') }}" class="d-block w-100" alt="{{ __('site.service_finance_alt') }}">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="{{ asset('assets/img/hero/kol-management-illustration.svg') }}" class="d-block w-100" alt="{{ __('site.service_kol_alt') }}">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#serviceCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#serviceCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> {{-- Pastikan Bootstrap JS ada --}}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            AOS.init();
+            AOS.init({
+                once: true, // Animasi hanya berjalan sekali
+                duration: 800, // Durasi animasi default
+            });
+
+            // Inisialisasi Carousel Bootstrap jika belum otomatis
+            var serviceCarousel = document.getElementById('serviceCarousel');
+            if (serviceCarousel) {
+                new bootstrap.Carousel(serviceCarousel, {
+                    interval: 3500, // Interval sedikit lebih lama
+                    wrap: true // Carousel akan berputar terus
+                });
+            }
         });
     </script>
 </body>

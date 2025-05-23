@@ -57,6 +57,26 @@ return [
     'working_hours' => 'Working Hours',
     'monday_friday' => 'Monday - Friday: 08.00 - 17.00',
     'saturday' => 'Saturday: 09.00 - 14.00',
+
+    // Hero Section (New)
+    'hero_main_title' => 'Empowering Your Business with Innovative Solutions',
+    'hero_multiservice_title' => 'Innovative & Result-Oriented Multi-Service Solutions',
+    'hero_multiservice_subtitle' => 'We are here to support your success through education consulting, branding & digital marketing, finance & tax consulting, to KOL management. We are committed to providing high-quality services, building long-term relationships based on trust and integrity, and supporting the holistic development of your business.',
+    'hero_cta_contact_now' => 'Contact Us Now',
+    'hero_cta_see_services' => 'See All Services',
+    'service_education_alt' => 'Education Consulting Illustration',
+    'service_branding_alt' => 'Branding & Digital Marketing Illustration',
+    'service_finance_alt' => 'Finance & Tax Consulting Illustration',
+    'service_kol_alt' => 'KOL Management Illustration',
+
+    // Service Labels for hero-fixed (New)
+    'service_label_branding' => 'BRANDING',
+    'service_label_finance' => 'FINANCE',
+    'service_label_management' => 'MANAGEMENT',
+    'service_label_wood_studio' => 'WOOD STUDIO',
+    'service_label_agriculture' => 'AGRICULTURE',
+    'service_label_catering' => 'CATERING',
+
     // Service cards
     'popular' => 'Popular',
     'details' => 'Details',

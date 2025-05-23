@@ -57,6 +57,22 @@ return [
     'working_hours' => 'Jam Kerja',
     'monday_friday' => 'Senin - Jumat: 08.00 - 17.00',
     'saturday' => 'Sabtu: 09.00 - 14.00',
+
+    // Hero Section (Baru)
+    'hero_main_title' => 'Memberdayakan Bisnis Anda dengan Solusi Inovatif',
+    'hero_main_subtitle' => 'Temukan bagaimana PT Abhiraja Giovanni Tryamanda dapat mengangkat bisnis Anda ke level berikutnya dengan layanan komprehensif dan konsultasi ahli kami.',
+    'hero_main_cta_contact' => 'Hubungi Kami Sekarang',
+    'hero_main_link_services' => 'Lihat Layanan',
+    'hero_main_image_alt' => 'Ilustrasi modern solusi bisnis',
+
+    // Label Layanan untuk hero-fixed (Baru)
+    'service_label_branding' => 'BRANDING',
+    'service_label_finance' => 'KEUANGAN',
+    'service_label_management' => 'MANAJEMEN',
+    'service_label_wood_studio' => 'STUDIO KAYU',
+    'service_label_agriculture' => 'PERTANIAN',
+    'service_label_catering' => 'JASA BOGA',
+
     // Service cards
     'popular' => 'Populer',
     'details' => 'Detail',
@@ -73,4 +89,20 @@ return [
     'service_catering_title' => 'Jasa Boga Premium',
     'service_catering_desc' => 'Layanan katering berkualitas untuk acara perusahaan dan pribadi.',
     'discount' => 'Hemat',
+    // Hero Section
+    'hero_title' => 'Tingkatkan Bisnis Anda dengan Solusi Abhiraja',
+    'hero_subtitle' => 'Mitra strategis Anda dalam mencapai kesuksesan melalui layanan inovatif dan produk komprehensif. Mari bangun masa depan bersama.',
+    'hero_cta_contact' => 'Konsultasi Sekarang',
+    'hero_cta_services' => 'Lihat Layanan',
+    'hero_image_alt' => 'Ilustrasi solusi dan layanan bisnis',
+
+    // Tambahan untuk Hero Section Revamp
+    'hero_multiservice_title' => 'Solusi Multi-Layanan Inovatif & Berorientasi Hasil',
+    'hero_multiservice_subtitle' => 'PT Abhiraja Giovanni Tryamanda hadir untuk mendukung kesuksesan Anda melalui konsultasi pendidikan, branding & digital marketing, keuangan & pajak, hingga manajemen KOL. Kami berkomitmen menyediakan layanan berkualitas tinggi, membangun hubungan jangka panjang berbasis kepercayaan dan integritas, serta mendukung perkembangan holistik bisnis Anda.',
+    'hero_cta_contact_now' => 'Hubungi Kami Sekarang',
+    'hero_cta_see_services' => 'Lihat Semua Layanan',
+    'service_education_alt' => 'Ilustrasi Konsultasi Pendidikan',
+    'service_branding_alt' => 'Ilustrasi Branding & Pemasaran Digital',
+    'service_finance_alt' => 'Ilustrasi Konsultasi Keuangan & Pajak',
+    'service_kol_alt' => 'Ilustrasi Manajemen KOL',
 ];

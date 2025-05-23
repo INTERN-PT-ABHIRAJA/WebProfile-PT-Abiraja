@@ -275,11 +275,6 @@
 </head>
 <body>
     <section class="about-section" id="about">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="pattern-dots dots-1"></div>
-        <div class="pattern-dots dots-2"></div>
-        
         <div class="container">
             <div class="about-container">
                 <div class="row g-0">

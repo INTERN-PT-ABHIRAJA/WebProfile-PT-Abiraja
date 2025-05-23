@@ -23,6 +23,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">    <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="assets/css/language-switcher.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>    @include('partials.header-new')
       @if(session('locale_changed'))
