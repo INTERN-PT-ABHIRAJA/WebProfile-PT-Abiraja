@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('section.hero-fixed')
+    @include('section.hero-new')
     @include('section.about')
     @include('section.mitra')
     @include('section.product')
