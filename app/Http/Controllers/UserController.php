@@ -7,109 +7,41 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class UserController extends Controller
+class UserController extends BaseDashboardController
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      */
-    public function index()
+    public function __construct()
     {
-        $users = User::all();
-        return response()->json(['status' => 'success', 'data' => $users]);
+        parent::__construct();
+        $this->setModel(User::class, 'users')
+             ->setViewPath('dashboard.users')
+             ->setRoutePrefix('dashboard.users');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Check for related records before deleting
      */
-    public function store(Request $request)
+    protected function checkRelatedRecords($item)
     {
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required|string|max:100',
-            'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|min:8',
-            'role' => 'required|in:admin,owner,customer',
-            'alamat' => 'nullable|string',
-            'telepon' => 'nullable|string|max:20',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
+        // Only prevent deletion of the last admin
+        if($item->role === 'admin') {
+            $adminCount = User::where('role', 'admin')->count();
+            if($adminCount <= 1) {
+                abort(403, 'Cannot delete the last admin user');
+            }
         }
-
-        $user = User::create([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => $request->role,
-            'alamat' => $request->alamat,
-            'telepon' => $request->telepon,
-        ]);
-
-        return response()->json(['status' => 'success', 'data' => $user], 201);
+        
+        return true;
     }
 
     /**
-     * Display the specified resource.
+     * Override parent update method to handle password hashing
      */
-    public function show(string $id)
+    public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        return response()->json(['status' => 'success', 'data' => $user]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $user = User::findOrFail($id);
-
-        $validator = Validator::make($request->all(), [
-            'nama' => 'sometimes|required|string|max:100',
-            'email' => 'sometimes|required|string|email|max:100|unique:users,email,' . $id . ',id_user',
-            'password' => 'sometimes|required|string|min:8',
-            'role' => 'sometimes|required|in:admin,owner,customer',
-            'alamat' => 'nullable|string',
-            'telepon' => 'nullable|string|max:20',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
-        }
-
-        // Update user data
-        if ($request->has('nama')) {
-            $user->nama = $request->nama;
-        }
-        if ($request->has('email')) {
-            $user->email = $request->email;
-        }
-        if ($request->has('password')) {
-            $user->password = Hash::make($request->password);
-        }
-        if ($request->has('role')) {
-            $user->role = $request->role;
-        }
-        if ($request->has('alamat')) {
-            $user->alamat = $request->alamat;
-        }
-        if ($request->has('telepon')) {
-            $user->telepon = $request->telepon;
-        }
-
-        $user->save();
-
-        return response()->json(['status' => 'success', 'data' => $user]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $user = User::findOrFail($id);
-        $user->delete();
-
-        return response()->json(['status' => 'success', 'message' => 'User deleted successfully']);
+        // Call parent update method which handles most of the logic
+        return parent::update($request, $id);
     }
 }

@@ -65,6 +65,16 @@ class User extends Authenticatable implements FilamentUser, HasName
     }
 
     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'id_user';
+    }
+
+    /**
      * Determine if the user can access the Filament panel.
      *
      * @param \Filament\Panel $panel

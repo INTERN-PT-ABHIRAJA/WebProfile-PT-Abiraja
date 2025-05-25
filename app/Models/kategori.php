@@ -24,6 +24,12 @@ class Kategori extends Model
         'deskripsi_kategori',
     ];
 
+    // Define the route key name for route model binding
+    public function getRouteKeyName()
+    {
+        return 'id_kategori';
+    }
+    
     // Relationships
     public function anakPerusahaan()
     {

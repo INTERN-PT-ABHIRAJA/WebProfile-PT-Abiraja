@@ -14,6 +14,12 @@ class AnakPerusahaan extends Model
 
     // Define the primary key
     protected $primaryKey = 'id_anak_perusahaan';
+    
+    // Define the route key name for route model binding
+    public function getRouteKeyName()
+    {
+        return 'id_anak_perusahaan';
+    }
 
     // Define the fillable attributes
     protected $fillable = [

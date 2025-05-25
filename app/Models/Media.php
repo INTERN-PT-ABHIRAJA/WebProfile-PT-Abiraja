@@ -22,4 +22,10 @@ class Media extends Model
         'mime_type',
         'file_size',
     ];
+    
+    // Define the route key name for route model binding
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 }
