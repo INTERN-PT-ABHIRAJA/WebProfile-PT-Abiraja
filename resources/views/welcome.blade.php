@@ -443,26 +443,32 @@
                     </p>
                 </div>
 
-                <!-- Filter Buttons -->
+                <!-- Filter Buttons (Dynamic from Database) -->
                 <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
                     <div class="filter-buttons">
                         <button class="filter-btn active" data-filter="all">
                             <i class="fas fa-th-large me-2"></i>Semua Layanan
                         </button>
-                        <button class="filter-btn" data-filter="education">
-                            <i class="fas fa-graduation-cap me-2"></i>Pendidikan
-                        </button>
-                        <button class="filter-btn" data-filter="business">
-                            <i class="fas fa-briefcase me-2"></i>Bisnis
-                        </button>
-                        <button class="filter-btn" data-filter="craft">
-                            <i class="fas fa-hammer me-2"></i>Kerajinan
-                        </button>
-                        <button class="filter-btn" data-filter="agriculture">
-                            <i class="fas fa-seedling me-2"></i>Pertanian
-                        </button>
+
+                        @foreach($categories as $kategori)
+                            <button class="filter-btn" data-filter="{{ \Str::slug($kategori->nama_kategori) }}">
+                                {{-- Optional icon mapping --}}
+                                @php
+                                    $iconMap = [
+                                        'Pendidikan' => 'fas fa-graduation-cap',
+                                        'Bisnis' => 'fas fa-briefcase',
+                                        'Kerajinan' => 'fas fa-hammer',
+                                        'Pertanian' => 'fas fa-seedling',
+                                    ];
+                                    $iconClass = $iconMap[$kategori->nama_kategori] ?? 'fas fa-tags';
+                                @endphp
+
+                                <i class="{{ $iconClass }} me-2"></i>{{ $kategori->nama_kategori }}
+                            </button>
+                        @endforeach
                     </div>
                 </div>
+
 
                 <!-- Products Grid -->
                 <div class="products-grid" id="productsGrid">
@@ -1219,7 +1225,7 @@
                                                 @if($company->kategori)
                                                     {{ $company->kategori->nama_kategori }}
                                                 @endif
-                                                ï
+                                                ù
                                                 @if($company->berdiri_sejak)
                                                     Didirikan {{ $company->berdiri_sejak->format('Y') }}
                                                 @endif
@@ -1246,7 +1252,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Tryamanda Wood Works</h6>
-                                        <small class="text-muted">Manufaktur ï Didirikan 2019</small>
+                                        <small class="text-muted">Manufaktur ù Didirikan 2019</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Produsen furniture dan kerajinan kayu berkualitas
@@ -1264,7 +1270,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Abhiraja Agri Solutions</h6>
-                                        <small class="text-muted">Pertanian ï Didirikan 2022</small>
+                                        <small class="text-muted">Pertanian ù Didirikan 2022</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Solusi pertanian modern dan berkelanjutan untuk
@@ -1282,7 +1288,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Giovanni Finance Consulting</h6>
-                                        <small class="text-muted">Keuangan ï Didirikan 2020</small>
+                                        <small class="text-muted">Keuangan ù Didirikan 2020</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Konsultasi keuangan dan manajemen bisnis untuk
@@ -1300,7 +1306,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Tryamanda Catering Services</h6>
-                                        <small class="text-muted">Jasa Boga ï Didirikan 2023</small>
+                                        <small class="text-muted">Jasa Boga ù Didirikan 2023</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Layanan katering premium untuk acara korporat dan
