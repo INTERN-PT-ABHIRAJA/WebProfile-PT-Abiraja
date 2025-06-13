@@ -3,7 +3,7 @@
 @section('content')
     @include('section.hero-new')
     @include('section.about')
-    @include('section.mitra')
+    @include('section.subsidiaries')
     @include('section.product')
     @include('section.services')
     

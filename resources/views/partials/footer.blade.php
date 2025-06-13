@@ -23,7 +23,7 @@
                     <li><a href="#home">{{ __('site.beranda') }}</a></li>
                     <li><a href="#about">{{ __('site.tentang_kami') }}</a></li>
                     <li><a href="#services">{{ __('site.layanan_kami') }}</a></li>
-                    <li><a href="#team">{{ App::isLocale('id') ? 'Tim Kami' : 'Our Team' }}</a></li>
+                    <li><a href="#team">{{ __('site.mitra') }}</a></li>
                     <li><a href="#products">{{ App::isLocale('id') ? 'Produk' : 'Products' }}</a></li>
                     <li><a href="#contact">{{ __('site.kontak') }}</a></li>
                 </ul>

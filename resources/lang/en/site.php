@@ -47,7 +47,12 @@ return [
     'contact_us' => 'Contact Us',
     'our_location' => 'Our Location',
     'email_us' => 'Email Us',
-
+    // Partners section
+    'our_partners' => 'Our Partners',
+    'partners_description' => 'We collaborate with various strategic partners to provide the best solutions for our clients.',
+    // Subsidiaries section
+    'our_subsidiaries' => 'Our Subsidiaries',
+    'subsidiaries_description' => 'We have several subsidiary companies operating in various fields to support our services.',
     // New Hero Section
     'slide1_h1' => 'Graduate on Time, Stress-Free? Achieve It With Us!',
     'slide1_sub' => 'Expert guidance for your final assignments, thesis, & scientific publications. Quality & confidentiality guaranteed.',
@@ -61,7 +66,7 @@ return [
     'slide4_h1' => 'Reach Millions of Target Audiences Through the Most Influential Voices.',
     'slide4_sub' => 'End-to-end KOL management: Discover, manage, & measure the impact of your influencer campaigns.',
     'slide4_cta' => 'Connect With KOLs',
-    'slide5_h1' => 'Abhiraja\'s Innovation & Quality: For Space, Taste, and Earth.',
+    'slide5_h1' => "Abhiraja's Innovation & Quality: For Space, Taste, and Earth.",
     'slide5_sub' => 'Discover the beauty of custom furniture, the freshness of sustainable produce, and the delight of our premium catering.',
     'slide5_cta' => 'Explore Our Products',
 ];

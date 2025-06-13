@@ -35,7 +35,7 @@
                             <a class="nav-link text-black fw-bold" href="#services">TESTIMONI</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-black fw-bold" href="#team">MITRA</a>
+                            <a class="nav-link text-black fw-bold" href="#team">{{ strtoupper(__('site.mitra')) }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-black fw-bold" href="#products">LAYANAN KAMI</a>

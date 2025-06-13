@@ -42,7 +42,12 @@ return [
     'send_message' => 'Kirim Pesan',
     'send' => 'Kirim',
     'cancel' => 'Batal',
-
+    // Partners section
+    'our_partners' => 'Mitra Kami',
+    'partners_description' => 'Kami berkolaborasi dengan berbagai mitra strategis untuk memberikan solusi terbaik bagi klien kami.',
+    // Subsidiaries section
+    'our_subsidiaries' => 'Anak Perusahaan Kami',
+    'subsidiaries_description' => 'Kami memiliki beberapa anak perusahaan yang beroperasi di berbagai bidang untuk mendukung layanan kami.',
     // New Hero Section
     'slide1_h1' => 'Lulus Tepat Waktu Tanpa Stres? Wujudkan Bersama Kami!',
     'slide1_sub' => 'Pendampingan expert untuk tugas akhir, skripsi, & publikasi ilmiah. Kualitas & kerahasiaan terjamin.',

@@ -64,7 +64,7 @@
                                 <a class="nav-link text-black fw-bold" href="#services">LAYANAN</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#team">TIM KAMI</a>
+                                <a class="nav-link text-black fw-bold" href="#subsidiaries">ANAK PERUSAHAAN</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black fw-bold" href="#products">PRODUK KAMI</a>
@@ -182,86 +182,7 @@
             </div>
         </section>
 
-        <section class="team-section" id="team">
-            <div class="container">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="fw-bold mb-3">Tim Kami</h2>
-                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami memiliki tim profesional yang
-                        berdedikasi untuk memberikan layanan terbaik bagi klien kami.</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="10">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Raja.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h4>RAJA FAKHRUROZI SAFIRA, S.M</h4>
-                                <p>CEO & Founder</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Heru.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h4>Heru Fibriansyah</h4>
-                                <p>--------</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Desi.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h4>Desi Putri, S.M</h4>
-                                <p>--------</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Dini.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-info">
-                                <h4>Dini Rosyani, S.H</h4>
-                                <p>---------</p>
-                            </div>
-                        </div>
-                    </div>
+        @include('section.subsidiaries')
                 </div>
             </div>
         </section>
@@ -509,7 +430,7 @@
                             <li><a href="#home">Beranda</a></li>
                             <li><a href="#about">Tentang Kami</a></li>
                             <li><a href="#services">Layanan</a></li>
-                            <li><a href="#team">Tim Kami</a></li>
+                            <li><a href="#subsidiaries">Anak Perusahaan</a></li>
                             <li><a href="#products">Produk</a></li>
                             <li><a href="#contact">Kontak</a></li>
                         </ul>
