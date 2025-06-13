@@ -438,10 +438,7 @@
                         </div>
                     </div>
                     <div class="col-lg-7" data-aos="fade-left">
-                        {{-- Notifikasi Sukses --}}
-                        @if(session('success'))
-                            <div class="alert alert-success">{{ session('success') }}</div>
-                        @endif
+
 
                         {{-- Notifikasi Error --}}
                         @if($errors->any())
@@ -454,7 +451,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('contact.send') }}" class="contact-form">
+                        <form method="POST" action="{{ route('contact.send') }}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -473,6 +470,7 @@
                             <button type="submit" class="btn-contact mt-3">Kirim Pesan</button>
                         </form>
                     </div>
+
 
 
 
