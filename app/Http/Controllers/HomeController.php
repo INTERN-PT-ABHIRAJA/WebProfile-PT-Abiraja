@@ -19,6 +19,9 @@ class HomeController extends Controller
         // Get all anak perusahaan with their categories
         $anakPerusahaan = AnakPerusahaan::with('kategori')->get();
         
-        return view('welcome', compact('anakPerusahaan'));
+        // Get all categories for the filter buttons
+        $categories = Kategori::all();
+        
+        return view('welcome', compact('anakPerusahaan', 'categories'));
     }
 }
