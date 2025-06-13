@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\AnakPerusahaanController;
-use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,15 +28,21 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+// Test route for modal
+Route::get('/test-modal', function () {
+    return view('test-modal');
+});
+
 // Translator page route
 Route::get('/translator', function () {
     return view('translator');
 });
 
-// Debug route has been removed
-
 // Language switching routes
 Route::get('language/{locale}', [LanguageController::class, 'switchLang'])->name('language.switch');
+
+// Translations for JavaScript (temporarily disabled)
+// Route::get('translations/{locale}', [App\Http\Controllers\TranslationController::class, 'getTranslations'])->name('translations');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -46,7 +53,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.access'])->group(function () {
     // Dashboard home
     Route::get('/', [DashboardController::class, 'index'])->name('index');
-    
+
     // User management
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
@@ -87,3 +94,6 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::put('/media/{id}', [MediaController::class, 'update'])->name('media.update');
     Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.destroy');
 });
+
+// Contact form route
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');

@@ -1,0 +1,110 @@
+/* Performance optimizations */
+.particle-container,
+.particle {
+    will-change: transform;
+}
+
+/* Reduce animations on mobile for performance */
+@media (max-width: 768px) {
+    .particle {
+        display: none;
+    }
+    
+    .swiper-container {
+        --swiper-autoplay-delay: 15000;
+    }
+}
+
+/* Preload optimization */
+.swiper-container {
+    visibility: hidden;
+}
+
+.swiper-container.swiper-initialized {
+    visibility: visible;
+}
+
+/* Particle Animation CSS */
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Optimized hover effects */
+.subsidiary-card,
+.stat-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subsidiary-card:hover,
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Counter animation */
+.counter {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Reduced motion for accessibility and performance */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+}
+
+.reduced-motion .particle {
+    display: none;
+}
+
+/* Loading state optimization */
+.loading-state {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* Smooth transitions for form elements */
+.form-control {
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Better focus states */
+.btn:focus,
+.form-control:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.25);
+}
+
+/* Optimize image loading - Note: loading is HTML attribute, not CSS */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Intersection observer visibility */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
