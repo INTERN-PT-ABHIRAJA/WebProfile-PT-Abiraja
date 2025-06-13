@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class ProdukController extends Controller
+class ProdukController extends BaseDashboardController
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      */
-    public function index()
+    public function __construct()
     {
-        $produk = Produk::with('anakPerusahaan')->get();
-        return response()->json(['status' => 'success', 'data' => $produk]);
+        parent::__construct();
+        $this->setModel(Produk::class, 'products')
+             ->setViewPath('dashboard.products')
+             ->setRoutePrefix('dashboard.products')
+             ->setAllowedOperations(['index', 'create', 'store', 'edit', 'update', 'destroy', 'show']);
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -58,7 +61,7 @@ class ProdukController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $produk = Produk::with('anakPerusahaan')->findOrFail($id);
         return response()->json(['status' => 'success', 'data' => $produk]);
@@ -67,7 +70,7 @@ class ProdukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
 
@@ -116,7 +119,7 @@ class ProdukController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $produk = Produk::findOrFail($id);
 

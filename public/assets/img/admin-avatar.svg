@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Admin Avatar</title>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F9FAFB" offset="0%"></stop>
+            <stop stop-color="#E5E7EB" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Admin-Avatar" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Background" fill="url(#linearGradient-1)" x="0" y="0" width="100" height="100" rx="8"></rect>
+        <g id="Person" transform="translate(20.000000, 15.000000)">
+            <circle id="Head" fill="#FFFFFF" cx="30" cy="20" r="20"></circle>
+            <path d="M60,85 L0,85 C0,68.4315 13.4315,55 30,55 C46.5685,55 60,68.4315 60,85 Z" id="Body" fill="#FFFFFF"></path>
+            <path d="M45,22 C45,30.2843 38.2843,37 30,37 C21.7157,37 15,30.2843 15,22 C15,13.7157 21.7157,7 30,7 C38.2843,7 45,13.7157 45,22 Z" id="Face" fill="#7C3AED"></path>
+            <path d="M30,42 C13.4315,42 0,55.4315 0,72 L60,72 C60,55.4315 46.5685,42 30,42 Z" id="Shirt" fill="#7C3AED"></path>
+            <rect id="Tie" fill="#FFFFFF" x="27" y="48" width="6" height="24" rx="2"></rect>
+        </g>
+    </g>
+</svg>

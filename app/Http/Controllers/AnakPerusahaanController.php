@@ -7,17 +7,33 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class AnakPerusahaanController extends Controller
+class AnakPerusahaanController extends BaseDashboardController
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      */
-    public function index()
+    public function __construct()
     {
-        $perusahaan = AnakPerusahaan::with(['user', 'kategori'])->get();
-        return response()->json(['status' => 'success', 'data' => $perusahaan]);
+        parent::__construct();
+        $this->setModel(AnakPerusahaan::class, 'companies')
+             ->setViewPath('dashboard.companies')
+             ->setRoutePrefix('dashboard.companies')
+             ->setAllowedOperations(['index', 'create', 'store', 'edit', 'update', 'destroy', 'show']);
     }
 
+    /**
+     * Check for related records before deleting
+     */
+    protected function checkRelatedRecords($item)
+    {
+        // Check if company has related products
+        if ($item->produk()->count() > 0) {
+            abort(403, 'Cannot delete company with existing products. Please remove the products first.');
+        }
+        
+        return true;
+    }
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -36,7 +52,7 @@ class AnakPerusahaanController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
+            return back()->withErrors($validator)->withInput();
         }
 
         $data = $request->except(['foto', 'video']);
@@ -51,16 +67,18 @@ class AnakPerusahaanController extends Controller
             $videoPath = $request->file('video')->store('perusahaan/video', 'public');
             $data['video'] = $videoPath;
         }
-
+        
         $perusahaan = AnakPerusahaan::create($data);
 
-        return response()->json(['status' => 'success', 'data' => $perusahaan], 201);
+        return redirect()
+            ->route('dashboard.companies.index')
+            ->with('success', 'Anak Perusahaan berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         $perusahaan = AnakPerusahaan::with(['user', 'kategori', 'produk'])->findOrFail($id);
         return response()->json(['status' => 'success', 'data' => $perusahaan]);
@@ -69,7 +87,7 @@ class AnakPerusahaanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
         $perusahaan = AnakPerusahaan::findOrFail($id);
 
@@ -86,7 +104,7 @@ class AnakPerusahaanController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
+            return back()->withErrors($validator)->withInput();
         }
 
         $data = $request->except(['foto', 'video']);
@@ -114,13 +132,15 @@ class AnakPerusahaanController extends Controller
 
         $perusahaan->update($data);
 
-        return response()->json(['status' => 'success', 'data' => $perusahaan]);
+        return redirect()
+            ->route('dashboard.companies.index')
+            ->with('success', 'Anak Perusahaan berhasil diperbarui!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $perusahaan = AnakPerusahaan::findOrFail($id);
 
@@ -135,6 +155,8 @@ class AnakPerusahaanController extends Controller
 
         $perusahaan->delete();
 
-        return response()->json(['status' => 'success', 'message' => 'Perusahaan deleted successfully']);
+        return redirect()
+            ->route('dashboard.companies.index')
+            ->with('success', 'Anak Perusahaan berhasil dihapus!');
     }
 }

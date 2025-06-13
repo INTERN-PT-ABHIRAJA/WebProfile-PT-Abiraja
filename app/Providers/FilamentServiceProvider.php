@@ -23,5 +23,38 @@ class FilamentServiceProvider extends ServiceProvider
         Route::get('/admin-status', function () {
             return 'Admin route check: ' . (class_exists('Filament\Panel') ? 'Filament Panel class exists' : 'Filament Panel class does not exist');
         });
+
+        // Custom Filament branding and UI enhancements
+        Filament::registerRenderHook(
+            'panels::head.end',
+            fn(): string => '
+                <style>
+                    /* Custom UI improvements */
+                    .fi-sidebar-header {
+                        background-color: rgba(79, 70, 229, 0.05);
+                    }
+                    .fi-topbar nav {
+                        background-color: white;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                    }
+                </style>
+            '
+        );
+
+        Filament::serving(function () {
+            // Add custom navigation groups
+            Filament::registerNavigationGroups([
+                NavigationGroup::make()
+                    ->label('Content Management')
+                    ->icon('heroicon-o-document-text'),
+                NavigationGroup::make()
+                    ->label('User Management')
+                    ->icon('heroicon-o-users'),
+                NavigationGroup::make()
+                    ->label('Settings')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->collapsed(),
+            ]);
+        });
     }
 }

@@ -154,8 +154,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\Filament\AdminPanelProvider::class,
-        App\Providers\FilamentServiceProvider::class,
+        // App\Providers\Filament\AdminPanelProvider::class,
+        // App\Providers\Filament\ThemeServiceProvider::class,
+        // App\Providers\FilamentServiceProvider::class,
     ])->toArray(),
 
     /*

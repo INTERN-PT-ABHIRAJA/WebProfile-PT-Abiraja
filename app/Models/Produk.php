@@ -14,6 +14,12 @@ class Produk extends Model
 
     // Define the primary key
     protected $primaryKey = 'id_produk';
+    
+    // Define the route key name for route model binding
+    public function getRouteKeyName()
+    {
+        return 'id_produk';
+    }
 
     // Define the fillable attributes
     protected $fillable = [

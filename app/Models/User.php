@@ -4,13 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasName;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasName
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -64,6 +65,16 @@ class User extends Authenticatable implements FilamentUser
     }
 
     /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'id_user';
+    }
+
+    /**
      * Determine if the user can access the Filament panel.
      *
      * @param \Filament\Panel $panel
@@ -72,5 +83,37 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(Panel $panel): bool
     {
         return $this->role === 'admin' || $this->role === 'owner';
+    }
+
+    /**
+     * Get the name of the user for Filament.
+     * This method is required by the HasName interface.
+     *
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->nama ?? 'User';
+    }
+
+    /**
+     * Get the name of the user for FilamentManager.
+     *
+     * @return string
+     */
+    public function getUserName(): string
+    {
+        return $this->nama ?? 'User';
+    }
+
+    /**
+     * Get the name that should be displayed in Filament panels.
+     * This method is required by the HasName interface.
+     *
+     * @return string
+     */
+    public function getFilamentName(): string
+    {
+        return $this->nama ?? 'User';
     }
 }

@@ -9,6 +9,12 @@ class Media extends Model
 {
     use HasFactory;
 
+    // Define the table name
+    protected $table = 'media';
+
+    // Define the primary key
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'title',
         'description',
@@ -16,4 +22,10 @@ class Media extends Model
         'mime_type',
         'file_size',
     ];
+    
+    // Define the route key name for route model binding
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 }

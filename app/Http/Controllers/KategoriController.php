@@ -6,85 +6,29 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class KategoriController extends Controller
+class KategoriController extends BaseDashboardController
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
      */
-    public function index()
+    public function __construct()
     {
-        $kategori = Kategori::all();
-        return response()->json(['status' => 'success', 'data' => $kategori]);
+        parent::__construct();
+        $this->setModel(Kategori::class, 'categories')
+             ->setViewPath('dashboard.categories')
+             ->setRoutePrefix('dashboard.categories');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Check for related records before deleting
      */
-    public function store(Request $request)
+    protected function checkRelatedRecords($item)
     {
-        $validator = Validator::make($request->all(), [
-            'nama_kategori' => 'required|string|max:100',
-            'deskripsi_kategori' => 'nullable|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
+        // Check if category has related companies
+        if ($item->anakPerusahaan()->count() > 0) {
+            abort(403, 'Cannot delete category with existing companies. Please remove the companies first.');
         }
-
-        $kategori = Kategori::create([
-            'nama_kategori' => $request->nama_kategori,
-            'deskripsi_kategori' => $request->deskripsi_kategori,
-        ]);
-
-        return response()->json(['status' => 'success', 'data' => $kategori], 201);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        $kategori = Kategori::findOrFail($id);
-        return response()->json(['status' => 'success', 'data' => $kategori]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $kategori = Kategori::findOrFail($id);
-
-        $validator = Validator::make($request->all(), [
-            'nama_kategori' => 'sometimes|required|string|max:100',
-            'deskripsi_kategori' => 'nullable|string',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
-        }
-
-        if ($request->has('nama_kategori')) {
-            $kategori->nama_kategori = $request->nama_kategori;
-        }
-
-        if ($request->has('deskripsi_kategori')) {
-            $kategori->deskripsi_kategori = $request->deskripsi_kategori;
-        }
-
-        $kategori->save();
-
-        return response()->json(['status' => 'success', 'data' => $kategori]);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        $kategori = Kategori::findOrFail($id);
-        $kategori->delete();
-
-        return response()->json(['status' => 'success', 'message' => 'Kategori deleted successfully']);
+        
+        return true;
     }
 }
