@@ -1,12 +1,10 @@
-@extends('layouts.dashboard')
+<?php $__env->startSection('title', 'Dashboard - PT Abhiraja Giovanni Tryamanda'); ?>
 
-@section('title', 'Dashboard - PT Abhiraja Giovanni Tryamanda')
-
-@section('content')
-    @php
+<?php $__env->startSection('content'); ?>
+    <?php
         use App\Config\DashboardConfig;
         use Illuminate\Support\Str;
-    @endphp
+    ?>
     
     <div class="min-h-screen bg-gradient-to-br from-slate-50 to-gray-100">
     <!-- Header Dashboard dengan Branding PT Abhiraja - Enhanced Design -->
@@ -32,7 +30,7 @@
                     <svg class="w-4 h-4 mr-2 text-amber-200" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
                     </svg>
-                    <span class="font-semibold text-white">{{ date('d M Y') }}</span>
+                    <span class="font-semibold text-white"><?php echo e(date('d M Y')); ?></span>
                 </div>
             </div>
         </div>
@@ -40,8 +38,8 @@
     
     <!-- Stats Cards dengan tema PT Abhiraja - Compact Design -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
-        @foreach($stats as $key => $count)
-            @php
+        <?php $__currentLoopData = $stats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php
                 $icon = '';
                 $bgColor = 'bg-slate-50';
                 $iconColor = 'text-slate-600';
@@ -89,24 +87,25 @@
                         break;
                     }
                 }
-            @endphp
+            ?>
             
-            <div class="bg-gradient-to-br from-white/95 to-slate-50/95 backdrop-blur-sm rounded-lg border {{ $borderColor }} p-3 hover:shadow-lg transition-all duration-200 hover:border-opacity-80 hover:-translate-y-1">
+            <div class="bg-gradient-to-br from-white/95 to-slate-50/95 backdrop-blur-sm rounded-lg border <?php echo e($borderColor); ?> p-3 hover:shadow-lg transition-all duration-200 hover:border-opacity-80 hover:-translate-y-1">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <div class="rounded-lg p-2.5 {{ $bgColor }} mr-3 border {{ $borderColor }}">
-                            <div class="{{ $iconColor }} w-4 h-4">
-                                {!! $icon !!}
+                        <div class="rounded-lg p-2.5 <?php echo e($bgColor); ?> mr-3 border <?php echo e($borderColor); ?>">
+                            <div class="<?php echo e($iconColor); ?> w-4 h-4">
+                                <?php echo $icon; ?>
+
                             </div>
                         </div>
                         <div>
-                            <p class="text-xs text-gray-600 font-medium">{{ $name }}</p>
-                            <h3 class="text-lg font-bold text-gray-900">{{ number_format($count) }}</h3>
+                            <p class="text-xs text-gray-600 font-medium"><?php echo e($name); ?></p>
+                            <h3 class="text-lg font-bold text-gray-900"><?php echo e(number_format($count)); ?></h3>
                         </div>
                     </div>
                 </div>
             </div>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
     
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
@@ -119,7 +118,7 @@
                 Distribusi Data
             </h3>
             <div class="space-y-4">
-                @php
+                <?php
                     $totalStats = array_sum($stats);
                     $statColors = [
                         'users' => ['bg' => 'bg-indigo-500', 'name' => 'Tim & Pengguna'],
@@ -127,25 +126,25 @@
                         'companies' => ['bg' => 'bg-emerald-500', 'name' => 'Anak Perusahaan'],
                         'products' => ['bg' => 'bg-violet-500', 'name' => 'Produk & Jasa']
                     ];
-                @endphp
-                @foreach($stats as $key => $count)
-                    @php
+                ?>
+                <?php $__currentLoopData = $stats; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $count): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php
                         $percentage = $totalStats > 0 ? round(($count / $totalStats) * 100, 1) : 0;
                         $color = $statColors[$key] ?? ['bg' => 'bg-gray-500', 'name' => ucfirst($key)];
-                    @endphp
+                    ?>
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
-                            <div class="w-3 h-3 {{ $color['bg'] }} rounded-full mr-3"></div>
-                            <span class="text-sm font-medium text-gray-700">{{ $color['name'] }}</span>
+                            <div class="w-3 h-3 <?php echo e($color['bg']); ?> rounded-full mr-3"></div>
+                            <span class="text-sm font-medium text-gray-700"><?php echo e($color['name']); ?></span>
                         </div>
                         <div class="flex items-center space-x-2">
                             <div class="w-20 bg-gray-200 rounded-full h-2">
-                                <div class="{{ $color['bg'] }} h-2 rounded-full transition-all duration-500" style="width: {{ $percentage }}%"></div>
+                                <div class="<?php echo e($color['bg']); ?> h-2 rounded-full transition-all duration-500" style="width: <?php echo e($percentage); ?>%"></div>
                             </div>
-                            <span class="text-sm font-bold text-gray-900 w-12 text-right">{{ $count }}</span>
+                            <span class="text-sm font-bold text-gray-900 w-12 text-right"><?php echo e($count); ?></span>
                         </div>
                     </div>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
         
@@ -158,8 +157,8 @@
                 Aksi Cepat
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                @foreach($dashboardTables as $tableKey => $config)
-                    @php
+                <?php $__currentLoopData = $dashboardTables; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tableKey => $config): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php
                         $actionColors = [
                             'users' => 'bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200',
                             'categories' => 'bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200',
@@ -174,19 +173,19 @@
                             'products' => 'Produk Unggulan'
                         ];
                         $actionName = $actionNames[$tableKey] ?? $config['name_id'];
-                    @endphp
-                    <a href="{{ route('dashboard.' . $config['route_name'] . '.create') }}" 
-                       class="block p-3 {{ $colorClass }} rounded-lg transition-all duration-200 hover:shadow-sm hover:-translate-y-0.5">
+                    ?>
+                    <a href="<?php echo e(route('dashboard.' . $config['route_name'] . '.create')); ?>" 
+                       class="block p-3 <?php echo e($colorClass); ?> rounded-lg transition-all duration-200 hover:shadow-sm hover:-translate-y-0.5">
                         <div class="flex items-center">
                             <div class="mr-3">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium">Tambah {{ $actionName }}</span>
+                            <span class="text-sm font-medium">Tambah <?php echo e($actionName); ?></span>
                         </div>
                     </a>
-                @endforeach
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
         </div>
     </div>
@@ -202,8 +201,8 @@
                 Aktivitas Terbaru
             </h3>
             <div class="space-y-3">
-                @if(isset($recentActivities) && count($recentActivities) > 0)
-                    @foreach($recentActivities as $activity)
+                <?php if(isset($recentActivities) && count($recentActivities) > 0): ?>
+                    <?php $__currentLoopData = $recentActivities; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $activity): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="flex items-center p-3 bg-slate-50/80 rounded-lg border border-slate-200/50">
                             <div class="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                                 <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
@@ -211,19 +210,19 @@
                                 </svg>
                             </div>
                             <div class="ml-3 flex-1">
-                                <p class="text-sm text-gray-900">{{ $activity['message'] ?? 'Aktivitas baru ditambahkan' }}</p>
-                                <p class="text-xs text-gray-500">{{ $activity['time'] ?? 'Baru saja' }}</p>
+                                <p class="text-sm text-gray-900"><?php echo e($activity['message'] ?? 'Aktivitas baru ditambahkan'); ?></p>
+                                <p class="text-xs text-gray-500"><?php echo e($activity['time'] ?? 'Baru saja'); ?></p>
                             </div>
                         </div>
-                    @endforeach
-                @else
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <?php else: ?>
                     <div class="text-center py-8 text-gray-500">
                         <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
                         </svg>
                         <p class="text-sm">Belum ada aktivitas terbaru</p>
                     </div>
-                @endif
+                <?php endif; ?>
             </div>
         </div>
 
@@ -239,19 +238,19 @@
                 <div class="p-3 bg-emerald-50 rounded-lg border border-emerald-200">
                     <div class="flex items-center justify-between">
                         <span class="text-sm font-medium text-emerald-800">Anak Perusahaan Aktif</span>
-                        <span class="text-lg font-bold text-emerald-900">{{ $stats['companies'] ?? 0 }}</span>
+                        <span class="text-lg font-bold text-emerald-900"><?php echo e($stats['companies'] ?? 0); ?></span>
                     </div>
                 </div>
                 <div class="p-3 bg-amber-50 rounded-lg border border-amber-200">
                     <div class="flex items-center justify-between">
                         <span class="text-sm font-medium text-amber-800">Bidang Layanan</span>
-                        <span class="text-lg font-bold text-amber-900">{{ $stats['categories'] ?? 0 }}</span>
+                        <span class="text-lg font-bold text-amber-900"><?php echo e($stats['categories'] ?? 0); ?></span>
                     </div>
                 </div>
                 <div class="p-3 bg-indigo-50 rounded-lg border border-indigo-200">
                     <div class="flex items-center justify-between">
                         <span class="text-sm font-medium text-indigo-800">Produk Unggulan</span>
-                        <span class="text-lg font-bold text-indigo-900">{{ $stats['products'] ?? 0 }}</span>
+                        <span class="text-lg font-bold text-indigo-900"><?php echo e($stats['products'] ?? 0); ?></span>
                     </div>
                 </div>
             </div>
@@ -272,9 +271,9 @@
     </div>
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('styles')
+<?php $__env->startPush('styles'); ?>
 <style>
     /* CSS-only chart animation - super lightweight */
     .progress-bar {
@@ -294,9 +293,9 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 </style>
-@endpush
+<?php $__env->stopPush(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     // Minimal JavaScript for smooth UI interactions only
     document.addEventListener('DOMContentLoaded', function() {
@@ -312,4 +311,6 @@
         });
     });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\WebProfile-PT-Abiraja\resources\views/dashboard/index.blade.php ENDPATH**/ ?>

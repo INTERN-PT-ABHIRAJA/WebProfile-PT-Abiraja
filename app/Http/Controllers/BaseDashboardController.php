@@ -284,6 +284,9 @@ class BaseDashboardController extends Controller
         $data = [
             'item' => $item,
             'company' => $item, // Also pass the item as 'company' for backward compatibility
+            'product' => $item, // Also pass the item as 'product' for backward compatibility
+            'category' => $item, // Also pass the item as 'category' for backward compatibility
+            'user' => $item, // Also pass the item as 'user' for backward compatibility
             'modelKey' => $this->modelKey,
             'formConfig' => $formConfig,
             'formAction' => route($this->routePrefix . '.update', $id),

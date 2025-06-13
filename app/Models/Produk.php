@@ -44,4 +44,41 @@ class Produk extends Model
     {
         return $this->belongsTo(AnakPerusahaan::class, 'id_anak_perusahaan', 'id_anak_perusahaan');
     }
+
+    /**
+     * Get the detail foto produk for the produk.
+     */
+    public function detailFoto()
+    {
+        return $this->hasMany(DetailFotoProduk::class, 'id_produk', 'id_produk');
+    }
+
+    /**
+     * Get the first photo from detail_foto_produk or fallback to main foto
+     */
+    public function getFotoUtamaAttribute()
+    {
+        $firstDetailFoto = $this->detailFoto()->first();
+        return $firstDetailFoto ? $firstDetailFoto->foto : $this->foto;
+    }
+
+    /**
+     * Get all photos including main foto and detail photos
+     */
+    public function getAllFotosAttribute()
+    {
+        $photos = collect();
+        
+        // Add main foto if exists
+        if ($this->foto) {
+            $photos->push($this->foto);
+        }
+        
+        // Add detail photos
+        $this->detailFoto->each(function($detail) use ($photos) {
+            $photos->push($detail->foto);
+        });
+        
+        return $photos->unique();
+    }
 }

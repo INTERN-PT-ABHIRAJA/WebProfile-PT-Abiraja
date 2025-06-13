@@ -53,7 +53,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.delete');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     
     // Category management
     Route::get('/categories', [KategoriController::class, 'index'])->name('categories.index');
@@ -61,7 +61,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::post('/categories', [KategoriController::class, 'store'])->name('categories.store');
     Route::get('/categories/{id}/edit', [KategoriController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{id}', [KategoriController::class, 'update'])->name('categories.update');
-    Route::delete('/categories/{id}', [KategoriController::class, 'destroy'])->name('categories.delete');
+    Route::delete('/categories/{id}', [KategoriController::class, 'destroy'])->name('categories.destroy');
     
     // Company management
     Route::get('/companies', [AnakPerusahaanController::class, 'index'])->name('companies.index');
@@ -69,7 +69,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::post('/companies', [AnakPerusahaanController::class, 'store'])->name('companies.store');
     Route::get('/companies/{id}/edit', [AnakPerusahaanController::class, 'edit'])->name('companies.edit');
     Route::put('/companies/{id}', [AnakPerusahaanController::class, 'update'])->name('companies.update');
-    Route::delete('/companies/{id}', [AnakPerusahaanController::class, 'destroy'])->name('companies.delete');
+    Route::delete('/companies/{id}', [AnakPerusahaanController::class, 'destroy'])->name('companies.destroy');
     
     // Product management
     Route::get('/products', [ProdukController::class, 'index'])->name('products.index');
@@ -77,7 +77,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::post('/products', [ProdukController::class, 'store'])->name('products.store');
     Route::get('/products/{id}/edit', [ProdukController::class, 'edit'])->name('products.edit');
     Route::put('/products/{id}', [ProdukController::class, 'update'])->name('products.update');
-    Route::delete('/products/{id}', [ProdukController::class, 'destroy'])->name('products.delete');
+    Route::delete('/products/{id}', [ProdukController::class, 'destroy'])->name('products.destroy');
     
     // Media management
     Route::get('/media', [MediaController::class, 'index'])->name('media.index');
@@ -85,5 +85,5 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::post('/media', [MediaController::class, 'store'])->name('media.store');
     Route::get('/media/{id}/edit', [MediaController::class, 'edit'])->name('media.edit');
     Route::put('/media/{id}', [MediaController::class, 'update'])->name('media.update');
-    Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.delete');
+    Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.destroy');
 });
