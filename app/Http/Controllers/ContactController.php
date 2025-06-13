@@ -8,20 +8,41 @@ use Illuminate\Support\Facades\Mail;
 class ContactController extends Controller
 {
     // Default WhatsApp number - coming from site settings
-    protected $whatsappNumber = '628897158943';  // This is the actual WhatsApp number from the contact page
+    protected $whatsappNumber = '6288971589438';  // This is the actual WhatsApp number from the contact page
 
     public function send(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
-            'phone' => 'required|string|max:20',
-            'message' => 'nullable|string',
-            'productName' => 'nullable|string',
-            'productCode' => 'nullable|string',
-            'productPrice' => 'nullable|string',
-            'subject' => 'nullable|string|max:255',
+        // Log the incoming request for debugging
+        Log::info('Contact form request received:', [
+            'method' => $request->method(),
+            'headers' => $request->headers->all(),
+            'data' => $request->all()
         ]);
+
+        try {
+            $data = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email',
+                'phone' => 'required|string|max:20',
+                'message' => 'nullable|string',
+                'productName' => 'nullable|string',
+                'productCode' => 'nullable|string',
+                'productPrice' => 'nullable|string',
+                'subject' => 'nullable|string|max:255',
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            Log::warning('Validation failed:', $e->errors());
+
+            if ($request->ajax()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Data tidak valid. Silakan periksa form Anda.',
+                    'errors' => $e->errors()
+                ], 422);
+            }
+
+            throw $e;
+        }
 
         Log::info('Form dikirim:', $data);
 
@@ -57,7 +78,19 @@ class ContactController extends Controller
                 return response()->json([
                     'success' => true,
                     'message' => 'Pesan berhasil dikirim!',
-                    'whatsappLink' => $whatsappLink
+                    'whatsappLink' => $whatsappLink,
+                    'formData' => [
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'phone' => $data['phone'],
+                        'message' => $data['message'] ?? '',
+                        'productName' => $data['productName'] ?? '',
+                        'productCode' => $data['productCode'] ?? '',
+                        'productPrice' => $data['productPrice'] ?? '',
+                        'subject' => $data['subject']
+                    ],
+                    'whatsappNumber' => $this->whatsappNumber,
+                    'timestamp' => now()->format('Y-m-d H:i:s')
                 ]);
             }
 

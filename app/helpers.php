@@ -45,12 +45,35 @@ if (!function_exists('generateWhatsAppLink')) {
 
         if (isset($data['message'])) {
             $message .= "\n\nPesan tambahan:\n" . $data['message'];
-        }
-
-        // URL encode the message
+        }  // URL encode the message
         $encodedMessage = urlencode($message);
 
-        // Return the WhatsApp API link
-        return "https://wa.me/{$phone}?text={$encodedMessage}";
+        // Detect user agent for better WhatsApp link generation
+        $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+        $isMobile = (strpos($userAgent, 'Mobile') !== false ||
+            strpos($userAgent, 'Android') !== false ||
+            strpos($userAgent, 'iPhone') !== false ||
+            strpos($userAgent, 'iPad') !== false);
+
+        $isWindows = strpos($userAgent, 'Windows') !== false;
+        $isMac = strpos($userAgent, 'Macintosh') !== false;
+        $isDesktop = ($isWindows || $isMac) && !$isMobile;
+
+        // Return different link types for better PC/mobile compatibility
+        if ($isMobile) {
+            // Mobile: Use api.whatsapp.com for better app integration
+            return "https://api.whatsapp.com/send?phone={$phone}&text={$encodedMessage}";
+        } elseif ($isDesktop) {
+            // Desktop: Return multiple options for the frontend to handle
+            return json_encode([
+                'desktop_app' => "whatsapp://send?phone={$phone}&text={$encodedMessage}",
+                'web_whatsapp' => "https://web.whatsapp.com/send?phone={$phone}&text={$encodedMessage}",
+                'wa_me' => "https://wa.me/{$phone}?text={$encodedMessage}",
+                'type' => 'desktop'
+            ]);
+        } else {
+            // Default fallback
+            return "https://wa.me/{$phone}?text={$encodedMessage}";
+        }
     }
 }

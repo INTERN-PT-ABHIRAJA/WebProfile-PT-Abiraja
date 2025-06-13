@@ -1043,6 +1043,66 @@ html {
   color: #ffd500;
 }
 
+/* WhatsApp Button Style */
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background-color: #128C7E;
+  color: white;
+}
+
+/* Loading state for buttons */
+.btn-modal:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-modal:disabled:hover {
+  background-color: #ffd500;
+  color: #0d4e49;
+}
+
+.btn-whatsapp:disabled:hover {
+  background-color: #25D366;
+  color: white;
+}
+
+/* WhatsApp options styling */
+.alert .d-grid {
+  margin-top: 10px;
+}
+
+.alert .d-grid .btn {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.alert .d-grid .btn i {
+  margin-right: 8px;
+  width: 16px;
+  text-align: center;
+}
+
+/* Template info styling */
+.template-info {
+  border: 1px solid #e9ecef;
+  background-color: #f8f9fa !important;
+  font-size: 0.85rem;
+}
+
+.template-info strong {
+  color: #495057;
+}
+
+.template-info small {
+  line-height: 1.4;
+}
+
 /* Language Switcher Styles */
 .lang-switcher .dropdown-toggle::after {
   margin-left: 0.5em;

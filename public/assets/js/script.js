@@ -178,6 +178,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Enhanced Products Section Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // Email validation helper function
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
     // Products filtering system
     const filterButtons = document.querySelectorAll('.filter-btn');
     const productItems = document.querySelectorAll('.product-item');
@@ -610,6 +617,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Product Consultation Modal Integration
     const contactModal = document.getElementById('contactModal');
     if (contactModal) {
+        console.log('Contact modal found');
         const contactForm = document.getElementById('contactForm');
         const productInfoDiv = document.getElementById('contactProductInfo');
         const productTitle = productInfoDiv?.querySelector('.product-title');
@@ -620,6 +628,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const inputProductName = document.getElementById('productName');
         const inputProductCode = document.getElementById('productCode');
         const inputProductPrice = document.getElementById('productPrice');
+        
+        console.log('Contact form:', contactForm);
+        console.log('Product info div:', productInfoDiv);
+        
+        // Add real-time validation feedback
+        if (contactForm) {
+            const inputs = contactForm.querySelectorAll('input[required], textarea[required]');
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
+                    } else {
+                        this.classList.remove('is-valid');
+                        this.classList.add('is-invalid');
+                    }
+                });
+                
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('is-invalid') && this.value.trim()) {
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
+                    }
+                });
+            });
+        }
         
         // Success and error messages
         const successMessage = document.getElementById('contactSuccess');
@@ -672,73 +706,325 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Handle form submission
         const submitButton = document.getElementById('submitContactForm');
+        console.log('Submit button:', submitButton);
+        
         if (submitButton && contactForm) {
+            console.log('Adding event listener to submit button');
             submitButton.addEventListener('click', function() {
+                console.log('Submit button clicked');
+                
                 // Check form validity
                 if (!contactForm.checkValidity()) {
+                    console.log('Form validation failed');
+                    // Add was-validated class to show Bootstrap validation feedback
+                    contactForm.classList.add('was-validated');
                     contactForm.reportValidity();
                     return;
                 }
                 
-                // Disable button to prevent multiple submissions
+                console.log('Form validation passed');
+                
+                // Additional custom validation
+                const nameInput = contactForm.querySelector('#name');
+                const emailInput = contactForm.querySelector('#email');
+                const phoneInput = contactForm.querySelector('#phone');
+                
+                if (!nameInput.value.trim()) {
+                    nameInput.setCustomValidity('Nama lengkap wajib diisi');
+                    contactForm.classList.add('was-validated');
+                    return;
+                } else {
+                    nameInput.setCustomValidity('');
+                }
+                
+                if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
+                    emailInput.setCustomValidity('Email yang valid wajib diisi');
+                    contactForm.classList.add('was-validated');
+                    return;
+                } else {
+                    emailInput.setCustomValidity('');
+                }
+                
+                if (!phoneInput.value.trim()) {
+                    phoneInput.setCustomValidity('Nomor telepon wajib diisi');
+                    contactForm.classList.add('was-validated');
+                    return;
+                } else {
+                    phoneInput.setCustomValidity('');
+                }
+                
+                // Remove any previous validation classes
+                contactForm.classList.remove('was-validated');
+                
+                // Disable button and show loading state
                 submitButton.disabled = true;
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Mengirim...';
                 
                 // Collect form data
                 const formData = new FormData(contactForm);
                 
-                // Convert FormData to a plain object for easier debugging
-                const formObject = {};
-                formData.forEach((value, key) => {
-                    formObject[key] = value;
-                });
+                // Show loading indicator
+                if (successMessage) {
+                    successMessage.textContent = 'Mengirim pesan...';
+                    successMessage.classList.remove('d-none');
+                }
                 
-                // Send AJAX request
+                // Hide any previous error messages
+                if (errorMessage) {
+                    errorMessage.classList.add('d-none');
+                }
+                
+                // Send AJAX request using FormData (not JSON)
                 fetch('/contact/send', {
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
+                        'Accept': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest'
                     },
-                    body: JSON.stringify(formObject)
+                    body: formData
                 })
-                .then(response => response.json())
+                .then(response => {
+                    // Check if response is ok
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.success) {
+                        // Store form data in session storage for template use
+                        if (data.formData) {
+                            sessionStorage.setItem('contactFormData', JSON.stringify(data.formData));
+                            console.log('Form data saved to session:', data.formData);
+                        }
+                        
                         // Show success message
                         if (successMessage) {
+                            successMessage.textContent = 'Pesan berhasil dikirim! Anda akan segera diarahkan ke WhatsApp.';
                             successMessage.classList.remove('d-none');
-                            
-                            // Redirect to WhatsApp after a short delay
-                            setTimeout(() => {
-                                window.open(data.whatsappLink, '_blank');
-                                
-                                // Close the modal after slight delay
-                                setTimeout(() => {
-                                    const bsModal = bootstrap.Modal.getInstance(contactModal);
-                                    bsModal.hide();
-                                    submitButton.disabled = false;
-                                }, 500);
-                            }, 1500);
                         }
+                        
+                        // Log the WhatsApp link for debugging
+                        console.log('WhatsApp link data:', data.whatsappLink);
+                        console.log('Form template data:', data.formData);
+                        
+                        // Handle different WhatsApp link types
+                        let whatsappLink = data.whatsappLink;
+                        let isDesktopMode = false;
+                        
+                        // Check if it's a desktop response with multiple options
+                        try {
+                            const linkData = JSON.parse(whatsappLink);
+                            if (linkData.type === 'desktop') {
+                                isDesktopMode = true;
+                                // Pass form data to desktop handler
+                                tryOpenDesktopWhatsApp(linkData, data.formData);
+                                return;
+                            }
+                        } catch (e) {
+                            // Not JSON, treat as regular link
+                        }
+                        
+                        // Regular mobile/fallback handling
+                        tryOpenWhatsApp(whatsappLink, data.formData);
+                        
+                        // Close the modal after opening WhatsApp
+                        setTimeout(() => {
+                            const bsModal = bootstrap.Modal.getInstance(contactModal);
+                            if (bsModal) {
+                                bsModal.hide();
+                            }
+                            // Reset button
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = originalButtonText;
+                        }, 1000);
                     } else {
                         // Show error message
                         if (errorMessage) {
-                            errorMessage.textContent = data.message || 'Terjadi kesalahan. Silakan coba lagi.';
+                            const errorSpan = errorMessage.querySelector('span');
+                            if (errorSpan) {
+                                errorSpan.textContent = data.message || 'Terjadi kesalahan. Silakan coba lagi.';
+                            } else {
+                                errorMessage.textContent = data.message || 'Terjadi kesalahan. Silakan coba lagi.';
+                            }
                             errorMessage.classList.remove('d-none');
-                            submitButton.disabled = false;
                         }
+                        if (successMessage) {
+                            successMessage.classList.add('d-none');
+                        }
+                        // Reset button
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
                     }
                 })
                 .catch(error => {
-                    console.error('Error:', error);
-                    if (errorMessage) {
-                        errorMessage.textContent = 'Terjadi kesalahan jaringan. Silakan coba lagi.';
-                        errorMessage.classList.remove('d-none');
-                        submitButton.disabled = false;
+                    console.error('Fetch Error:', error);
+                    if (successMessage) {
+                        successMessage.classList.add('d-none');
                     }
+                    if (errorMessage) {
+                        const errorSpan = errorMessage.querySelector('span');
+                        if (errorSpan) {
+                            errorSpan.textContent = `Terjadi kesalahan: ${error.message}. Silakan coba lagi.`;
+                        } else {
+                            errorMessage.textContent = `Terjadi kesalahan: ${error.message}. Silakan coba lagi.`;
+                        }
+                        errorMessage.classList.remove('d-none');
+                    }
+                    // Reset button
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
                 });
             });
+        }
+        
+        // Function to get saved template data
+        window.getContactTemplate = function() {
+            const savedData = sessionStorage.getItem('contactFormData');
+            if (savedData) {
+                try {
+                    return JSON.parse(savedData);
+                } catch (e) {
+                    console.error('Error parsing saved form data:', e);
+                    return null;
+                }
+            }
+            return null;
+        };
+        
+        // Function to clear template data
+        window.clearContactTemplate = function() {
+            sessionStorage.removeItem('contactFormData');
+            console.log('Contact template data cleared');
+        };
+        
+        // Function to show template data (for debugging)
+        window.showContactTemplate = function() {
+            const template = getContactTemplate();
+            if (template) {
+                console.log('Current contact template:', template);
+                alert(`Template Data:\n\nNama: ${template.name}\nEmail: ${template.email}\nTelepon: ${template.phone}\nProduk: ${template.productName || 'Tidak ada'}\nPesan: ${template.message || 'Tidak ada'}`);
+            } else {
+                console.log('No template data found');
+                alert('Tidak ada data template yang tersimpan');
+            }
+        };
+        
+        // Helper function to try opening desktop WhatsApp
+        function tryOpenDesktopWhatsApp(linkData, formData = null) {
+            console.log('Trying desktop WhatsApp options:', linkData);
+            console.log('Using form data:', formData);
+            
+            // Show multiple options immediately for better UX
+            if (successMessage) {
+                successMessage.innerHTML = `
+                    <div class="mb-3">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Pesan berhasil dikirim! Pilih cara untuk membuka WhatsApp:
+                    </div>
+                    <div class="template-info mb-3 p-2 bg-light rounded">
+                        <small class="text-muted">
+                            <strong>Template tersimpan:</strong><br>
+                            ${formData ? `
+                            • Nama: ${formData.name}<br>
+                            • Email: ${formData.email}<br>
+                            • Telepon: ${formData.phone}<br>
+                            ${formData.productName ? `• Produk: ${formData.productName}<br>` : ''}
+                            ${formData.message ? `• Pesan: ${formData.message.substring(0, 50)}...` : ''}
+                            ` : 'Data form tersedia'}
+                        </small>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button onclick="tryDesktopApp('${linkData.desktop_app}')" class="btn btn-success btn-sm">
+                            <i class="fab fa-whatsapp me-1"></i>WhatsApp Desktop App
+                        </button>
+                        <button onclick="window.open('${linkData.web_whatsapp}', '_blank')" class="btn btn-outline-success btn-sm">
+                            <i class="fas fa-globe me-1"></i>WhatsApp Web
+                        </button>
+                        <a href="${linkData.wa_me}" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fas fa-external-link-alt me-1"></i>Browser WhatsApp
+                        </a>
+                    </div>
+                    <div class="mt-2">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Template pesan akan otomatis terisi di WhatsApp yang dipilih.
+                        </small>
+                    </div>
+                `;
+            }
+        }
+        
+        // Global function to try desktop app
+        window.tryDesktopApp = function(desktopLink) {
+            // Try to open desktop app
+            const link = document.createElement('a');
+            link.href = desktopLink;
+            link.target = '_self';
+            link.click();
+            
+            // Show feedback
+            setTimeout(() => {
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'alert alert-info alert-dismissible fade show mt-2';
+                feedbackDiv.innerHTML = `
+                    <i class="fas fa-info-circle me-2"></i>
+                    Jika WhatsApp Desktop tidak terbuka, aplikasi mungkin belum terinstall. 
+                    Gunakan WhatsApp Web sebagai alternatif.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                const successElement = document.getElementById('contactSuccess');
+                if (successElement && successElement.parentNode) {
+                    successElement.parentNode.insertBefore(feedbackDiv, successElement.nextSibling);
+                }
+            }, 2000);
+        };
+        
+        // Helper function for regular WhatsApp link opening
+        function tryOpenWhatsApp(whatsappLink, formData = null) {
+            console.log('Opening WhatsApp with template data:', formData);
+            
+            try {
+                const whatsappWindow = window.open(whatsappLink, '_blank');
+                
+                // Check if popup was blocked
+                if (!whatsappWindow || whatsappWindow.closed || typeof whatsappWindow.closed == 'undefined') {
+                    showWhatsAppFallback(whatsappLink, formData);
+                }
+            } catch (e) {
+                console.error('Error opening WhatsApp:', e);
+                showWhatsAppFallback(whatsappLink, formData);
+            }
+        }
+        
+        // Helper function to show fallback link
+        function showWhatsAppFallback(whatsappLink, formData = null) {
+            if (successMessage) {
+                successMessage.innerHTML = `
+                    <div class="mb-2">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Pesan berhasil dikirim!
+                    </div>
+                    ${formData ? `
+                    <div class="template-info mb-3 p-2 bg-light rounded">
+                        <small class="text-muted">
+                            <strong>Template tersimpan:</strong><br>
+                            • Nama: ${formData.name}<br>
+                            • Email: ${formData.email}<br>
+                            • Telepon: ${formData.phone}<br>
+                            ${formData.productName ? `• Produk: ${formData.productName}<br>` : ''}
+                            ${formData.message ? `• Pesan: ${formData.message.substring(0, 50)}...` : ''}
+                        </small>
+                    </div>
+                    ` : ''}
+                    <a href="${whatsappLink}" target="_blank" class="btn btn-success btn-sm">
+                        <i class="fab fa-whatsapp me-1"></i>Buka WhatsApp dengan Template
+                    </a>
+                `;
+            }
         }
     }
 });
