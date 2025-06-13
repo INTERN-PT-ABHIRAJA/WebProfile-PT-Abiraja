@@ -40,6 +40,9 @@ Route::get('/debug-filament', function () {
 // Language switching routes
 Route::get('language/{locale}', [LanguageController::class, 'switchLang'])->name('language.switch');
 
+// Translations for JavaScript
+Route::get('translations/{locale}', [App\Http\Controllers\TranslationController::class, 'getTranslations'])->name('translations');
+
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

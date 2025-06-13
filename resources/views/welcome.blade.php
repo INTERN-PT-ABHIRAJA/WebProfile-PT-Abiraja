@@ -21,13 +21,17 @@
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-    <style>
-        
-    </style>
+  
+        <style>
+
+</style>
 </head>
 <body>
     <header>
@@ -80,44 +84,154 @@
     </header>
     
     <main>
-        <div class="hero" id="home">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-                <h1 class="fw-bold pb-3 ">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
-                <p class="fs-5 kuning mb-5">Mitra Strategis untuk Kesuksesan Anda</p>
-                <div class="container-kotak pt-4 d-flex">
-                    <div class="kotak" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-university kuning"></i>
-                        <div>PENDIDIKAN</div>
+
+
+        <section class="hero-section-new" id="home">
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- Slide 1: Main Company Overview -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/1cityscape.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content main-slide">
+                    <h1 class="fw-bold pb-3">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
+                    <p class="fs-5 kuning mb-5">Mitra Strategis untuk Kesuksesan Anda</p>
+                    <div class="container-kotak pt-4 d-flex">
+                        <div class="kotak" data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-university kuning"></i>
+                            <div>PENDIDIKAN</div>
+                        </div>
+                        <div class="kotak" data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-user kuning"></i>
+                            <div>BRANDING</div>
+                        </div>
+                        <div class="kotak" data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-money-bill kuning"></i>
+                            <div>FINANCE</div>
+                        </div>
+                        <div class="kotak" data-aos="fade-up" data-aos-delay="400">
+                            <i class="fas fa-tasks kuning"></i>
+                            <div>MANAGEMENT</div>
+                        </div>
                     </div>
-                    <div class="kotak" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-user kuning"></i>
-                        <div>BRANDING</div>
-                    </div>
-                    <div class="kotak" data-aos="fade-up" data-aos-delay="300">
-                        <i class="fas fa-money-bill kuning"></i>
-                        <div>FINANCE</div>
-                    </div>
-                    <div class="kotak" data-aos="fade-up" data-aos-delay="400">
-                        <i class="fas fa-tasks kuning"></i>
-                        <div>MANAGEMENT</div>
-                    </div>
-                </div>
-                <div class="container-kotak pt-4">
-                    <div class="kotak" data-aos="fade-up" data-aos-delay="500">
-                        <i class="fas fa-hammer kuning"></i>
-                        <div>WOOD STUDIO</div>
-                    </div>
-                    <div class="kotak" data-aos="fade-up" data-aos-delay="600">
-                        <i class="fas fa-tree kuning"></i>
-                        <div>AGRICULTURE</div>
-                    </div>
-                    <div class="kotak" data-aos="fade-up" data-aos-delay="700">
-                        <i class="fas fa-hamburger kuning"></i>
-                        <div>JASA BOGA</div>
+                    <div class="container-kotak pt-4">
+                        <div class="kotak" data-aos="fade-up" data-aos-delay="500">
+                            <i class="fas fa-hammer kuning"></i>
+                            <div>WOOD STUDIO</div>
+                        </div>
+                        <div class="kotak" data-aos="fade-up" data-aos-delay="600">
+                            <i class="fas fa-tree kuning"></i>
+                            <div>AGRICULTURE</div>
+                        </div>
+                        <div class="kotak" data-aos="fade-up" data-aos-delay="700">
+                            <i class="fas fa-hamburger kuning"></i>
+                            <div>JASA BOGA</div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Slide 2: Branding & Digital -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-2.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide2_h1'); ?></h1>
+                    <p><?php echo __('site.slide2_sub'); ?></p>
+                    <a href="#kontak" class="cta-button"><?php echo __('site.slide2_cta'); ?></a>
+                </div>
+            </div>
+
+            <!-- Slide 3: Finance & Tax -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-3.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide3_h1'); ?></h1>
+                    <p><?php echo __('site.slide3_sub'); ?></p>
+                    <a href="#kontak" class="cta-button"><?php echo __('site.slide3_cta'); ?></a>
+                </div>
+            </div>
+
+            <!-- Slide 4: KOL Management -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide4_h1'); ?></h1>
+                    <p><?php echo __('site.slide4_sub'); ?></p>
+                    <a href="#kontak" class="cta-button"><?php echo __('site.slide4_cta'); ?></a>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Produk Unggulan Abhiraja -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide5_h1'); ?></h1>
+                    <p><?php echo __('site.slide5_sub'); ?></p>
+                    <a href="#layanan" class="cta-button"><?php echo __('site.slide5_cta'); ?></a>
+                </div>
+            </div>
         </div>
+        
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+    
+
+            <!-- Slide 2: Branding & Digital -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-2.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide2_h1'); ?></h1>
+                    <p><?php echo __('site.slide2_sub'); ?></p>
+                    <a href="#kontak" class="cta-button"><?php echo __('site.slide2_cta'); ?></a>
+                </div>
+            </div>
+
+            <!-- Slide 3: Finance & Tax -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-3.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide3_h1'); ?></h1>
+                    <p><?php echo __('site.slide3_sub'); ?></p>
+                    <a href="#kontak" class="cta-button"><?php echo __('site.slide3_cta'); ?></a>
+                </div>
+            </div>
+
+            <!-- Slide 4: KOL Management -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide4_h1'); ?></h1>
+                    <p><?php echo __('site.slide4_sub'); ?></p>
+                    <a href="#kontak" class="cta-button"><?php echo __('site.slide4_cta'); ?></a>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Produk Unggulan Abhiraja -->
+            <div class="swiper-slide">
+                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <h1><?php echo __('site.slide5_h1'); ?></h1>
+                    <p><?php echo __('site.slide5_sub'); ?></p>
+                    <a href="#layanan" class="cta-button"><?php echo __('site.slide5_cta'); ?></a>
+                </div>
+            </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+    </div>
+</section>
+
         
         <section class="page-section-2" id="about">
             <div class="container">
@@ -160,14 +274,6 @@
                        
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#successCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#successCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -637,4 +743,333 @@
     
 </body>
 </html>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            loop: true,
+            effect: 'fade', // 'fade', 'cube', 'coverflow', 'flip', 'creative'
+            fadeEffect: {
+                crossFade: true // Recommended for fade effect to prevent visual glitches
+            },
+            creativeEffect: { // Example for creative effect (if chosen)
+                prev: {
+                    shadow: true,
+                    translate: [0, 0, -400],
+                },
+                next: {
+                    translate: ['100%', 0, 0],
+                },
+            },
+            autoplay: {
+                delay: 10000, // 10 seconds delay
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // Accessibility
+            a11y: {
+                prevSlideMessage: 'Previous slide',
+                nextSlideMessage: 'Next slide',
+            },
+            
+            // Animate content on slide change
+            on: {
+                slideChangeTransitionStart: function () {
+                    // Reset all slides' content to initial hidden state
+                    this.slides.forEach((slide) => {
+                        const slideContent = slide.querySelector('.slide-content');
+                        if (slideContent) {
+                            slideContent.classList.remove('animate-in');
+                            slideContent.style.opacity = '0';
+                            slideContent.style.transform = 'translateY(50px)';
+                            
+                            // Reset individual elements
+                            const h1 = slideContent.querySelector('h1');
+                            const p = slideContent.querySelector('p');
+                            const button = slideContent.querySelector('.cta-button');
+                            
+                            if (h1) h1.style.opacity = '0';
+                            if (p) p.style.opacity = '0';
+                            if (button) button.style.opacity = '0';
+                        }
+                    });
+                },
+                slideChangeTransitionEnd: function () {
+                    // Animate current active slide's content in with staggered effect
+                    if (this.slides[this.activeIndex]) {
+                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
+                        if (activeSlideContent) {
+                            // Add animate-in class for staggered animations
+                            setTimeout(() => {
+                                activeSlideContent.classList.add('animate-in');
+                                activeSlideContent.style.opacity = '1';
+                                activeSlideContent.style.transform = 'translateY(0)';
+                            }, 100);
+                        }
+                    }
+                },
+                // Initial animation for the first slide
+                init: function () {
+                    if (this.slides[this.activeIndex]) {
+                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
+                        if (activeSlideContent) {
+                            setTimeout(() => {
+                                activeSlideContent.classList.add('animate-in');
+                                activeSlideContent.style.opacity = '1';
+                                activeSlideContent.style.transform = 'translateY(0)';
+                            }, 200);
+                        }
+                    }
+                }
+            }
+        });
+
+        // Add particle effect (optional lightweight version)
+        function createParticles() {
+            const heroSection = document.querySelector('.hero-section-new');
+            const particleContainer = document.createElement('div');
+            particleContainer.className = 'particle-container';
+            particleContainer.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                pointer-events: none;
+                overflow: hidden;
+            `;
+            
+            // Create 15 particles
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    animation: float ${8 + Math.random() * 12}s linear infinite;
+                    left: ${Math.random() * 100}%;
+                    animation-delay: ${Math.random() * 8}s;
+                `;
+                particleContainer.appendChild(particle);
+            }
+            
+            heroSection.appendChild(particleContainer);
+        }
+
+        // Add CSS for particle animation
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translateY(100vh) translateX(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.3;
+                }
+                90% {
+                    opacity: 0.3;
+                }
+                100% {
+                    transform: translateY(-100px) translateX(${Math.random() * 200 - 100}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+        
+        // Initialize particles
+        createParticles();
+    });
+</script>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            loop: true,
+            effect: 'fade', // 'fade', 'cube', 'coverflow', 'flip', 'creative'
+            fadeEffect: {
+                crossFade: true // Recommended for fade effect to prevent visual glitches
+            },
+            creativeEffect: { // Example for creative effect (if chosen)
+                prev: {
+                    shadow: true,
+                    translate: [0, 0, -400],
+                },
+                next: {
+                    translate: ['100%', 0, 0],
+                },
+            },
+            autoplay: {
+                delay: 10000, // 10 seconds delay
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // Accessibility
+            a11y: {
+                prevSlideMessage: 'Previous slide',
+                nextSlideMessage: 'Next slide',
+            },
+            
+            // Animate content on slide change
+            on: {
+                slideChangeTransitionStart: function () {
+                    // Reset all slides' content to initial hidden state
+                    this.slides.forEach((slide) => {
+                        const slideContent = slide.querySelector('.slide-content');
+                        if (slideContent) {
+                            slideContent.classList.remove('animate-in');
+                            slideContent.style.opacity = '0';
+                            slideContent.style.transform = 'translateY(50px)';
+                            
+                            // Reset individual elements
+                            const h1 = slideContent.querySelector('h1');
+                            const p = slideContent.querySelector('p');
+                            const button = slideContent.querySelector('.cta-button');
+                            
+                            if (h1) h1.style.opacity = '0';
+                            if (p) p.style.opacity = '0';
+                            if (button) button.style.opacity = '0';
+                        }
+                    });
+                },
+                slideChangeTransitionEnd: function () {
+                    // Animate current active slide's content in with staggered effect
+                    if (this.slides[this.activeIndex]) {
+                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
+                        if (activeSlideContent) {
+                            // Add animate-in class for staggered animations
+                            setTimeout(() => {
+                                activeSlideContent.classList.add('animate-in');
+                                activeSlideContent.style.opacity = '1';
+                                activeSlideContent.style.transform = 'translateY(0)';
+                            }, 100);
+                        }
+                    }
+                },
+                // Initial animation for the first slide
+                init: function () {
+                    if (this.slides[this.activeIndex]) {
+                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
+                        if (activeSlideContent) {
+                            setTimeout(() => {
+                                activeSlideContent.classList.add('animate-in');
+                                activeSlideContent.style.opacity = '1';
+                                activeSlideContent.style.transform = 'translateY(0)';
+                            }, 200);
+                        }
+                    }
+                }
+            }
+        });
+
+        // Add particle effect (optional lightweight version)
+        function createParticles() {
+            const heroSection = document.querySelector('.hero-section-new');
+            const particleContainer = document.createElement('div');
+            particleContainer.className = 'particle-container';
+            particleContainer.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                pointer-events: none;
+                overflow: hidden;
+            `;
+            
+            // Create 15 particles
+            for (let i = 0; i < 15; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    animation: float ${8 + Math.random() * 12}s linear infinite;
+                    left: ${Math.random() * 100}%;
+                    animation-delay: ${Math.random() * 8}s;
+                `;
+                particleContainer.appendChild(particle);
+            }
+            
+            heroSection.appendChild(particleContainer);
+        }
+
+        // Add CSS for particle animation
+        const particleStyle = document.createElement('style');
+        particleStyle.textContent = `
+            @keyframes float {
+                0% {
+                    transform: translateY(100vh) translateX(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.3;
+                }
+                90% {
+                    opacity: 0.3;
+                }
+                100% {
+                    transform: translateY(-100px) translateX(${Math.random() * 200 - 100}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(particleStyle);
+        
+        // Initialize particles
+        createParticles();
+    });
+</script>
+
+<script>
+// Custom script to handle the main slide with icon grid
+document.addEventListener('DOMContentLoaded', function () {
+    // Make sure the main slide's content is always visible
+    const mainSlideContent = document.querySelector('.slide-content.main-slide');
+    if (mainSlideContent) {
+        mainSlideContent.style.opacity = '1';
+        mainSlideContent.style.transform = 'translateY(0)';
+    }
+});
+</script>
 
