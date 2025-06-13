@@ -917,6 +917,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Trying desktop WhatsApp options:', linkData);
             console.log('Using form data:', formData);
             
+            // Store template data in localStorage for cross-tab access
+            if (formData) {
+                const templateData = {
+                    ...formData,
+                    timestamp: Date.now(),
+                    phone: linkData.phone || '6288971589438'
+                };
+                localStorage.setItem('whatsapp_template', JSON.stringify(templateData));
+                console.log('Template stored in localStorage for cross-tab access');
+            }
+            
             // Show multiple options immediately for better UX
             if (successMessage) {
                 successMessage.innerHTML = `
@@ -926,7 +937,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="template-info mb-3 p-2 bg-light rounded">
                         <small class="text-muted">
-                            <strong>Template tersimpan:</strong><br>
+                            <strong>Template tersimpan untuk PC:</strong><br>
                             ${formData ? `
                             • Nama: ${formData.name}<br>
                             • Email: ${formData.email}<br>
@@ -940,21 +951,138 @@ document.addEventListener('DOMContentLoaded', function() {
                         <button onclick="tryDesktopApp('${linkData.desktop_app}')" class="btn btn-success btn-sm">
                             <i class="fab fa-whatsapp me-1"></i>WhatsApp Desktop App
                         </button>
-                        <button onclick="window.open('${linkData.web_whatsapp}', '_blank')" class="btn btn-outline-success btn-sm">
-                            <i class="fas fa-globe me-1"></i>WhatsApp Web
+                        <button onclick="openWhatsAppWeb('${linkData.web_whatsapp}', '${linkData.template_data || ''}')" class="btn btn-outline-success btn-sm">
+                            <i class="fas fa-globe me-1"></i>WhatsApp Web (dengan Template)
                         </button>
                         <a href="${linkData.wa_me}" target="_blank" class="btn btn-outline-primary btn-sm">
                             <i class="fas fa-external-link-alt me-1"></i>Browser WhatsApp
                         </a>
+                        <button onclick="copyTemplateToClipboard()" class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-copy me-1"></i>Copy Template Text
+                        </button>
                     </div>
                     <div class="mt-2">
                         <small class="text-muted">
                             <i class="fas fa-info-circle me-1"></i>
-                            Template pesan akan otomatis terisi di WhatsApp yang dipilih.
+                            Template akan otomatis terisi untuk WhatsApp Web, atau copy manual untuk Desktop App.
                         </small>
                     </div>
                 `;
             }
+        }
+        
+        // Global function to open WhatsApp Web with template data
+        window.openWhatsAppWeb = function(webLink, templateData) {
+            // Open WhatsApp Web
+            const whatsappWindow = window.open(webLink, '_blank');
+            
+            // Show instructions for manual template use if needed
+            setTimeout(() => {
+                if (templateData) {
+                    const decoded = JSON.parse(atob(templateData));
+                    showTemplateInstructions(decoded);
+                }
+            }, 2000);
+        };
+        
+        // Function to copy template to clipboard
+        window.copyTemplateToClipboard = function() {
+            const template = getContactTemplate();
+            if (template) {
+                let templateText = `Halo, saya tertarik untuk berkonsultasi`;
+                
+                if (template.productName) {
+                    templateText += ` tentang produk: ${template.productName}`;
+                    if (template.productCode) {
+                        templateText += ` (Kode: ${template.productCode})`;
+                    }
+                }
+                
+                templateText += `\n\nNama: ${template.name}`;
+                templateText += `\nEmail: ${template.email}`;
+                templateText += `\nTelepon: ${template.phone}`;
+                
+                if (template.message) {
+                    templateText += `\n\nPesan tambahan:\n${template.message}`;
+                }
+                
+                // Copy to clipboard
+                navigator.clipboard.writeText(templateText).then(() => {
+                    // Show success feedback
+                    const copyButton = event.target;
+                    const originalText = copyButton.innerHTML;
+                    copyButton.innerHTML = '<i class="fas fa-check me-1"></i>Tersalin!';
+                    copyButton.classList.add('btn-success');
+                    copyButton.classList.remove('btn-outline-secondary');
+                    
+                    setTimeout(() => {
+                        copyButton.innerHTML = originalText;
+                        copyButton.classList.remove('btn-success');
+                        copyButton.classList.add('btn-outline-secondary');
+                    }, 2000);
+                    
+                    // Show toast notification
+                    showToastNotification('Template berhasil disalin ke clipboard! Paste di WhatsApp Desktop.');
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                    // Fallback: show text in alert
+                    alert(`Copy text ini ke WhatsApp:\n\n${templateText}`);
+                });
+            }
+        };
+        
+        // Function to show template instructions
+        function showTemplateInstructions(templateData) {
+            const instructionDiv = document.createElement('div');
+            instructionDiv.className = 'alert alert-info alert-dismissible fade show position-fixed';
+            instructionDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; max-width: 400px;';
+            instructionDiv.innerHTML = `
+                <h6><i class="fas fa-info-circle me-2"></i>Template WhatsApp Web</h6>
+                <small>Jika pesan tidak otomatis terisi, copy template berikut ke chat WhatsApp:</small>
+                <div class="mt-2 p-2 bg-light rounded" style="font-size: 0.8rem;">
+                    <strong>Template:</strong><br>
+                    Nama: ${templateData.name}<br>
+                    Email: ${templateData.email}<br>
+                    Phone: ${templateData.phone}
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            
+            document.body.appendChild(instructionDiv);
+            
+            // Auto remove after 10 seconds
+            setTimeout(() => {
+                if (instructionDiv.parentNode) {
+                    instructionDiv.remove();
+                }
+            }, 10000);
+        }
+        
+        // Function to show toast notification
+        function showToastNotification(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast align-items-center text-white bg-success border-0 position-fixed';
+            toast.style.cssText = 'top: 20px; left: 50%; transform: translateX(-50%); z-index: 9999;';
+            toast.innerHTML = `
+                <div class="d-flex">
+                    <div class="toast-body">
+                        <i class="fas fa-check-circle me-2"></i>${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Show and auto-hide toast
+            const bsToast = new bootstrap.Toast(toast);
+            bsToast.show();
+            
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.remove();
+                }
+            }, 5000);
         }
         
         // Global function to try desktop app

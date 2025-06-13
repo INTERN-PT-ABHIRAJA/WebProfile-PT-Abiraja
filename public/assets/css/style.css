@@ -1103,6 +1103,28 @@ html {
   line-height: 1.4;
 }
 
+/* Toast notifications */
+.toast {
+  min-width: 300px;
+}
+
+.toast-body {
+  font-size: 0.9rem;
+}
+
+/* Fixed position alerts */
+.alert.position-fixed {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Copy button feedback */
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: white;
+}
+
 /* Language Switcher Styles */
 .lang-switcher .dropdown-toggle::after {
   margin-left: 0.5em;

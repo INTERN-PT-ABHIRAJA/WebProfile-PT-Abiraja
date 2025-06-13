@@ -62,13 +62,24 @@ if (!function_exists('generateWhatsAppLink')) {
         // Return different link types for better PC/mobile compatibility
         if ($isMobile) {
             // Mobile: Use api.whatsapp.com for better app integration
-            return "https://api.whatsapp.com/send?phone={$phone}&text={$encodedMessage}";
-        } elseif ($isDesktop) {
-            // Desktop: Return multiple options for the frontend to handle
+            return "https://api.whatsapp.com/send?phone={$phone}&text={$encodedMessage}";        } elseif ($isDesktop) {
+            // Desktop: Enhanced URL with template data for web.whatsapp.com
+            $webWhatsAppLink = "https://web.whatsapp.com/send?phone={$phone}&text={$encodedMessage}";
+            
+            // For desktop, also prepare a data URL for template passing
+            $templateData = base64_encode(json_encode([
+                'phone' => $phone,
+                'message' => $message,
+                'formData' => $data,
+                'timestamp' => time()
+            ]));
+            
             return json_encode([
                 'desktop_app' => "whatsapp://send?phone={$phone}&text={$encodedMessage}",
-                'web_whatsapp' => "https://web.whatsapp.com/send?phone={$phone}&text={$encodedMessage}",
+                'web_whatsapp' => $webWhatsAppLink,
+                'web_whatsapp_enhanced' => $webWhatsAppLink . "&template=" . $templateData,
                 'wa_me' => "https://wa.me/{$phone}?text={$encodedMessage}",
+                'template_data' => $templateData,
                 'type' => 'desktop'
             ]);
         } else {
