@@ -3,13 +3,11 @@
 @section('title', 'Upload Media')
 
 @section('content')
-    <div class="bg-white shadow rounded-lg overflow-hidden">
-        <div class="p-6 border-b">
-            <h3 class="text-lg font-semibold text-gray-800">Upload Media Baru</h3>
-        </div>
-        
-        <form action="{{ route('dashboard.media.store') }}" method="POST" class="p-6" enctype="multipart/form-data">
-            @csrf
+    @include('dashboard.media.form', [
+        'formAction' => route('dashboard.media.store'),
+        'formMethod' => 'POST',
+        'item' => null
+    ])
             
             <div class="mb-6">
                 <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Judul</label>

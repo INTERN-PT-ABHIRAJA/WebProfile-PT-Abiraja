@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Filament\FilamentTheme;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,7 +19,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // Apply custom Filament theme
-        FilamentTheme::apply();
+        // Custom application bootstrap logic here
     }
 }

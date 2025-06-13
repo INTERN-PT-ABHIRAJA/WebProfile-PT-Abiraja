@@ -31,6 +31,7 @@
         <link href="assets/css/subsidiaries.css" rel="stylesheet">
     </noscript>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -44,11 +45,12 @@
                 <div class="d-sm-block d-md-none d-lg-none head">
                     <h6 class="text-black fw-bold m-0 p-0">PT ABHIRAJA GIOVANNI T</h6>
                 </div>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title">Menu</h5>
@@ -67,6 +69,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black fw-bold" href="#subsidiaries">ANAK PERUSAHAAN</a>
+                                <a class="nav-link text-black fw-bold" href="#subsidiaries">ANAK PERUSAHAAN</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black fw-bold" href="#products">PRODUK KAMI</a>
@@ -80,7 +83,7 @@
             </div>
         </nav>
     </header>
-    
+
     <main>
 
 
@@ -181,15 +184,21 @@
 </section>
 
         
+>>>>>>> a48e470ec080d93b8f49e41f7f99dba1e1fff29c
         <section class="page-section-2" id="about">
             <div class="container">
                 <div class="row align-items-center bg-white">
                     <div class="col-md-6 deskripsi-PT" data-aos="fade-right">
                         <h2 class="fw-bold mb-4">PT ABHIRAJA GIOVANNI TRYARMANDA</h2>
-                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk memberikan layanan
-                            berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih banyak lagi.</p>
-                        <p>Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan solusi yang disesuaikan untuk membantu Anda mencapai tujuan Anda. Dengan tim ahli yang berpengalaman, kami siap menjadi mitra strategis untuk kesuksesan Anda.</p>
-                        <button class="btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#aboutModal">Selengkapnya</button>
+                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                            memberikan layanan
+                            berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih
+                            banyak lagi.</p>
+                        <p>Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan
+                            solusi yang disesuaikan untuk membantu Anda mencapai tujuan Anda. Dengan tim ahli yang
+                            berpengalaman, kami siap menjadi mitra strategis untuk kesuksesan Anda.</p>
+                        <button class="btn-custom mt-3" data-bs-toggle="modal"
+                            data-bs-target="#aboutModal">Selengkapnya</button>
                     </div>
                     <div class="col-md-6 text-center logo" data-aos="fade-left">
                         <img src="assets/img/logo/LogoCut.png" class="img-fluid" alt="Logo">
@@ -197,7 +206,7 @@
                 </div>
             </div>
         </section>
-      
+
         <section class="page-section-33" id="services">
             <div class="container">
                 <div class="row align-items-center">
@@ -300,6 +309,19 @@
                                 <span class="progress-text text-white-50">1 of 3</span>
                             </div>
                         </div>
+<<<<<<< HEAD
+                        <button class="carousel-control-prev" type="button" data-bs-target="#successCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#successCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+=======
+>>>>>>> a48e470ec080d93b8f49e41f7f99dba1e1fff29c
                     </div>
                 </div>
             </div>
@@ -862,14 +884,15 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="contact-section" id="contact">
             <div class="container">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <h2 class="fw-bold mb-3">Hubungi Kami</h2>
-                    <p class="text-white-50 mx-auto" style="max-width: 700px;">Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau ingin bekerja sama.</p>
+                    <p class="text-white-50 mx-auto" style="max-width: 700px;">Jangan ragu untuk menghubungi kami jika
+                        Anda memiliki pertanyaan atau ingin bekerja sama.</p>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-5" data-aos="fade-right">
                         <div class="contact-info">
@@ -883,7 +906,7 @@
                                         Jl. Raya Buahdua 2, Kec. Buahdua Sumedang</p>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-phone-alt"></i>
@@ -893,7 +916,7 @@
                                     <p>+62 889 7158 9438</p>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-envelope"></i>
@@ -903,7 +926,7 @@
                                     <p>Abhirajagiovannicompany@gmail.com</p>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-clock"></i>
@@ -916,27 +939,49 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="col-lg-7" data-aos="fade-left">
-                        <form class="contact-form">
+
+
+                        {{-- Notifikasi Error --}}
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $err)
+                                        <li>{{ $err }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('contact.send') }}">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nama Lengkap">
+                                    <input type="text" name="name" class="form-control" placeholder="Nama Lengkap"
+                                        value="{{ old('name') }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                        value="{{ old('email') }}">
                                 </div>
                             </div>
-                            <input type="text" class="form-control" placeholder="Subjek">
-                            <textarea class="form-control" placeholder="Pesan"></textarea>
-                            <button type="submit" class="btn-contact">Kirim Pesan</button>
+                            <input type="text" name="subject" class="form-control mt-3" placeholder="Subjek"
+                                value="{{ old('subject') }}">
+                            <textarea name="message" class="form-control mt-3"
+                                placeholder="Pesan">{{ old('message') }}</textarea>
+                            <button type="submit" class="btn-contact mt-3">Kirim Pesan</button>
                         </form>
                     </div>
+
+
+
+
+
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -945,7 +990,8 @@
                         <div class="footer-logo">
                             <img src="assets/img/logo/Logo.png" alt="Logo">
                         </div>
-                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk memberikan layanan berkualitas tinggi di berbagai bidang.</p>
+                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                            memberikan layanan berkualitas tinggi di berbagai bidang.</p>
                         <div class="footer-social">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -955,7 +1001,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
                     <div class="footer-links">
                         <h5>Tautan Cepat</h5>
@@ -963,13 +1009,13 @@
                             <li><a href="#home">Beranda</a></li>
                             <li><a href="#about">Tentang Kami</a></li>
                             <li><a href="#services">Layanan</a></li>
-                            <li><a href="#team">Tim Kami</a></li>
+                            <li><a href="#subsidiaries">Anak Perusahaan</a></li>
                             <li><a href="#products">Produk</a></li>
                             <li><a href="#contact">Kontak</a></li>
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
                     <div class="footer-links">
                         <h5>Layanan</h5>
@@ -983,7 +1029,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-newsletter">
                         <h5>Berlangganan</h5>
@@ -996,7 +1042,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <div class="container">
                 <p>&copy; 2023 PT Abhiraja Giovanni Tryamanda. All Rights Reserved.</p>
@@ -1007,7 +1053,7 @@
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </a>
-    
+
 
     <div class="modal fade" id="aboutModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -1017,17 +1063,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p> PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk memberikan layanan
-                        berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih banyak lagi. Dengan berbagai
-                        layanan yang kami sediakan, kami bertujuan membantu klien kami mencapai kesuksesan di berbagai sektor usaha
+                    <p> PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                        memberikan layanan
+                        berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih banyak
+                        lagi. Dengan berbagai
+                        layanan yang kami sediakan, kami bertujuan membantu klien kami mencapai kesuksesan di berbagai
+                        sektor usaha
                         mereka. Kami mengutamakan profesionalisme, inovasi, dan kepuasan klien sebagai pilar utama.</p>
-                    
+
                     <h5 class="mt-4">Visi</h5>
                     <p>Menjadi perusahaan multiservices
                         terkemuka di Indonesia yang dikenal
                         dengan kualitas layanan terbaik dan
                         inovasi yang berkelanjutan.</p>
-                    
+
                     <h5 class="mt-4">Misi</h5>
                     <ul>
                         <li>Memberikan solusi konsultasi yang inovatif dan
@@ -1046,8 +1095,8 @@
             </div>
         </div>
     </div>
-    
-  
+
+
     <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -1082,7 +1131,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -1099,8 +1148,10 @@
                             <h4>Program Pendidikan Komprehensif</h4>
                             <p class="text-muted">Kode: PRD-001</p>
                             <h5 class="mt-3 mb-3">Rp 5.000.000</h5>
-                            <p>Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup kurikulum, pelatihan guru, dan sistem manajemen pendidikan.</p>
-                            
+                            <p>Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan
+                                meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup
+                                kurikulum, pelatihan guru, dan sistem manajemen pendidikan.</p>
+
                             <h6 class="mt-4">Fitur:</h6>
                             <ul>
                                 <li>Kurikulum yang disesuaikan dengan kebutuhan</li>
@@ -1109,9 +1160,9 @@
                                 <li>Evaluasi dan penilaian</li>
                                 <li>Dukungan teknis</li>
                             </ul>
-                            
+
                             <div class="d-flex mt-4">
-                           
+
                                 <button class="btn-modal">Hubungi Kami</button>
                             </div>
                         </div>
