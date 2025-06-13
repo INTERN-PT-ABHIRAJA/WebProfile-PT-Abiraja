@@ -473,11 +473,17 @@
 
                 <!-- Products Grid -->
                 <div class="products-grid" id="productsGrid">
-                    <!-- Education Services -->
-                    <div class="product-item" data-category="education" data-aos="fade-up" data-aos-delay="100">
+                    @forelse($produk as $index => $item)
+                    <div class="product-item" data-category="{{ \Str::slug($item->anakPerusahaan->kategori->nama_kategori ?? 'other') }}" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 50) }}">
                         <div class="product-card-enhanced">
                             <div class="product-image-container">
-                                <img src="assets/img/portfolio/lada.jpg" alt="Program Pendidikan" class="product-image">
+                                @if($item->detailFotos->isNotEmpty())
+                                    <img src="{{ asset('storage/'.$item->detailFotos->first()->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
+                                @elseif($item->foto)
+                                    <img src="{{ asset('storage/'.$item->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
+                                @else
+                                    <img src="{{ asset('assets/img/portfolio/default.jpg') }}" alt="{{ $item->nama_produk }}" class="product-image">
+                                @endif
                                 <div class="product-overlay">
                                     <div class="product-icons">
                                         <button class="icon-btn" title="Lihat Detail">
@@ -491,39 +497,60 @@
                                         </button>
                                     </div>
                                 </div>
+                                @if($index === 0)
                                 <div class="product-badge popular">
                                     <i class="fas fa-fire me-1"></i>Populer
                                 </div>
-                                <div class="product-category-tag">Pendidikan</div>
+                                @endif
+                                <div class="product-category-tag">{{ $item->anakPerusahaan->kategori->nama_kategori ?? 'Umum' }}</div>
                             </div>
                             <div class="product-content">
                                 <div class="product-header">
-                                    <h4 class="product-title">Program Pendidikan Komprehensif</h4>
+                                    <h4 class="product-title">{{ $item->nama_produk }}</h4>
                                     <div class="product-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="rating-text">(4.9)</span>
+                                        @php
+                                            $rating = $item->rating;
+                                            $fullStars = floor($rating);
+                                            $halfStar = ($rating - $fullStars) >= 0.5;
+                                            $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
+                                        @endphp
+                                        
+                                        @for($i = 0; $i < $fullStars; $i++)
+                                            <i class="fas fa-star"></i>
+                                        @endfor
+                                        
+                                        @if($halfStar)
+                                            <i class="fas fa-star-half-alt"></i>
+                                        @endif
+                                        
+                                        @for($i = 0; $i < $emptyStars; $i++)
+                                            <i class="far fa-star"></i>
+                                        @endfor
+                                        
+                                        <span class="rating-text">({{ $item->rating }})</span>
                                     </div>
                                 </div>
-                                <p class="product-description">Solusi pendidikan lengkap untuk sekolah dan institusi
-                                    pendidikan dengan kurikulum terdepan.</p>
+                                <p class="product-description">{{ \Str::limit($item->deskripsi_produk, 100) }}</p>
                                 <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Kurikulum Modern</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Sertifikasi</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Konsultasi</span>
+                                    @foreach($item->benefits->take(3) as $benefit)
+                                        <span class="feature-tag"><i class="fas fa-check me-1"></i>{{ $benefit->nama_benefit }}</span>
+                                    @endforeach
                                 </div>
                                 <div class="product-footer">
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal"
-                                        data-product-name="Program Pendidikan Komprehensif"
-                                        data-product-category="Pendidikan"
-                                        data-product-discount="33"
-                                        data-product-description="Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup kurikulum, pelatihan guru, dan sistem manajemen pendidikan yang terintegrasi."
-                                        data-product-image="assets/img/portfolio/jamur.jpg"
-                                        data-product-rating="4.9">
+                                        data-product-id="{{ $item->id_produk }}"
+                                        data-product-name="{{ $item->nama_produk }}"
+                                        data-product-category="{{ $item->anakPerusahaan->kategori->nama_kategori ?? 'Umum' }}"
+                                        data-product-description="{{ $item->deskripsi_produk }}"
+                                        @if($item->detailFotos->isNotEmpty())
+                                            data-product-image="{{ asset('storage/'.$item->detailFotos->first()->foto) }}"
+                                        @elseif($item->foto)
+                                            data-product-image="{{ asset('storage/'.$item->foto) }}"
+                                        @else
+                                            data-product-image="{{ asset('assets/img/portfolio/default.jpg') }}"
+                                        @endif
+                                        data-product-rating="{{ $item->rating }}">
                                         <span>Detail Paket</span>
                                         <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
@@ -531,56 +558,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Business Services -->
-                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="200">
-                        <div class="product-card-enhanced">
-                            <div class="product-image-container">
-                                <img src="assets/img/portfolio/jamur.jpg" alt="Branding UMKM" class="product-image">
-                                <div class="product-overlay">
-                                    <div class="product-icons">
-                                        <button class="icon-btn" title="Lihat Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="icon-btn" title="Tambah ke Favorit">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <button class="icon-btn" title="Konsultasi">
-                                            <i class="fas fa-comments"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-category-tag">Bisnis</div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-header">
-                                    <h4 class="product-title">Paket Branding UMKM</h4>
-                                    <div class="product-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <span class="rating-text">(4.7)</span>
-                                    </div>
-                                </div>
-                                <p class="product-description">Tingkatkan citra bisnis Anda dengan paket branding
-                                    lengkap yang profesional dan modern.</p>
-                                <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Logo Design</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Digital Marketing</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Website</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-product-detail" data-bs-toggle="modal"
-                                        data-bs-target="#productModal">
-                                        <span>Detail Paket</span>
-                                        <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                    @empty
+                    <div class="col-12 text-center">
+                        <p>Tidak ada produk tersedia saat ini.</p>
                     </div>
+                    @endforelse
 
                     <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="250">
                         <div class="product-card-enhanced">
@@ -1047,16 +1029,8 @@
                                         <i class="fas fa-search-plus"></i>
                                     </div>
                                 </div>
-                                <div class="thumbnail-gallery mt-3">
-                                    <div class="thumbnail-item active" data-image="assets/img/portfolio/jamur.jpg">
-                                        <img src="assets/img/portfolio/jamur.jpg" alt="Thumbnail">
-                                    </div>
-                                    <div class="thumbnail-item" data-image="assets/img/portfolio/lada.jpg">
-                                        <img src="assets/img/portfolio/lada.jpg" alt="Thumbnail">
-                                    </div>
-                                    <div class="thumbnail-item" data-image="assets/img/portfolio/placeholder.jpg">
-                                        <img src="assets/img/portfolio/placeholder.jpg" alt="Thumbnail">
-                                    </div>
+                                <div class="thumbnail-gallery mt-3" id="productThumbnails">
+                                    <!-- Thumbnails will be populated by JavaScript -->
                                 </div>
                             </div>
                         </div>
@@ -1099,27 +1073,8 @@
                                     
                                     <div class="tab-content mt-3">
                                         <div class="tab-pane fade show active" id="features-tab">
-                                            <div class="features-list">
-                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Kurikulum yang disesuaikan dengan kebutuhan</span>
-                                                </div>
-                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Pelatihan guru dan staf berkualitas</span>
-                                                </div>
-                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Sistem manajemen pendidikan terintegrasi</span>
-                                                </div>
-                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Evaluasi dan penilaian komprehensif</span>
-                                                </div>
-                                                <div class="feature-item" data-aos="fade-up">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Dukungan teknis 24/7</span>
-                                                </div>
+                                            <div class="features-list" id="benefitsList">
+                                                <!-- Benefits will be populated by JavaScript -->
                                             </div>
                                         </div>
                                     </div>
@@ -1193,7 +1148,7 @@
                                                 @if($company->kategori)
                                                     {{ $company->kategori->nama_kategori }}
                                                 @endif
-                                                ù
+                                                ÔøΩ
                                                 @if($company->berdiri_sejak)
                                                     Didirikan {{ $company->berdiri_sejak->format('Y') }}
                                                 @endif
@@ -1220,7 +1175,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Tryamanda Wood Works</h6>
-                                        <small class="text-muted">Manufaktur ù Didirikan 2019</small>
+                                        <small class="text-muted">Manufaktur ÔøΩ Didirikan 2019</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Produsen furniture dan kerajinan kayu berkualitas
@@ -1238,7 +1193,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Abhiraja Agri Solutions</h6>
-                                        <small class="text-muted">Pertanian ù Didirikan 2022</small>
+                                        <small class="text-muted">Pertanian ÔøΩ Didirikan 2022</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Solusi pertanian modern dan berkelanjutan untuk
@@ -1256,7 +1211,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Giovanni Finance Consulting</h6>
-                                        <small class="text-muted">Keuangan ù Didirikan 2020</small>
+                                        <small class="text-muted">Keuangan ÔøΩ Didirikan 2020</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Konsultasi keuangan dan manajemen bisnis untuk
@@ -1274,7 +1229,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Tryamanda Catering Services</h6>
-                                        <small class="text-muted">Jasa Boga ù Didirikan 2023</small>
+                                        <small class="text-muted">Jasa Boga ÔøΩ Didirikan 2023</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Layanan katering premium untuk acara korporat dan
@@ -1307,6 +1262,149 @@
     <script src="assets/js/script.js" defer></script>
     <script src="assets/js/interactions.js" defer></script>
     <script src="assets/js/swiper-config.js" defer></script>
+    
+    <!-- Product Modal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the product modal
+            const productModal = document.getElementById('productModal');
+            
+            // Handle modal opening
+            productModal.addEventListener('show.bs.modal', function (event) {
+                // Get button that triggered the modal
+                const button = event.relatedTarget;
+                
+                // Extract product data
+                const productName = button.getAttribute('data-product-name');
+                const productCategory = button.getAttribute('data-product-category');
+                const productDescription = button.getAttribute('data-product-description');
+                const productImage = button.getAttribute('data-product-image');
+                const productRating = button.getAttribute('data-product-rating');
+                const productId = button.getAttribute('data-product-id');
+                
+                // Update modal content
+                const modalTitle = productModal.querySelector('.modal-title');
+                modalTitle.textContent = 'Detail ' + productName;
+                
+                // Update product image
+                const mainImage = productModal.querySelector('#mainProductImage');
+                mainImage.src = productImage || 'assets/img/portfolio/default.jpg';
+                mainImage.alt = productName;
+                
+                // Update product category
+                const categoryBadge = productModal.querySelector('.product-category-badge');
+                
+                // Set icon based on category
+                let iconClass = 'fas fa-tags';
+                if (productCategory === 'Pendidikan') iconClass = 'fas fa-graduation-cap';
+                else if (productCategory === 'Bisnis') iconClass = 'fas fa-briefcase';
+                else if (productCategory === 'Kerajinan') iconClass = 'fas fa-hammer';
+                else if (productCategory === 'Pertanian') iconClass = 'fas fa-seedling';
+                
+                categoryBadge.innerHTML = `<i class="${iconClass} me-1"></i> ${productCategory}`;
+                
+                // Update product description
+                const description = productModal.querySelector('.product-description p');
+                description.textContent = productDescription;
+                
+                // Create star rating
+                const ratingContainer = productModal.querySelector('.product-rating');
+                let ratingHTML = '';
+                
+                const rating = parseFloat(productRating);
+                const fullStars = Math.floor(rating);
+                const halfStar = (rating - fullStars) >= 0.5;
+                const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+                
+                for (let i = 0; i < fullStars; i++) {
+                    ratingHTML += '<i class="fas fa-star text-warning"></i>';
+                }
+                
+                if (halfStar) {
+                    ratingHTML += '<i class="fas fa-star-half-alt text-warning"></i>';
+                }
+                
+                for (let i = 0; i < emptyStars; i++) {
+                    ratingHTML += '<i class="far fa-star text-warning"></i>';
+                }
+                
+                ratingHTML += `<span class="ms-2 text-muted">(${rating})</span>`;
+                ratingContainer.innerHTML = ratingHTML;
+
+                // Fetch additional product data from API if needed
+                if (productId) {
+                    fetchProductDetails(productId);
+                }
+            });
+        });
+
+        function fetchProductDetails(productId) {
+            // Fetch product details from API
+            fetch(`/api/products/${productId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Update benefits list
+                    const benefitsList = document.getElementById('benefitsList');
+                    benefitsList.innerHTML = '';
+                    
+                    if (data.benefits && data.benefits.length) {
+                        data.benefits.forEach((benefit, index) => {
+                            const delay = 100 * (index + 1);
+                            const benefitItem = document.createElement('div');
+                            benefitItem.className = 'feature-item';
+                            benefitItem.setAttribute('data-aos', 'fade-up');
+                            benefitItem.setAttribute('data-aos-delay', delay);
+                            benefitItem.innerHTML = `
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>${benefit.nama_benefit}</span>
+                            `;
+                            benefitsList.appendChild(benefitItem);
+                        });
+                    } else {
+                        benefitsList.innerHTML = '<p class="text-muted">Tidak ada fitur khusus yang tersedia.</p>';
+                    }
+                    
+                    // Update photo thumbnails
+                    const thumbnailGallery = document.getElementById('productThumbnails');
+                    thumbnailGallery.innerHTML = '';
+                    
+                    if (data.photos && data.photos.length) {
+                        data.photos.forEach((photo, index) => {
+                            const photoUrl = `/storage/${photo.foto}`;
+                            const thumbnailItem = document.createElement('div');
+                            thumbnailItem.className = index === 0 ? 'thumbnail-item active' : 'thumbnail-item';
+                            thumbnailItem.setAttribute('data-image', photoUrl);
+                            thumbnailItem.innerHTML = `<img src="${photoUrl}" alt="Thumbnail">`;
+                            
+                            // Add click handler to change main image
+                            thumbnailItem.addEventListener('click', function() {
+                                document.querySelectorAll('.thumbnail-item').forEach(el => el.classList.remove('active'));
+                                this.classList.add('active');
+                                document.getElementById('mainProductImage').src = this.getAttribute('data-image');
+                            });
+                            
+                            thumbnailGallery.appendChild(thumbnailItem);
+                        });
+                    } else {
+                        // Add default image if no photos
+                        const defaultPhoto = document.getElementById('mainProductImage').src;
+                        const thumbnailItem = document.createElement('div');
+                        thumbnailItem.className = 'thumbnail-item active';
+                        thumbnailItem.setAttribute('data-image', defaultPhoto);
+                        thumbnailItem.innerHTML = `<img src="${defaultPhoto}" alt="Thumbnail">`;
+                        thumbnailGallery.appendChild(thumbnailItem);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching product details:', error);
+                });
+        }
+    </script>
 
     <!-- Interactive Gallery Script -->
     <script>
