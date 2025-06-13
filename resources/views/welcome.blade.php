@@ -197,8 +197,6 @@
                 <!-- Add Navigation -->
         </section>
 
-
-        >>>>>>> a48e470ec080d93b8f49e41f7f99dba1e1fff29c
         <section class="page-section-2" id="about">
             <div class="container">
                 <div class="row align-items-center bg-white">
@@ -445,26 +443,32 @@
                     </p>
                 </div>
 
-                <!-- Filter Buttons -->
+                <!-- Filter Buttons (Dynamic from Database) -->
                 <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
                     <div class="filter-buttons">
                         <button class="filter-btn active" data-filter="all">
                             <i class="fas fa-th-large me-2"></i>Semua Layanan
                         </button>
-                        <button class="filter-btn" data-filter="education">
-                            <i class="fas fa-graduation-cap me-2"></i>Pendidikan
-                        </button>
-                        <button class="filter-btn" data-filter="business">
-                            <i class="fas fa-briefcase me-2"></i>Bisnis
-                        </button>
-                        <button class="filter-btn" data-filter="craft">
-                            <i class="fas fa-hammer me-2"></i>Kerajinan
-                        </button>
-                        <button class="filter-btn" data-filter="agriculture">
-                            <i class="fas fa-seedling me-2"></i>Pertanian
-                        </button>
+
+                        @foreach($categories as $kategori)
+                            <button class="filter-btn" data-filter="{{ \Str::slug($kategori->nama_kategori) }}">
+                                {{-- Optional icon mapping --}}
+                                @php
+                                    $iconMap = [
+                                        'Pendidikan' => 'fas fa-graduation-cap',
+                                        'Bisnis' => 'fas fa-briefcase',
+                                        'Kerajinan' => 'fas fa-hammer',
+                                        'Pertanian' => 'fas fa-seedling',
+                                    ];
+                                    $iconClass = $iconMap[$kategori->nama_kategori] ?? 'fas fa-tags';
+                                @endphp
+
+                                <i class="{{ $iconClass }} me-2"></i>{{ $kategori->nama_kategori }}
+                            </button>
+                        @endforeach
                     </div>
                 </div>
+
 
                 <!-- Products Grid -->
                 <div class="products-grid" id="productsGrid">
