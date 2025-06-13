@@ -28,6 +28,7 @@
         onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/subsidiaries.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="assets/css/product-modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Fallback for non-JS browsers -->
     <noscript>
@@ -36,6 +37,7 @@
         <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
         <link href="assets/css/animations.css" rel="stylesheet">
         <link href="assets/css/subsidiaries.css" rel="stylesheet">
+        <link href="assets/css/product-modal.css" rel="stylesheet">
     </noscript>
 </head>
 
@@ -507,12 +509,14 @@
                                     <span class="feature-tag"><i class="fas fa-check me-1"></i>Konsultasi</span>
                                 </div>
                                 <div class="product-footer">
-                                    <div class="price-section">
-                                        <span class="price-label">Mulai dari</span>
-                                        <span class="product-price">Rp 5.000.000</span>
-                                    </div>
                                     <button class="btn-product-detail" data-bs-toggle="modal"
-                                        data-bs-target="#productModal">
+                                        data-bs-target="#productModal"
+                                        data-product-name="Program Pendidikan Komprehensif"
+                                        data-product-category="Pendidikan"
+                                        data-product-discount="33"
+                                        data-product-description="Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup kurikulum, pelatihan guru, dan sistem manajemen pendidikan yang terintegrasi."
+                                        data-product-image="assets/img/portfolio/jamur.jpg"
+                                        data-product-rating="4.9">
                                         <span>Detail Paket</span>
                                         <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
@@ -561,10 +565,6 @@
                                     <span class="feature-tag"><i class="fas fa-check me-1"></i>Website</span>
                                 </div>
                                 <div class="product-footer">
-                                    <div class="price-section">
-                                        <span class="price-label">Mulai dari</span>
-                                        <span class="product-price">Rp 3.500.000</span>
-                                    </div>
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal">
                                         <span>Detail Paket</span>
@@ -615,10 +615,6 @@
                                     <span class="feature-tag"><i class="fas fa-check me-1"></i>Laporan</span>
                                 </div>
                                 <div class="product-footer">
-                                    <div class="price-section">
-                                        <span class="price-label">Mulai dari</span>
-                                        <span class="product-price">Rp 2.000.000</span>
-                                    </div>
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal">
                                         <span>Detail Paket</span>
@@ -672,10 +668,7 @@
                                     <span class="feature-tag"><i class="fas fa-check me-1"></i>Garansi</span>
                                 </div>
                                 <div class="product-footer">
-                                    <div class="price-section">
-                                        <span class="price-label">Mulai dari</span>
-                                        <span class="product-price">Rp 1.500.000</span>
-                                    </div>
+
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal">
                                         <span>Detail Paket</span>
@@ -730,10 +723,7 @@
                                     <span class="feature-tag"><i class="fas fa-check me-1"></i>Monitoring</span>
                                 </div>
                                 <div class="product-footer">
-                                    <div class="price-section">
-                                        <span class="price-label">Mulai dari</span>
-                                        <span class="product-price">Rp 1.200.000</span>
-                                    </div>
+
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal">
                                         <span>Detail Paket</span>
@@ -787,10 +777,7 @@
                                     <span class="feature-tag"><i class="fas fa-check me-1"></i>Professional</span>
                                 </div>
                                 <div class="product-footer">
-                                    <div class="price-section">
-                                        <span class="price-label">Mulai dari</span>
-                                        <span class="product-price">Rp 8.000.000</span>
-                                    </div>
+
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal">
                                         <span>Detail Paket</span>
@@ -1063,44 +1050,142 @@
     </div>
 
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Detail Produk</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <img src="assets/img/portfolio/jamur.jpg" alt="Product" class="img-fluid rounded">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content product-modal-content">
+                <div class="modal-header product-modal-header">
+                    <div class="d-flex align-items-center">
+                        <div class="product-badge-modal me-3">
+                            <i class="fas fa-star text-warning"></i>
                         </div>
-                        <div class="col-md-6">
-                            <h4>Program Pendidikan Komprehensif</h4>
-                            <p class="text-muted">Kode: PRD-001</p>
-                            <h5 class="mt-3 mb-3">Rp 5.000.000</h5>
-                            <p>Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan
-                                meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup
-                                kurikulum, pelatihan guru, dan sistem manajemen pendidikan.</p>
+                        <h5 class="modal-title fw-bold mb-0">Detail Produk Unggulan</h5>
+                    </div>
+                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body product-modal-body">
+                    <div class="row g-4">
+                        <!-- Product Image Gallery -->
+                        <div class="col-lg-6">
+                            <div class="product-gallery">
+                                <div class="main-image-container">
+                                    <div class="image-overlay"></div>
+                                    <img src="assets/img/portfolio/jamur.jpg" alt="Product" class="main-product-image" id="mainProductImage">
+                                    <div class="image-zoom-btn">
+                                        <i class="fas fa-search-plus"></i>
+                                    </div>
+                                </div>
+                                <div class="thumbnail-gallery mt-3">
+                                    <div class="thumbnail-item active" data-image="assets/img/portfolio/jamur.jpg">
+                                        <img src="assets/img/portfolio/jamur.jpg" alt="Thumbnail">
+                                    </div>
+                                    <div class="thumbnail-item" data-image="assets/img/portfolio/lada.jpg">
+                                        <img src="assets/img/portfolio/lada.jpg" alt="Thumbnail">
+                                    </div>
+                                    <div class="thumbnail-item" data-image="assets/img/portfolio/placeholder.jpg">
+                                        <img src="assets/img/portfolio/placeholder.jpg" alt="Thumbnail">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Product Details -->
+                        <div class="col-lg-6">
+                            <div class="product-details-container">
+                                <div class="product-header mb-4">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <span class="product-category-badge">
+                                            <i class="fas fa-graduation-cap me-1"></i>
+                                            Pendidikan
+                                        </span>
+                                        <div class="product-rating">
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <i class="fas fa-star text-warning"></i>
+                                            <span class="ms-2 text-muted">(4.9)</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <h6 class="mt-4">Fitur:</h6>
-                            <ul>
-                                <li>Kurikulum yang disesuaikan dengan kebutuhan</li>
-                                <li>Pelatihan guru dan staf</li>
-                                <li>Sistem manajemen pendidikan</li>
-                                <li>Evaluasi dan penilaian</li>
-                                <li>Dukungan teknis</li>
-                            </ul>
+                                <div class="product-description mb-4">
+                                    <p>Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan
+                                        meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup
+                                        kurikulum, pelatihan guru, dan sistem manajemen pendidikan yang terintegrasi.</p>
+                                </div>
 
-                            <div class="d-flex mt-4">
+                                <!-- Interactive Tabs -->
+                                <div class="product-tabs mb-4">
+                                    <ul class="nav nav-pills product-nav-pills" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#features-tab">
+                                                <i class="fas fa-list-check me-2"></i>benefit
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="tab-content mt-3">
+                                        <div class="tab-pane fade show active" id="features-tab">
+                                            <div class="features-list">
+                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Kurikulum yang disesuaikan dengan kebutuhan</span>
+                                                </div>
+                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Pelatihan guru dan staf berkualitas</span>
+                                                </div>
+                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Sistem manajemen pendidikan terintegrasi</span>
+                                                </div>
+                                                <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Evaluasi dan penilaian komprehensif</span>
+                                                </div>
+                                                <div class="feature-item" data-aos="fade-up">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Dukungan teknis 24/7</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <button class="btn-modal">Hubungi Kami</button>
+                                <!-- Action Buttons -->
+                                <div class="product-actions">
+                                    <div class="row g-2">
+                                        <div class="col-md-6">
+                                            <button class="btn-product-primary w-100" data-action="contact">
+                                                <i class="fas fa-phone me-2"></i>
+                                                Hubungi Kami
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="social-share mt-3">
+                                        <span class="share-label">Bagikan:</span>
+                                        <button class="share-btn" data-platform="whatsapp">
+                                            <i class="fab fa-whatsapp"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn-modal" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn-modal">Berlangganan Sekarang</button>
+                <div class="modal-footer product-modal-footer">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <div class="product-guarantee">
+                            <i class="fas fa-shield-alt text-success me-2"></i>
+                            <span class="small text-muted">100% Garansi Kepuasan</span>
+                        </div>
+                        <div class="footer-actions">
+                            <button type="button" class="btn-modal-secondary me-2" data-bs-dismiss="modal">
+                                <i class="fas fa-times me-1"></i>Tutup
+                            </button>
+                            <button type="button" class="btn-modal-primary" data-action="subscribe">
+                                <i class="fas fa-shopping-cart me-1"></i>Berlangganan Sekarang
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1134,7 +1219,7 @@
                                                 @if($company->kategori)
                                                     {{ $company->kategori->nama_kategori }}
                                                 @endif
-                                                â€¢
+                                                •
                                                 @if($company->berdiri_sejak)
                                                     Didirikan {{ $company->berdiri_sejak->format('Y') }}
                                                 @endif
@@ -1161,7 +1246,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Tryamanda Wood Works</h6>
-                                        <small class="text-muted">Manufaktur â€¢ Didirikan 2019</small>
+                                        <small class="text-muted">Manufaktur • Didirikan 2019</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Produsen furniture dan kerajinan kayu berkualitas
@@ -1179,7 +1264,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Abhiraja Agri Solutions</h6>
-                                        <small class="text-muted">Pertanian â€¢ Didirikan 2022</small>
+                                        <small class="text-muted">Pertanian • Didirikan 2022</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Solusi pertanian modern dan berkelanjutan untuk
@@ -1197,7 +1282,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Giovanni Finance Consulting</h6>
-                                        <small class="text-muted">Keuangan â€¢ Didirikan 2020</small>
+                                        <small class="text-muted">Keuangan • Didirikan 2020</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Konsultasi keuangan dan manajemen bisnis untuk
@@ -1215,7 +1300,7 @@
                                         class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                     <div>
                                         <h6 class="mb-1">Tryamanda Catering Services</h6>
-                                        <small class="text-muted">Jasa Boga â€¢ Didirikan 2023</small>
+                                        <small class="text-muted">Jasa Boga • Didirikan 2023</small>
                                     </div>
                                 </div>
                                 <p class="small text-muted mb-2">Layanan katering premium untuk acara korporat dan
@@ -1468,8 +1553,11 @@
 
             addVisualFeedback();
         });
+
+        
     </script>
 
+    
 </body>
 
 </html>
