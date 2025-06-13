@@ -368,8 +368,23 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Trigger modal or detailed view
                     showProductDetails(this.closest('.product-card-enhanced'));
                 } else if (title.includes('Konsultasi')) {
-                    // Open consultation modal
-                    openConsultationModal();
+                    // Get the product card to extract information
+                    const productCard = this.closest('.product-card-enhanced');
+                    if (productCard) {
+                        const productTitle = productCard.querySelector('.product-title')?.textContent;
+                        const productPrice = productCard.querySelector('.product-price')?.textContent;
+                        const randomCode = 'PRD-' + Math.floor(1000 + Math.random() * 9000);
+                        
+                        // Open consultation modal with product info
+                        openConsultationModal({
+                            title: productTitle || 'Produk Konsultasi',
+                            code: randomCode,
+                            price: productPrice || 'Hubungi Kami'
+                        });
+                    } else {
+                        // Fallback if product card not found
+                        openConsultationModal();
+                    }
                 }
             });
         });
@@ -393,12 +408,34 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Open consultation modal
-    function openConsultationModal() {
+    function openConsultationModal(productData = null) {
         const contactModal = document.querySelector('#contactModal');
-        if (contactModal) {
-            const modal = new bootstrap.Modal(contactModal);
-            modal.show();
+        if (!contactModal) return;
+        
+        const modal = new bootstrap.Modal(contactModal);
+        
+        // If product data is provided, fill in the product info
+        if (productData) {
+            const productInfoDiv = document.getElementById('contactProductInfo');
+            const productTitle = productInfoDiv?.querySelector('.product-title');
+            const productCode = productInfoDiv?.querySelector('.product-code'); 
+            const productPrice = productInfoDiv?.querySelector('.product-price');
+            const inputProductName = document.getElementById('productName');
+            const inputProductCode = document.getElementById('productCode');
+            const inputProductPrice = document.getElementById('productPrice');
+            
+            if (productInfoDiv) productInfoDiv.classList.remove('d-none');
+            
+            if (productTitle) productTitle.textContent = productData.title;
+            if (productCode) productCode.textContent = 'Kode: ' + (productData.code || 'PRD-000');
+            if (productPrice) productPrice.textContent = 'Harga: ' + (productData.price || 'Hubungi Kami');
+            
+            if (inputProductName) inputProductName.value = productData.title;
+            if (inputProductCode) inputProductCode.value = productData.code || 'PRD-000';
+            if (inputProductPrice) inputProductPrice.value = productData.price || 'Hubungi Kami';
         }
+        
+        modal.show();
     }
     
     // Lazy loading for product images
@@ -511,6 +548,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
     
+    // Add event listeners for btn-konsultasi buttons (for direct konsultasi buttons in product cards)
+    document.addEventListener('DOMContentLoaded', function() {
+        const konsultasiButtons = document.querySelectorAll('.btn-konsultasi');
+        
+        konsultasiButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Get data attributes from button
+                const productName = this.getAttribute('data-product-name');
+                const productCode = this.getAttribute('data-product-code');
+                const productPrice = this.getAttribute('data-product-price');
+                
+                // Open consultation modal with product information
+                openConsultationModal({
+                    title: productName || 'Produk Konsultasi',
+                    code: productCode || 'PRD-000',
+                    price: productPrice || 'Hubungi Kami'
+                });
+            });
+        });
+    });
+    
     // Start everything when DOM is ready
     if (document.querySelector('.products-section-enhanced')) {
         initEnhancedProducts();
@@ -548,4 +606,139 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(style);
+    
+    // Product Consultation Modal Integration
+    const contactModal = document.getElementById('contactModal');
+    if (contactModal) {
+        const contactForm = document.getElementById('contactForm');
+        const productInfoDiv = document.getElementById('contactProductInfo');
+        const productTitle = productInfoDiv?.querySelector('.product-title');
+        const productCode = productInfoDiv?.querySelector('.product-code');
+        const productPrice = productInfoDiv?.querySelector('.product-price');
+        
+        // Hidden input fields
+        const inputProductName = document.getElementById('productName');
+        const inputProductCode = document.getElementById('productCode');
+        const inputProductPrice = document.getElementById('productPrice');
+        
+        // Success and error messages
+        const successMessage = document.getElementById('contactSuccess');
+        const errorMessage = document.getElementById('contactError');
+        
+        // Set up event listener for all konsultasi buttons
+        document.querySelectorAll('.btn-konsultasi').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.getAttribute('data-product-name');
+                const productCodeVal = this.getAttribute('data-product-code');
+                const productPriceVal = this.getAttribute('data-product-price');
+                
+                // Update the product info display
+                if (productName && productInfoDiv) {
+                    productTitle.textContent = productName;
+                    productCode.textContent = 'Kode: ' + productCodeVal;
+                    productPrice.textContent = 'Harga: ' + productPriceVal;
+                    productInfoDiv.classList.remove('d-none');
+                    
+                    // Update hidden form fields
+                    if (inputProductName) inputProductName.value = productName;
+                    if (inputProductCode) inputProductCode.value = productCodeVal;
+                    if (inputProductPrice) inputProductPrice.value = productPriceVal;
+                }
+                
+                // Reset form and messages
+                if (contactForm) contactForm.reset();
+                if (successMessage) successMessage.classList.add('d-none');
+                if (errorMessage) errorMessage.classList.add('d-none');
+            });
+        });
+        
+        // Handle when the modal is opened directly (without product)
+        contactModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            
+            // Only hide product info if no data attribute is found on the button
+            if (button && !button.classList.contains('btn-konsultasi')) {
+                if (productInfoDiv) productInfoDiv.classList.add('d-none');
+                if (inputProductName) inputProductName.value = '';
+                if (inputProductCode) inputProductCode.value = '';
+                if (inputProductPrice) inputProductPrice.value = '';
+            }
+            
+            // Reset form and messages
+            if (contactForm) contactForm.reset();
+            if (successMessage) successMessage.classList.add('d-none');
+            if (errorMessage) errorMessage.classList.add('d-none');
+        });
+        
+        // Handle form submission
+        const submitButton = document.getElementById('submitContactForm');
+        if (submitButton && contactForm) {
+            submitButton.addEventListener('click', function() {
+                // Check form validity
+                if (!contactForm.checkValidity()) {
+                    contactForm.reportValidity();
+                    return;
+                }
+                
+                // Disable button to prevent multiple submissions
+                submitButton.disabled = true;
+                
+                // Collect form data
+                const formData = new FormData(contactForm);
+                
+                // Convert FormData to a plain object for easier debugging
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+                
+                // Send AJAX request
+                fetch('/contact/send', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formObject)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Show success message
+                        if (successMessage) {
+                            successMessage.classList.remove('d-none');
+                            
+                            // Redirect to WhatsApp after a short delay
+                            setTimeout(() => {
+                                window.open(data.whatsappLink, '_blank');
+                                
+                                // Close the modal after slight delay
+                                setTimeout(() => {
+                                    const bsModal = bootstrap.Modal.getInstance(contactModal);
+                                    bsModal.hide();
+                                    submitButton.disabled = false;
+                                }, 500);
+                            }, 1500);
+                        }
+                    } else {
+                        // Show error message
+                        if (errorMessage) {
+                            errorMessage.textContent = data.message || 'Terjadi kesalahan. Silakan coba lagi.';
+                            errorMessage.classList.remove('d-none');
+                            submitButton.disabled = false;
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    if (errorMessage) {
+                        errorMessage.textContent = 'Terjadi kesalahan jaringan. Silakan coba lagi.';
+                        errorMessage.classList.remove('d-none');
+                        submitButton.disabled = false;
+                    }
+                });
+            });
+        }
+    }
 });
