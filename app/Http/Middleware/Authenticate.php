@@ -18,7 +18,7 @@ class Authenticate extends Middleware
 
         // Check if the request is for the admin panel
         if (str_starts_with($request->path(), 'admin')) {
-            return route('filament.admin.auth.login');
+            return route('login');
         }
 
         // Default to home page for now as there's no general login route

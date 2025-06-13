@@ -32,10 +32,7 @@ Route::get('/translator', function () {
     return view('translator');
 });
 
-// Debug route to check if routing is working
-Route::get('/debug-filament', function () {
-    return 'Filament debug route is working. Try accessing /admin for the admin panel.';
-});
+// Debug route has been removed
 
 // Language switching routes
 Route::get('language/{locale}', [LanguageController::class, 'switchLang'])->name('language.switch');

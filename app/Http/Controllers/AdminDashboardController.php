@@ -20,6 +20,6 @@ class AdminDashboardController extends Controller
             return redirect('/admin/login')->with('error', 'You do not have permission to access the admin panel.');
         }
 
-        return view('filament.dashboard');
+        return view('dashboard.index');
     }
 }

@@ -2,6 +2,11 @@
 
 @section('title', isset($item) ? 'Edit Media' : 'Upload Media')
 
+@php
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+@endphp
+
 @section('content')
     <div class="bg-white shadow rounded-lg overflow-hidden">
         <div class="p-6 border-b">
@@ -18,7 +23,7 @@
                 <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Judul</label>
                 <input type="text" name="title" id="title" value="{{ old('title', $item?->title ?? '') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
                 @error('title')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-sm text-red-600">{{ $message ?? 'Invalid input' }}</p>
                 @enderror
             </div>
             
@@ -26,7 +31,7 @@
                 <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
                 <textarea name="description" id="description" rows="5" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">{{ old('description', $item?->description ?? '') }}</textarea>
                 @error('description')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-sm text-red-600">{{ $message ?? 'Invalid input' }}</p>
                 @enderror
             </div>
             
@@ -36,7 +41,7 @@
                 <input type="file" name="file_path" id="file_path" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
                 <p class="mt-1 text-sm text-gray-500">Ukuran maksimum: 10MB. Format yang didukung: jpeg, png, jpg, gif, pdf, doc, docx, xls, xlsx, ppt, pptx, mp4, mp3</p>
                 @error('file_path')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-sm text-red-600">{{ $message ?? 'Invalid file' }}</p>
                 @enderror
             </div>
             @else
@@ -66,7 +71,7 @@
                     <p class="mt-1 text-sm text-gray-500">Biarkan kosong jika tidak ingin mengganti file yang ada.</p>
                 </div>
                 @error('file_path')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-sm text-red-600">{{ $message ?? 'Invalid file' }}</p>
                 @enderror
             </div>
             @endif
