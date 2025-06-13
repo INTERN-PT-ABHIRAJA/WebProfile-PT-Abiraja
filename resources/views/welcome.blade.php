@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,15 @@
     <link rel="icon" href="assets/img/logo/Logo.png">
 
     <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- Google Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    
+
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -26,9 +24,10 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
     <style>
-        
+
     </style>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -42,11 +41,12 @@
                 <div class="d-sm-block d-md-none d-lg-none head">
                     <h6 class="text-black fw-bold m-0 p-0">PT ABHIRAJA GIOVANNI T</h6>
                 </div>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title">Menu</h5>
@@ -78,7 +78,7 @@
             </div>
         </nav>
     </header>
-    
+
     <main>
         <div class="hero" id="home">
             <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
@@ -118,16 +118,21 @@
                 </div>
             </div>
         </div>
-        
+
         <section class="page-section-2" id="about">
             <div class="container">
                 <div class="row align-items-center bg-white">
                     <div class="col-md-6 deskripsi-PT" data-aos="fade-right">
                         <h2 class="fw-bold mb-4">PT ABHIRAJA GIOVANNI TRYARMANDA</h2>
-                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk memberikan layanan
-                            berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih banyak lagi.</p>
-                        <p>Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan solusi yang disesuaikan untuk membantu Anda mencapai tujuan Anda. Dengan tim ahli yang berpengalaman, kami siap menjadi mitra strategis untuk kesuksesan Anda.</p>
-                        <button class="btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#aboutModal">Selengkapnya</button>
+                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                            memberikan layanan
+                            berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih
+                            banyak lagi.</p>
+                        <p>Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan
+                            solusi yang disesuaikan untuk membantu Anda mencapai tujuan Anda. Dengan tim ahli yang
+                            berpengalaman, kami siap menjadi mitra strategis untuk kesuksesan Anda.</p>
+                        <button class="btn-custom mt-3" data-bs-toggle="modal"
+                            data-bs-target="#aboutModal">Selengkapnya</button>
                     </div>
                     <div class="col-md-6 text-center logo" data-aos="fade-left">
                         <img src="assets/img/logo/LogoCut.png" class="img-fluid" alt="Logo">
@@ -135,14 +140,16 @@
                 </div>
             </div>
         </section>
-      
+
         <section class="page-section-33" id="services">
             <div class="container d-flex align-items-center justify-content-between">
                 <div class="text-left text-story" data-aos="fade-right">
                     <h1 class="text-white fw-bold mb-4">Ikuti sukses mitra kami menuju kesuksesan.</h1>
                     <div class="deskripsi-section3">
-                        <p class="text-white">Konsultasikan permasalahan UMKM atau masalah pendidikan Anda pada kami. Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda berkembang.</p>
-                        <button class="btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#contactModal">Hubungi Kami</button>
+                        <p class="text-white">Konsultasikan permasalahan UMKM atau masalah pendidikan Anda pada kami.
+                            Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda berkembang.</p>
+                        <button class="btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#contactModal">Hubungi
+                            Kami</button>
                     </div>
                 </div>
                 <div class="carousel-container w-50" data-aos="fade-left">
@@ -153,18 +160,20 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="assets/img/portfolio/sawah.jpg" alt="Success Story 2">
-                       
+
                             </div>
                             <div class="carousel-item">
                                 <img src="assets/img/portfolio/kayu3.jpg" alt="Success Story 3">
-                       
+
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#successCarousel" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#successCarousel"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#successCarousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#successCarousel"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
@@ -172,14 +181,15 @@
                 </div>
             </div>
         </section>
-       
+
         <section class="team-section" id="team">
             <div class="container">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <h2 class="fw-bold mb-3">Tim Kami</h2>
-                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami memiliki tim profesional yang berdedikasi untuk memberikan layanan terbaik bagi klien kami.</p>
+                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami memiliki tim profesional yang
+                        berdedikasi untuk memberikan layanan terbaik bagi klien kami.</p>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="10">
                         <div class="team-card">
@@ -198,7 +208,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="team-card">
                             <div class="team-img">
@@ -216,7 +226,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="team-card">
                             <div class="team-img">
@@ -234,7 +244,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="team-card">
                             <div class="team-img">
@@ -255,15 +265,16 @@
                 </div>
             </div>
         </section>
-        
-      
+
+
         <section class="products-section" id="products">
             <div class="container">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <h2 class="fw-bold mb-3">Layanan Kami</h2>
-                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami menawarkan berbagai layanan berkualitas untuk memenuhi kebutuhan Anda.</p>
+                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami menawarkan berbagai layanan berkualitas
+                        untuk memenuhi kebutuhan Anda.</p>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                         <div class="product-card">
@@ -277,11 +288,12 @@
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 5.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal"
+                                    data-bs-target="#productModal">Detail</button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                         <div class="product-card">
                             <div class="product-img">
@@ -293,11 +305,12 @@
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 3.500.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal"
+                                    data-bs-target="#productModal">Detail</button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
                         <div class="product-card">
                             <div class="product-img">
@@ -309,11 +322,12 @@
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 2.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal"
+                                    data-bs-target="#productModal">Detail</button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                         <div class="product-card">
                             <div class="product-img">
@@ -325,11 +339,12 @@
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 1.500.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal"
+                                    data-bs-target="#productModal">Detail</button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
                         <div class="product-card">
                             <div class="product-img">
@@ -342,11 +357,12 @@
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 1.200.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal"
+                                    data-bs-target="#productModal">Detail</button>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                         <div class="product-card">
                             <div class="product-img">
@@ -358,21 +374,23 @@
                             </div>
                             <div class="product-footer">
                                 <div class="product-price">Rp 8.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                                <button class="btn-custom" data-bs-toggle="modal"
+                                    data-bs-target="#productModal">Detail</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <section class="contact-section" id="contact">
             <div class="container">
                 <div class="text-center mb-5" data-aos="fade-up">
                     <h2 class="fw-bold mb-3">Hubungi Kami</h2>
-                    <p class="text-white-50 mx-auto" style="max-width: 700px;">Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau ingin bekerja sama.</p>
+                    <p class="text-white-50 mx-auto" style="max-width: 700px;">Jangan ragu untuk menghubungi kami jika
+                        Anda memiliki pertanyaan atau ingin bekerja sama.</p>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-5" data-aos="fade-right">
                         <div class="contact-info">
@@ -386,7 +404,7 @@
                                         Jl. Raya Buahdua 2, Kec. Buahdua Sumedang</p>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-phone-alt"></i>
@@ -396,7 +414,7 @@
                                     <p>+62 889 7158 9438</p>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-envelope"></i>
@@ -406,7 +424,7 @@
                                     <p>Abhirajagiovannicompany@gmail.com</p>
                                 </div>
                             </div>
-                            
+
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <i class="fas fa-clock"></i>
@@ -419,27 +437,51 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="col-lg-7" data-aos="fade-left">
-                        <form class="contact-form">
+                        {{-- Notifikasi Sukses --}}
+                        @if(session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        {{-- Notifikasi Error --}}
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $err)
+                                        <li>{{ $err }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form method="POST" action="{{ route('contact.send') }}" class="contact-form">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nama Lengkap">
+                                    <input type="text" name="name" class="form-control" placeholder="Nama Lengkap"
+                                        value="{{ old('name') }}">
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                        value="{{ old('email') }}">
                                 </div>
                             </div>
-                            <input type="text" class="form-control" placeholder="Subjek">
-                            <textarea class="form-control" placeholder="Pesan"></textarea>
-                            <button type="submit" class="btn-contact">Kirim Pesan</button>
+                            <input type="text" name="subject" class="form-control mt-3" placeholder="Subjek"
+                                value="{{ old('subject') }}">
+                            <textarea name="message" class="form-control mt-3"
+                                placeholder="Pesan">{{ old('message') }}</textarea>
+                            <button type="submit" class="btn-contact mt-3">Kirim Pesan</button>
                         </form>
                     </div>
+
+
+
+
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -448,7 +490,8 @@
                         <div class="footer-logo">
                             <img src="assets/img/logo/Logo.png" alt="Logo">
                         </div>
-                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk memberikan layanan berkualitas tinggi di berbagai bidang.</p>
+                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                            memberikan layanan berkualitas tinggi di berbagai bidang.</p>
                         <div class="footer-social">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -458,7 +501,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
                     <div class="footer-links">
                         <h5>Tautan Cepat</h5>
@@ -472,7 +515,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
                     <div class="footer-links">
                         <h5>Layanan</h5>
@@ -486,7 +529,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-newsletter">
                         <h5>Berlangganan</h5>
@@ -499,7 +542,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <div class="container">
                 <p>&copy; 2023 PT Abhiraja Giovanni Tryamanda. All Rights Reserved.</p>
@@ -510,7 +553,7 @@
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </a>
-    
+
 
     <div class="modal fade" id="aboutModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -520,17 +563,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p> PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk memberikan layanan
-                        berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih banyak lagi. Dengan berbagai
-                        layanan yang kami sediakan, kami bertujuan membantu klien kami mencapai kesuksesan di berbagai sektor usaha
+                    <p> PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                        memberikan layanan
+                        berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih banyak
+                        lagi. Dengan berbagai
+                        layanan yang kami sediakan, kami bertujuan membantu klien kami mencapai kesuksesan di berbagai
+                        sektor usaha
                         mereka. Kami mengutamakan profesionalisme, inovasi, dan kepuasan klien sebagai pilar utama.</p>
-                    
+
                     <h5 class="mt-4">Visi</h5>
                     <p>Menjadi perusahaan multiservices
                         terkemuka di Indonesia yang dikenal
                         dengan kualitas layanan terbaik dan
                         inovasi yang berkelanjutan.</p>
-                    
+
                     <h5 class="mt-4">Misi</h5>
                     <ul>
                         <li>Memberikan solusi konsultasi yang inovatif dan
@@ -549,8 +595,8 @@
             </div>
         </div>
     </div>
-    
-  
+
+
     <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -585,7 +631,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
@@ -602,8 +648,10 @@
                             <h4>Program Pendidikan Komprehensif</h4>
                             <p class="text-muted">Kode: PRD-001</p>
                             <h5 class="mt-3 mb-3">Rp 5.000.000</h5>
-                            <p>Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup kurikulum, pelatihan guru, dan sistem manajemen pendidikan.</p>
-                            
+                            <p>Program pendidikan komprehensif kami dirancang untuk membantu institusi pendidikan
+                                meningkatkan kualitas pembelajaran dan pengembangan siswa. Program ini mencakup
+                                kurikulum, pelatihan guru, dan sistem manajemen pendidikan.</p>
+
                             <h6 class="mt-4">Fitur:</h6>
                             <ul>
                                 <li>Kurikulum yang disesuaikan dengan kebutuhan</li>
@@ -612,9 +660,9 @@
                                 <li>Evaluasi dan penilaian</li>
                                 <li>Dukungan teknis</li>
                             </ul>
-                            
+
                             <div class="d-flex mt-4">
-                           
+
                                 <button class="btn-modal">Hubungi Kami</button>
                             </div>
                         </div>
@@ -627,14 +675,16 @@
             </div>
         </div>
     </div>
-    
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    
- 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="assets/js/script.js"></script>
-    
-</body>
-</html>
 
+</body>
+
+</html>

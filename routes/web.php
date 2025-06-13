@@ -10,6 +10,10 @@ use App\Http\Controllers\AnakPerusahaanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+
+
+
 
 /*
  * |--------------------------------------------------------------------------
@@ -32,7 +36,6 @@ Route::get('/translator', function () {
     return view('translator');
 });
 
-// Debug route has been removed
 
 // Language switching routes
 Route::get('language/{locale}', [LanguageController::class, 'switchLang'])->name('language.switch');
@@ -87,3 +90,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::put('/media/{id}', [MediaController::class, 'update'])->name('media.update');
     Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.delete');
 });
+
+// Contact form route
+Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');
+
