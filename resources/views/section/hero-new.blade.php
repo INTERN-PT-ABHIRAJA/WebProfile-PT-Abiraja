@@ -14,7 +14,7 @@
 
     .hero-section-new {
         width: 100%;
-        height: 90vh;
+        height: 100vh;
         position: relative;
         overflow: hidden;
         font-family: var(--font-body);
@@ -233,14 +233,65 @@
     .swiper-pagination-bullets .swiper-pagination-bullet:hover {
         background-color: rgba(255, 255, 255, 0.6);
         height: 5px;
-    }
-
-    .swiper-pagination-bullets .swiper-pagination-bullet-active {
+    }    .swiper-pagination-bullets .swiper-pagination-bullet-active {
         background: linear-gradient(135deg, var(--accent-yellow), #FFD54F);
         width: 60px;
         height: 6px;
         box-shadow: 0 2px 8px rgba(249, 168, 37, 0.4);
     }
+
+    /* ============================================
+       SHAPED DIVIDER SYSTEM - GENTLE WAVE
+       ============================================ */
+    
+    /* Divider Container */
+    .hero-shaped-divider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: var(--divider-height);
+        overflow: hidden;
+        z-index: 3; /* Above background, below navigation */
+        pointer-events: none;
+    }
+
+    /* Main Gentle Wave SVG */
+    .hero-shaped-divider svg {
+        width: 100%;
+        height: 100%;
+        fill: var(--divider-color);
+        display: block;
+        transform: scale(1.1); /* Slight scale to prevent edge gaps */
+    }
+
+    /* Wave Animation (subtle breathing effect) */
+    .hero-shaped-divider svg {
+        animation: gentleWaveFlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes gentleWaveFlow {
+        0% {
+            transform: scale(1.1) translateX(0);
+        }
+        100% {
+            transform: scale(1.1) translateX(-2px);
+        }
+    }
+
+    /* Alternative Diagonal Slant (Commented - Uncomment to use instead of wave)
+    .hero-shaped-divider-slant {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: var(--divider-height);
+        background: var(--divider-color);
+        z-index: 3;
+        clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
+        transition: all 0.3s ease;
+    }
+    */
     
     /* Responsive Adjustments */
     @media (max-width: 992px) {

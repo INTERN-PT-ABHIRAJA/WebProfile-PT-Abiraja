@@ -1,0 +1,106 @@
+/* Hero Section Styles */
+.hero-section {
+    background-color: #f8f9fa; /* Light background for contrast */
+    padding-top: 80px; /* Adjust as needed */
+    padding-bottom: 80px; /* Adjust as needed */
+    min-height: 80vh; /* Ensure it takes a good portion of the viewport */
+    display: flex;
+    align-items: center;
+}
+
+.hero-section .text-content h1 {
+    color: #333; /* Darker text for readability */
+    font-weight: 700; /* Bold headline */
+}
+
+.hero-section .text-content .lead {
+    color: #555; /* Slightly lighter for subtitle */
+    font-size: 1.15rem;
+}
+
+.hero-section .cta-buttons .btn-primary {
+    background-color: #ffc107; /* Example primary color (yellow) */
+    border-color: #ffc107;
+    color: #333;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-section .cta-buttons .btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+    transform: translateY(-2px);
+}
+
+.hero-section .cta-buttons .btn-outline-secondary {
+    color: #333;
+    border-color: #6c757d;
+    padding: 12px 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.hero-section .cta-buttons .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.hero-section .image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Softer edges for the image */
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+    .hero-section .text-content {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .hero-section .image-content {
+        text-align: center;
+    }
+    .hero-section .cta-buttons {
+        justify-content: center;
+        display: flex; /* Ensure buttons are centered on mobile */
+    }
+}
+
+/* Original .kotak styles - can be integrated or modified if still needed */
+/* 
+.container-kotak {
+    display: flex; 
+    justify-content: space-around; 
+    flex-wrap: wrap;
+}
+*/
+
+.kotak {
+    background-color: #fff; /* Example background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: 10px; /* Adjust spacing */
+    transition: transform 0.3s ease;
+}
+
+.kotak:hover {
+    transform: translateY(-5px);
+}
+
+.kotak i {
+    font-size: 2.5rem; /* Icon size */
+    margin-bottom: 10px;
+}
+
+.kotak div {
+    font-weight: 600;
+    color: #333;
+}
+
+.kuning {
+    color: #ffc107; /* Example yellow color */
+}
