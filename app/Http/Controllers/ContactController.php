@@ -8,16 +8,17 @@ use Illuminate\Support\Facades\Log;
 class ContactController extends Controller
 {
     public function send(Request $request)
-    {
-        $data = $request->validate([
-            'name'    => 'required|string|max:255',
-            'email'   => 'required|email',
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string',
-        ]);
+{
+    $data = $request->validate([
+        'name'    => 'required|string|max:255',
+        'email'   => 'required|email',
+        'subject' => 'required|string|max:255',
+        'message' => 'required|string',
+    ]);
 
-        Log::info('Form berhasil diterima:', $data);
+    Log::info('Form dikirim:', $data); // Tambah baris ini
 
+    try {
         Mail::raw(
             "Nama: {$data['name']}\n".
             "Email: {$data['email']}\n\n".
@@ -27,9 +28,12 @@ class ContactController extends Controller
                         ->subject($data['subject']);
             }
         );
-
-        return redirect()->back()->with('success', 'Pesan berhasil dikirim!');
-    }
+    } catch (\Exception $e) {
+        Log::error('Gagal kirim email: '.$e->getMessage());
+        return redirect()->back()->with('error', 'Gagal mengirim pesan.');
 }
 
 
+    return redirect()->back()->with('success', 'Pesan berhasil dikirim!');
+}
+}
