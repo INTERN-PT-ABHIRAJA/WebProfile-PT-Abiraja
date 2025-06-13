@@ -1,22 +1,56 @@
 // Core functionality - optimized for performance
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Navbar scroll behavior variables
+    const navbar = document.querySelector('.navbar');
+    let lastScrollTop = 0;
+    let scrollTimer = null;
+    
     // Back to top button with throttled scroll
     const backToTopButton = document.getElementById('backToTop');
     let ticking = false;
     
-    function updateBackToTop() {
-        if (window.pageYOffset > 300) {
+    function updateScrollEffects() {
+        const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Back to top button logic
+        if (currentScrollTop > 300) {
             backToTopButton?.classList.add('active');
         } else {
             backToTopButton?.classList.remove('active');
         }
+        
+        // Navbar hide/show logic
+        if (navbar) {
+            if (currentScrollTop > lastScrollTop && currentScrollTop > 100) {
+                // Scrolling down - hide navbar
+                navbar.classList.add('navbar-hidden');
+                navbar.classList.remove('navbar-visible');
+            } else {
+                // Scrolling up - show navbar
+                navbar.classList.remove('navbar-hidden');
+                navbar.classList.add('navbar-visible');
+            }
+            
+            // Clear any existing timer
+            if (scrollTimer) {
+                clearTimeout(scrollTimer);
+            }
+            
+            // Show navbar after user stops scrolling
+            scrollTimer = setTimeout(() => {
+                navbar.classList.remove('navbar-hidden');
+                navbar.classList.add('navbar-visible');
+            }, 150);
+        }
+        
+        lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
         ticking = false;
     }
     
     window.addEventListener('scroll', () => {
         if (!ticking) {
-            requestAnimationFrame(updateBackToTop);
+            requestAnimationFrame(updateScrollEffects);
             ticking = true;
         }
     });

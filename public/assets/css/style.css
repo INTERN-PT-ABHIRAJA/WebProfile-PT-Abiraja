@@ -2719,3 +2719,24 @@ html {
     0%, 100% { transform: none; }
   }
 }
+
+/* Navbar scroll behavior */
+.navbar {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.navbar.navbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Ensure smooth scrolling transitions */
+.navbar.fixed-top {
+  z-index: 1030;
+}
