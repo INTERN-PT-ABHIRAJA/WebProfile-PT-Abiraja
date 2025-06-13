@@ -137,9 +137,9 @@
                 <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-2.jpg') }}');"></div>
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1><?php echo __('site.slide2_h1'); ?></h1>
-                    <p><?php echo __('site.slide2_sub'); ?></p>
-                    <a href="#kontak" class="cta-button"><?php echo __('site.slide2_cta'); ?></a>
+                    <h1>Branding & Digital</h1>
+                    <p>Kami membantu membangun citra digital dan branding bisnis Anda agar lebih dikenal dan dipercaya.</p>
+                    <a href="#contact" class="cta-button">Hubungi Kami</a>
                 </div>
             </div>
 
@@ -148,9 +148,9 @@
                 <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-3.jpg') }}');"></div>
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1><?php echo __('site.slide3_h1'); ?></h1>
-                    <p><?php echo __('site.slide3_sub'); ?></p>
-                    <a href="#kontak" class="cta-button"><?php echo __('site.slide3_cta'); ?></a>
+                    <h1>Finance & Tax</h1>
+                    <p>Layanan keuangan dan perpajakan profesional untuk mendukung pertumbuhan bisnis Anda.</p>
+                    <a href="#contact" class="cta-button">Konsultasi Sekarang</a>
                 </div>
             </div>
 
@@ -159,9 +159,9 @@
                 <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1><?php echo __('site.slide4_h1'); ?></h1>
-                    <p><?php echo __('site.slide4_sub'); ?></p>
-                    <a href="#kontak" class="cta-button"><?php echo __('site.slide4_cta'); ?></a>
+                    <h1>KOL Management</h1>
+                    <p>Manajemen Key Opinion Leader untuk memperluas jangkauan promosi produk dan layanan Anda.</p>
+                    <a href="#contact" class="cta-button">Pelajari Lebih Lanjut</a>
                 </div>
             </div>
             
@@ -170,9 +170,9 @@
                 <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
                 <div class="slide-overlay"></div>
                 <div class="slide-content">
-                    <h1><?php echo __('site.slide5_h1'); ?></h1>
-                    <p><?php echo __('site.slide5_sub'); ?></p>
-                    <a href="#layanan" class="cta-button"><?php echo __('site.slide5_cta'); ?></a>
+                    <h1>Produk Unggulan Abhiraja</h1>
+                    <p>Temukan berbagai produk dan layanan terbaik dari PT Abhiraja Giovanni Tryamanda.</p>
+                    <a href="#products" class="cta-button">Lihat Produk</a>
                 </div>
             </div>
         </div>
