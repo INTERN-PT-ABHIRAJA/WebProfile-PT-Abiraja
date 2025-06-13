@@ -26,15 +26,13 @@ class Produk extends Model
         'id_anak_perusahaan',
         'nama_produk',
         'deskripsi_produk',
-        'harga',
-        'stok',
         'foto',
-        'video',
+        'rating',
     ];
 
-    // Cast the price attribute
+    // Cast attributes
     protected $casts = [
-        'harga' => 'decimal:2',
+        'rating' => 'decimal:2',
     ];
 
     /**
@@ -43,5 +41,21 @@ class Produk extends Model
     public function anakPerusahaan()
     {
         return $this->belongsTo(AnakPerusahaan::class, 'id_anak_perusahaan', 'id_anak_perusahaan');
+    }
+
+    /**
+     * Get the benefits for the product.
+     */
+    public function benefits()
+    {
+        return $this->hasMany(Benefit::class, 'id_produk', 'id_produk');
+    }
+
+    /**
+     * Get the detail photos for the product.
+     */
+    public function detailFotos()
+    {
+        return $this->hasMany(DetailFotoProduk::class, 'id_produk', 'id_produk');
     }
 }
