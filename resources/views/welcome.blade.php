@@ -1,37 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PT ABHIRAJA GIOVANNI TRYAMANDA</title>
-    <link rel="icon" href="assets/img/logo/Logo.png">
+    <link rel="icon" href="assets/img/logo/Logo.png" type="image/png">
 
-    <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-        crossorigin="anonymous">
-
-    <!-- Google Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="assets/css/style.css" as="style">
     
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Critical CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Non-critical CSS - load async -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="assets/css/subsidiaries.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     
-    <!-- Swiper.js CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
-  
-        <style>
-
-</style>
+    <!-- Fallback for non-JS browsers -->
+    <noscript>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="assets/css/animations.css" rel="stylesheet">
+        <link href="assets/css/subsidiaries.css" rel="stylesheet">
+    </noscript>
 </head>
 <body>
     <header>
@@ -68,7 +66,7 @@
                                 <a class="nav-link text-black fw-bold" href="#services">LAYANAN</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#team">TIM KAMI</a>
+                                <a class="nav-link text-black fw-bold" href="#subsidiaries">ANAK PERUSAHAAN</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black fw-bold" href="#products">PRODUK KAMI</a>
@@ -95,9 +93,9 @@
                 <div class="slide-background" style="background-image: url('{{ asset('assets/img/1cityscape.jpg') }}');"></div>
                 <div class="slide-overlay"></div>
                 <div class="slide-content main-slide">
-                    <h1 class="fw-bold pb-3">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
-                    <p class="fs-5 kuning mb-5">Mitra Strategis untuk Kesuksesan Anda</p>
-                    <div class="container-kotak pt-4 d-flex">
+                    <h1 class="fw-bold pb-3 pt-5">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
+                    <p class="fs-5 kuning">Mitra Strategis untuk Kesuksesan Anda</p>
+                    <div class="container-kotak pt-2 d-flex">
                         <div class="kotak" data-aos="fade-up" data-aos-delay="100">
                             <i class="fas fa-university kuning"></i>
                             <div>PENDIDIKAN</div>
@@ -180,56 +178,6 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
         <!-- Add Navigation -->
-    
-
-            <!-- Slide 2: Branding & Digital -->
-            <div class="swiper-slide">
-                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-2.jpg') }}');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h1><?php echo __('site.slide2_h1'); ?></h1>
-                    <p><?php echo __('site.slide2_sub'); ?></p>
-                    <a href="#kontak" class="cta-button"><?php echo __('site.slide2_cta'); ?></a>
-                </div>
-            </div>
-
-            <!-- Slide 3: Finance & Tax -->
-            <div class="swiper-slide">
-                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-3.jpg') }}');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h1><?php echo __('site.slide3_h1'); ?></h1>
-                    <p><?php echo __('site.slide3_sub'); ?></p>
-                    <a href="#kontak" class="cta-button"><?php echo __('site.slide3_cta'); ?></a>
-                </div>
-            </div>
-
-            <!-- Slide 4: KOL Management -->
-            <div class="swiper-slide">
-                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h1><?php echo __('site.slide4_h1'); ?></h1>
-                    <p><?php echo __('site.slide4_sub'); ?></p>
-                    <a href="#kontak" class="cta-button"><?php echo __('site.slide4_cta'); ?></a>
-                </div>
-            </div>
-            
-            <!-- Slide 5: Produk Unggulan Abhiraja -->
-            <div class="swiper-slide">
-                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h1><?php echo __('site.slide5_h1'); ?></h1>
-                    <p><?php echo __('site.slide5_sub'); ?></p>
-                    <a href="#layanan" class="cta-button"><?php echo __('site.slide5_cta'); ?></a>
-                </div>
-            </div>
-        </div>
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Navigation -->
-    </div>
 </section>
 
         
@@ -251,27 +199,105 @@
         </section>
       
         <section class="page-section-33" id="services">
-            <div class="container d-flex align-items-center justify-content-between">
-                <div class="text-left text-story" data-aos="fade-right">
-                    <h1 class="text-white fw-bold mb-4">Ikuti sukses mitra kami menuju kesuksesan.</h1>
-                    <div class="deskripsi-section3">
-                        <p class="text-white">Konsultasikan permasalahan UMKM atau masalah pendidikan Anda pada kami. Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda berkembang.</p>
-                        <button class="btn-custom mt-3" data-bs-toggle="modal" data-bs-target="#contactModal">Hubungi Kami</button>
+            <div class="container">
+                <div class="row align-items-center">
+                    <!-- Content Section -->
+                    <div class="col-lg-6 col-md-12" data-aos="fade-right">
+                        <div class="services-content">
+                            <div class="section-badge mb-3">
+                                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">
+                                    <i class="fas fa-handshake me-2"></i>Success Stories
+                                </span>
+                            </div>
+                            <h1 class="text-white fw-bold mb-4 display-5">Ikuti sukses mitra kami menuju kesuksesan.</h1>
+                            <p class="text-white-75 mb-4 lead">Konsultasikan permasalahan UMKM atau masalah pendidikan Anda pada kami. Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda berkembang.</p>
+                            
+                            <!-- Statistics -->
+                            <div class="row mb-4">
+                                <div class="col-6 col-md-4">
+                                    <div class="stat-item text-center">
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="500">500</h3>
+                                        <small class="text-white-50">Klien Puas</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <div class="stat-item text-center">
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="150">150</h3>
+                                        <small class="text-white-50">Proyek Selesai</small>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 mt-3 mt-md-0">
+                                    <div class="stat-item text-center">
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="98">98</h3>
+                                        <small class="text-white-50">% Kepuasan</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="action-buttons">
+                                <button class="btn-custom-primary me-3" data-bs-toggle="modal" data-bs-target="#contactModal">
+                                    <i class="fas fa-phone me-2"></i>Hubungi Kami
+                                </button>
+                                <button class="btn-custom-outline" data-bs-toggle="modal" data-bs-target="#portfolioModal">
+                                    <i class="fas fa-eye me-2"></i>Lihat Portfolio
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-container w-50" data-aos="fade-left">
-                    <div id="successCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="assets/img/portfolio/kayu.jpg" alt="Success Story 1">
+                    
+                    <!-- Interactive Gallery Section -->
+                    <div class="col-lg-6 col-md-12 mt-5 mt-lg-0" data-aos="fade-left">
+                        <div class="interactive-gallery">
+                            <!-- Main Display -->
+                            <div class="main-gallery-item">
+                                <div class="gallery-card active" data-index="0">
+                                    <img src="assets/img/portfolio/kayu.jpg" alt="Success Story 1" class="img-fluid">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-content">
+                                            <h5 class="text-white fw-bold">Furniture Premium</h5>
+                                            <p class="text-white-75 mb-0">Produksi furniture berkualitas tinggi</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-card" data-index="1">
+                                    <img src="assets/img/portfolio/sawah.jpg" alt="Success Story 2" class="img-fluid">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-content">
+                                            <h5 class="text-white fw-bold">Pertanian Modern</h5>
+                                            <p class="text-white-75 mb-0">Solusi pertanian berkelanjutan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-card" data-index="2">
+                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Success Story 3" class="img-fluid">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-content">
+                                            <h5 class="text-white fw-bold">Kerajinan Eksklusif</h5>
+                                            <p class="text-white-75 mb-0">Desain unik dan berkualitas</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="carousel-item">
-                                <img src="assets/img/portfolio/sawah.jpg" alt="Success Story 2">
-                       
+                            
+                            <!-- Thumbnail Navigation -->
+                            <div class="gallery-thumbnails mt-3">
+                                <div class="thumbnail-item active" data-index="0">
+                                    <img src="assets/img/portfolio/kayu.jpg" alt="Thumbnail 1">
+                                </div>
+                                <div class="thumbnail-item" data-index="1">
+                                    <img src="assets/img/portfolio/sawah.jpg" alt="Thumbnail 2">
+                                </div>
+                                <div class="thumbnail-item" data-index="2">
+                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Thumbnail 3">
+                                </div>
                             </div>
-                            <div class="carousel-item">
-                                <img src="assets/img/portfolio/kayu3.jpg" alt="Success Story 3">
-                       
+                            
+                            <!-- Progress Indicators -->
+                            <div class="gallery-progress mt-3">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 33.33%"></div>
+                                </div>
+                                <span class="progress-text text-white-50">1 of 3</span>
                             </div>
                         </div>
                     </div>
@@ -279,82 +305,181 @@
             </div>
         </section>
        
-        <section class="team-section" id="team">
+        <!-- Subsidiaries Section -->
+        <section class="subsidiaries-section py-5 bg-gradient" id="subsidiaries">
             <div class="container">
+                <!-- Section Header -->
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="fw-bold mb-3">Tim Kami</h2>
-                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami memiliki tim profesional yang berdedikasi untuk memberikan layanan terbaik bagi klien kami.</p>
+                    <div class="subtitle-animation mb-3">
+                        <span class="badge bg-warning text-dark px-4 py-2 rounded-pill shadow-sm">
+                            <i class="fas fa-building me-2"></i>Jaringan Bisnis
+                        </span>
+                    </div>
+                    <h2 class="display-5 fw-bold mb-4 text-dark gradient-text">Anak Perusahaan Kami</h2>
+                    <p class="lead text-muted mx-auto mb-4" style="max-width: 800px;">
+                        Kami memiliki beberapa anak perusahaan yang beroperasi di berbagai bidang untuk 
+                        mendukung layanan kami.
+                    </p>
                 </div>
                 
-                <div class="row">
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="10">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Raja.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                <!-- Subsidiaries Cards Grid -->
+                <div class="row g-4" id="subsidiaries-container">
+                    <!-- PT Abhiraja Wood Craft -->
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="subsidiary-card-modern bg-white rounded-4 shadow-lg p-4 h-100 border-0 position-relative overflow-hidden">
+                            <div class="card-header-modern d-flex align-items-center mb-3">
+                                <div class="company-logo-container me-3">
+                                    <img src="assets/img/Mitra/WoodStudio.png" alt="Art Wood Studio" class="company-logo">
+                                </div>
+                                <div class="company-info flex-grow-1">
+                                    <h5 class="company-name mb-1 text-primary fw-bold">Art Wood Studio</h5>
+                                    <p class="company-tagline mb-0 text-muted small">Studio Furnitur Kayu Premium</p>
                                 </div>
                             </div>
-                            <div class="team-info">
-                                <h4>RAJA FAKHRUROZI SAFIRA, S.M</h4>
-                                <p>CEO & Founder</p>
+                            
+                            <div class="company-details">
+                                <h6 class="text-dark fw-semibold mb-2">PT Abhiraja Wood Craft</h6>
+                                <p class="text-muted small mb-3">Produksi furniture dan kerajinan kayu berkualitas tinggi dengan desain eksklusif untuk kebutuhan interior dan eksterior.</p>
+                                
+                                <div class="social-media-section mb-3">
+                                    <div class="social-icons d-flex gap-2">
+                                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                                
+                                <div class="company-stats d-flex justify-content-between align-items-center">
+                                    <div class="stat-item">
+
+                                    </div>
+                                    <div class="stat-item">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar me-1 text-primary"></i>Est. 2019
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Heru.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <!-- PT Abhiraja Digital -->
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="subsidiary-card-modern bg-white rounded-4 shadow-lg p-4 h-100 border-0 position-relative overflow-hidden">
+                            <div class="card-header-modern d-flex align-items-center mb-3">
+                                <div class="company-logo-container me-3">
+                                    <img src="assets/img/Mitra/DrKonten.png" alt="Dr Konten" class="company-logo">
+                                </div>
+                                <div class="company-info flex-grow-1">
+                                    <h5 class="company-name mb-1 text-primary fw-bold">Dr Konten</h5>
+                                    <p class="company-tagline mb-0 text-muted small">Solusi Marketing & Branding Digital</p>
                                 </div>
                             </div>
-                            <div class="team-info">
-                                <h4>Heru Fibriansyah</h4>
-                                <p>--------</p>
+                            
+                            <div class="company-details">
+                                <h6 class="text-dark fw-semibold mb-2">PT Abhiraja Digital</h6>
+                                <p class="text-muted small mb-3">Spesialis dalam digital marketing, branding, dan pengembangan konten kreatif untuk meningkatkan presence online bisnis Anda.</p>
+                                
+                                <div class="social-media-section mb-3">
+                                    <div class="social-icons d-flex gap-2">
+                                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                                
+                                <div class="company-stats d-flex justify-content-between align-items-center">
+                                    <div class="stat-item">
+                                   
+                                    </div>
+                                    <div class="stat-item">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar me-1 text-primary"></i>Est. 2021
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Desi.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <!-- PT Abhiraja Agro -->
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                        <div class="subsidiary-card-modern bg-white rounded-4 shadow-lg p-4 h-100 border-0 position-relative overflow-hidden">
+                            <div class="card-header-modern d-flex align-items-center mb-3">
+                                <div class="company-logo-container me-3">
+                                    <img src="assets/img/Mitra/WoodStudio.png" alt="Art Wood Studio" class="company-logo">
+                                </div>
+                                <div class="company-info flex-grow-1">
+                                    <h5 class="company-name mb-1 text-primary fw-bold">Art Wood Studio</h5>
+                                    <p class="company-tagline mb-0 text-muted small">Produk & Konsultasi Pertanian</p>
                                 </div>
                             </div>
-                            <div class="team-info">
-                                <h4>Desi Putri, S.M</h4>
-                                <p>--------</p>
+                            
+                            <div class="company-details">
+                                <h6 class="text-dark fw-semibold mb-2">PT Abhiraja Agro</h6>
+                                <p class="text-muted small mb-3">Solusi pertanian modern dan berkelanjutan untuk meningkatkan produktivitas hasil pertanian dengan teknologi terdepan.</p>
+                                
+                                <div class="social-media-section mb-3">
+                                    <div class="social-icons d-flex gap-2">
+                                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                                
+                                <div class="company-stats d-flex justify-content-between align-items-center">
+                                    <div class="stat-item">
+                                   
+                                    </div>
+                                    <div class="stat-item">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar me-1 text-primary"></i>Est. 2022
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="team-card">
-                            <div class="team-img">
-                                <img src="assets/img/Tim/Dini.png" alt="Team Member">
-                                <div class="team-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <!-- PT Abhiraja Edukasi -->
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                        <div class="subsidiary-card-modern bg-white rounded-4 shadow-lg p-4 h-100 border-0 position-relative overflow-hidden">
+                            <div class="card-header-modern d-flex align-items-center mb-3">
+                                <div class="company-logo-container me-3">
+                                    <img src="assets/img/Mitra/DrKonten.png" alt="Dr Konten" class="company-logo">
+                                </div>
+                                <div class="company-info flex-grow-1">
+                                    <h5 class="company-name mb-1 text-primary fw-bold">Dr Konten</h5>
+                                    <p class="company-tagline mb-0 text-muted small">Solusi & Layanan Pendidikan</p>
                                 </div>
                             </div>
-                            <div class="team-info">
-                                <h4>Dini Rosyani, S.H</h4>
-                                <p>---------</p>
+                            
+                            <div class="company-details">
+                                <h6 class="text-dark fw-semibold mb-2">PT Abhiraja Edukasi</h6>
+                                <p class="text-muted small mb-3">Pusat pendidikan dan pelatihan profesional yang memberikan solusi pembelajaran terdepan untuk pengembangan SDM.</p>
+                                
+                                <div class="social-media-section mb-3">
+                                    <div class="social-icons d-flex gap-2">
+                                        <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                </div>
+                                
+                                <div class="company-stats d-flex justify-content-between align-items-center">
+                                    <div class="stat-item">
+                                 
+                                    </div>
+                                    <div class="stat-item">
+                                        <small class="text-muted">
+                                            <i class="fas fa-calendar me-1 text-primary"></i>Est. 2020
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -363,110 +488,376 @@
         </section>
         
       
-        <section class="products-section" id="products">
+        <section class="products-section-enhanced" id="products">
             <div class="container">
+                <!-- Section Header -->
                 <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="fw-bold mb-3">Layanan Kami</h2>
-                    <p class="text-muted mx-auto" style="max-width: 700px;">Kami menawarkan berbagai layanan berkualitas untuk memenuhi kebutuhan Anda.</p>
+                    <div class="section-badge mb-3">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">
+                            <i class="fas fa-star me-2"></i>Layanan Terbaik
+                        </span>
+                    </div>
+                    <h2 class="display-5 fw-bold mb-4 text-dark">Solusi Bisnis Terpadu</h2>
+                    <p class="lead text-muted mx-auto mb-5" style="max-width: 800px;">
+                        Pilih layanan yang sesuai dengan kebutuhan bisnis Anda. Setiap paket dirancang khusus untuk memberikan hasil maksimal.
+                    </p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">
+                            <i class="fas fa-th-large me-2"></i>Semua Layanan
+                        </button>
+                        <button class="filter-btn" data-filter="education">
+                            <i class="fas fa-graduation-cap me-2"></i>Pendidikan
+                        </button>
+                        <button class="filter-btn" data-filter="business">
+                            <i class="fas fa-briefcase me-2"></i>Bisnis
+                        </button>
+                        <button class="filter-btn" data-filter="craft">
+                            <i class="fas fa-hammer me-2"></i>Kerajinan
+                        </button>
+                        <button class="filter-btn" data-filter="agriculture">
+                            <i class="fas fa-seedling me-2"></i>Pertanian
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="assets/img/portfolio/lada.jpg" alt="Product">
-                                <div class="product-badge">Populer</div>
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Education Services -->
+                    <div class="product-item" data-category="education" data-aos="fade-up" data-aos-delay="100">
+                        <div class="product-card-enhanced">
+                            <div class="product-image-container">
+                                <img src="assets/img/portfolio/lada.jpg" alt="Program Pendidikan" class="product-image">
+                                <div class="product-overlay">
+                                    <div class="product-icons">
+                                        <button class="icon-btn" title="Lihat Detail">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Konsultasi">
+                                            <i class="fas fa-comments"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-badge popular">
+                                    <i class="fas fa-fire me-1"></i>Populer
+                                </div>
+                                <div class="product-category-tag">Pendidikan</div>
                             </div>
-                            <div class="product-info">
-                                <h4>Program Pendidikan Komprehensif</h4>
-                                <p>Solusi pendidikan lengkap untuk sekolah dan institusi pendidikan.</p>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price">Rp 5.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="assets/img/portfolio/jamur.jpg" alt="Product">
-                            </div>
-                            <div class="product-info">
-                                <h4>Paket Branding UMKM</h4>
-                                <p>Tingkatkan citra bisnis Anda dengan paket branding lengkap.</p>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price">Rp 3.500.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="assets/img/portfolio/kayu.jpg" alt="Product">
-                            </div>
-                            <div class="product-info">
-                                <h4>Konsultasi Keuangan Bisnis</h4>
-                                <p>Dapatkan saran keuangan profesional untuk mengembangkan bisnis Anda.</p>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price">Rp 2.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="assets/img/portfolio/kayu2.jpg" alt="Product">
-                            </div>
-                            <div class="product-info">
-                                <h4>Produk Kerajinan Kayu</h4>
-                                <p>Kerajinan kayu berkualitas tinggi dengan desain eksklusif.</p>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price">Rp 1.500.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                            <div class="product-content">
+                                <div class="product-header">
+                                    <h4 class="product-title">Program Pendidikan Komprehensif</h4>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">(4.9)</span>
+                                    </div>
+                                </div>
+                                <p class="product-description">Solusi pendidikan lengkap untuk sekolah dan institusi pendidikan dengan kurikulum terdepan.</p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Kurikulum Modern</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Sertifikasi</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Konsultasi</span>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="price-section">
+                                        <span class="price-label">Mulai dari</span>
+                                        <span class="product-price">Rp 5.000.000</span>
+                                    </div>
+                                    <button class="btn-product-detail" data-bs-toggle="modal" data-bs-target="#productModal">
+                                        <span>Detail Paket</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="assets/img/portfolio/sawah.jpg" alt="Product">
-                                <div class="product-badge">Hemat</div>
+
+                    <!-- Business Services -->
+                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="200">
+                        <div class="product-card-enhanced">
+                            <div class="product-image-container">
+                                <img src="assets/img/portfolio/jamur.jpg" alt="Branding UMKM" class="product-image">
+                                <div class="product-overlay">
+                                    <div class="product-icons">
+                                        <button class="icon-btn" title="Lihat Detail">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Konsultasi">
+                                            <i class="fas fa-comments"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-category-tag">Bisnis</div>
                             </div>
-                            <div class="product-info">
-                                <h4>Konsultasi Pertanian</h4>
-                                <p>Solusi pertanian modern untuk meningkatkan hasil panen Anda.</p>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price">Rp 1.200.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                            <div class="product-content">
+                                <div class="product-header">
+                                    <h4 class="product-title">Paket Branding UMKM</h4>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span class="rating-text">(4.7)</span>
+                                    </div>
+                                </div>
+                                <p class="product-description">Tingkatkan citra bisnis Anda dengan paket branding lengkap yang profesional dan modern.</p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Logo Design</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Digital Marketing</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Website</span>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="price-section">
+                                        <span class="price-label">Mulai dari</span>
+                                        <span class="product-price">Rp 3.500.000</span>
+                                    </div>
+                                    <button class="btn-product-detail" data-bs-toggle="modal" data-bs-target="#productModal">
+                                        <span>Detail Paket</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="product-card">
-                            <div class="product-img">
-                                <img src="assets/img/portfolio/lada.jpg" alt="Product">
+
+                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="250">
+                        <div class="product-card-enhanced">
+                            <div class="product-image-container">
+                                <img src="assets/img/portfolio/kayu.jpg" alt="Konsultasi Keuangan" class="product-image">
+                                <div class="product-overlay">
+                                    <div class="product-icons">
+                                        <button class="icon-btn" title="Lihat Detail">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Konsultasi">
+                                            <i class="fas fa-comments"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-category-tag">Bisnis</div>
                             </div>
-                            <div class="product-info">
-                                <h4>Jasa Boga Premium</h4>
-                                <p>Layanan katering berkualitas untuk acara perusahaan dan pribadi.</p>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-price">Rp 8.000.000</div>
-                                <button class="btn-custom" data-bs-toggle="modal" data-bs-target="#productModal">Detail</button>
+                            <div class="product-content">
+                                <div class="product-header">
+                                    <h4 class="product-title">Konsultasi Keuangan Bisnis</h4>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">(5.0)</span>
+                                    </div>
+                                </div>
+                                <p class="product-description">Dapatkan saran keuangan profesional untuk mengembangkan dan mengelola keuangan bisnis Anda.</p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Analisis Keuangan</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Perencanaan</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Laporan</span>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="price-section">
+                                        <span class="price-label">Mulai dari</span>
+                                        <span class="product-price">Rp 2.000.000</span>
+                                    </div>
+                                    <button class="btn-product-detail" data-bs-toggle="modal" data-bs-target="#productModal">
+                                        <span>Detail Paket</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Craft Services -->
+                    <div class="product-item" data-category="craft" data-aos="fade-up" data-aos-delay="300">
+                        <div class="product-card-enhanced">
+                            <div class="product-image-container">
+                                <img src="assets/img/portfolio/kayu2.jpg" alt="Kerajinan Kayu" class="product-image">
+                                <div class="product-overlay">
+                                    <div class="product-icons">
+                                        <button class="icon-btn" title="Lihat Detail">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Konsultasi">
+                                            <i class="fas fa-comments"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-badge custom">
+                                    <i class="fas fa-palette me-1"></i>Custom
+                                </div>
+                                <div class="product-category-tag">Kerajinan</div>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-header">
+                                    <h4 class="product-title">Produk Kerajinan Kayu</h4>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span class="rating-text">(4.8)</span>
+                                    </div>
+                                </div>
+                                <p class="product-description">Kerajinan kayu berkualitas tinggi dengan desain eksklusif dan finishing premium.</p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Desain Custom</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Kayu Premium</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Garansi</span>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="price-section">
+                                        <span class="price-label">Mulai dari</span>
+                                        <span class="product-price">Rp 1.500.000</span>
+                                    </div>
+                                    <button class="btn-product-detail" data-bs-toggle="modal" data-bs-target="#productModal">
+                                        <span>Detail Paket</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agriculture Services -->
+                    <div class="product-item" data-category="agriculture" data-aos="fade-up" data-aos-delay="350">
+                        <div class="product-card-enhanced">
+                            <div class="product-image-container">
+                                <img src="assets/img/portfolio/sawah.jpg" alt="Konsultasi Pertanian" class="product-image">
+                                <div class="product-overlay">
+                                    <div class="product-icons">
+                                        <button class="icon-btn" title="Lihat Detail">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Konsultasi">
+                                            <i class="fas fa-comments"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-badge eco">
+                                    <i class="fas fa-leaf me-1"></i>Eco
+                                </div>
+                                <div class="product-category-tag">Pertanian</div>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-header">
+                                    <h4 class="product-title">Konsultasi Pertanian Modern</h4>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">(4.9)</span>
+                                    </div>
+                                </div>
+                                <p class="product-description">Solusi pertanian modern dan berkelanjutan untuk meningkatkan hasil panen Anda.</p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Teknologi Modern</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Organic</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Monitoring</span>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="price-section">
+                                        <span class="price-label">Mulai dari</span>
+                                        <span class="product-price">Rp 1.200.000</span>
+                                    </div>
+                                    <button class="btn-product-detail" data-bs-toggle="modal" data-bs-target="#productModal">
+                                        <span>Detail Paket</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Services - Catering -->
+                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="400">
+                        <div class="product-card-enhanced">
+                            <div class="product-image-container">
+                                <img src="assets/img/portfolio/lada.jpg" alt="Jasa Boga Premium" class="product-image">
+                                <div class="product-overlay">
+                                    <div class="product-icons">
+                                        <button class="icon-btn" title="Lihat Detail">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Konsultasi">
+                                            <i class="fas fa-comments"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-badge premium">
+                                    <i class="fas fa-crown me-1"></i>Premium
+                                </div>
+                                <div class="product-category-tag">Bisnis</div>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-header">
+                                    <h4 class="product-title">Jasa Boga Premium</h4>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="rating-text">(5.0)</span>
+                                    </div>
+                                </div>
+                                <p class="product-description">Layanan katering berkualitas premium untuk acara perusahaan dan pribadi yang berkesan.</p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Menu Eksklusif</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Setup Lengkap</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Professional</span>
+                                </div>
+                                <div class="product-footer">
+                                    <div class="price-section">
+                                        <span class="price-label">Mulai dari</span>
+                                        <span class="product-price">Rp 8.000.000</span>
+                                    </div>
+                                    <button class="btn-product-detail" data-bs-toggle="modal" data-bs-target="#productModal">
+                                        <span>Detail Paket</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
+                    <div class="cta-section">
+                        <h3 class="fw-bold mb-3">Tidak Menemukan Yang Anda Cari?</h3>
+                        <p class="text-muted mb-4">Konsultasikan kebutuhan khusus Anda dengan tim ahli kami</p>
+                        <button class="btn-cta-custom" data-bs-toggle="modal" data-bs-target="#contactModal">
+                            <i class="fas fa-phone me-2"></i>Konsultasi Gratis
+                        </button>
                     </div>
                 </div>
             </div>
@@ -734,342 +1125,353 @@
         </div>
     </div>
     
+    <!-- Modal untuk Detail Anak Perusahaan -->
+    <div class="modal fade" id="subsidiariesModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Semua Anak Perusahaan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="subsidiary-detail-card p-4 border rounded-3">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="assets/img/portfolio/lada.jpg" alt="Abhiraja Education Center" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1">Abhiraja Education Center</h6>
+                                        <small class="text-muted">Pendidikan • Didirikan 2020</small>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mb-2">Pusat pendidikan dan pelatihan profesional dengan fokus pada pengembangan SDM berkualitas.</p>
+                                <div class="d-flex justify-content-between">
+                                    <small><i class="fas fa-location-dot me-1"></i>Jakarta</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="subsidiary-detail-card p-4 border rounded-3">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="assets/img/portfolio/jamur.jpg" alt="Giovanni Creative Studio" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1">Giovanni Creative Studio</h6>
+                                        <small class="text-muted">Creative & Digital • Didirikan 2021</small>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mb-2">Studio kreatif yang mengkhususkan diri dalam branding dan digital marketing inovatif.</p>
+                                <div class="d-flex justify-content-between">
+                                    <small><i class="fas fa-location-dot me-1"></i>Bandung</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="subsidiary-detail-card p-4 border rounded-3">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="assets/img/portfolio/kayu.jpg" alt="Tryamanda Wood Works" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1">Tryamanda Wood Works</h6>
+                                        <small class="text-muted">Manufaktur • Didirikan 2019</small>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mb-2">Produsen furniture dan kerajinan kayu berkualitas tinggi dengan desain eksklusif dan modern.</p>
+                                <div class="d-flex justify-content-between">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+                                    <small><i class="fas fa-location-dot me-1"></i>Jepara</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="subsidiary-detail-card p-4 border rounded-3">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="assets/img/portfolio/sawah.jpg" alt="Abhiraja Agri Solutions" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1">Abhiraja Agri Solutions</h6>
+                                        <small class="text-muted">Pertanian • Didirikan 2022</small>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mb-2">Solusi pertanian modern dan berkelanjutan untuk meningkatkan produktivitas hasil pertanian.</p>
+                                <div class="d-flex justify-content-between">
+
+                                    <small><i class="fas fa-location-dot me-1"></i>Bogor</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="subsidiary-detail-card p-4 border rounded-3">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="assets/img/portfolio/kayu2.jpg" alt="Giovanni Finance Consulting" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1">Giovanni Finance Consulting</h6>
+                                        <small class="text-muted">Keuangan • Didirikan 2020</small>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mb-2">Konsultasi keuangan dan manajemen bisnis untuk pertumbuhan yang berkelanjutan.</p>
+                                <div class="d-flex justify-content-between">
+
+                                    <small><i class="fas fa-location-dot me-1"></i>Jakarta</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="subsidiary-detail-card p-4 border rounded-3">
+                                <div class="d-flex align-items-center mb-3">
+                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Tryamanda Catering Services" class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-1">Tryamanda Catering Services</h6>
+                                        <small class="text-muted">Jasa Boga • Didirikan 2023</small>
+                                    </div>
+                                </div>
+                                <p class="small text-muted mb-2">Layanan katering premium untuk acara korporat dan pribadi dengan cita rasa istimewa.</p>
+                                <div class="d-flex justify-content-between">
+
+                                    <small><i class="fas fa-location-dot me-1"></i>Sumedang</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary">Hubungi Tim Partnership</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts - Load in order for better performance -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     
- 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js/script.js"></script>
+    <!-- Load non-critical scripts with defer -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     
+    <!-- Custom scripts -->
+    <script src="assets/js/script.js" defer></script>
+    <script src="assets/js/interactions.js" defer></script>
+    <script src="assets/js/swiper-config.js" defer></script>
+    
+    <!-- Interactive Gallery Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Image loading handler
+        function handleImageLoading() {
+            const images = document.querySelectorAll('.gallery-card img');
+            images.forEach(img => {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => {
+                        img.classList.add('loaded');
+                    });
+                }
+            });
+        }
+
+        // Gallery functionality
+        const galleryCards = document.querySelectorAll('.gallery-card');
+        const thumbnails = document.querySelectorAll('.thumbnail-item');
+        const progressFill = document.querySelector('.progress-fill');
+        const progressText = document.querySelector('.progress-text');
+        let currentIndex = 0;
+        let autoplayInterval;
+
+        // Initialize gallery
+        function initGallery() {
+            showSlide(0);
+            startAutoplay();
+            handleImageLoading();
+        }
+
+        // Show specific slide
+        function showSlide(index) {
+            // Remove active class from all
+            galleryCards.forEach(card => card.classList.remove('active'));
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+            // Add active class to current
+            galleryCards[index].classList.add('active');
+            thumbnails[index].classList.add('active');
+
+            // Update progress
+            const progressWidth = ((index + 1) / galleryCards.length) * 100;
+            progressFill.style.width = progressWidth + '%';
+            progressText.textContent = `${index + 1} of ${galleryCards.length}`;
+
+            currentIndex = index;
+        }
+
+        // Next slide
+        function nextSlide() {
+            const next = (currentIndex + 1) % galleryCards.length;
+            showSlide(next);
+        }
+
+        // Previous slide
+        function prevSlide() {
+            const prev = (currentIndex - 1 + galleryCards.length) % galleryCards.length;
+            showSlide(prev);
+        }
+
+        // Autoplay functionality
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        // Thumbnail click handlers
+        thumbnails.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                showSlide(index);
+                stopAutoplay();
+                setTimeout(startAutoplay, 2000); // Restart autoplay after manual interaction
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                prevSlide();
+                stopAutoplay();
+                setTimeout(startAutoplay, 2000);
+            } else if (e.key === 'ArrowRight') {
+                nextSlide();
+                stopAutoplay();
+                setTimeout(startAutoplay, 2000);
+            }
+        });
+
+        // Pause autoplay on hover
+        const gallery = document.querySelector('.interactive-gallery');
+        if (gallery) {
+            gallery.addEventListener('mouseenter', stopAutoplay);
+            gallery.addEventListener('mouseleave', startAutoplay);
+        }
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const options = {
+                threshold: 0.7
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const counter = entry.target;
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target;
+                            }
+                        };
+
+                        counter.classList.add('animate-counter');
+                        updateCounter();
+                        observer.unobserve(counter);
+                    }
+                });
+            }, options);
+
+            counters.forEach(counter => observer.observe(counter));
+        }
+
+        // Initialize everything
+        initGallery();
+        animateCounters();
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        gallery?.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        gallery?.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide(); // Swipe left, go to next
+                } else {
+                    prevSlide(); // Swipe right, go to previous
+                }
+                stopAutoplay();
+                setTimeout(startAutoplay, 2000);
+            }
+        }
+
+        // Add visual feedback for interactions
+        function addVisualFeedback() {
+            const interactiveElements = document.querySelectorAll('.btn-custom-primary, .btn-custom-outline, .thumbnail-item');
+            
+            interactiveElements.forEach(element => {
+                element.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 213, 0, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s ease-out;
+                        pointer-events: none;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        }
+
+        // Add ripple animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        addVisualFeedback();
+    });
+    </script>
+
 </body>
 </html>
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const swiper = new Swiper('.swiper-container', {
-            // Optional parameters
-            loop: true,
-            effect: 'fade', // 'fade', 'cube', 'coverflow', 'flip', 'creative'
-            fadeEffect: {
-                crossFade: true // Recommended for fade effect to prevent visual glitches
-            },
-            creativeEffect: { // Example for creative effect (if chosen)
-                prev: {
-                    shadow: true,
-                    translate: [0, 0, -400],
-                },
-                next: {
-                    translate: ['100%', 0, 0],
-                },
-            },
-            autoplay: {
-                delay: 10000, // 10 seconds delay
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-
-            // Pagination
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            // Accessibility
-            a11y: {
-                prevSlideMessage: 'Previous slide',
-                nextSlideMessage: 'Next slide',
-            },
-            
-            // Animate content on slide change
-            on: {
-                slideChangeTransitionStart: function () {
-                    // Reset all slides' content to initial hidden state
-                    this.slides.forEach((slide) => {
-                        const slideContent = slide.querySelector('.slide-content');
-                        if (slideContent) {
-                            slideContent.classList.remove('animate-in');
-                            slideContent.style.opacity = '0';
-                            slideContent.style.transform = 'translateY(50px)';
-                            
-                            // Reset individual elements
-                            const h1 = slideContent.querySelector('h1');
-                            const p = slideContent.querySelector('p');
-                            const button = slideContent.querySelector('.cta-button');
-                            
-                            if (h1) h1.style.opacity = '0';
-                            if (p) p.style.opacity = '0';
-                            if (button) button.style.opacity = '0';
-                        }
-                    });
-                },
-                slideChangeTransitionEnd: function () {
-                    // Animate current active slide's content in with staggered effect
-                    if (this.slides[this.activeIndex]) {
-                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
-                        if (activeSlideContent) {
-                            // Add animate-in class for staggered animations
-                            setTimeout(() => {
-                                activeSlideContent.classList.add('animate-in');
-                                activeSlideContent.style.opacity = '1';
-                                activeSlideContent.style.transform = 'translateY(0)';
-                            }, 100);
-                        }
-                    }
-                },
-                // Initial animation for the first slide
-                init: function () {
-                    if (this.slides[this.activeIndex]) {
-                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
-                        if (activeSlideContent) {
-                            setTimeout(() => {
-                                activeSlideContent.classList.add('animate-in');
-                                activeSlideContent.style.opacity = '1';
-                                activeSlideContent.style.transform = 'translateY(0)';
-                            }, 200);
-                        }
-                    }
-                }
-            }
-        });
-
-        // Add particle effect (optional lightweight version)
-        function createParticles() {
-            const heroSection = document.querySelector('.hero-section-new');
-            const particleContainer = document.createElement('div');
-            particleContainer.className = 'particle-container';
-            particleContainer.style.cssText = `
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-                pointer-events: none;
-                overflow: hidden;
-            `;
-            
-            // Create 15 particles
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 4px;
-                    height: 4px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    animation: float ${8 + Math.random() * 12}s linear infinite;
-                    left: ${Math.random() * 100}%;
-                    animation-delay: ${Math.random() * 8}s;
-                `;
-                particleContainer.appendChild(particle);
-            }
-            
-            heroSection.appendChild(particleContainer);
-        }
-
-        // Add CSS for particle animation
-        const particleStyle = document.createElement('style');
-        particleStyle.textContent = `
-            @keyframes float {
-                0% {
-                    transform: translateY(100vh) translateX(0);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 0.3;
-                }
-                90% {
-                    opacity: 0.3;
-                }
-                100% {
-                    transform: translateY(-100px) translateX(${Math.random() * 200 - 100}px);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(particleStyle);
-        
-        // Initialize particles
-        createParticles();
-    });
-</script>
-
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const swiper = new Swiper('.swiper-container', {
-            // Optional parameters
-            loop: true,
-            effect: 'fade', // 'fade', 'cube', 'coverflow', 'flip', 'creative'
-            fadeEffect: {
-                crossFade: true // Recommended for fade effect to prevent visual glitches
-            },
-            creativeEffect: { // Example for creative effect (if chosen)
-                prev: {
-                    shadow: true,
-                    translate: [0, 0, -400],
-                },
-                next: {
-                    translate: ['100%', 0, 0],
-                },
-            },
-            autoplay: {
-                delay: 10000, // 10 seconds delay
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-            },
-
-            // Pagination
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-
-            // Navigation arrows
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            // Accessibility
-            a11y: {
-                prevSlideMessage: 'Previous slide',
-                nextSlideMessage: 'Next slide',
-            },
-            
-            // Animate content on slide change
-            on: {
-                slideChangeTransitionStart: function () {
-                    // Reset all slides' content to initial hidden state
-                    this.slides.forEach((slide) => {
-                        const slideContent = slide.querySelector('.slide-content');
-                        if (slideContent) {
-                            slideContent.classList.remove('animate-in');
-                            slideContent.style.opacity = '0';
-                            slideContent.style.transform = 'translateY(50px)';
-                            
-                            // Reset individual elements
-                            const h1 = slideContent.querySelector('h1');
-                            const p = slideContent.querySelector('p');
-                            const button = slideContent.querySelector('.cta-button');
-                            
-                            if (h1) h1.style.opacity = '0';
-                            if (p) p.style.opacity = '0';
-                            if (button) button.style.opacity = '0';
-                        }
-                    });
-                },
-                slideChangeTransitionEnd: function () {
-                    // Animate current active slide's content in with staggered effect
-                    if (this.slides[this.activeIndex]) {
-                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
-                        if (activeSlideContent) {
-                            // Add animate-in class for staggered animations
-                            setTimeout(() => {
-                                activeSlideContent.classList.add('animate-in');
-                                activeSlideContent.style.opacity = '1';
-                                activeSlideContent.style.transform = 'translateY(0)';
-                            }, 100);
-                        }
-                    }
-                },
-                // Initial animation for the first slide
-                init: function () {
-                    if (this.slides[this.activeIndex]) {
-                        const activeSlideContent = this.slides[this.activeIndex].querySelector('.slide-content');
-                        if (activeSlideContent) {
-                            setTimeout(() => {
-                                activeSlideContent.classList.add('animate-in');
-                                activeSlideContent.style.opacity = '1';
-                                activeSlideContent.style.transform = 'translateY(0)';
-                            }, 200);
-                        }
-                    }
-                }
-            }
-        });
-
-        // Add particle effect (optional lightweight version)
-        function createParticles() {
-            const heroSection = document.querySelector('.hero-section-new');
-            const particleContainer = document.createElement('div');
-            particleContainer.className = 'particle-container';
-            particleContainer.style.cssText = `
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-                pointer-events: none;
-                overflow: hidden;
-            `;
-            
-            // Create 15 particles
-            for (let i = 0; i < 15; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.cssText = `
-                    position: absolute;
-                    width: 4px;
-                    height: 4px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    animation: float ${8 + Math.random() * 12}s linear infinite;
-                    left: ${Math.random() * 100}%;
-                    animation-delay: ${Math.random() * 8}s;
-                `;
-                particleContainer.appendChild(particle);
-            }
-            
-            heroSection.appendChild(particleContainer);
-        }
-
-        // Add CSS for particle animation
-        const particleStyle = document.createElement('style');
-        particleStyle.textContent = `
-            @keyframes float {
-                0% {
-                    transform: translateY(100vh) translateX(0);
-                    opacity: 0;
-                }
-                10% {
-                    opacity: 0.3;
-                }
-                90% {
-                    opacity: 0.3;
-                }
-                100% {
-                    transform: translateY(-100px) translateX(${Math.random() * 200 - 100}px);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(particleStyle);
-        
-        // Initialize particles
-        createParticles();
-    });
-</script>
-
-<script>
-// Custom script to handle the main slide with icon grid
-document.addEventListener('DOMContentLoaded', function () {
-    // Make sure the main slide's content is always visible
-    const mainSlideContent = document.querySelector('.slide-content.main-slide');
-    if (mainSlideContent) {
-        mainSlideContent.style.opacity = '1';
-        mainSlideContent.style.transform = 'translateY(0)';
-    }
-});
-</script>
 
