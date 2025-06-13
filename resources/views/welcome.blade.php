@@ -154,36 +154,36 @@
                 </div>
             </div>
 
-            <!-- Slide 4: KOL Management -->
-            <div class="swiper-slide">
-                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h1>KOL Management</h1>
-                    <p>Manajemen Key Opinion Leader untuk memperluas jangkauan promosi produk dan layanan Anda.</p>
-                    <a href="#contact" class="cta-button">Pelajari Lebih Lanjut</a>
-                </div>
-            </div>
-            
-            <!-- Slide 5: Produk Unggulan Abhiraja -->
-            <div class="swiper-slide">
-                <div class="slide-background" style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h1>Produk Unggulan Abhiraja</h1>
-                    <p>Temukan berbagai produk dan layanan terbaik dari PT Abhiraja Giovanni Tryamanda.</p>
-                    <a href="#products" class="cta-button">Lihat Produk</a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Add Pagination -->
-        <div class="swiper-pagination"></div>
-        <!-- Add Navigation -->
-</section>
+                    <!-- Slide 4: KOL Management -->
+                    <div class="swiper-slide">
+                        <div class="slide-background"
+                            style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h1>KOL Management</h1>
+                            <p>Manajemen Key Opinion Leader untuk memperluas jangkauan promosi produk dan layanan Anda.
+                            </p>
+                            <a href="#contact" class="cta-button">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
 
-        
->>>>>>> a48e470ec080d93b8f49e41f7f99dba1e1fff29c
+                    <!-- Slide 5: Produk Unggulan Abhiraja -->
+                    <div class="swiper-slide">
+                        <div class="slide-background"
+                            style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
+                            <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h1>Produk Unggulan Abhiraja</h1>
+                            <p>Temukan berbagai produk dan layanan terbaik dari PT Abhiraja Giovanni Tryamanda.</p>
+                            <a href="#products" class="cta-button">Lihat Produk</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+        </section>
         <section class="page-section-2" id="about">
             <div class="container">
                 <div class="row align-items-center bg-white">
@@ -224,13 +224,13 @@
                             <div class="row mb-4">
                                 <div class="col-6 col-md-4">
                                     <div class="stat-item text-center">
-                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="500">500</h3>
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="491">491</h3>
                                         <small class="text-white-50">Klien Puas</small>
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-4">
                                     <div class="stat-item text-center">
-                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="150">150</h3>
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="327">327</h3>
                                         <small class="text-white-50">Proyek Selesai</small>
                                     </div>
                                 </div>
