@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             crossFade: true
         },
         autoplay: {
-            delay: 10000,
+            delay: 3000,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
         },

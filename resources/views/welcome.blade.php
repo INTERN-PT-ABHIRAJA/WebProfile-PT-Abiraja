@@ -103,7 +103,7 @@
                     <!-- Slide 1: Main Company Overview -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/1cityscape.jpg') }}');"></div>
+                            style="background-image: url('{{ asset('assets/img/barista.jpg') }}');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content main-slide">
                             <h1 class="fw-bold pb-3 pt-5">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
@@ -264,10 +264,11 @@
                                     data-bs-target="#contactModal">
                                     <i class="fas fa-phone me-2"></i>Hubungi Kami
                                 </button>
-                                <button class="btn-custom-outline" data-bs-toggle="modal"
-                                    data-bs-target="#portfolioModal">
-                                    <i class="fas fa-eye me-2"></i>Lihat Portfolio
-                                </button>
+                                <a href="{{ asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf') }}" 
+                                   target="_blank" 
+                                   class="btn-custom-outline text-decoration-none">
+                                    <i class="fas fa-file-pdf me-2"></i>Lihat Portfolio
+                                </a>
                             </div>
                         </div>
                     </div>
