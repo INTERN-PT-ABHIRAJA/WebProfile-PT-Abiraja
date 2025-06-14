@@ -3,30 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>PT ABHIRAJA GIOVANNI TRYAMANDA</title>
+    <meta name="description" content="PT Abhiraja Giovanni Tryamanda - Mitra strategis untuk kesuksesan bisnis Anda dalam pendidikan, branding, keuangan, dan manajemen.">
+    <meta name="keywords" content="Abhiraja, Giovanni, Tryamanda, pendidikan, branding, keuangan, manajemen, UMKM, konsultasi bisnis">
+    <meta name="author" content="PT Abhiraja Giovanni Tryamanda">
+    
+    <title>PT ABHIRAJA GIOVANNI TRYAMANDA - Mitra Strategis Kesuksesan Anda</title>
     <link rel="icon" href="assets/img/logo/Logo.png" type="image/png">
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        as="style">
-    <link rel="preload" href="assets/css/style.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="assets/css/enhanced-responsive.css" as="style">
 
     <!-- Critical CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/enhanced-responsive.css" rel="stylesheet">
 
-    <!-- Non-critical CSS - load async -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Non-critical CSS - load async for better performance -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/subsidiaries.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/product-modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -43,53 +41,86 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    <!-- Enhanced Navigation -->
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="assets/img/logo/Logo.png" alt="Logo" class="img-fluid">
+                <a class="navbar-brand" href="#home" aria-label="PT Abhiraja Giovanni Tryamanda - Homepage">
+                    <img src="assets/img/logo/Logo.png" alt="PT Abhiraja Giovanni Tryamanda Logo">
                 </a>
-                <div class="d-none d-lg-block d-md-block head">
-                    <h6 class="text-black fw-bold m-0 p-0">PT ABHIRAJA GIOVANNI TRYAMANDA</h6>
+                
+                <!-- Company name - responsive display -->
+                <div class="d-none d-md-block head">
+                    <h6 class="fw-bold m-0 p-0" aria-hidden="true">PT ABHIRAJA GIOVANNI TRYAMANDA</h6>
                 </div>
-                <div class="d-sm-block d-md-none d-lg-none head">
-                    <h6 class="text-black fw-bold m-0 p-0">PT ABHIRAJA GIOVANNI T</h6>
+                <div class="d-block d-md-none head">
+                    <h6 class="fw-bold m-0 p-0" aria-hidden="true">PT ABHIRAJA GIOVANNI T</h6>
                 </div>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar">
+                <!-- Mobile menu toggle -->
+                <button class="navbar-toggler d-lg-none" 
+                        type="button" 
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" 
+                        aria-controls="offcanvasNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                <!-- Navigation menu -->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title">Menu</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Navigasi</h5>
+                        <button type="button" 
+                                class="btn-close" 
+                                data-bs-dismiss="offcanvas" 
+                                aria-label="Tutup menu navigasi"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav ms-auto w-100 justify-content-end">
+                        <ul class="navbar-nav ms-auto">
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#home">BERANDA</a>
+                                <a class="nav-link" href="#home" aria-current="page">
+                                    <i class="fas fa-home me-2 d-lg-none" aria-hidden="true"></i>
+                                    BERANDA
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#about">TENTANG KAMI</a>
+                                <a class="nav-link" href="#about">
+                                    <i class="fas fa-info-circle me-2 d-lg-none" aria-hidden="true"></i>
+                                    TENTANG KAMI
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#services">LAYANAN</a>
+                                <a class="nav-link" href="#services">
+                                    <i class="fas fa-cogs me-2 d-lg-none" aria-hidden="true"></i>
+                                    LAYANAN
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#subsidiaries">ANAK PERUSAHAAN</a>
+                                <a class="nav-link" href="#subsidiaries">
+                                    <i class="fas fa-building me-2 d-lg-none" aria-hidden="true"></i>
+                                    ANAK PERUSAHAAN
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#products">PRODUK KAMI</a>
+                                <a class="nav-link" href="#products">
+                                    <i class="fas fa-box me-2 d-lg-none" aria-hidden="true"></i>
+                                    PRODUK KAMI
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black fw-bold" href="#contact">KONTAK</a>
+                                <a class="nav-link" href="#contact">
+                                    <i class="fas fa-envelope me-2 d-lg-none" aria-hidden="true"></i>
+                                    KONTAK
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </nav>
+    </header>
         </nav>
     </header>
 
@@ -106,37 +137,35 @@
                             style="background-image: url('{{ asset('assets/img/barista.jpg') }}');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content main-slide">
-                            <h1 class="fw-bold pb-3 pt-5">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
-                            <p class="fs-5 kuning">Mitra Strategis untuk Kesuksesan Anda</p>
-                            <div class="container-kotak pt-2 d-flex">
+                            <h1 class="mt-4 fw-bold pb-3 pt-5 text-center">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
+                            <p class="fs-5 kuning text-center mb-4">Mitra Strategis untuk Kesuksesan Anda</p>
+                            <div class="container-kotak pt-2">
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="100">
-                                    <i class="fas fa-university kuning"></i>
+                                    <i class="fas fa-university kuning" aria-hidden="true"></i>
                                     <div>PENDIDIKAN</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="200">
-                                    <i class="fas fa-user kuning"></i>
+                                    <i class="fas fa-user kuning" aria-hidden="true"></i>
                                     <div>BRANDING</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="300">
-                                    <i class="fas fa-money-bill kuning"></i>
+                                    <i class="fas fa-money-bill kuning" aria-hidden="true"></i>
                                     <div>FINANCE</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="400">
-                                    <i class="fas fa-tasks kuning"></i>
+                                    <i class="fas fa-tasks kuning" aria-hidden="true"></i>
                                     <div>MANAGEMENT</div>
                                 </div>
-                            </div>
-                            <div class="container-kotak pt-4">
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="500">
-                                    <i class="fas fa-hammer kuning"></i>
+                                    <i class="fas fa-hammer kuning" aria-hidden="true"></i>
                                     <div>WOOD STUDIO</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="600">
-                                    <i class="fas fa-tree kuning"></i>
+                                    <i class="fas fa-tree kuning" aria-hidden="true"></i>
                                     <div>AGRICULTURE</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="700">
-                                    <i class="fas fa-hamburger kuning"></i>
+                                    <i class="fas fa-hamburger kuning" aria-hidden="true"></i>
                                     <div>JASA BOGA</div>
                                 </div>
                             </div>
@@ -200,133 +229,129 @@
         </section>
         <section class="page-section-2" id="about">
             <div class="container">
-                <div class="row align-items-center bg-white">
-                    <div class="col-md-6 deskripsi-PT" data-aos="fade-right">
-                        <h2 class="fw-bold mb-4">PT ABHIRAJA GIOVANNI TRYARMANDA</h2>
-                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                <div class="d-grid-responsive align-items-center bg-white rounded-modern shadow-soft p-4 p-lg-5">
+                    <div class="deskripsi-PT" data-aos="fade-right">
+                        <h2 class="fw-bold mb-4 text-gradient-primary">PT ABHIRAJA GIOVANNI TRYAMANDA</h2>
+                        <p class="text-responsive mb-3">PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
                             memberikan layanan
                             berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih
                             banyak lagi.</p>
-                        <p>Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan
+                        <p class="text-responsive mb-4">Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan
                             solusi yang disesuaikan untuk membantu Anda mencapai tujuan Anda. Dengan tim ahli yang
                             berpengalaman, kami siap menjadi mitra strategis untuk kesuksesan Anda.</p>
-                        <button class="btn-custom mt-3" data-bs-toggle="modal"
+                        <button class="btn-custom btn-modern mt-3" data-bs-toggle="modal"
                             data-bs-target="#aboutModal">Selengkapnya</button>
                     </div>
-                    <div class="col-md-6 text-center logo" data-aos="fade-left">
-                        <img src="assets/img/logo/LogoCut.png" class="img-fluid" alt="Logo">
+                    <div class="text-center logo" data-aos="fade-left">
+                        <img src="assets/img/logo/LogoCut.png" class="img-responsive shadow-soft rounded-modern" alt="Logo PT Abhiraja Giovanni Tryamanda">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="page-section-33" id="services">
+        <!-- Enhanced Services Section -->
+        <section class="page-section-33 py-responsive" id="services" role="main">
             <div class="container">
-                <div class="row align-items-center">
+                <div class="d-grid-responsive align-items-center">
                     <!-- Content Section -->
-                    <div class="col-lg-6 col-md-12" data-aos="fade-right">
-                        <div class="services-content">
-                            <div class="section-badge mb-3">
-                                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">
-                                    <i class="fas fa-handshake me-2"></i>Success Stories
-                                </span>
-                            </div>
-                            <h1 class="text-white fw-bold mb-4 display-5">Ikuti sukses mitra kami menuju kesuksesan.
-                            </h1>
-                            <p class="text-white-75 mb-4 lead">Konsultasikan permasalahan UMKM atau masalah pendidikan
-                                Anda pada kami. Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda
-                                berkembang.</p>
+                    <div class="services-content" data-aos="fade-right">
+                        <div class="section-badge mb-3">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill shadow-accent">
+                                <i class="fas fa-handshake me-2" aria-hidden="true"></i>Success Stories
+                            </span>
+                        </div>
+                        <h1 class="text-white fw-bold mb-4 display-5 text-center-mobile">
+                            Ikuti sukses mitra kami menuju kesuksesan.
+                        </h1>
+                        <p class="text-white-75 mb-4 lead text-center-mobile">
+                            Konsultasikan permasalahan UMKM atau masalah pendidikan Anda pada kami. 
+                            Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda berkembang.
+                        </p>
 
-                            <!-- Statistics -->
-                            <div class="row mb-4">
-                                <div class="col-6 col-md-4">
-                                    <div class="stat-item text-center">
-                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="491">491</h3>
-                                        <small class="text-white-50">Klien Puas</small>
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4">
-                                    <div class="stat-item text-center">
-                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="327">327</h3>
-                                        <small class="text-white-50">Proyek Selesai</small>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4 mt-3 mt-md-0">
-                                    <div class="stat-item text-center">
-                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="98">98</h3>
-                                        <small class="text-white-50">% Kepuasan</small>
-                                    </div>
-                                </div>
+                        <!-- Enhanced Statistics -->
+                        <div class="stats-grid mb-4">
+                            <div class="stat-item text-center backdrop-blur-sm rounded-modern">
+                                <h3 class="text-warning fw-bold mb-1 counter" data-target="491">491</h3>
+                                <small class="text-white-50">Klien Puas</small>
                             </div>
+                            <div class="stat-item text-center backdrop-blur-sm rounded-modern">
+                                <h3 class="text-warning fw-bold mb-1 counter" data-target="327">327</h3>
+                                <small class="text-white-50">Proyek Selesai</small>
+                            </div>
+                            <div class="stat-item text-center backdrop-blur-sm rounded-modern">
+                                <h3 class="text-warning fw-bold mb-1 counter" data-target="98">98</h3>
+                                <small class="text-white-50">% Kepuasan</small>
+                            </div>
+                        </div>
 
-                            <div class="action-buttons">
-                                <button class="btn-custom-primary me-3" data-bs-toggle="modal"
-                                    data-bs-target="#contactModal">
-                                    <i class="fas fa-phone me-2"></i>Hubungi Kami
-                                </button>
-                                <a href="{{ asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf') }}" 
-                                   target="_blank" 
-                                   class="btn-custom-outline text-decoration-none">
-                                    <i class="fas fa-file-pdf me-2"></i>Lihat Portfolio
-                                </a>
-                            </div>
+                        <div class="action-buttons d-flex flex-column flex-sm-row gap-3 align-items-center">
+                            <button class="btn-custom-primary btn-modern flex-grow-1 flex-sm-grow-0" 
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#contactModal"
+                                    aria-label="Hubungi kami untuk konsultasi">
+                                <i class="fas fa-phone me-2" aria-hidden="true"></i>Hubungi Kami
+                            </button>
+                            <a href="{{ asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf') }}" 
+                               target="_blank" 
+                               class="btn-custom-outline btn-modern text-decoration-none flex-grow-1 flex-sm-grow-0"
+                               aria-label="Lihat portfolio perusahaan (PDF)">
+                                <i class="fas fa-file-pdf me-2" aria-hidden="true"></i>Lihat Portfolio
+                            </a>
                         </div>
                     </div>
 
                     <!-- Interactive Gallery Section -->
-                    <div class="col-lg-6 col-md-12 mt-5 mt-lg-0" data-aos="fade-left">
-                        <div class="interactive-gallery">
-                            <!-- Main Display -->
-                            <div class="main-gallery-item">
-                                <div class="gallery-card active" data-index="0">
-                                    <img src="assets/img/portfolio/kayu.jpg" alt="Success Story 1" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <div class="gallery-content">
-                                            <h5 class="text-white fw-bold">Furniture Premium</h5>
-                                            <p class="text-white-75 mb-0">Produksi furniture berkualitas tinggi</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-card" data-index="1">
-                                    <img src="assets/img/portfolio/sawah.jpg" alt="Success Story 2" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <div class="gallery-content">
-                                            <h5 class="text-white fw-bold">Pertanian Modern</h5>
-                                            <p class="text-white-75 mb-0">Solusi pertanian berkelanjutan</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="gallery-card" data-index="2">
-                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Success Story 3" class="img-fluid">
-                                    <div class="gallery-overlay">
-                                        <div class="gallery-content">
-                                            <h5 class="text-white fw-bold">Kerajinan Eksklusif</h5>
-                                            <p class="text-white-75 mb-0">Desain unik dan berkualitas</p>
-                                        </div>
+                    <div class="interactive-gallery mt-5 mt-lg-0" data-aos="fade-left">
+                        <!-- Main Display -->
+                        <div class="main-gallery-item shadow-strong rounded-modern-lg">
+                            <div class="gallery-card active" data-index="0">
+                                <img src="assets/img/portfolio/kayu.jpg" alt="Success Story 1" class="img-responsive">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <h5 class="text-white fw-bold">Furniture Premium</h5>
+                                        <p class="text-white-75 mb-0">Produksi furniture berkualitas tinggi</p>
                                     </div>
                                 </div>
                             </div>
+                            <div class="gallery-card" data-index="1">
+                                <img src="assets/img/portfolio/sawah.jpg" alt="Success Story 2" class="img-responsive">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <h5 class="text-white fw-bold">Pertanian Modern</h5>
+                                        <p class="text-white-75 mb-0">Solusi pertanian berkelanjutan</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="gallery-card" data-index="2">
+                                <img src="assets/img/portfolio/kayu3.jpg" alt="Success Story 3" class="img-responsive">
+                                <div class="gallery-overlay">
+                                    <div class="gallery-content">
+                                        <h5 class="text-white fw-bold">Kerajinan Eksklusif</h5>
+                                        <p class="text-white-75 mb-0">Desain unik dan berkualitas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                            <!-- Thumbnail Navigation -->
-                            <div class="gallery-thumbnails mt-3">
-                                <div class="thumbnail-item active" data-index="0">
-                                    <img src="assets/img/portfolio/kayu.jpg" alt="Thumbnail 1">
-                                </div>
-                                <div class="thumbnail-item" data-index="1">
-                                    <img src="assets/img/portfolio/sawah.jpg" alt="Thumbnail 2">
-                                </div>
-                                <div class="thumbnail-item" data-index="2">
-                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Thumbnail 3">
-                                </div>
+                        <!-- Thumbnail Navigation -->
+                        <div class="gallery-thumbnails mt-3 justify-content-center">
+                            <div class="thumbnail-item active rounded-modern" data-index="0">
+                                <img src="assets/img/portfolio/kayu.jpg" alt="Thumbnail 1" class="img-responsive">
                             </div>
+                            <div class="thumbnail-item rounded-modern" data-index="1">
+                                <img src="assets/img/portfolio/sawah.jpg" alt="Thumbnail 2" class="img-responsive">
+                            </div>
+                            <div class="thumbnail-item rounded-modern" data-index="2">
+                                <img src="assets/img/portfolio/kayu3.jpg" alt="Thumbnail 3" class="img-responsive">
+                            </div>
+                        </div>
 
-                            <!-- Progress Indicators -->
-                            <div class="gallery-progress mt-3">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 33.33%"></div>
-                                </div>
-                                <span class="progress-text text-white-50">1 of 3</span>
+                        <!-- Progress Indicators -->
+                        <div class="gallery-progress mt-3 justify-content-center">
+                            <div class="progress-bar rounded-modern">
+                                <div class="progress-fill rounded-modern" style="width: 33.33%"></div>
                             </div>
+                            <span class="progress-text text-white-50 ms-3">1 of 3</span>
                         </div>
                     </div>
                 </div>
@@ -429,17 +454,17 @@
         </section>
 
 
-        <section class="products-section-enhanced" id="products">
+        <section class="products-section-enhanced py-5 bg-light" id="products">
             <div class="container">
                 <!-- Section Header -->
                 <div class="text-center mb-5" data-aos="fade-up">
                     <div class="section-badge mb-3">
-                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill shadow-soft">
                             <i class="fas fa-star me-2"></i>Layanan Terbaik
                         </span>
                     </div>
-                    <h2 class="display-5 fw-bold mb-4 text-dark">Solusi Bisnis Terpadu</h2>
-                    <p class="lead text-muted mx-auto mb-5" style="max-width: 800px;">
+                    <h2 class="display-5 fw-bold mb-4 text-gradient-primary">Solusi Bisnis Terpadu</h2>
+                    <p class="lead text-muted mx-auto mb-5 text-responsive" style="max-width: 800px;">
                         Pilih layanan yang sesuai dengan kebutuhan bisnis Anda. Setiap paket dirancang khusus untuk
                         memberikan hasil maksimal.
                     </p>
@@ -447,13 +472,13 @@
 
                 <!-- Filter Buttons (Dynamic from Database) -->
                 <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" data-filter="all">
+                    <div class="d-flex flex-wrap justify-content-center gap-2 filter-buttons">
+                        <button class="filter-btn btn-modern active" data-filter="all">
                             <i class="fas fa-th-large me-2"></i>Semua Layanan
                         </button>
 
                         @foreach($categories as $kategori)
-                            <button class="filter-btn" data-filter="{{ \Str::slug($kategori->nama_kategori) }}">
+                            <button class="filter-btn btn-modern" data-filter="{{ \Str::slug($kategori->nama_kategori) }}">
                                 {{-- Optional icon mapping --}}
                                 @php
                                     $iconMap = [
@@ -471,9 +496,8 @@
                     </div>
                 </div>
 
-
                 <!-- Products Grid -->
-                <div class="products-grid" id="productsGrid">
+                <div class="product-gallery-grid gap-responsive" id="productsGrid">
                     @forelse($produk as $index => $item)
                     <div class="product-item" data-category="{{ \Str::slug($item->anakPerusahaan->kategori->nama_kategori ?? 'other') }}" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 50) }}">
                         <div class="product-card-enhanced">
@@ -1630,6 +1654,8 @@
         
     </script>
 
+    <!-- Enhanced Responsive JavaScript -->
+    <script src="assets/js/enhanced-responsive.js" defer></script>
     
 </body>
 
