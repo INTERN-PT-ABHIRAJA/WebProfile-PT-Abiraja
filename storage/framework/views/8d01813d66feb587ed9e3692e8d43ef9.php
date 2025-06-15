@@ -30,6 +30,7 @@
     <link rel="preload" href="assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/subsidiaries.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/product-modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="assets/css/digital-services.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- Fallback for non-JS browsers -->
     <noscript>
@@ -39,7 +40,9 @@
         <link href="assets/css/animations.css" rel="stylesheet">
         <link href="assets/css/subsidiaries.css" rel="stylesheet">
         <link href="assets/css/product-modal.css" rel="stylesheet">
+        <link href="assets/css/digital-services.css" rel="stylesheet">
     </noscript>
+
 </head>
 
 <body>
@@ -79,6 +82,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black fw-bold" href="#subsidiaries">ANAK PERUSAHAAN</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-black fw-bold" href="#digital-services">JASA DIGITAL</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black fw-bold" href="#products">PRODUK KAMI</a>
@@ -149,10 +155,9 @@
                             style="background-image: url('<?php echo e(asset('assets/img/hero/slide-2.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
-                            <h1>Branding & Digital</h1>
-                            <p>Kami membantu membangun citra digital dan branding bisnis Anda agar lebih dikenal dan
-                                dipercaya.</p>
-                            <a href="#contact" class="cta-button">Hubungi Kami</a>
+                            <h1>Jasa Pembuatan Aplikasi & Website</h1>
+                            <p>Kami menyediakan layanan pembuatan aplikasi mobile dan website profesional untuk mendukung transformasi digital bisnis Anda.</p>
+                            <a href="#contact" class="cta-button">Lihat Profile</a>
                         </div>
                     </div>
 
@@ -264,10 +269,11 @@
                                     data-bs-target="#contactModal">
                                     <i class="fas fa-phone me-2"></i>Hubungi Kami
                                 </button>
-                                <button class="btn-custom-outline" data-bs-toggle="modal"
-                                    data-bs-target="#portfolioModal">
-                                    <i class="fas fa-eye me-2"></i>Lihat Portfolio
-                                </button>
+                                <a href="<?php echo e(asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf')); ?>" 
+                                   target="_blank" 
+                                   class="btn-custom-outline text-decoration-none">
+                                    <i class="fas fa-file-pdf me-2"></i>Lihat Portfolio
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -343,6 +349,7 @@
                         </span>
                     </div>
                     <h2 class="display-5 fw-bold mb-4 text-dark gradient-text">Anak Perusahaan Kami</h2>
+
                     <p class="lead text-muted mx-auto mb-4" style="max-width: 800px;">
                         Kami memiliki beberapa anak perusahaan yang beroperasi di berbagai bidang untuk
                         mendukung layanan kami.
@@ -350,72 +357,103 @@
                 </div>
 
                 <!-- Subsidiaries Cards Grid -->
-                <div class="row g-4" id="subsidiaries-container">
+                <div class="row g-4 justify-content-center" id="subsidiaries-container">
                     <?php $__empty_1 = true; $__currentLoopData = $anakPerusahaan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="<?php echo e(100 + ($index * 100)); ?>">
-                            <div
-                                class="subsidiary-card-modern bg-white rounded-4 shadow-lg p-4 h-100 border-0 position-relative overflow-hidden">
-                                <div class="card-header-modern d-flex align-items-center mb-3">
-                                    <div class="company-logo-container me-3">
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="<?php echo e(100 + ($index * 100)); ?>">
+                            <div class="subsidiary-card-new bg-white rounded-4 shadow-lg h-100 border-0 position-relative overflow-hidden">
+                                <!-- Card Header with Large Logo -->
+                                <div class="card-header-new text-center p-4 position-relative">
+                                    <div class="company-logo-new-container mx-auto mb-3">
                                         <?php if($company->foto): ?>
                                             <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
-                                                class="company-logo">
+                                                class="company-logo-new">
                                         <?php else: ?>
                                             <img src="assets/img/Mitra/placeholder.png" alt="<?php echo e($company->nama_perusahaan); ?>"
-                                                class="company-logo">
+                                                class="company-logo-new">
                                         <?php endif; ?>
+                                        <div class="logo-overlay"></div>
                                     </div>
-                                    <div class="company-info flex-grow-1">
-                                        <h5 class="company-name mb-1 text-primary fw-bold"><?php echo e($company->nama_perusahaan); ?>
+                                    
+                                    <?php if($company->kategori): ?>
+                                        <span class="badge bg-gradient-primary text-white px-3 py-2 rounded-pill mb-2 category-badge">
+                                            <i class="fas fa-tag me-1"></i><?php echo e($company->kategori->nama_kategori); ?>
 
-                                        </h5>
-                                        <?php if($company->kategori): ?>
-                                            <p class="company-tagline mb-0 text-muted small">
-                                                <?php echo e($company->kategori->nama_kategori); ?>
+                                        </span>
+                                    <?php endif; ?>
+                                    
+                                    <h5 class="company-name-new mb-2 text-dark fw-bold"><?php echo e($company->nama_perusahaan); ?></h5>
+                                </div>
 
-                                            </p>
+                                <!-- Card Body -->
+                                <div class="card-body-new p-4 pt-0">
+                                    <p class="company-description text-muted mb-4 line-clamp-3">
+                                        <?php echo e($company->deskripsi ?: 'Perusahaan yang bergerak dalam bidang ' . ($company->kategori ? $company->kategori->nama_kategori : 'bisnis') . ' dengan komitmen memberikan layanan terbaik.'); ?>
+
+                                    </p>
+
+                                    <!-- Company Info Grid -->
+                                    <div class="company-info-grid">
+                                        <?php if($company->alamat): ?>
+                                            <div class="info-item d-flex align-items-start mb-3">
+                                                <div class="info-icon me-3">
+                                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                                </div>
+                                                <div class="info-content">
+                                                    <small class="text-muted d-block">Lokasi</small>
+                                                    <span class="fw-medium text-dark"><?php echo e($company->alamat); ?></span>
+                                                </div>
+                                            </div>
                                         <?php endif; ?>
+                                        
+                                        <?php if($company->berdiri_sejak): ?>
+                                            <div class="info-item d-flex align-items-start mb-3">
+                                                <div class="info-icon me-3">
+                                                    <i class="fas fa-calendar-alt text-primary"></i>
+                                                </div>
+                                                <div class="info-content">
+                                                    <small class="text-muted d-block">Berdiri Sejak</small>
+                                                    <span class="fw-medium text-dark"><?php echo e($company->berdiri_sejak->format('Y')); ?></span>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <!-- Contact Info -->
+                                        <div class="info-item d-flex align-items-start mb-3">
+                                            <div class="info-icon me-3">
+                                                <i class="fas fa-users text-primary"></i>
+                                            </div>
+                                            <div class="info-content">
+                                                <small class="text-muted d-block">Status</small>
+                                                <span class="fw-medium text-success">Anak Perusahaan Aktif</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="company-details">
-                                    <h6 class="text-dark fw-semibold mb-2"><?php echo e($company->nama_perusahaan); ?></h6>
-                                    <p class="text-muted small mb-3"><?php echo e($company->deskripsi); ?></p>
-
-                                    <div class="social-media-section mb-3">
-                                        <div class="social-icons d-flex gap-2">
-                                            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                                            <a href="#" class="social-icon twitter"><i class="fab fa-twitter"></i></a>
-                                            <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
-                                            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                                <!-- Card Footer -->
+                                <div class="card-footer-new p-4 pt-0">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="social-links">
+                                            <a href="#" class="social-link" title="WhatsApp">
+                                                <i class="fab fa-whatsapp"></i>
+                                            </a>
                                         </div>
-                                    </div>
-
-                                    <div class="company-stats d-flex justify-content-between align-items-center">
-                                        <div class="stat-item">
-                                            <?php if($company->alamat): ?>
-                                                <small class="text-muted">
-                                                    <i class="fas fa-location-dot me-1 text-primary"></i><?php echo e($company->alamat); ?>
-
-                                                </small>
-                                            <?php endif; ?>
-                                        </div>
-                                        <div class="stat-item">
-                                            <?php if($company->berdiri_sejak): ?>
-                                                <small class="text-muted">
-                                                    <i class="fas fa-calendar me-1 text-primary"></i>Est.
-                                                    <?php echo e($company->berdiri_sejak->format('Y')); ?>
-
-                                                </small>
-                                            <?php endif; ?>
-                                        </div>
+                                        
                                     </div>
                                 </div>
+
+                                <!-- Decorative Elements -->
+                                <div class="card-decoration-1"></div>
+                                <div class="card-decoration-2"></div>
                             </div>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <div class="col-12 text-center">
-                            <p class="text-muted">Belum ada data anak perusahaan.</p>
+                            <div class="empty-state py-5">
+                                <i class="fas fa-building fa-4x text-muted mb-3"></i>
+                                <h5 class="text-muted mb-2">Belum Ada Data Anak Perusahaan</h5>
+                                <p class="text-muted">Data anak perusahaan akan ditampilkan di sini ketika tersedia.</p>
+                            </div>
                         </div>
                     <?php endif; ?>
 
@@ -430,7 +468,184 @@
             </div>
 
         </section>
-
+        <!-- Digital Services Section -->
+        <section class="digital-services-section" id="digital-services">
+            <div class="container">
+                <div class="row align-items-center min-vh-75">
+                    <!-- Left Content -->
+                    <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="service-content-wrapper">
+                            <!-- Badge -->
+                            <div class="service-badge mb-4">
+                                <span class="badge-text">
+                                    <i class="fas fa-code me-2"></i>
+                                    Digital Innovation
+                                </span>
+                                <div class="badge-glow"></div>
+                            </div>
+                            
+                            <!-- Title -->
+                            <h2 class="service-title mb-4">
+                                <span class="gradient-text">Solusi Website</span><br>
+                                & Aplikasi Modern
+                            </h2>
+                            
+                            <!-- Description -->
+                            <p class="service-description mb-4">
+                                Transformasikan bisnis Anda dengan teknologi terdepan. Kami menghadirkan solusi digital yang inovatif, responsif, dan user-friendly untuk meningkatkan produktivitas dan jangkauan bisnis Anda.
+                            </p>
+                            
+                            <!-- Features List -->
+                            <div class="features-grid mb-5">
+                                <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6>Responsive Design</h6>
+                                        <small>Tampil sempurna di semua perangkat</small>
+                                    </div>
+                                </div>
+                                <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6>Performance Optimized</h6>
+                                        <small>Loading cepat & SEO friendly</small>
+                                    </div>
+                                </div>
+                                <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6>Security First</h6>
+                                        <small>Keamanan data terjamin</small>
+                                    </div>
+                                </div>
+                                <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-headset"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h6>24/7 Support</h6>
+                                        <small>Dukungan teknis berkelanjutan</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Action Buttons -->
+                            <div class="action-buttons d-flex flex-wrap gap-3">
+                                <a href="<?php echo e(route('digital.services')); ?>" class="btn-primary-custom">
+                                    <span class="btn-text">Jelajahi Layanan</span>
+                                    <span class="btn-icon">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </span>
+                                    <div class="btn-ripple"></div>
+                                </a>
+                                <a href="<?php echo e(route('digital.services')); ?>" class="btn-outline-custom">
+                                    <i class="fas fa-phone me-2"></i>
+                                    Konsultasi Gratis
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Visual -->
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="service-visual-wrapper">
+                            <!-- Main Visual Container -->
+                            <div class="main-visual-container">
+                                <!-- Floating Elements -->
+                                <div class="floating-element element-1" data-speed="2">
+                                    <div class="tech-card">
+                                        <i class="fab fa-html5"></i>
+                                        <span>HTML5</span>
+                                    </div>
+                                </div>
+                                <div class="floating-element element-2" data-speed="3">
+                                    <div class="tech-card">
+                                        <i class="fab fa-css3-alt"></i>
+                                        <span>CSS3</span>
+                                    </div>
+                                </div>
+                                <div class="floating-element element-3" data-speed="1.5">
+                                    <div class="tech-card">
+                                        <i class="fab fa-js"></i>
+                                        <span>JavaScript</span>
+                                    </div>
+                                </div>
+                                <div class="floating-element element-4" data-speed="2.5">
+                                    <div class="tech-card">
+                                        <i class="fab fa-react"></i>
+                                        <span>React</span>
+                                    </div>
+                                </div>
+                                <div class="floating-element element-5" data-speed="1.8">
+                                    <div class="tech-card">
+                                        <i class="fab fa-php"></i>
+                                        <span>PHP</span>
+                                    </div>
+                                </div>
+                                <div class="floating-element element-6" data-speed="2.2">
+                                    <div class="tech-card">
+                                        <i class="fab fa-laravel"></i>
+                                        <span>Laravel</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Central Device Mockup -->
+                                <div class="device-mockup">
+                                    <div class="laptop-mockup">
+                                        <div class="screen">
+                                            <div class="code-animation">
+                                                <div class="code-line"><span class="tag">&lt;html&gt;</span></div>
+                                                <div class="code-line"><span class="tag">&nbsp;&nbsp;&lt;head&gt;</span></div>
+                                                <div class="code-line"><span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;</span>PT Abhiraja<span class="tag">&lt;/title&gt;</span></div>
+                                                <div class="code-line"><span class="tag">&nbsp;&nbsp;&lt;/head&gt;</span></div>
+                                                <div class="code-line"><span class="tag">&nbsp;&nbsp;&lt;body&gt;</span></div>
+                                                <div class="code-line"><span class="tag">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;</span>Innovation<span class="tag">&lt;/h1&gt;</span></div>
+                                                <div class="code-line typing-animation">...</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mobile-mockup">
+                                        <div class="mobile-screen">
+                                            <div class="mobile-content">
+                                                <div class="mobile-header"></div>
+                                                <div class="mobile-body">
+                                                    <div class="mobile-card active"></div>
+                                                    <div class="mobile-card"></div>
+                                                    <div class="mobile-card"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Background Effects -->
+                                <div class="bg-effect effect-1"></div>
+                                <div class="bg-effect effect-2"></div>
+                                <div class="bg-effect effect-3"></div>
+                                
+                                <!-- Stats Counter -->
+                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Animated Background -->
+            <div class="animated-bg">
+                <div class="particle" style="--delay: 0s; --duration: 20s;"></div>
+                <div class="particle" style="--delay: 2s; --duration: 25s;"></div>
+                <div class="particle" style="--delay: 4s; --duration: 18s;"></div>
+                <div class="particle" style="--delay: 6s; --duration: 22s;"></div>
+                <div class="particle" style="--delay: 8s; --duration: 28s;"></div>
+            </div>
+        </section>
 
         <section class="products-section-enhanced" id="products">
             <div class="container">
@@ -491,9 +706,6 @@
                                 <?php endif; ?>
                                 <div class="product-overlay">
                                     <div class="product-icons">
-                                        <button class="icon-btn" title="Lihat Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
                                         <button class="icon-btn" title="Tambah ke Favorit">
                                             <i class="fas fa-heart"></i>
                                         </button>
@@ -563,6 +775,53 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Business Services -->
+                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="200">
+                        <div class="product-card-enhanced">
+                            <div class="product-image-container">
+                                <img src="assets/img/portfolio/jamur.jpg" alt="Branding UMKM" class="product-image">
+                                <div class="product-overlay">
+                                    <div class="product-icons">
+                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="icon-btn" title="Konsultasi">
+                                            <i class="fas fa-comments"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="product-category-tag">Bisnis</div>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-header">
+                                    <h4 class="product-title">Paket Branding UMKM</h4>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span class="rating-text">(4.7)</span>
+                                    </div>
+                                </div>
+                                <p class="product-description">Tingkatkan citra bisnis Anda dengan paket branding
+                                    lengkap yang profesional dan modern.</p>
+                                <div class="product-features">
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Logo Design</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Digital Marketing</span>
+                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Website</span>
+                                </div>
+                                <div class="product-footer">
+                                    <button class="btn-product-detail" data-bs-toggle="modal"
+                                        data-bs-target="#productModal">
+                                        <span>Detail Paket</span>
+                                        <i class="fas fa-arrow-right ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <div class="col-12 text-center">
                         <p>Tidak ada produk tersedia saat ini.</p>
@@ -576,9 +835,6 @@
                                     class="product-image">
                                 <div class="product-overlay">
                                     <div class="product-icons">
-                                        <button class="icon-btn" title="Lihat Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
                                         <button class="icon-btn" title="Tambah ke Favorit">
                                             <i class="fas fa-heart"></i>
                                         </button>
@@ -626,9 +882,6 @@
                                 <img src="assets/img/portfolio/kayu2.jpg" alt="Kerajinan Kayu" class="product-image">
                                 <div class="product-overlay">
                                     <div class="product-icons">
-                                        <button class="icon-btn" title="Lihat Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
                                         <button class="icon-btn" title="Tambah ke Favorit">
                                             <i class="fas fa-heart"></i>
                                         </button>
@@ -681,9 +934,6 @@
                                     class="product-image">
                                 <div class="product-overlay">
                                     <div class="product-icons">
-                                        <button class="icon-btn" title="Lihat Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
                                         <button class="icon-btn" title="Tambah ke Favorit">
                                             <i class="fas fa-heart"></i>
                                         </button>
@@ -735,9 +985,6 @@
                                 <img src="assets/img/portfolio/lada.jpg" alt="Jasa Boga Premium" class="product-image">
                                 <div class="product-overlay">
                                     <div class="product-icons">
-                                        <button class="icon-btn" title="Lihat Detail">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
                                         <button class="icon-btn" title="Tambah ke Favorit">
                                             <i class="fas fa-heart"></i>
                                         </button>
@@ -787,7 +1034,7 @@
                 <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
                     <div class="cta-section">
                         <h3 class="fw-bold mb-3">Tidak Menemukan Yang Anda Cari?</h3>
-                        <p class="text-muted mb-4">Konsultasikan kebutuhan khusus Anda dengan tim ahli kami</p>
+                        <p class="mb-4 ">Konsultasikan kebutuhan khusus Anda dengan tim ahli kami</p>
                         <button class="btn-cta-custom" data-bs-toggle="modal" data-bs-target="#contactModal">
                             <i class="fas fa-phone me-2"></i>Konsultasi Gratis
                         </button>
@@ -920,7 +1167,8 @@
                             <li><a href="#home">Beranda</a></li>
                             <li><a href="#about">Tentang Kami</a></li>
                             <li><a href="#services">Layanan</a></li>
-                            <li><a href="#subsidiaries">Anak Perusahaan</a></li>
+                            <li><a href="#subsidiaries">Anak Perusahaan</a>
+                            </li>
                             <li><a href="#products">Produk</a></li>
                             <li><a href="#contact">Kontak</a></li>
                         </ul>
@@ -1078,8 +1326,32 @@
                                     
                                     <div class="tab-content mt-3">
                                         <div class="tab-pane fade show active" id="features-tab">
+<<<<<<< HEAD
+                                            <div class="features-list">
+                                                <div class="" data-aos="fade-up" data-aos-delay="100">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Kurikulum yang disesuaikan dengan kebutuhan</span>
+                                                </div>
+                                                <div class="" data-aos="fade-up" data-aos-delay="200">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Pelatihan guru dan staf berkualitas</span>
+                                                </div>
+                                                <div class="" data-aos="fade-up" data-aos-delay="300">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Sistem manajemen pendidikan terintegrasi</span>
+                                                </div>
+                                                <div class="" data-aos="fade-up" data-aos-delay="400">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Evaluasi dan penilaian komprehensif</span>
+                                                </div>
+                                                <div class="" data-aos="fade-up">
+                                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                                    <span>Dukungan teknis 24/7</span>
+                                                </div>
+=======
                                             <div class="features-list" id="benefitsList">
                                                 <!-- Benefits will be populated by JavaScript -->
+>>>>>>> origin/main
                                             </div>
                                         </div>
                                     </div>
@@ -1124,6 +1396,8 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
 
     <!-- Modal untuk Detail Anak Perusahaan -->
     <div class="modal fade" id="subsidiariesModal" tabindex="-1" aria-hidden="true">
@@ -1257,6 +1531,7 @@
         </div>
     </div>
 
+>>>>>>> origin/main
     <!-- Scripts - Load in order for better performance -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
@@ -1631,7 +1906,235 @@
             document.head.appendChild(style);
 
             addVisualFeedback();
+            
+            // Digital Services Section Interactions
+            initDigitalServicesSection();
+            
+            // Company Detail Modal Handler
+            initCompanyDetailModal();
         });
+        
+
+        // Digital Services Section Functions
+        function initDigitalServicesSection() {
+            // Parallax effect for floating elements
+            function handleParallax() {
+                const floatingElements = document.querySelectorAll('.floating-element');
+                const scrollY = window.pageYOffset;
+                
+                floatingElements.forEach(element => {
+                    const speed = element.dataset.speed || 1;
+                    const yPos = -(scrollY * speed / 10);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+            }
+            
+            // Counter animation for stats
+            function animateCounters() {
+                const counters = document.querySelectorAll('.counter');
+                const options = {
+                    threshold: 0.7,
+                    rootMargin: '0px 0px -100px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const counter = entry.target;
+                            const target = parseInt(counter.getAttribute('data-target'));
+                            const duration = 2000;
+                            const step = target / (duration / 16);
+                            let current = 0;
+
+                            const updateCounter = () => {
+                                current += step;
+                                if (current < target) {
+                                    counter.textContent = Math.floor(current);
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.textContent = target;
+                                }
+                            };
+
+                            updateCounter();
+                            observer.unobserve(counter);
+                        }
+                    });
+                }, options);
+
+                counters.forEach(counter => observer.observe(counter));
+            }
+            
+            // Tech card hover effects
+            function initTechCards() {
+                const techCards = document.querySelectorAll('.tech-card');
+                
+                techCards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.transform = 'scale(1.15) rotateY(10deg)';
+                        this.style.boxShadow = '0 15px 30px rgba(255, 215, 0, 0.3)';
+                    });
+                    
+                    card.addEventListener('mouseleave', function() {
+                        this.style.transform = 'scale(1) rotateY(0deg)';
+                        this.style.boxShadow = 'none';
+                    });
+                    
+                    // Add click animation
+                    card.addEventListener('click', function() {
+                        this.style.animation = 'none';
+                        setTimeout(() => {
+                            this.style.animation = '';
+                        }, 10);
+                        
+                        // Create particle effect
+                        createParticleEffect(this);
+                    });
+                });
+            }
+            
+            // Particle effect for interactions
+            function createParticleEffect(element) {
+                const rect = element.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                for (let i = 0; i < 12; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `
+                        position: fixed;
+                        width: 4px;
+                        height: 4px;
+                        background: #6495ed;
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 9999;
+                        left: ${centerX}px;
+                        top: ${centerY}px;
+                    `;
+                    
+                    document.body.appendChild(particle);
+                    
+                    const angle = (i / 12) * 2 * Math.PI;
+                    const velocity = 100 + Math.random() * 50;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+                    
+                    particle.animate([
+                        { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                        { transform: `translate(${vx}px, ${vy}px) scale(0)`, opacity: 0 }
+                    ], {
+                        duration: 800,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    }).onfinish = () => {
+                        particle.remove();
+                    };
+                }
+            }
+            
+            // Code animation
+            function startCodeAnimation() {
+                const codeLines = document.querySelectorAll('.code-line');
+                let delay = 500;
+                
+                codeLines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.style.opacity = '1';
+                        line.style.transform = 'translateX(0)';
+                    }, delay);
+                    delay += 500;
+                });
+                
+                // Restart animation every 10 seconds
+                setTimeout(() => {
+                    codeLines.forEach(line => {
+                        line.style.opacity = '0';
+                        line.style.transform = 'translateX(-10px)';
+                    });
+                    setTimeout(() => startCodeAnimation(), 1000);
+                }, 10000);
+            }
+            
+            // Button interactions
+            function initButtonInteractions() {
+                const exploreBtn = document.getElementById('exploreServicesBtn');
+                
+                if (exploreBtn) {
+                    exploreBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Create ripple effect
+                        const ripple = this.querySelector('.btn-ripple');
+                        ripple.style.width = '300px';
+                        ripple.style.height = '300px';
+                        
+                        setTimeout(() => {
+                            ripple.style.width = '0';
+                            ripple.style.height = '0';
+                        }, 600);
+                        
+                        // Simulate navigation to service profile page
+                        setTimeout(() => {
+                            alert('Navigasi ke halaman profile layanan digital - Dalam pengembangan');
+                        }, 300);
+                    });
+                }
+            }
+            
+            // Mobile card animation
+            function animateMobileCards() {
+                const cards = document.querySelectorAll('.mobile-card');
+                let currentCard = 0;
+                
+                setInterval(() => {
+                    cards.forEach(card => card.classList.remove('active'));
+                    cards[currentCard].classList.add('active');
+                    currentCard = (currentCard + 1) % cards.length;
+                }, 2000);
+            }
+            
+            // Initialize all functions
+            animateCounters();
+            initTechCards();
+            initButtonInteractions();
+            startCodeAnimation();
+            animateMobileCards();
+            
+            // Add scroll listener for parallax
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        handleParallax();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            // Add intersection observer for section animations
+            const digitalSection = document.querySelector('.digital-services-section');
+            if (digitalSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            digitalSection.classList.add('active');
+                            
+                            // Trigger floating animations
+                            const floatingElements = digitalSection.querySelectorAll('.floating-element');
+                            floatingElements.forEach((element, index) => {
+                                setTimeout(() => {
+                                    element.style.opacity = '1';
+                                    element.style.transform = 'translateY(0)';
+                                }, index * 200);
+                            });
+                        }
+                    });
+                }, { threshold: 0.3 });
+                
+                observer.observe(digitalSection);
+            }
+        }
 
         
     </script>
