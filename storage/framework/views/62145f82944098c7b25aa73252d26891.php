@@ -3,28 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="PT Abhiraja Giovanni Tryamanda - Mitra strategis untuk kesuksesan bisnis Anda dalam pendidikan, branding, keuangan, dan manajemen.">
-    <meta name="keywords" content="Abhiraja, Giovanni, Tryamanda, pendidikan, branding, keuangan, manajemen, UMKM, konsultasi bisnis">
-    <meta name="author" content="PT Abhiraja Giovanni Tryamanda">
-    
-    <title>PT ABHIRAJA GIOVANNI TRYAMANDA - Mitra Strategis Kesuksesan Anda</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
+    <title>PT ABHIRAJA GIOVANNI TRYAMANDA</title>
     <link rel="icon" href="assets/img/logo/Logo.png" type="image/png">
 
     <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
-    <link rel="preload" href="assets/css/enhanced-responsive.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        as="style">
+    <link rel="preload" href="assets/css/style.css" as="style">
 
     <!-- Critical CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="assets/css/enhanced-responsive.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
 
-    <!-- Non-critical CSS - load async for better performance -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Non-critical CSS - load async -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://unpkg.com/swiper/swiper-bundle.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/subsidiaries.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preload" href="assets/css/product-modal.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -44,67 +46,42 @@
 </head>
 
 <body>
-    <!-- Enhanced Navigation -->
-    <header role="banner">
-        <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#home" aria-label="PT Abhiraja Giovanni Tryamanda - Homepage">
-                    <img src="assets/img/logo/Logo.png" alt="PT Abhiraja Giovanni Tryamanda Logo">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/img/logo/Logo.png" alt="Logo" class="img-fluid">
                 </a>
-                
-                <!-- Company name - responsive display -->
-                <div class="d-none d-md-block head">
-                    <h6 class="fw-bold m-0 p-0" aria-hidden="true">PT ABHIRAJA GIOVANNI TRYAMANDA</h6>
+                <div class="d-none d-lg-block d-md-block head">
+                    <h6 class="text-black fw-bold m-0 p-0">PT ABHIRAJA GIOVANNI TRYAMANDA</h6>
                 </div>
-                <div class="d-block d-md-none head">
-                    <h6 class="fw-bold m-0 p-0" aria-hidden="true">PT ABHIRAJA GIOVANNI T</h6>
+                <div class="d-sm-block d-md-none d-lg-none head">
+                    <h6 class="text-black fw-bold m-0 p-0">PT ABHIRAJA GIOVANNI T</h6>
                 </div>
 
-                <!-- Mobile menu toggle -->
-                <button class="navbar-toggler d-lg-none" 
-                        type="button" 
-                        data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar" 
-                        aria-controls="offcanvasNavbar"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation menu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- Navigation menu -->
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu Navigasi</h5>
-                        <button type="button" 
-                                class="btn-close" 
-                                data-bs-dismiss="offcanvas" 
-                                aria-label="Tutup menu navigasi"></button>
+                        <h5 class="offcanvas-title">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <ul class="navbar-nav ms-auto">
+                        <ul class="navbar-nav ms-auto w-100 justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link" href="#home" aria-current="page">
-                                    <i class="fas fa-home me-2 d-lg-none" aria-hidden="true"></i>
-                                    BERANDA
-                                </a>
+                                <a class="nav-link text-black fw-bold" href="#home">BERANDA</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#about">
-                                    <i class="fas fa-info-circle me-2 d-lg-none" aria-hidden="true"></i>
-                                    TENTANG KAMI
-                                </a>
+                                <a class="nav-link text-black fw-bold" href="#about">TENTANG KAMI</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#services">
-                                    <i class="fas fa-cogs me-2 d-lg-none" aria-hidden="true"></i>
-                                    LAYANAN
-                                </a>
+                                <a class="nav-link text-black fw-bold" href="#services">LAYANAN</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#subsidiaries">
-                                    <i class="fas fa-building me-2 d-lg-none" aria-hidden="true"></i>
-                                    ANAK PERUSAHAAN
-                                </a>
+                                <a class="nav-link text-black fw-bold" href="#subsidiaries">ANAK PERUSAHAAN</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black fw-bold" href="#digital-services">JASA DIGITAL</a>
@@ -121,8 +98,6 @@
             </div>
         </nav>
     </header>
-        </nav>
-    </header>
 
     <main>
 
@@ -134,38 +109,40 @@
                     <!-- Slide 1: Main Company Overview -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/1cityscape.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/1cityscape.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content main-slide">
-                            <h1 class="mt-4 fw-bold pb-3 pt-5 text-center">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
-                            <p class="fs-5 kuning text-center mb-4">Mitra Strategis untuk Kesuksesan Anda</p>
-                            <div class="container-kotak pt-2">
+                            <h1 class="fw-bold pb-3 pt-5">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
+                            <p class="fs-5 kuning">Mitra Strategis untuk Kesuksesan Anda</p>
+                            <div class="container-kotak pt-2 d-flex">
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="100">
-                                    <i class="fas fa-university kuning" aria-hidden="true"></i>
+                                    <i class="fas fa-university kuning"></i>
                                     <div>PENDIDIKAN</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="200">
-                                    <i class="fas fa-user kuning" aria-hidden="true"></i>
+                                    <i class="fas fa-user kuning"></i>
                                     <div>BRANDING</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="300">
-                                    <i class="fas fa-money-bill kuning" aria-hidden="true"></i>
+                                    <i class="fas fa-money-bill kuning"></i>
                                     <div>FINANCE</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="400">
-                                    <i class="fas fa-tasks kuning" aria-hidden="true"></i>
+                                    <i class="fas fa-tasks kuning"></i>
                                     <div>MANAGEMENT</div>
                                 </div>
+                            </div>
+                            <div class="container-kotak pt-4">
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="500">
-                                    <i class="fas fa-hammer kuning" aria-hidden="true"></i>
+                                    <i class="fas fa-hammer kuning"></i>
                                     <div>WOOD STUDIO</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="600">
-                                    <i class="fas fa-tree kuning" aria-hidden="true"></i>
+                                    <i class="fas fa-tree kuning"></i>
                                     <div>AGRICULTURE</div>
                                 </div>
                                 <div class="kotak" data-aos="fade-up" data-aos-delay="700">
-                                    <i class="fas fa-hamburger kuning" aria-hidden="true"></i>
+                                    <i class="fas fa-hamburger kuning"></i>
                                     <div>JASA BOGA</div>
                                 </div>
                             </div>
@@ -175,7 +152,7 @@
                     <!-- Slide 2: Branding & Digital -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-2.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-2.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>Jasa Pembuatan Aplikasi & Website</h1>
@@ -187,7 +164,7 @@
                     <!-- Slide 3: Finance & Tax -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-3.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-3.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>Finance & Tax</h1>
@@ -199,7 +176,7 @@
                     <!-- Slide 4: KOL Management -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-4.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>KOL Management</h1>
@@ -212,7 +189,7 @@
                     <!-- Slide 5: Produk Unggulan Abhiraja -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-5.jpg')); ?>');"></div>
                             <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>Produk Unggulan Abhiraja</h1>
@@ -228,129 +205,133 @@
         </section>
         <section class="page-section-2" id="about">
             <div class="container">
-                <div class="d-grid-responsive align-items-center bg-white rounded-modern shadow-soft p-4 p-lg-5">
-                    <div class="deskripsi-PT" data-aos="fade-right">
-                        <h2 class="fw-bold mb-4 text-gradient-primary">PT ABHIRAJA GIOVANNI TRYAMANDA</h2>
-                        <p class="text-responsive mb-3">PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
+                <div class="row align-items-center bg-white">
+                    <div class="col-md-6 deskripsi-PT" data-aos="fade-right">
+                        <h2 class="fw-bold mb-4">PT ABHIRAJA GIOVANNI TRYARMANDA</h2>
+                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
                             memberikan layanan
                             berkualitas tinggi di berbagai bidang, termasuk pendidikan, branding, keuangan, dan lebih
                             banyak lagi.</p>
-                        <p class="text-responsive mb-4">Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan
+                        <p>Kami memahami bahwa setiap bisnis memiliki kebutuhan unik, itulah sebabnya kami menawarkan
                             solusi yang disesuaikan untuk membantu Anda mencapai tujuan Anda. Dengan tim ahli yang
                             berpengalaman, kami siap menjadi mitra strategis untuk kesuksesan Anda.</p>
-                        <button class="btn-custom btn-modern mt-3" data-bs-toggle="modal"
+                        <button class="btn-custom mt-3" data-bs-toggle="modal"
                             data-bs-target="#aboutModal">Selengkapnya</button>
                     </div>
-                    <div class="text-center logo" data-aos="fade-left">
-                        <img src="assets/img/logo/LogoCut.png" class="img-responsive shadow-soft rounded-modern" alt="Logo PT Abhiraja Giovanni Tryamanda">
+                    <div class="col-md-6 text-center logo" data-aos="fade-left">
+                        <img src="assets/img/logo/LogoCut.png" class="img-fluid" alt="Logo">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Enhanced Services Section -->
-        <section class="page-section-33 py-responsive" id="services" role="main">
+        <section class="page-section-33" id="services">
             <div class="container">
-                <div class="d-grid-responsive align-items-center">
+                <div class="row align-items-center">
                     <!-- Content Section -->
-                    <div class="services-content" data-aos="fade-right">
-                        <div class="section-badge mb-3">
-                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill shadow-accent">
-                                <i class="fas fa-handshake me-2" aria-hidden="true"></i>Success Stories
-                            </span>
-                        </div>
-                        <h1 class="text-white fw-bold mb-4 display-5 text-center-mobile">
-                            Ikuti sukses mitra kami menuju kesuksesan.
-                        </h1>
-                        <p class="text-white-75 mb-4 lead text-center-mobile">
-                            Konsultasikan permasalahan UMKM atau masalah pendidikan Anda pada kami. 
-                            Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda berkembang.
-                        </p>
+                    <div class="col-lg-6 col-md-12" data-aos="fade-right">
+                        <div class="services-content">
+                            <div class="section-badge mb-3">
+                                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">
+                                    <i class="fas fa-handshake me-2"></i>Success Stories
+                                </span>
+                            </div>
+                            <h1 class="text-white fw-bold mb-4 display-5">Ikuti sukses mitra kami menuju kesuksesan.
+                            </h1>
+                            <p class="text-white-75 mb-4 lead">Konsultasikan permasalahan UMKM atau masalah pendidikan
+                                Anda pada kami. Dapatkan konsultasi terbaik dari ahlinya untuk membantu bisnis Anda
+                                berkembang.</p>
 
-                        <!-- Enhanced Statistics -->
-                        <div class="stats-grid mb-4">
-                            <div class="stat-item text-center backdrop-blur-sm rounded-modern">
-                                <h3 class="text-warning fw-bold mb-1 counter" data-target="491">491</h3>
-                                <small class="text-white-50">Klien Puas</small>
+                            <!-- Statistics -->
+                            <div class="row mb-4">
+                                <div class="col-6 col-md-4">
+                                    <div class="stat-item text-center">
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="491">491</h3>
+                                        <small class="text-white-50">Klien Puas</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <div class="stat-item text-center">
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="327">327</h3>
+                                        <small class="text-white-50">Proyek Selesai</small>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4 mt-3 mt-md-0">
+                                    <div class="stat-item text-center">
+                                        <h3 class="text-warning fw-bold mb-1 counter" data-target="98">98</h3>
+                                        <small class="text-white-50">% Kepuasan</small>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="stat-item text-center backdrop-blur-sm rounded-modern">
-                                <h3 class="text-warning fw-bold mb-1 counter" data-target="327">327</h3>
-                                <small class="text-white-50">Proyek Selesai</small>
-                            </div>
-                            <div class="stat-item text-center backdrop-blur-sm rounded-modern">
-                                <h3 class="text-warning fw-bold mb-1 counter" data-target="98">98</h3>
-                                <small class="text-white-50">% Kepuasan</small>
-                            </div>
-                        </div>
 
-                        <div class="action-buttons d-flex flex-column flex-sm-row gap-3 align-items-center">
-                            <button class="btn-custom-primary btn-modern flex-grow-1 flex-sm-grow-0" 
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#contactModal"
-                                    aria-label="Hubungi kami untuk konsultasi">
-                                <i class="fas fa-phone me-2" aria-hidden="true"></i>Hubungi Kami
-                            </button>
-                            <a href="{{ asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf') }}" 
-                               target="_blank" 
-                               class="btn-custom-outline btn-modern text-decoration-none flex-grow-1 flex-sm-grow-0"
-                               aria-label="Lihat portfolio perusahaan (PDF)">
-                                <i class="fas fa-file-pdf me-2" aria-hidden="true"></i>Lihat Portfolio
-                            </a>
+                            <div class="action-buttons">
+                                <button class="btn-custom-primary me-3" data-bs-toggle="modal"
+                                    data-bs-target="#contactModal">
+                                    <i class="fas fa-phone me-2"></i>Hubungi Kami
+                                </button>
+                                <a href="<?php echo e(asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf')); ?>" 
+                                   target="_blank" 
+                                   class="btn-custom-outline text-decoration-none">
+                                    <i class="fas fa-file-pdf me-2"></i>Lihat Portfolio
+                                </a>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Interactive Gallery Section -->
-                    <div class="interactive-gallery mt-5 mt-lg-0" data-aos="fade-left">
-                        <!-- Main Display -->
-                        <div class="main-gallery-item shadow-strong rounded-modern-lg">
-                            <div class="gallery-card active" data-index="0">
-                                <img src="assets/img/portfolio/kayu.jpg" alt="Success Story 1" class="img-responsive">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-content">
-                                        <h5 class="text-white fw-bold">Furniture Premium</h5>
-                                        <p class="text-white-75 mb-0">Produksi furniture berkualitas tinggi</p>
+                    <div class="col-lg-6 col-md-12 mt-5 mt-lg-0" data-aos="fade-left">
+                        <div class="interactive-gallery">
+                            <!-- Main Display -->
+                            <div class="main-gallery-item">
+                                <div class="gallery-card active" data-index="0">
+                                    <img src="assets/img/portfolio/kayu.jpg" alt="Success Story 1" class="img-fluid">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-content">
+                                            <h5 class="text-white fw-bold">Furniture Premium</h5>
+                                            <p class="text-white-75 mb-0">Produksi furniture berkualitas tinggi</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-card" data-index="1">
+                                    <img src="assets/img/portfolio/sawah.jpg" alt="Success Story 2" class="img-fluid">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-content">
+                                            <h5 class="text-white fw-bold">Pertanian Modern</h5>
+                                            <p class="text-white-75 mb-0">Solusi pertanian berkelanjutan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-card" data-index="2">
+                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Success Story 3" class="img-fluid">
+                                    <div class="gallery-overlay">
+                                        <div class="gallery-content">
+                                            <h5 class="text-white fw-bold">Kerajinan Eksklusif</h5>
+                                            <p class="text-white-75 mb-0">Desain unik dan berkualitas</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="gallery-card" data-index="1">
-                                <img src="assets/img/portfolio/sawah.jpg" alt="Success Story 2" class="img-responsive">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-content">
-                                        <h5 class="text-white fw-bold">Pertanian Modern</h5>
-                                        <p class="text-white-75 mb-0">Solusi pertanian berkelanjutan</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gallery-card" data-index="2">
-                                <img src="assets/img/portfolio/kayu3.jpg" alt="Success Story 3" class="img-responsive">
-                                <div class="gallery-overlay">
-                                    <div class="gallery-content">
-                                        <h5 class="text-white fw-bold">Kerajinan Eksklusif</h5>
-                                        <p class="text-white-75 mb-0">Desain unik dan berkualitas</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Thumbnail Navigation -->
-                        <div class="gallery-thumbnails mt-3 justify-content-center">
-                            <div class="thumbnail-item active rounded-modern" data-index="0">
-                                <img src="assets/img/portfolio/kayu.jpg" alt="Thumbnail 1" class="img-responsive">
+                            <!-- Thumbnail Navigation -->
+                            <div class="gallery-thumbnails mt-3">
+                                <div class="thumbnail-item active" data-index="0">
+                                    <img src="assets/img/portfolio/kayu.jpg" alt="Thumbnail 1">
+                                </div>
+                                <div class="thumbnail-item" data-index="1">
+                                    <img src="assets/img/portfolio/sawah.jpg" alt="Thumbnail 2">
+                                </div>
+                                <div class="thumbnail-item" data-index="2">
+                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Thumbnail 3">
+                                </div>
                             </div>
-                            <div class="thumbnail-item rounded-modern" data-index="1">
-                                <img src="assets/img/portfolio/sawah.jpg" alt="Thumbnail 2" class="img-responsive">
-                            </div>
-                            <div class="thumbnail-item rounded-modern" data-index="2">
-                                <img src="assets/img/portfolio/kayu3.jpg" alt="Thumbnail 3" class="img-responsive">
-                            </div>
-                        </div>
 
-                        <!-- Progress Indicators -->
-                        <div class="gallery-progress mt-3 justify-content-center">
-                            <div class="progress-bar rounded-modern">
-                                <div class="progress-fill rounded-modern" style="width: 33.33%"></div>
+                            <!-- Progress Indicators -->
+                            <div class="gallery-progress mt-3">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 33.33%"></div>
+                                </div>
+                                <span class="progress-text text-white-50">1 of 3</span>
                             </div>
-                            <span class="progress-text text-white-50 ms-3">1 of 3</span>
                         </div>
                     </div>
                 </div>
@@ -377,62 +358,64 @@
 
                 <!-- Subsidiaries Cards Grid -->
                 <div class="row g-4 justify-content-center" id="subsidiaries-container">
-                    @forelse($anakPerusahaan as $index => $company)
-                        <div class="col-lg-4 col-md-6 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 100) }}">
+                    <?php $__empty_1 = true; $__currentLoopData = $anakPerusahaan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="<?php echo e(100 + ($index * 100)); ?>">
                             <div class="subsidiary-card-new bg-white rounded-4 shadow-lg h-100 border-0 position-relative overflow-hidden">
                                 <!-- Card Header with Large Logo -->
                                 <div class="card-header-new text-center p-4 position-relative">
                                     <div class="company-logo-new-container mx-auto mb-3">
-                                        @if($company->foto)
-                                            <img src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}"
+                                        <?php if($company->foto): ?>
+                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="company-logo-new">
-                                        @else
-                                            <img src="assets/img/Mitra/placeholder.png" alt="{{ $company->nama_perusahaan }}"
+                                        <?php else: ?>
+                                            <img src="assets/img/Mitra/placeholder.png" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="company-logo-new">
-                                        @endif
+                                        <?php endif; ?>
                                         <div class="logo-overlay"></div>
                                     </div>
                                     
-                                    @if($company->kategori)
+                                    <?php if($company->kategori): ?>
                                         <span class="badge bg-gradient-primary text-white px-3 py-2 rounded-pill mb-2 category-badge">
-                                            <i class="fas fa-tag me-1"></i>{{ $company->kategori->nama_kategori }}
+                                            <i class="fas fa-tag me-1"></i><?php echo e($company->kategori->nama_kategori); ?>
+
                                         </span>
-                                    @endif
+                                    <?php endif; ?>
                                     
-                                    <h5 class="company-name-new mb-2 text-dark fw-bold">{{ $company->nama_perusahaan }}</h5>
+                                    <h5 class="company-name-new mb-2 text-dark fw-bold"><?php echo e($company->nama_perusahaan); ?></h5>
                                 </div>
 
                                 <!-- Card Body -->
                                 <div class="card-body-new p-4 pt-0">
                                     <p class="company-description text-muted mb-4 line-clamp-3">
-                                        {{ $company->deskripsi ?: 'Perusahaan yang bergerak dalam bidang ' . ($company->kategori ? $company->kategori->nama_kategori : 'bisnis') . ' dengan komitmen memberikan layanan terbaik.' }}
+                                        <?php echo e($company->deskripsi ?: 'Perusahaan yang bergerak dalam bidang ' . ($company->kategori ? $company->kategori->nama_kategori : 'bisnis') . ' dengan komitmen memberikan layanan terbaik.'); ?>
+
                                     </p>
 
                                     <!-- Company Info Grid -->
                                     <div class="company-info-grid">
-                                        @if($company->alamat)
+                                        <?php if($company->alamat): ?>
                                             <div class="info-item d-flex align-items-start mb-3">
                                                 <div class="info-icon me-3">
                                                     <i class="fas fa-map-marker-alt text-primary"></i>
                                                 </div>
                                                 <div class="info-content">
                                                     <small class="text-muted d-block">Lokasi</small>
-                                                    <span class="fw-medium text-dark">{{ $company->alamat }}</span>
+                                                    <span class="fw-medium text-dark"><?php echo e($company->alamat); ?></span>
                                                 </div>
                                             </div>
-                                        @endif
+                                        <?php endif; ?>
                                         
-                                        @if($company->berdiri_sejak)
+                                        <?php if($company->berdiri_sejak): ?>
                                             <div class="info-item d-flex align-items-start mb-3">
                                                 <div class="info-icon me-3">
                                                     <i class="fas fa-calendar-alt text-primary"></i>
                                                 </div>
                                                 <div class="info-content">
                                                     <small class="text-muted d-block">Berdiri Sejak</small>
-                                                    <span class="fw-medium text-dark">{{ $company->berdiri_sejak->format('Y') }}</span>
+                                                    <span class="fw-medium text-dark"><?php echo e($company->berdiri_sejak->format('Y')); ?></span>
                                                 </div>
                                             </div>
-                                        @endif
+                                        <?php endif; ?>
 
                                         <!-- Contact Info -->
                                         <div class="info-item d-flex align-items-start mb-3">
@@ -464,7 +447,7 @@
                                 <div class="card-decoration-2"></div>
                             </div>
                         </div>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <div class="col-12 text-center">
                             <div class="empty-state py-5">
                                 <i class="fas fa-building fa-4x text-muted mb-3"></i>
@@ -472,7 +455,7 @@
                                 <p class="text-muted">Data anak perusahaan akan ditampilkan di sini ketika tersedia.</p>
                             </div>
                         </div>
-                    @endforelse
+                    <?php endif; ?>
 
                     <div class="company-stats d-flex justify-content-between align-items-center">
                         <div class="stat-item">
@@ -554,14 +537,14 @@
                             
                             <!-- Action Buttons -->
                             <div class="action-buttons d-flex flex-wrap gap-3">
-                                <a href="{{ route('digital.services') }}" class="btn-primary-custom">
+                                <a href="<?php echo e(route('digital.services')); ?>" class="btn-primary-custom">
                                     <span class="btn-text">Jelajahi Layanan</span>
                                     <span class="btn-icon">
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                     <div class="btn-ripple"></div>
                                 </a>
-                                <a href="{{ route('digital.services') }}" class="btn-outline-custom">
+                                <a href="<?php echo e(route('digital.services')); ?>" class="btn-outline-custom">
                                     <i class="fas fa-phone me-2"></i>
                                     Konsultasi Gratis
                                 </a>
@@ -669,12 +652,12 @@
                 <!-- Section Header -->
                 <div class="text-center mb-5" data-aos="fade-up">
                     <div class="section-badge mb-3">
-                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill shadow-soft">
+                        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill">
                             <i class="fas fa-star me-2"></i>Layanan Terbaik
                         </span>
                     </div>
-                    <h2 class="display-5 fw-bold mb-4 text-gradient-primary">Solusi Bisnis Terpadu</h2>
-                    <p class="lead text-muted mx-auto mb-5 text-responsive" style="max-width: 800px;">
+                    <h2 class="display-5 fw-bold mb-4 text-dark">Solusi Bisnis Terpadu</h2>
+                    <p class="lead text-muted mx-auto mb-5" style="max-width: 800px;">
                         Pilih layanan yang sesuai dengan kebutuhan bisnis Anda. Setiap paket dirancang khusus untuk
                         memberikan hasil maksimal.
                     </p>
@@ -682,15 +665,15 @@
 
                 <!-- Filter Buttons (Dynamic from Database) -->
                 <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
-                    <div class="d-flex flex-wrap justify-content-center gap-2 filter-buttons">
-                        <button class="filter-btn btn-modern active" data-filter="all">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">
                             <i class="fas fa-th-large me-2"></i>Semua Layanan
                         </button>
 
-                        @foreach($categories as $kategori)
-                            <button class="filter-btn btn-modern" data-filter="{{ \Str::slug($kategori->nama_kategori) }}">
-                                {{-- Optional icon mapping --}}
-                                @php
+                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <button class="filter-btn" data-filter="<?php echo e(\Str::slug($kategori->nama_kategori)); ?>">
+                                
+                                <?php
                                     $iconMap = [
                                         'Pendidikan' => 'fas fa-graduation-cap',
                                         'Bisnis' => 'fas fa-briefcase',
@@ -698,27 +681,29 @@
                                         'Pertanian' => 'fas fa-seedling',
                                     ];
                                     $iconClass = $iconMap[$kategori->nama_kategori] ?? 'fas fa-tags';
-                                @endphp
+                                ?>
 
-                                <i class="{{ $iconClass }} me-2"></i>{{ $kategori->nama_kategori }}
+                                <i class="<?php echo e($iconClass); ?> me-2"></i><?php echo e($kategori->nama_kategori); ?>
+
                             </button>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
+
                 <!-- Products Grid -->
-                <div class="product-gallery-grid gap-responsive" id="productsGrid">
-                    @forelse($produk as $index => $item)
-                    <div class="product-item" data-category="{{ \Str::slug($item->anakPerusahaan->kategori->nama_kategori ?? 'other') }}" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 50) }}">
+                <div class="products-grid" id="productsGrid">
+                    <?php $__empty_1 = true; $__currentLoopData = $produk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <div class="product-item" data-category="<?php echo e(\Str::slug($item->anakPerusahaan->kategori->nama_kategori ?? 'other')); ?>" data-aos="fade-up" data-aos-delay="<?php echo e(100 + ($index * 50)); ?>">
                         <div class="product-card-enhanced">
                             <div class="product-image-container">
-                                @if($item->detailFotos->isNotEmpty())
-                                    <img src="{{ asset('storage/'.$item->detailFotos->first()->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
-                                @elseif($item->foto)
-                                    <img src="{{ asset('storage/'.$item->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
-                                @else
-                                    <img src="{{ asset('assets/img/portfolio/default.jpg') }}" alt="{{ $item->nama_produk }}" class="product-image">
-                                @endif
+                                <?php if($item->detailFotos->isNotEmpty()): ?>
+                                    <img src="<?php echo e(asset('storage/'.$item->detailFotos->first()->foto)); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                <?php elseif($item->foto): ?>
+                                    <img src="<?php echo e(asset('storage/'.$item->foto)); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                <?php else: ?>
+                                    <img src="<?php echo e(asset('assets/img/portfolio/default.jpg')); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                <?php endif; ?>
                                 <div class="product-overlay">
                                     <div class="product-icons">
                                         <button class="icon-btn" title="Tambah ke Favorit">
@@ -729,60 +714,60 @@
                                         </button>
                                     </div>
                                 </div>
-                                @if($index === 0)
+                                <?php if($index === 0): ?>
                                 <div class="product-badge popular">
                                     <i class="fas fa-fire me-1"></i>Populer
                                 </div>
-                                @endif
-                                <div class="product-category-tag">{{ $item->anakPerusahaan->kategori->nama_kategori ?? 'Umum' }}</div>
+                                <?php endif; ?>
+                                <div class="product-category-tag"><?php echo e($item->anakPerusahaan->kategori->nama_kategori ?? 'Umum'); ?></div>
                             </div>
                             <div class="product-content">
                                 <div class="product-header">
-                                    <h4 class="product-title">{{ $item->nama_produk }}</h4>
+                                    <h4 class="product-title"><?php echo e($item->nama_produk); ?></h4>
                                     <div class="product-rating">
-                                        @php
+                                        <?php
                                             $rating = $item->rating;
                                             $fullStars = floor($rating);
                                             $halfStar = ($rating - $fullStars) >= 0.5;
                                             $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-                                        @endphp
+                                        ?>
                                         
-                                        @for($i = 0; $i < $fullStars; $i++)
+                                        <?php for($i = 0; $i < $fullStars; $i++): ?>
                                             <i class="fas fa-star"></i>
-                                        @endfor
+                                        <?php endfor; ?>
                                         
-                                        @if($halfStar)
+                                        <?php if($halfStar): ?>
                                             <i class="fas fa-star-half-alt"></i>
-                                        @endif
+                                        <?php endif; ?>
                                         
-                                        @for($i = 0; $i < $emptyStars; $i++)
+                                        <?php for($i = 0; $i < $emptyStars; $i++): ?>
                                             <i class="far fa-star"></i>
-                                        @endfor
+                                        <?php endfor; ?>
                                         
-                                        <span class="rating-text">({{ $item->rating }})</span>
+                                        <span class="rating-text">(<?php echo e($item->rating); ?>)</span>
                                     </div>
                                 </div>
-                                <p class="product-description">{{ \Str::limit($item->deskripsi_produk, 100) }}</p>
+                                <p class="product-description"><?php echo e(\Str::limit($item->deskripsi_produk, 100)); ?></p>
                                 <div class="product-features">
-                                    @foreach($item->benefits->take(3) as $benefit)
-                                        <span class="feature-tag"><i class="fas fa-check me-1"></i>{{ $benefit->nama_benefit }}</span>
-                                    @endforeach
+                                    <?php $__currentLoopData = $item->benefits->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $benefit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <span class="feature-tag"><i class="fas fa-check me-1"></i><?php echo e($benefit->nama_benefit); ?></span>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                                 <div class="product-footer">
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal"
-                                        data-product-id="{{ $item->id_produk }}"
-                                        data-product-name="{{ $item->nama_produk }}"
-                                        data-product-category="{{ $item->anakPerusahaan->kategori->nama_kategori ?? 'Umum' }}"
-                                        data-product-description="{{ $item->deskripsi_produk }}"
-                                        @if($item->detailFotos->isNotEmpty())
-                                            data-product-image="{{ asset('storage/'.$item->detailFotos->first()->foto) }}"
-                                        @elseif($item->foto)
-                                            data-product-image="{{ asset('storage/'.$item->foto) }}"
-                                        @else
-                                            data-product-image="{{ asset('assets/img/portfolio/default.jpg') }}"
-                                        @endif
-                                        data-product-rating="{{ $item->rating }}">
+                                        data-product-id="<?php echo e($item->id_produk); ?>"
+                                        data-product-name="<?php echo e($item->nama_produk); ?>"
+                                        data-product-category="<?php echo e($item->anakPerusahaan->kategori->nama_kategori ?? 'Umum'); ?>"
+                                        data-product-description="<?php echo e($item->deskripsi_produk); ?>"
+                                        <?php if($item->detailFotos->isNotEmpty()): ?>
+                                            data-product-image="<?php echo e(asset('storage/'.$item->detailFotos->first()->foto)); ?>"
+                                        <?php elseif($item->foto): ?>
+                                            data-product-image="<?php echo e(asset('storage/'.$item->foto)); ?>"
+                                        <?php else: ?>
+                                            data-product-image="<?php echo e(asset('assets/img/portfolio/default.jpg')); ?>"
+                                        <?php endif; ?>
+                                        data-product-rating="<?php echo e($item->rating); ?>">
                                         <span>Detail Paket</span>
                                         <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
@@ -837,11 +822,11 @@
                             </div>
                         </div>
                     </div>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <div class="col-12 text-center">
                         <p>Tidak ada produk tersedia saat ini.</p>
                     </div>
-                    @endforelse
+                    <?php endif; ?>
 
                     <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="250">
                         <div class="product-card-enhanced">
@@ -1115,33 +1100,33 @@
                     <div class="col-lg-7" data-aos="fade-left">
 
 
-                        {{-- Notifikasi Error --}}
-                        @if($errors->any())
+                        
+                        <?php if($errors->any()): ?>
                             <div class="alert alert-danger">
                                 <ul>
-                                    @foreach($errors->all() as $err)
-                                        <li>{{ $err }}</li>
-                                    @endforeach
+                                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><?php echo e($err); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
-                        @endif
+                        <?php endif; ?>
 
-                        <form method="POST" action="{{ route('contact.send') }}">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('contact.send')); ?>">
+                            <?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-6">
                                     <input type="text" name="name" class="form-control" placeholder="Nama Lengkap"
-                                        value="{{ old('name') }}">
+                                        value="<?php echo e(old('name')); ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <input type="email" name="email" class="form-control" placeholder="Email"
-                                        value="{{ old('email') }}">
+                                        value="<?php echo e(old('email')); ?>">
                                 </div>
                             </div>
                             <input type="text" name="subject" class="form-control mt-3" placeholder="Subjek"
-                                value="{{ old('subject') }}">
+                                value="<?php echo e(old('subject')); ?>">
                             <textarea name="message" class="form-control mt-3"
-                                placeholder="Pesan">{{ old('message') }}</textarea>
+                                placeholder="Pesan"><?php echo e(old('message')); ?></textarea>
                             <button type="submit" class="btn-contact mt-3">Kirim Pesan</button>
                         </form>
                     </div>
@@ -1271,7 +1256,7 @@
     </div>
 
 
-    @include('modals.contactModal')
+    <?php echo $__env->make('modals.contactModal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -1424,44 +1409,46 @@
                 </div>
                 <div class="modal-body">
                     <div class="row g-4">
-                        @forelse($anakPerusahaan as $company)
+                        <?php $__empty_1 = true; $__currentLoopData = $anakPerusahaan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <div class="col-md-6">
                                 <div class="subsidiary-detail-card p-4 border rounded-3">
                                     <div class="d-flex align-items-center mb-3">
-                                        @if($company->foto)
-                                            <img src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}"
+                                        <?php if($company->foto): ?>
+                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                        @else
+                                        <?php else: ?>
                                             <img src="assets/img/portfolio/placeholder.jpg"
-                                                alt="{{ $company->nama_perusahaan }}" class="rounded me-3"
+                                                alt="<?php echo e($company->nama_perusahaan); ?>" class="rounded me-3"
                                                 style="width: 60px; height: 60px; object-fit: cover;">
-                                        @endif
+                                        <?php endif; ?>
                                         <div>
-                                            <h6 class="mb-1">{{ $company->nama_perusahaan }}</h6>
+                                            <h6 class="mb-1"><?php echo e($company->nama_perusahaan); ?></h6>
                                             <small class="text-muted">
-                                                @if($company->kategori)
-                                                    {{ $company->kategori->nama_kategori }}
-                                                @endif
+                                                <?php if($company->kategori): ?>
+                                                    <?php echo e($company->kategori->nama_kategori); ?>
+
+                                                <?php endif; ?>
                                                 �
-                                                @if($company->berdiri_sejak)
-                                                    Didirikan {{ $company->berdiri_sejak->format('Y') }}
-                                                @endif
+                                                <?php if($company->berdiri_sejak): ?>
+                                                    Didirikan <?php echo e($company->berdiri_sejak->format('Y')); ?>
+
+                                                <?php endif; ?>
                                             </small>
                                         </div>
                                     </div>
-                                    <p class="small text-muted mb-2">{{ $company->deskripsi }}</p>
+                                    <p class="small text-muted mb-2"><?php echo e($company->deskripsi); ?></p>
                                     <div class="d-flex justify-content-between">
-                                        @if($company->alamat)
-                                            <small><i class="fas fa-location-dot me-1"></i>{{ $company->alamat }}</small>
-                                        @endif
+                                        <?php if($company->alamat): ?>
+                                            <small><i class="fas fa-location-dot me-1"></i><?php echo e($company->alamat); ?></small>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
-                        @empty
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <div class="col-12 text-center">
                                 <p class="text-muted">Belum ada data anak perusahaan.</p>
                             </div>
-                        @endforelse
+                        <?php endif; ?>
                         <div class="col-md-6">
                             <div class="subsidiary-detail-card p-4 border rounded-3">
                                 <div class="d-flex align-items-center mb-3">
@@ -2152,9 +2139,7 @@
         
     </script>
 
-    <!-- Enhanced Responsive JavaScript -->
-    <script src="assets/js/enhanced-responsive.js" defer></script>
     
 </body>
 
-</html>
+</html><?php /**PATH C:\DataTamish\Projek\WebProfile-PT-Abiraja\resources\views/welcome.blade.php ENDPATH**/ ?>
