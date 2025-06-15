@@ -55,30 +55,24 @@ class ProdukController extends BaseDashboardController
             'id_anak_perusahaan' => 'required|exists:anak_perusahaan,id_anak_perusahaan',
             'nama_produk' => 'required|string|max:150',
             'deskripsi_produk' => 'nullable|string',
-            'harga' => 'required|numeric|min:0',
-            'stok' => 'required|integer|min:0',
+            'rating' => 'nullable|numeric|min:0|max:5',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20480',
             'detail_fotos' => 'nullable|array',
             'detail_fotos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'benefits' => 'nullable|array',
+            'benefits.*' => 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except(['foto', 'video', 'detail_fotos']);
+        $data = $request->except(['foto', 'detail_fotos', 'benefits']);
 
         // Handle main foto upload
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('produk/foto', 'public');
             $data['foto'] = $fotoPath;
-        }
-
-        // Handle video upload
-        if ($request->hasFile('video')) {
-            $videoPath = $request->file('video')->store('produk/video', 'public');
-            $data['video'] = $videoPath;
         }
 
         $produk = Produk::create($data);
@@ -91,6 +85,18 @@ class ProdukController extends BaseDashboardController
                     DetailFotoProduk::create([
                         'id_produk' => $produk->id_produk,
                         'foto' => $detailFotoPath
+                    ]);
+                }
+            }
+        }
+        
+        // Handle benefits
+        if ($request->has('benefits')) {
+            foreach ($request->benefits as $benefit) {
+                if (!empty($benefit)) {
+                    \App\Models\Benefit::create([
+                        'id_produk' => $produk->id_produk,
+                        'nama_benefit' => $benefit
                     ]);
                 }
             }
@@ -119,21 +125,23 @@ class ProdukController extends BaseDashboardController
             'id_anak_perusahaan' => 'sometimes|required|exists:anak_perusahaan,id_anak_perusahaan',
             'nama_produk' => 'sometimes|required|string|max:150',
             'deskripsi_produk' => 'nullable|string',
-            'harga' => 'sometimes|required|numeric|min:0',
-            'stok' => 'sometimes|required|integer|min:0',
+            'rating' => 'nullable|numeric|min:0|max:5',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20480',
             'detail_fotos' => 'nullable|array',
             'detail_fotos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'remove_detail_fotos' => 'nullable|array',
             'remove_detail_fotos.*' => 'integer|exists:detail_foto_produk,id_foto',
+            'benefits' => 'nullable|array',
+            'benefits.*' => 'nullable|string|max:255',
+            'remove_benefits' => 'nullable|array',
+            'remove_benefits.*' => 'integer|exists:benefits,id_benefit',
         ]);
 
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except(['foto', 'video', 'detail_fotos', 'remove_detail_fotos']);
+        $data = $request->except(['foto', 'detail_fotos', 'remove_detail_fotos', 'benefits', 'remove_benefits']);
 
         // Handle main foto upload
         if ($request->hasFile('foto')) {
@@ -144,17 +152,6 @@ class ProdukController extends BaseDashboardController
 
             $fotoPath = $request->file('foto')->store('produk/foto', 'public');
             $data['foto'] = $fotoPath;
-        }
-
-        // Handle video upload
-        if ($request->hasFile('video')) {
-            // Delete old file if exists
-            if ($produk->video && Storage::disk('public')->exists($produk->video)) {
-                Storage::disk('public')->delete($produk->video);
-            }
-
-            $videoPath = $request->file('video')->store('produk/video', 'public');
-            $data['video'] = $videoPath;
         }
 
         $produk->update($data);
@@ -187,6 +184,25 @@ class ProdukController extends BaseDashboardController
                 }
             }
         }
+        
+        // Remove selected benefits
+        if ($request->has('remove_benefits')) {
+            \App\Models\Benefit::whereIn('id_benefit', $request->remove_benefits)
+                ->where('id_produk', $produk->id_produk)
+                ->delete();
+        }
+        
+        // Handle new benefits
+        if ($request->has('benefits')) {
+            foreach ($request->benefits as $benefit) {
+                if (!empty($benefit)) {
+                    \App\Models\Benefit::create([
+                        'id_produk' => $produk->id_produk,
+                        'nama_benefit' => $benefit
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('dashboard.products.index')->with('success', 'Produk berhasil diperbarui!');
     }
@@ -203,9 +219,7 @@ class ProdukController extends BaseDashboardController
             Storage::disk('public')->delete($produk->foto);
         }
 
-        if ($produk->video && Storage::disk('public')->exists($produk->video)) {
-            Storage::disk('public')->delete($produk->video);
-        }
+        // Video field has been removed
 
         // Delete all detail photos
         foreach ($produk->detailFoto as $detailFoto) {
@@ -214,6 +228,9 @@ class ProdukController extends BaseDashboardController
             }
             $detailFoto->delete();
         }
+        
+        // Delete all benefits
+        $produk->benefits()->delete();
 
         $produk->delete();
 
