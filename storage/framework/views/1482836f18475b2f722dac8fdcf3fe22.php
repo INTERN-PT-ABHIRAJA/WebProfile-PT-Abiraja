@@ -40,45 +40,22 @@ endif;
 unset($__errorArgs, $__bag); ?>
     </div>
     
-    <div class="grid grid-cols-2 gap-4">
-        <div class="mb-6">
-            <label for="harga" class="block text-sm font-medium text-gray-700 mb-1">Harga</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <span class="text-gray-500 sm:text-sm">Rp</span>
-                </div>
-                <input type="number" name="harga" id="harga" min="0" step="0.01" 
-                       value="<?php echo e(old('harga') ?? $item->harga ?? ''); ?>" 
-                       class="w-full pl-12 border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
-            </div>
-            <?php $__errorArgs = ['harga'];
+    <div class="mb-6">
+        <label for="rating" class="block text-sm font-medium text-gray-700 mb-1">Rating (0-5)</label>
+        <input type="number" name="rating" id="rating" min="0" max="5" step="0.1" 
+               value="<?php echo e(old('rating') ?? $item->rating ?? '0.0'); ?>" 
+               class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">
+        <p class="text-xs text-gray-500 mt-1">Rating produk dari 0.0 hingga 5.0</p>
+        <?php $__errorArgs = ['rating'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
-            <?php unset($message);
+            <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
+        <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-        </div>
-
-        <div class="mb-6">
-            <label for="stok" class="block text-sm font-medium text-gray-700 mb-1">Stok</label>
-            <input type="number" name="stok" id="stok" min="0" 
-                   value="<?php echo e(old('stok') ?? $item->stok ?? ''); ?>" 
-                   class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
-            <?php $__errorArgs = ['stok'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
-            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-        </div>
     </div>
 </div>
 
@@ -120,30 +97,56 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
     </div>
-      <div>
-        <label for="video" class="block text-sm font-medium text-gray-700 mb-1">Video Produk (opsional)</label>
-        <?php if(isset($item) && $item->video): ?>
-            <div class="mb-2">
-                <video width="100" height="60" controls>
-                    <source src="<?php echo e(Storage::url($item->video)); ?>" type="video/mp4">
-                    Browser Anda tidak mendukung tag video.
-                </video>
-                <p class="text-xs text-gray-500">Video saat ini</p>
+      <!-- Video field has been removed -->
+    
+</div>
+
+<!-- Benefits Section -->
+<div class="mb-6">
+    <label class="block text-sm font-medium text-gray-700 mb-2">Benefits Produk</label>
+    
+    <?php if(isset($item) && $item->benefits && $item->benefits->count() > 0): ?>
+        <div class="mb-4">
+            <p class="text-sm text-gray-600 mb-2">Benefits saat ini:</p>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <?php $__currentLoopData = $item->benefits; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $benefit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div class="relative flex items-center p-2 bg-gray-50 rounded">
+                        <span class="flex-grow"><?php echo e($benefit->nama_benefit); ?></span>
+                        <div class="ml-2">
+                            <label class="flex items-center text-xs">
+                                <input type="checkbox" name="remove_benefits[]" 
+                                       value="<?php echo e($benefit->id_benefit); ?>" 
+                                       class="mr-1 text-red-600">
+                                <span class="text-red-600">Hapus</span>
+                            </label>
+                        </div>
+                    </div>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
-        <?php endif; ?>
-        <input type="file" name="video" id="video" class="w-full border border-gray-300 rounded-md p-2">
-        <p class="text-xs text-gray-500 mt-1">Format: MP4, MOV, OGG, QT (Maks. 20MB)</p>
-        <?php $__errorArgs = ['video'];
+        </div>
+    <?php endif; ?>
+
+    <div id="benefits-container">
+        <div class="benefit-input mb-2 flex items-center">
+            <input type="text" name="benefits[]" placeholder="Masukkan benefit" 
+                   class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">
+        </div>
+    </div>
+    
+    <button type="button" id="add-benefit" 
+            class="mt-2 px-3 py-1 bg-blue-500 text-white text-sm rounded hover:bg-blue-600">
+        + Tambah Benefit
+    </button>
+    <?php $__errorArgs = ['benefits.*'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-            <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
-        <?php unset($message);
+        <p class="mt-1 text-sm text-red-600"><?php echo e($message); ?></p>
+    <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-    </div>
 </div>
 
 <!-- Multiple Detail Photos Section -->
