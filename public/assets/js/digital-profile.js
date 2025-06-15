@@ -2,14 +2,69 @@
 // Advanced animations & interactivity for digital services profile page
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Advanced loading screen animation
+    // Navbar scroll transparency with smooth transitions
+    const navbar = document.querySelector('.navbar') || document.querySelector('.digital-navbar');
+    let lastScrollTop = 0;
+    let ticking = false;
+    
+    function handleNavbarTransparency() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (navbar) {
+            if (scrollTop > 50) {
+                // Make navbar more transparent when scrolled
+                navbar.style.background = 'rgba(26, 26, 46, 0.2)'; // More transparent
+                navbar.style.backdropFilter = 'blur(15px)';
+                navbar.style.webkitBackdropFilter = 'blur(15px)';
+                navbar.style.borderBottom = '1px solid rgba(0, 245, 255, 0.2)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 245, 255, 0.1)';
+                navbar.classList.add('scrolled');
+                
+                // Add subtle glow effect when scrolled
+                navbar.style.setProperty('--navbar-glow', '0 0 20px rgba(0, 245, 255, 0.1)');
+            } else {
+                // Reset to less transparent when at top
+                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.webkitBackdropFilter = 'blur(20px)';
+                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+                navbar.classList.remove('scrolled');
+                navbar.style.setProperty('--navbar-glow', 'none');
+            }
+        }
+        
+        lastScrollTop = scrollTop;
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(handleNavbarTransparency);
+            ticking = true;
+        }
+    }
+    
+    // Optimized scroll listener using requestAnimationFrame
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', handleNavbarTransparency);
+    
+    // Initial call to set correct state
+    handleNavbarTransparency();
+
+    // Advanced loading screen animation with better error handling
     const loadingScreen = document.getElementById('loading-screen');
     const progressBar = document.querySelector('.progress-bar');
     const progressText = document.querySelector('.progress-text');
     
+    // Failsafe: Hide loading screen after maximum time
+    const failsafeTimeout = setTimeout(() => {
+        hideLoadingScreen();
+    }, 3000); // Maximum 3 seconds
+    
     let progress = 0;
     const loadingInterval = setInterval(() => {
-        progress += Math.random() * 25 + 5;
+        progress += Math.random() * 15 + 10; // Faster loading
         if (progress > 100) progress = 100;
         
         if (progressBar) {
@@ -24,18 +79,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (progress >= 100) {
             clearInterval(loadingInterval);
+            clearTimeout(failsafeTimeout);
             setTimeout(() => {
-                if (loadingScreen) {
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        initializeAnimations();
-                    }, 600);
-                }
-            }, 500);
+                hideLoadingScreen();
+            }, 300); // Reduced delay
         }
-    }, 80);
+    }, 60); // Faster intervals
+    
+    function hideLoadingScreen() {
+        if (loadingScreen) {
+            // Remove loading class from body
+            document.body.classList.remove('loading');
+            
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                loadingScreen.remove(); // Completely remove from DOM
+                initializeAnimations();
+            }, 400);
+        }
+    }
 
     // Advanced particles.js configuration
     if (typeof particlesJS !== 'undefined') {
