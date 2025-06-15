@@ -26,37 +26,46 @@
                 <tbody class="divide-y divide-gray-200">
                     @forelse($items as $company)
                     <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            {{ $company->nama_perusahaan }}
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                @if($company->foto)
+                                    <img class="h-10 w-10 rounded-full mr-3" src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}">
+                                @else
+                                    <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center mr-3">
+                                        <span class="text-sm font-medium text-gray-700">{{ substr($company->nama_perusahaan, 0, 2) }}</span>
+                                    </div>
+                                @endif
+                                <div>
+                                    <div class="text-sm font-medium text-gray-900">{{ $company->nama_perusahaan }}</div>
+                                    <div class="text-sm text-gray-500">{{ $company->user->nama ?? 'N/A' }}</div>
+                                </div>
+                            </div>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {{ $company->kategori ? $company->kategori->nama_kategori : 'Tidak ada kategori' }}
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {{ $company->kategori->nama_kategori ?? 'N/A' }}
                         </td>
-                        <td class="px-6 py-4 text-sm text-gray-500">
-                            {{ \Illuminate\Support\Str::limit($company->alamat, 50) }}
+                        <td class="px-6 py-4 text-sm text-gray-900">
+                            {{ Str::limit($company->alamat, 50) }}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                             {{ $company->telepon }}
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            {{ $company->berdiri_sejak ? $company->berdiri_sejak->format('d M Y') : '-' }}
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            {{ $company->berdiri_sejak ? $company->berdiri_sejak->format('d/m/Y') : 'N/A' }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="{{ route('dashboard.companies.edit', $company->id_anak_perusahaan) }}" class="text-primary-600 hover:text-primary-900 mr-3">Edit</a>
-                            
-                            <form action="{{ route('dashboard.companies.delete', $company->id_anak_perusahaan) }}" method="POST" class="inline-block">
+                            <a href="{{ route('dashboard.companies.edit', $company->id_anak_perusahaan) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
+                            <form action="{{ route('dashboard.companies.destroy', $company->id_anak_perusahaan) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Apakah Anda yakin ingin menghapus perusahaan ini?')">
-                                    Hapus
-                                </button>
+                                <button type="submit" class="text-red-600 hover:text-red-900" onclick="return confirm('Yakin ingin menghapus perusahaan ini?')">Hapus</button>
                             </form>
                         </td>
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6" class="px-6 py-4 text-center text-gray-500">
-                            Tidak ada data anak perusahaan
+                        <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">
+                            Belum ada anak perusahaan yang terdaftar.
                         </td>
                     </tr>
                     @endforelse

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\DetailFotoProduk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -20,6 +21,30 @@ class ProdukController extends BaseDashboardController
              ->setRoutePrefix('dashboard.products')
              ->setAllowedOperations(['index', 'create', 'store', 'edit', 'update', 'destroy', 'show']);
     }
+
+    /**
+     * Display a listing of the resource with relationships.
+     */
+    public function index(Request $request)
+    {
+        $query = Produk::with(['anakPerusahaan', 'detailFoto']);
+        
+        // Add search functionality
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama_produk', 'like', "%{$search}%")
+                  ->orWhere('deskripsi_produk', 'like', "%{$search}%")
+                  ->orWhereHas('anakPerusahaan', function($q) use ($search) {
+                      $q->where('nama_perusahaan', 'like', "%{$search}%");
+                  });
+            });
+        }
+
+        $items = $query->paginate(10);
+
+        return view($this->viewPath . '.index', compact('items'));
+    }
     
     /**
      * Store a newly created resource in storage.
@@ -34,20 +59,23 @@ class ProdukController extends BaseDashboardController
             'stok' => 'required|integer|min:0',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20480',
+            'detail_fotos' => 'nullable|array',
+            'detail_fotos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
+            return back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except(['foto', 'video']);
+        $data = $request->except(['foto', 'video', 'detail_fotos']);
 
-        // Handle file uploads
+        // Handle main foto upload
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('produk/foto', 'public');
             $data['foto'] = $fotoPath;
         }
 
+        // Handle video upload
         if ($request->hasFile('video')) {
             $videoPath = $request->file('video')->store('produk/video', 'public');
             $data['video'] = $videoPath;
@@ -55,7 +83,20 @@ class ProdukController extends BaseDashboardController
 
         $produk = Produk::create($data);
 
-        return response()->json(['status' => 'success', 'data' => $produk], 201);
+        // Handle multiple detail photos
+        if ($request->hasFile('detail_fotos')) {
+            foreach ($request->file('detail_fotos') as $detailFoto) {
+                if ($detailFoto) {
+                    $detailFotoPath = $detailFoto->store('produk/detail_foto', 'public');
+                    DetailFotoProduk::create([
+                        'id_produk' => $produk->id_produk,
+                        'foto' => $detailFotoPath
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->route('dashboard.products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
     /**
@@ -82,15 +123,19 @@ class ProdukController extends BaseDashboardController
             'stok' => 'sometimes|required|integer|min:0',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20480',
+            'detail_fotos' => 'nullable|array',
+            'detail_fotos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'remove_detail_fotos' => 'nullable|array',
+            'remove_detail_fotos.*' => 'integer|exists:detail_foto_produk,id_foto',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['status' => 'error', 'message' => $validator->errors()], 422);
+            return back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except(['foto', 'video']);
+        $data = $request->except(['foto', 'video', 'detail_fotos', 'remove_detail_fotos']);
 
-        // Handle file uploads
+        // Handle main foto upload
         if ($request->hasFile('foto')) {
             // Delete old file if exists
             if ($produk->foto && Storage::disk('public')->exists($produk->foto)) {
@@ -101,6 +146,7 @@ class ProdukController extends BaseDashboardController
             $data['foto'] = $fotoPath;
         }
 
+        // Handle video upload
         if ($request->hasFile('video')) {
             // Delete old file if exists
             if ($produk->video && Storage::disk('public')->exists($produk->video)) {
@@ -113,7 +159,36 @@ class ProdukController extends BaseDashboardController
 
         $produk->update($data);
 
-        return response()->json(['status' => 'success', 'data' => $produk]);
+        // Remove selected detail photos
+        if ($request->has('remove_detail_fotos')) {
+            $detailFotosToRemove = DetailFotoProduk::whereIn('id_foto', $request->remove_detail_fotos)
+                ->where('id_produk', $produk->id_produk)
+                ->get();
+
+            foreach ($detailFotosToRemove as $detailFoto) {
+                // Delete file from storage
+                if ($detailFoto->foto && Storage::disk('public')->exists($detailFoto->foto)) {
+                    Storage::disk('public')->delete($detailFoto->foto);
+                }
+                // Delete record
+                $detailFoto->delete();
+            }
+        }
+
+        // Handle new detail photos
+        if ($request->hasFile('detail_fotos')) {
+            foreach ($request->file('detail_fotos') as $detailFoto) {
+                if ($detailFoto) {
+                    $detailFotoPath = $detailFoto->store('produk/detail_foto', 'public');
+                    DetailFotoProduk::create([
+                        'id_produk' => $produk->id_produk,
+                        'foto' => $detailFotoPath
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->route('dashboard.products.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
     /**
@@ -123,7 +198,7 @@ class ProdukController extends BaseDashboardController
     {
         $produk = Produk::findOrFail($id);
 
-        // Delete associated files
+        // Delete main associated files
         if ($produk->foto && Storage::disk('public')->exists($produk->foto)) {
             Storage::disk('public')->delete($produk->foto);
         }
@@ -132,8 +207,16 @@ class ProdukController extends BaseDashboardController
             Storage::disk('public')->delete($produk->video);
         }
 
+        // Delete all detail photos
+        foreach ($produk->detailFoto as $detailFoto) {
+            if ($detailFoto->foto && Storage::disk('public')->exists($detailFoto->foto)) {
+                Storage::disk('public')->delete($detailFoto->foto);
+            }
+            $detailFoto->delete();
+        }
+
         $produk->delete();
 
-        return response()->json(['status' => 'success', 'message' => 'Produk deleted successfully']);
+        return redirect()->route('dashboard.products.index')->with('success', 'Produk berhasil dihapus!');
     }
 }

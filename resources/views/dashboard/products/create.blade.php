@@ -11,81 +11,7 @@
         <form action="{{ route('dashboard.products.store') }}" method="POST" class="p-6" enctype="multipart/form-data">
             @csrf
             
-            <div class="mb-6">
-                <label for="id_anak_perusahaan" class="block text-sm font-medium text-gray-700 mb-1">Anak Perusahaan</label>
-                <select name="id_anak_perusahaan" id="id_anak_perusahaan" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
-                    <option value="">-- Pilih Anak Perusahaan --</option>
-                    @foreach(\App\Models\AnakPerusahaan::all() as $company)
-                        <option value="{{ $company->id_anak_perusahaan }}" {{ old('id_anak_perusahaan') == $company->id_anak_perusahaan ? 'selected' : '' }}>
-                            {{ $company->nama_perusahaan }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('id_anak_perusahaan')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="mb-6">
-                    <label for="nama_produk" class="block text-sm font-medium text-gray-700 mb-1">Nama Produk</label>
-                    <input type="text" name="nama_produk" id="nama_produk" value="{{ old('nama_produk') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
-                    @error('nama_produk')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="mb-6">
-                        <label for="harga" class="block text-sm font-medium text-gray-700 mb-1">Harga</label>
-                        <div class="relative">
-                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <span class="text-gray-500 sm:text-sm">Rp</span>
-                            </div>
-                            <input type="number" name="harga" id="harga" min="0" step="0.01" value="{{ old('harga') }}" class="w-full pl-12 border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
-                        </div>
-                        @error('harga')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label for="stok" class="block text-sm font-medium text-gray-700 mb-1">Stok</label>
-                        <input type="number" name="stok" id="stok" min="0" value="{{ old('stok') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
-                        @error('stok')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mb-6">
-                <label for="deskripsi_produk" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi Produk</label>
-                <textarea name="deskripsi_produk" id="deskripsi_produk" rows="4" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">{{ old('deskripsi_produk') }}</textarea>
-                @error('deskripsi_produk')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                @enderror
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <label for="foto" class="block text-sm font-medium text-gray-700 mb-1">Foto Produk</label>
-                    <input type="file" name="foto" id="foto" class="w-full border border-gray-300 rounded-md p-2">
-                    <p class="text-xs text-gray-500 mt-1">Format: JPEG, PNG, JPG, GIF (Maks. 2MB)</p>
-                    @error('foto')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-                
-                <div>
-                    <label for="video" class="block text-sm font-medium text-gray-700 mb-1">Video Produk (opsional)</label>
-                    <input type="file" name="video" id="video" class="w-full border border-gray-300 rounded-md p-2">
-                    <p class="text-xs text-gray-500 mt-1">Format: MP4, MOV, OGG, QT (Maks. 20MB)</p>
-                    @error('video')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-            </div>
+            @include('dashboard.products.form')
             
             <div class="flex justify-end">
                 <a href="{{ route('dashboard.products.index') }}" class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 mr-2">
@@ -98,3 +24,57 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let detailFotoCount = 1;
+    
+    // Add new detail foto input
+    document.getElementById('add-detail-foto').addEventListener('click', function() {
+        const container = document.getElementById('detail-fotos-container');
+        const newInput = document.createElement('div');
+        newInput.className = 'detail-foto-input mb-2 flex items-center';
+        newInput.innerHTML = `
+            <input type="file" name="detail_fotos[]" accept="image/*" 
+                   class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">
+            <button type="button" class="ml-2 px-2 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 remove-detail-foto">
+                Hapus
+            </button>
+        `;
+        container.appendChild(newInput);
+        detailFotoCount++;
+    });
+    
+    // Remove detail foto input
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-detail-foto')) {
+            e.target.parentElement.remove();
+        }
+    });
+    
+    // Preview main foto upload
+    const fotoInput = document.getElementById('foto');
+    if (fotoInput) {
+        fotoInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Create or update preview
+                    let preview = document.getElementById('foto-preview');
+                    if (!preview) {
+                        preview = document.createElement('div');
+                        preview.id = 'foto-preview';
+                        preview.className = 'mt-2';
+                        fotoInput.parentNode.insertBefore(preview, fotoInput.nextSibling);
+                    }
+                    preview.innerHTML = '<img src="' + e.target.result + '" class="w-20 h-20 object-cover rounded-lg"><p class="text-xs text-gray-500 mt-1">Preview</p>';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+});
+</script>
+@endpush

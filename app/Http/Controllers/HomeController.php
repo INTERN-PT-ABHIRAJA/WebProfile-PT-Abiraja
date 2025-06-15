@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\AnakPerusahaan;
 use App\Models\Kategori;
+use App\Models\Produk;
+use App\Models\DetailFotoProduk;
+use App\Models\Benefit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,6 +25,9 @@ class HomeController extends Controller
         // Get all categories for the filter buttons
         $categories = Kategori::all();
         
-        return view('welcome', compact('anakPerusahaan', 'categories'));
+        // Get all products with their related data
+        $produk = Produk::with(['anakPerusahaan', 'benefits', 'detailFotos'])->get();
+        
+        return view('welcome', compact('anakPerusahaan', 'categories', 'produk'));
     }
 }

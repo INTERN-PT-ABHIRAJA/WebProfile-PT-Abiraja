@@ -25,6 +25,7 @@ class DashboardController extends BaseDashboardController
         // Data statistik untuk dashboard
         $stats = [
             'users' => User::count(),
+            'categories' => Kategori::count(),
             'companies' => AnakPerusahaan::count(),
             'products' => Produk::count(),
             'media' => Media::count(),
@@ -37,10 +38,36 @@ class DashboardController extends BaseDashboardController
             'data' => $categories->pluck('anak_perusahaan_count')
         ];
         
+        // Recent activities (sample data - you can replace with actual activity log)
+        $recentActivities = [];
+        
+        // Get recent companies
+        $recentCompanies = AnakPerusahaan::latest()->take(3)->get();
+        foreach ($recentCompanies as $company) {
+            $recentActivities[] = [
+                'message' => "Anak perusahaan '{$company->nama_perusahaan}' ditambahkan",
+                'time' => $company->created_at ? $company->created_at->diffForHumans() : 'Baru saja',
+                'type' => 'company'
+            ];
+        }
+        
+        // Get recent products
+        $recentProducts = Produk::latest()->take(2)->get();
+        foreach ($recentProducts as $product) {
+            $recentActivities[] = [
+                'message' => "Produk '{$product->nama_produk}' ditambahkan",
+                'time' => $product->created_at ? $product->created_at->diffForHumans() : 'Baru saja',
+                'type' => 'product'
+            ];
+        }
+        
+        // Sort by time and limit to 5 most recent
+        $recentActivities = collect($recentActivities)->sortByDesc('time')->take(5)->values()->all();
+        
         // Get dashboard config for all tables
         $dashboardTables = DashboardConfig::getTables();
         
-        return view('dashboard.index', compact('stats', 'categoryStats', 'dashboardTables'));
+        return view('dashboard.index', compact('stats', 'categoryStats', 'dashboardTables', 'recentActivities'));
     }
 
     // Management Users

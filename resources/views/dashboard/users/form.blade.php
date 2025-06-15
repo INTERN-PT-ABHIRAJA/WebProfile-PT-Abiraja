@@ -31,7 +31,23 @@
             </div>
             
             <div class="mb-6">
-                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">{{ isset($item) ? 'Password (kosongkan jika tidak ingin mengubah)' : 'Password' }}</label>
+                <label for="alamat" class="block text-sm font-medium text-gray-700 mb-1">Alamat</label>
+                <textarea name="alamat" id="alamat" rows="3" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">{{ old('alamat', $item?->alamat ?? '') }}</textarea>
+                @error('alamat')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+            
+            <div class="mb-6">
+                <label for="telepon" class="block text-sm font-medium text-gray-700 mb-1">Telepon</label>
+                <input type="text" name="telepon" id="telepon" value="{{ old('telepon', $item?->telepon ?? '') }}" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">
+                @error('telepon')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                @enderror
+            </div>
+            
+            <div class="mb-6">
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password {{ isset($item) ? '(Kosongkan jika tidak ingin mengubah)' : '' }}</label>
                 <input type="password" name="password" id="password" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" {{ !isset($item) ? 'required' : '' }}>
                 @error('password')
                     <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
@@ -46,6 +62,7 @@
             <div class="mb-6">
                 <label for="role" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
                 <select name="role" id="role" class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500" required>
+                    <option value="">-- Pilih Role --</option>
                     <option value="user" {{ old('role', $item?->role ?? '') == 'user' ? 'selected' : '' }}>User</option>
                     <option value="admin" {{ old('role', $item?->role ?? '') == 'admin' ? 'selected' : '' }}>Admin</option>
                     <option value="owner" {{ old('role', $item?->role ?? '') == 'owner' ? 'selected' : '' }}>Owner</option>
@@ -60,7 +77,7 @@
                     Batal
                 </a>
                 <button type="submit" class="px-4 py-2 bg-primary-600 text-white rounded-md text-sm hover:bg-primary-700">
-                    {{ isset($item) ? 'Simpan Perubahan' : 'Simpan' }}
+                    {{ isset($item) ? 'Update' : 'Simpan' }}
                 </button>
             </div>
         </form>
