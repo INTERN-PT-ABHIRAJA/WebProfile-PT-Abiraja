@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>PT ABHIRAJA GIOVANNI TRYAMANDA</title>
     <link rel="icon" href="assets/img/logo/Logo.png" type="image/png">
 
@@ -109,7 +109,7 @@
                     <!-- Slide 1: Main Company Overview -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/1cityscape.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/1cityscape.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content main-slide">
                             <h1 class="fw-bold pb-3 pt-5">PT ABHIRAJA GIOVANNI TRYAMANDA</h1>
@@ -152,7 +152,7 @@
                     <!-- Slide 2: Branding & Digital -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-2.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-2.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>Jasa Pembuatan Aplikasi & Website</h1>
@@ -164,7 +164,7 @@
                     <!-- Slide 3: Finance & Tax -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-3.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-3.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>Finance & Tax</h1>
@@ -176,7 +176,7 @@
                     <!-- Slide 4: KOL Management -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-4.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-4.jpg')); ?>');"></div>
                         <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>KOL Management</h1>
@@ -189,7 +189,7 @@
                     <!-- Slide 5: Produk Unggulan Abhiraja -->
                     <div class="swiper-slide">
                         <div class="slide-background"
-                            style="background-image: url('{{ asset('assets/img/hero/slide-5.jpg') }}');"></div>
+                            style="background-image: url('<?php echo e(asset('assets/img/hero/slide-5.jpg')); ?>');"></div>
                             <div class="slide-overlay"></div>
                         <div class="slide-content">
                             <h1>Produk Unggulan Abhiraja</h1>
@@ -269,7 +269,7 @@
                                     data-bs-target="#contactModal">
                                     <i class="fas fa-phone me-2"></i>Hubungi Kami
                                 </button>
-                                <a href="{{ asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf') }}" 
+                                <a href="<?php echo e(asset('assets/pdf/DOKTER KONTEN INDONESIA COMPRO & PL.pdf')); ?>" 
                                    target="_blank" 
                                    class="btn-custom-outline text-decoration-none">
                                     <i class="fas fa-file-pdf me-2"></i>Lihat Portfolio
@@ -358,62 +358,64 @@
 
                 <!-- Subsidiaries Cards Grid -->
                 <div class="row g-4 justify-content-center" id="subsidiaries-container">
-                    @forelse($anakPerusahaan as $index => $company)
-                        <div class="col-lg-4 col-md-6 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 100) }}">
+                    <?php $__empty_1 = true; $__currentLoopData = $anakPerusahaan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <div class="col-lg-4 col-md-6 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="<?php echo e(100 + ($index * 100)); ?>">
                             <div class="subsidiary-card-new bg-white rounded-4 shadow-lg h-100 border-0 position-relative overflow-hidden">
                                 <!-- Card Header with Large Logo -->
                                 <div class="card-header-new text-center p-4 position-relative">
                                     <div class="company-logo-new-container mx-auto mb-3">
-                                        @if($company->foto)
-                                            <img src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}"
+                                        <?php if($company->foto): ?>
+                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="company-logo-new">
-                                        @else
-                                            <img src="assets/img/Mitra/placeholder.png" alt="{{ $company->nama_perusahaan }}"
+                                        <?php else: ?>
+                                            <img src="assets/img/Mitra/placeholder.png" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="company-logo-new">
-                                        @endif
+                                        <?php endif; ?>
                                         <div class="logo-overlay"></div>
                                     </div>
                                     
-                                    @if($company->kategori)
+                                    <?php if($company->kategori): ?>
                                         <span class="badge bg-gradient-primary text-white px-3 py-2 rounded-pill mb-2 category-badge">
-                                            <i class="fas fa-tag me-1"></i>{{ $company->kategori->nama_kategori }}
+                                            <i class="fas fa-tag me-1"></i><?php echo e($company->kategori->nama_kategori); ?>
+
                                         </span>
-                                    @endif
+                                    <?php endif; ?>
                                     
-                                    <h5 class="company-name-new mb-2 text-dark fw-bold">{{ $company->nama_perusahaan }}</h5>
+                                    <h5 class="company-name-new mb-2 text-dark fw-bold"><?php echo e($company->nama_perusahaan); ?></h5>
                                 </div>
 
                                 <!-- Card Body -->
                                 <div class="card-body-new p-4 pt-0">
                                     <p class="company-description text-muted mb-4 line-clamp-3">
-                                        {{ $company->deskripsi ?: 'Perusahaan yang bergerak dalam bidang ' . ($company->kategori ? $company->kategori->nama_kategori : 'bisnis') . ' dengan komitmen memberikan layanan terbaik.' }}
+                                        <?php echo e($company->deskripsi ?: 'Perusahaan yang bergerak dalam bidang ' . ($company->kategori ? $company->kategori->nama_kategori : 'bisnis') . ' dengan komitmen memberikan layanan terbaik.'); ?>
+
                                     </p>
 
                                     <!-- Company Info Grid -->
                                     <div class="company-info-grid">
-                                        @if($company->alamat)
+                                        <?php if($company->alamat): ?>
                                             <div class="info-item d-flex align-items-start mb-3">
                                                 <div class="info-icon me-3">
                                                     <i class="fas fa-map-marker-alt text-primary"></i>
                                                 </div>
                                                 <div class="info-content">
                                                     <small class="text-muted d-block">Lokasi</small>
-                                                    <span class="fw-medium text-dark">{{ $company->alamat }}</span>
+                                                    <span class="fw-medium text-dark"><?php echo e($company->alamat); ?></span>
                                                 </div>
                                             </div>
-                                        @endif
+                                        <?php endif; ?>
                                         
-                                        @if($company->berdiri_sejak)
+                                        <?php if($company->berdiri_sejak): ?>
                                             <div class="info-item d-flex align-items-start mb-3">
                                                 <div class="info-icon me-3">
                                                     <i class="fas fa-calendar-alt text-primary"></i>
                                                 </div>
                                                 <div class="info-content">
                                                     <small class="text-muted d-block">Berdiri Sejak</small>
-                                                    <span class="fw-medium text-dark">{{ $company->berdiri_sejak->format('Y') }}</span>
+                                                    <span class="fw-medium text-dark"><?php echo e($company->berdiri_sejak->format('Y')); ?></span>
                                                 </div>
                                             </div>
-                                        @endif
+                                        <?php endif; ?>
 
                                         <!-- Contact Info -->
                                         <div class="info-item d-flex align-items-start mb-3">
@@ -445,7 +447,7 @@
                                 <div class="card-decoration-2"></div>
                             </div>
                         </div>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                         <div class="col-12 text-center">
                             <div class="empty-state py-5">
                                 <i class="fas fa-building fa-4x text-muted mb-3"></i>
@@ -453,7 +455,7 @@
                                 <p class="text-muted">Data anak perusahaan akan ditampilkan di sini ketika tersedia.</p>
                             </div>
                         </div>
-                    @endforelse
+                    <?php endif; ?>
 
                     <div class="company-stats d-flex justify-content-between align-items-center">
                         <div class="stat-item">
@@ -535,14 +537,14 @@
                             
                             <!-- Action Buttons -->
                             <div class="action-buttons d-flex flex-wrap gap-3">
-                                <a href="{{ route('digital.services') }}" class="btn-primary-custom">
+                                <a href="<?php echo e(route('digital.services')); ?>" class="btn-primary-custom">
                                     <span class="btn-text">Jelajahi Layanan</span>
                                     <span class="btn-icon">
                                         <i class="fas fa-arrow-right"></i>
                                     </span>
                                     <div class="btn-ripple"></div>
                                 </a>
-                                <a href="{{ route('digital.services') }}" class="btn-outline-custom">
+                                <a href="<?php echo e(route('digital.services')); ?>" class="btn-outline-custom">
                                     <i class="fas fa-phone me-2"></i>
                                     Konsultasi Gratis
                                 </a>
@@ -668,10 +670,10 @@
                             <i class="fas fa-th-large me-2"></i>Semua Layanan
                         </button>
 
-                        @foreach($categories as $kategori)
-                            <button class="filter-btn" data-filter="{{ \Str::slug($kategori->nama_kategori) }}">
-                                {{-- Optional icon mapping --}}
-                                @php
+                        <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $kategori): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <button class="filter-btn" data-filter="<?php echo e(\Str::slug($kategori->nama_kategori)); ?>">
+                                
+                                <?php
                                     $iconMap = [
                                         'Pendidikan' => 'fas fa-graduation-cap',
                                         'Bisnis' => 'fas fa-briefcase',
@@ -679,28 +681,29 @@
                                         'Pertanian' => 'fas fa-seedling',
                                     ];
                                     $iconClass = $iconMap[$kategori->nama_kategori] ?? 'fas fa-tags';
-                                @endphp
+                                ?>
 
-                                <i class="{{ $iconClass }} me-2"></i>{{ $kategori->nama_kategori }}
+                                <i class="<?php echo e($iconClass); ?> me-2"></i><?php echo e($kategori->nama_kategori); ?>
+
                             </button>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
 
                 <!-- Products Grid -->
                 <div class="products-grid" id="productsGrid">
-                    @forelse($produk as $index => $item)
-                    <div class="product-item" data-category="{{ \Str::slug($item->anakPerusahaan->kategori->nama_kategori ?? 'other') }}" data-aos="fade-up" data-aos-delay="{{ 100 + ($index * 50) }}">
+                    <?php $__empty_1 = true; $__currentLoopData = $produk; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <div class="product-item" data-category="<?php echo e(\Str::slug($item->anakPerusahaan->kategori->nama_kategori ?? 'other')); ?>" data-aos="fade-up" data-aos-delay="<?php echo e(100 + ($index * 50)); ?>">
                         <div class="product-card-enhanced">
                             <div class="product-image-container">
-                                @if($item->detailFotos->isNotEmpty())
-                                    <img src="{{ asset('storage/'.$item->detailFotos->first()->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
-                                @elseif($item->foto)
-                                    <img src="{{ asset('storage/'.$item->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
-                                @else
-                                    <img src="{{ asset('assets/img/portfolio/default.jpg') }}" alt="{{ $item->nama_produk }}" class="product-image">
-                                @endif
+                                <?php if($item->detailFotos->isNotEmpty()): ?>
+                                    <img src="<?php echo e(asset('storage/'.$item->detailFotos->first()->foto)); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                <?php elseif($item->foto): ?>
+                                    <img src="<?php echo e(asset('storage/'.$item->foto)); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                <?php else: ?>
+                                    <img src="<?php echo e(asset('assets/img/portfolio/default.jpg')); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                <?php endif; ?>
                                 <div class="product-overlay">
                                     <div class="product-icons">
                                         <button class="icon-btn" title="Tambah ke Favorit">
@@ -711,60 +714,60 @@
                                         </button>
                                     </div>
                                 </div>
-                                @if($index === 0)
+                                <?php if($index === 0): ?>
                                 <div class="product-badge popular">
                                     <i class="fas fa-fire me-1"></i>Populer
                                 </div>
-                                @endif
-                                <div class="product-category-tag">{{ $item->anakPerusahaan->kategori->nama_kategori ?? 'Umum' }}</div>
+                                <?php endif; ?>
+                                <div class="product-category-tag"><?php echo e($item->anakPerusahaan->kategori->nama_kategori ?? 'Umum'); ?></div>
                             </div>
                             <div class="product-content">
                                 <div class="product-header">
-                                    <h4 class="product-title">{{ $item->nama_produk }}</h4>
+                                    <h4 class="product-title"><?php echo e($item->nama_produk); ?></h4>
                                     <div class="product-rating">
-                                        @php
+                                        <?php
                                             $rating = $item->rating;
                                             $fullStars = floor($rating);
                                             $halfStar = ($rating - $fullStars) >= 0.5;
                                             $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-                                        @endphp
+                                        ?>
                                         
-                                        @for($i = 0; $i < $fullStars; $i++)
+                                        <?php for($i = 0; $i < $fullStars; $i++): ?>
                                             <i class="fas fa-star"></i>
-                                        @endfor
+                                        <?php endfor; ?>
                                         
-                                        @if($halfStar)
+                                        <?php if($halfStar): ?>
                                             <i class="fas fa-star-half-alt"></i>
-                                        @endif
+                                        <?php endif; ?>
                                         
-                                        @for($i = 0; $i < $emptyStars; $i++)
+                                        <?php for($i = 0; $i < $emptyStars; $i++): ?>
                                             <i class="far fa-star"></i>
-                                        @endfor
+                                        <?php endfor; ?>
                                         
-                                        <span class="rating-text">({{ $item->rating }})</span>
+                                        <span class="rating-text">(<?php echo e($item->rating); ?>)</span>
                                     </div>
                                 </div>
-                                <p class="product-description">{{ \Str::limit($item->deskripsi_produk, 100) }}</p>
+                                <p class="product-description"><?php echo e(\Str::limit($item->deskripsi_produk, 100)); ?></p>
                                 <div class="product-features">
-                                    @foreach($item->benefits->take(3) as $benefit)
-                                        <span class="feature-tag"><i class="fas fa-check me-1"></i>{{ $benefit->nama_benefit }}</span>
-                                    @endforeach
+                                    <?php $__currentLoopData = $item->benefits->take(3); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $benefit): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <span class="feature-tag"><i class="fas fa-check me-1"></i><?php echo e($benefit->nama_benefit); ?></span>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
                                 <div class="product-footer">
                                     <button class="btn-product-detail" data-bs-toggle="modal"
                                         data-bs-target="#productModal"
-                                        data-product-id="{{ $item->id_produk }}"
-                                        data-product-name="{{ $item->nama_produk }}"
-                                        data-product-category="{{ $item->anakPerusahaan->kategori->nama_kategori ?? 'Umum' }}"
-                                        data-product-description="{{ $item->deskripsi_produk }}"
-                                        @if($item->detailFotos->isNotEmpty())
-                                            data-product-image="{{ asset('storage/'.$item->detailFotos->first()->foto) }}"
-                                        @elseif($item->foto)
-                                            data-product-image="{{ asset('storage/'.$item->foto) }}"
-                                        @else
-                                            data-product-image="{{ asset('assets/img/portfolio/default.jpg') }}"
-                                        @endif
-                                        data-product-rating="{{ $item->rating }}">
+                                        data-product-id="<?php echo e($item->id_produk); ?>"
+                                        data-product-name="<?php echo e($item->nama_produk); ?>"
+                                        data-product-category="<?php echo e($item->anakPerusahaan->kategori->nama_kategori ?? 'Umum'); ?>"
+                                        data-product-description="<?php echo e($item->deskripsi_produk); ?>"
+                                        <?php if($item->detailFotos->isNotEmpty()): ?>
+                                            data-product-image="<?php echo e(asset('storage/'.$item->detailFotos->first()->foto)); ?>"
+                                        <?php elseif($item->foto): ?>
+                                            data-product-image="<?php echo e(asset('storage/'.$item->foto)); ?>"
+                                        <?php else: ?>
+                                            data-product-image="<?php echo e(asset('assets/img/portfolio/default.jpg')); ?>"
+                                        <?php endif; ?>
+                                        data-product-rating="<?php echo e($item->rating); ?>">
                                         <span>Detail Paket</span>
                                         <i class="fas fa-arrow-right ms-2"></i>
                                     </button>
@@ -819,11 +822,11 @@
                             </div>
                         </div>
                     </div>
-                    @empty
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <div class="col-12 text-center">
                         <p>Tidak ada produk tersedia saat ini.</p>
                     </div>
-                    @endforelse
+                    <?php endif; ?>
 
                     <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="250">
                         <div class="product-card-enhanced">
@@ -1097,33 +1100,33 @@
                     <div class="col-lg-7" data-aos="fade-left">
 
 
-                        {{-- Notifikasi Error --}}
-                        @if($errors->any())
+                        
+                        <?php if($errors->any()): ?>
                             <div class="alert alert-danger">
                                 <ul>
-                                    @foreach($errors->all() as $err)
-                                        <li>{{ $err }}</li>
-                                    @endforeach
+                                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $err): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><?php echo e($err); ?></li>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
-                        @endif
+                        <?php endif; ?>
 
-                        <form method="POST" action="{{ route('contact.send') }}">
-                            @csrf
+                        <form method="POST" action="<?php echo e(route('contact.send')); ?>">
+                            <?php echo csrf_field(); ?>
                             <div class="row">
                                 <div class="col-md-6">
                                     <input type="text" name="name" class="form-control" placeholder="Nama Lengkap"
-                                        value="{{ old('name') }}">
+                                        value="<?php echo e(old('name')); ?>">
                                 </div>
                                 <div class="col-md-6">
                                     <input type="email" name="email" class="form-control" placeholder="Email"
-                                        value="{{ old('email') }}">
+                                        value="<?php echo e(old('email')); ?>">
                                 </div>
                             </div>
                             <input type="text" name="subject" class="form-control mt-3" placeholder="Subjek"
-                                value="{{ old('subject') }}">
+                                value="<?php echo e(old('subject')); ?>">
                             <textarea name="message" class="form-control mt-3"
-                                placeholder="Pesan">{{ old('message') }}</textarea>
+                                placeholder="Pesan"><?php echo e(old('message')); ?></textarea>
                             <button type="submit" class="btn-contact mt-3">Kirim Pesan</button>
                         </form>
                     </div>
@@ -1253,7 +1256,7 @@
     </div>
 
 
-    @include('modals.contactModal')
+    <?php echo $__env->make('modals.contactModal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -1406,44 +1409,46 @@
                 </div>
                 <div class="modal-body">
                     <div class="row g-4">
-                        @forelse($anakPerusahaan as $company)
+                        <?php $__empty_1 = true; $__currentLoopData = $anakPerusahaan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $company): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                             <div class="col-md-6">
                                 <div class="subsidiary-detail-card p-4 border rounded-3">
                                     <div class="d-flex align-items-center mb-3">
-                                        @if($company->foto)
-                                            <img src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}"
+                                        <?php if($company->foto): ?>
+                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                        @else
+                                        <?php else: ?>
                                             <img src="assets/img/portfolio/placeholder.jpg"
-                                                alt="{{ $company->nama_perusahaan }}" class="rounded me-3"
+                                                alt="<?php echo e($company->nama_perusahaan); ?>" class="rounded me-3"
                                                 style="width: 60px; height: 60px; object-fit: cover;">
-                                        @endif
+                                        <?php endif; ?>
                                         <div>
-                                            <h6 class="mb-1">{{ $company->nama_perusahaan }}</h6>
+                                            <h6 class="mb-1"><?php echo e($company->nama_perusahaan); ?></h6>
                                             <small class="text-muted">
-                                                @if($company->kategori)
-                                                    {{ $company->kategori->nama_kategori }}
-                                                @endif
+                                                <?php if($company->kategori): ?>
+                                                    <?php echo e($company->kategori->nama_kategori); ?>
+
+                                                <?php endif; ?>
                                                 �
-                                                @if($company->berdiri_sejak)
-                                                    Didirikan {{ $company->berdiri_sejak->format('Y') }}
-                                                @endif
+                                                <?php if($company->berdiri_sejak): ?>
+                                                    Didirikan <?php echo e($company->berdiri_sejak->format('Y')); ?>
+
+                                                <?php endif; ?>
                                             </small>
                                         </div>
                                     </div>
-                                    <p class="small text-muted mb-2">{{ $company->deskripsi }}</p>
+                                    <p class="small text-muted mb-2"><?php echo e($company->deskripsi); ?></p>
                                     <div class="d-flex justify-content-between">
-                                        @if($company->alamat)
-                                            <small><i class="fas fa-location-dot me-1"></i>{{ $company->alamat }}</small>
-                                        @endif
+                                        <?php if($company->alamat): ?>
+                                            <small><i class="fas fa-location-dot me-1"></i><?php echo e($company->alamat); ?></small>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
-                        @empty
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                             <div class="col-12 text-center">
                                 <p class="text-muted">Belum ada data anak perusahaan.</p>
                             </div>
-                        @endforelse
+                        <?php endif; ?>
                         <div class="col-md-6">
                             <div class="subsidiary-detail-card p-4 border rounded-3">
                                 <div class="d-flex align-items-center mb-3">
@@ -2137,4 +2142,4 @@
     
 </body>
 
-</html>
+</html><?php /**PATH C:\DataTamish\Projek\WebProfile-PT-Abiraja\resources\views/welcome.blade.php ENDPATH**/ ?>
