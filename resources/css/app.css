@@ -1,9 +1,9 @@
 /* Hero Section Styles */
 .hero-section {
-    background-color: #f8f9fa; /* Light background for contrast */
-    padding-top: 80px; /* Adjust as needed */
-    padding-bottom: 80px; /* Adjust as needed */
-    min-height: 80vh; /* Ensure it takes a good portion of the viewport */
+    background-color: #f5f5f5; /* More neutral background */
+    padding-top: clamp(40px, 8vh, 80px); /* Responsive padding */
+    padding-bottom: clamp(40px, 8vh, 80px);
+    min-height: clamp(60vh, 70vh, 80vh); /* More responsive height */
     display: flex;
     align-items: center;
 }
@@ -19,146 +19,163 @@
 }
 
 .hero-section .cta-buttons .btn-primary {
-    background-color: #ffc107; /* Example primary color (yellow) */
-    border-color: #ffc107;
-    color: #333;
-    padding: 12px 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    background-color: #007bff; /* More professional blue instead of bright yellow */
+    border-color: #007bff;
+    color: #fff;
+    padding: clamp(8px, 2vw, 12px) clamp(20px, 4vw, 30px); /* Responsive padding */
+    font-weight: 500; /* Less bold */
+    transition: all 0.2s ease; /* Faster, more subtle transition */
 }
 
 .hero-section .cta-buttons .btn-primary:hover {
-    background-color: #e0a800;
-    border-color: #d39e00;
-    transform: translateY(-2px);
+    background-color: #0056b3;
+    border-color: #004085;
+    transform: translateY(-1px); /* Reduced hover effect */
 }
 
 .hero-section .cta-buttons .btn-outline-secondary {
-    color: #333;
+    color: #495057;
     border-color: #6c757d;
-    padding: 12px 30px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    padding: clamp(8px, 2vw, 12px) clamp(20px, 4vw, 30px); /* Responsive padding */
+    font-weight: 500; /* Less bold */
+    transition: all 0.2s ease; /* Faster transition */
 }
 
 .hero-section .cta-buttons .btn-outline-secondary:hover {
     background-color: #6c757d;
     color: #fff;
-    transform: translateY(-2px);
+    transform: translateY(-1px); /* Reduced hover effect */
 }
 
 .hero-section .image-content img {
     max-width: 100%;
     height: auto;
-    border-radius: 15px; /* Softer edges for the image */
+    border-radius: clamp(8px, 2vw, 15px); /* Responsive border radius */
 }
 
 /* Responsive adjustments */
 @media (max-width: 991.98px) {
+    .hero-section {
+        padding-top: clamp(30px, 6vh, 60px);
+        padding-bottom: clamp(30px, 6vh, 60px);
+    }
     .hero-section .text-content {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: clamp(20px, 4vh, 40px);
     }
     .hero-section .image-content {
         text-align: center;
     }
     .hero-section .cta-buttons {
         justify-content: center;
-        display: flex; /* Ensure buttons are centered on mobile */
+        display: flex;
+        gap: 0.75rem; /* Add gap between buttons */
+        flex-wrap: wrap; /* Allow wrapping on very small screens */
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-section .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-section .cta-buttons .btn-primary,
+    .hero-section .cta-buttons .btn-outline-secondary {
+        width: 100%;
+        max-width: 250px;
     }
 }
 
 /* Equal Height Cards Styles */
 .equal-height-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    align-items: stretch; /* This ensures all items stretch to same height */
+    grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 30vw, 250px), 1fr)); /* Responsive grid */
+    gap: clamp(0.75rem, 2vw, 1rem); /* Responsive gap */
+    align-items: stretch;
 }
 
 .equal-height-card {
     display: flex;
     flex-direction: column;
-    height: 100%; /* Takes full height of grid item */
-    min-height: 200px; /* Minimum height for consistency */
+    height: 100%;
+    min-height: clamp(180px, 25vh, 200px); /* Responsive min-height */
 }
 
 .equal-height-card .card-content {
-    flex: 1; /* This makes the content area fill available space */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .equal-height-card .card-body {
-    flex: 1; /* Card body expands to fill available space */
-    padding: 1rem;
+    flex: 1;
+    padding: clamp(0.75rem, 2vw, 1rem); /* Responsive padding */
 }
 
 .equal-height-card .card-footer {
-    margin-top: auto; /* Pushes footer to bottom */
-    padding: 0.75rem 1rem;
+    margin-top: auto;
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem); /* Responsive padding */
 }
 
 /* Dashboard specific equal height styles */
 .dashboard-grid {
     display: grid;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vw, 1rem); /* Responsive gap */
     align-items: stretch;
 }
 
 .dashboard-grid.two-col {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 40vw, 400px), 1fr));
 }
 
 .dashboard-grid.three-col {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(clamp(250px, 30vw, 300px), 1fr));
 }
 
 .dashboard-grid.four-col {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 250px), 1fr));
 }
 
 .dashboard-card {
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 250px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
-    backdrop-filter: blur(10px);
-    border-radius: 0.75rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border: 1px solid rgba(229,231,235,1);
-    transition: all 0.3s ease;
+    min-height: clamp(200px, 30vh, 250px); /* Responsive min-height */
+    background: #ffffff; /* Simple white background instead of gradient */
+    border-radius: clamp(0.5rem, 1.5vw, 0.75rem); /* Responsive border radius */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Softer shadow */
+    border: 1px solid #e2e8f0; /* More neutral border */
+    transition: all 0.2s ease; /* Faster transition */
 }
 
 .dashboard-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transform: translateY(-1px); /* Reduced hover effect */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Softer hover shadow */
 }
 
 .dashboard-card .card-header {
-    padding: 1rem;
-    border-bottom: 1px solid rgba(229,231,235,0.5);
+    padding: clamp(0.75rem, 2vw, 1rem); /* Responsive padding */
+    border-bottom: 1px solid #e2e8f0; /* More neutral border */
 }
 
 .dashboard-card .card-body {
     flex: 1;
-    padding: 1rem;
+    padding: clamp(0.75rem, 2vw, 1rem); /* Responsive padding */
     display: flex;
     flex-direction: column;
 }
 
 .dashboard-card .card-footer {
     margin-top: auto;
-    padding: 0.75rem 1rem;
-    border-top: 1px solid rgba(229,231,235,0.5);
+    padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem); /* Responsive padding */
+    border-top: 1px solid #e2e8f0; /* More neutral border */
 }
 
 /* Stats cards equal height */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 25vw, 200px), 1fr)); /* Responsive grid */
+    gap: clamp(0.5rem, 1.5vw, 0.75rem); /* Responsive gap */
     align-items: stretch;
 }
 
@@ -166,17 +183,18 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 80px;
-    padding: 0.75rem;
-    background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
-    border-radius: 0.5rem;
-    border: 1px solid;
-    transition: all 0.2s ease;
+    min-height: clamp(70px, 12vh, 80px); /* Responsive min-height */
+    padding: clamp(0.5rem, 1.5vw, 0.75rem); /* Responsive padding */
+    background: #ffffff; /* Simple white background */
+    border-radius: clamp(0.375rem, 1vw, 0.5rem); /* Responsive border radius */
+    border: 1px solid #e2e8f0; /* Neutral border */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06); /* Very subtle shadow */
+    transition: all 0.15s ease; /* Faster transition */
 }
 
 .stats-card:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-0.5px); /* Very subtle hover effect */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Slightly stronger shadow on hover */
 }
 
 /* Original .kotak styles - can be integrated or modified if still needed */
@@ -189,31 +207,34 @@
 */
 
 .kotak {
-    background-color: #fff; /* Example background */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: #ffffff; /* Clean white background */
+    padding: clamp(15px, 3vw, 20px); /* Responsive padding */
+    border-radius: clamp(6px, 1.5vw, 10px); /* Responsive border radius */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Softer shadow */
+    border: 1px solid #e2e8f0; /* Add subtle border */
     text-align: center;
-    margin: 10px; /* Adjust spacing */
-    transition: transform 0.3s ease;
+    margin: clamp(5px, 1.5vw, 10px); /* Responsive margin */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Separate transitions */
 }
 
 .kotak:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px); /* Reduced hover effect */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12); /* Softer hover shadow */
 }
 
 .kotak i {
-    font-size: 2.5rem; /* Icon size */
-    margin-bottom: 10px;
+    font-size: clamp(2rem, 4vw, 2.5rem); /* Responsive icon size */
+    margin-bottom: clamp(6px, 1.5vw, 10px); /* Responsive margin */
 }
 
 .kotak div {
-    font-weight: 600;
-    color: #333;
+    font-weight: 500; /* Less bold */
+    color: #374151; /* More neutral color */
+    font-size: clamp(0.875rem, 2vw, 1rem); /* Responsive font size */
 }
 
 .kuning {
-    color: #ffc107; /* Example yellow color */
+    color: #f59e0b; /* More muted orange-yellow instead of bright yellow */
 }
 
 /* Responsive adjustments for equal height cards */
@@ -229,12 +250,40 @@
     }
     
     .dashboard-card {
-        min-height: 200px;
+        min-height: clamp(160px, 25vh, 200px);
+    }
+    
+    .equal-height-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .kotak {
+        margin: clamp(5px, 1vw, 8px);
     }
 }
 
 @media (max-width: 480px) {
     .stats-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .dashboard-card {
+        min-height: clamp(140px, 20vh, 180px);
+    }
+    
+    .kotak {
+        padding: clamp(10px, 2.5vw, 15px);
+    }
+    
+    .kotak i {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+}
+
+@media (max-width: 360px) {
+    .dashboard-grid,
+    .stats-grid,
+    .equal-height-grid {
+        gap: 0.5rem;
     }
 }
