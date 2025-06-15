@@ -787,7 +787,7 @@ html {
 
 .contact-section {
   padding: 5rem 0;
-  background-color: #0d4e49;
+  background: linear-gradient(to right, #0d4e49, #1E6043);
   color: white;
 }
 
@@ -2605,7 +2605,7 @@ html {
 
 /* CTA Section */
 .cta-section {
-  background: linear-gradient(135deg, #0d4e49, #1a6b61);
+  background: #0d4e49;
   padding: 3rem 2rem;
   border-radius: 20px;
   color: white;
@@ -2620,7 +2620,6 @@ html {
   right: -50%;
   width: 100%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 213, 0, 0.1) 0%, transparent 70%);
   animation: float 6s ease-in-out infinite;
 }
 
@@ -2636,6 +2635,7 @@ html {
 .cta-section p {
   opacity: 0.9;
   margin-bottom: 2rem;
+  color: #f8f9fa;
 }
 
 .btn-cta-custom {

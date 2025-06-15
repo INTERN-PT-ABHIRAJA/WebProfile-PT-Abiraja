@@ -95,5 +95,10 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::delete('/media/{id}', [MediaController::class, 'destroy'])->name('media.delete');
 });
 
+// Digital Services Profile Route
+Route::get('/digital-services', function () {
+    return view('digital-services-profile');
+})->name('digital.services');
+
 // Contact form route
 Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.send');

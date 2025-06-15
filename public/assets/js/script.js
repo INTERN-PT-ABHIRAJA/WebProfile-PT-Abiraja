@@ -445,98 +445,69 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.show();
     }
     
-    // Lazy loading for product images
-    function initLazyLoading() {
-        const images = document.querySelectorAll('.product-image');
+    // Show company details in modal
+    function showCompanyDetails(companyCard) {
+        // Extract company information
+        const name = companyCard.querySelector('h4').textContent;
+        const imgSrc = companyCard.querySelector('.team-img img')?.src || '';
+        const category = companyCard.querySelector('p').textContent;
         
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.style.opacity = '1';
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
+        // Get data from data attributes
+        const description = companyCard.dataset.description || '';
+        const foundedYear = companyCard.dataset.founded || '2020';
+        const location = companyCard.dataset.location || 'Jakarta, Indonesia';
         
-        images.forEach(img => {
-            img.style.opacity = '0';
-            img.style.transition = 'opacity 0.3s ease';
-            imageObserver.observe(img);
-        });
-    }
-    
-    // Search functionality (bonus feature)
-    function initProductSearch() {
-        const searchInput = document.createElement('input');
-        searchInput.type = 'text';
-        searchInput.placeholder = 'Cari layanan...';
-        searchInput.className = 'form-control product-search';
-        searchInput.style.cssText = `
-            margin: 0 auto 2rem auto;
-            max-width: 400px;
-            display: block;
-            border-radius: 25px;
-            padding: 12px 20px;
-            border: 2px solid #0d4e49;
-        `;
+        console.log('Showing details for company:', { name, category, imgSrc, description, foundedYear, location });
         
-        const filterContainer = document.querySelector('.filter-buttons').parentElement;
-        filterContainer.insertBefore(searchInput, filterContainer.lastElementChild);
-        
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
+        // Populate the modal with company details
+        const modal = document.querySelector('#companyDetailModal');
+        if (modal) {
+            modal.querySelector('#modalCompanyName').textContent = name;
+            modal.querySelector('#modalCompanyCategory').textContent = category;
+            modal.querySelector('#modalCompanyLogo').src = imgSrc;
+            modal.querySelector('#modalCompanyLogo').alt = name;
             
-            productItems.forEach(item => {
-                const title = item.querySelector('.product-title').textContent.toLowerCase();
-                const description = item.querySelector('.product-description').textContent.toLowerCase();
-                
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    item.style.display = 'block';
-                    item.classList.remove('hidden');
-                } else {
-                    item.style.display = 'none';
-                    item.classList.add('hidden');
-                }
-            });
-        });
-    }
-    
-    // Keyboard navigation
-    function initKeyboardNavigation() {
-        document.addEventListener('keydown', function(e) {
-            if (e.target.closest('.products-section-enhanced')) {
-                const focusableElements = document.querySelectorAll(
-                    '.filter-btn, .icon-btn, .btn-product-detail, .btn-cta-custom'
-                );
-                const focusedIndex = Array.from(focusableElements).indexOf(document.activeElement);
-                
-                if (e.key === 'ArrowRight' && focusedIndex < focusableElements.length - 1) {
-                    e.preventDefault();
-                    focusableElements[focusedIndex + 1].focus();
-                } else if (e.key === 'ArrowLeft' && focusedIndex > 0) {
-                    e.preventDefault();
-                    focusableElements[focusedIndex - 1].focus();
-                }
-            }
-        });
-    }
-    
-    // Performance monitoring
-    function monitorPerformance() {
-        if ('PerformanceObserver' in window) {
-            const observer = new PerformanceObserver((list) => {
-                list.getEntries().forEach((entry) => {
-                    if (entry.entryType === 'paint' && entry.name === 'first-contentful-paint') {
-                        console.log('Products section FCP:', entry.startTime);
-                    }
-                });
-            });
+            // Set description if available, otherwise use a default
+            modal.querySelector('#modalCompanyDescription').textContent = 
+                description || `${name} adalah salah satu anak perusahaan PT Abhiraja Giovanni Tryamanda yang bergerak dalam bidang ${category}.`;
             
-            observer.observe({ entryTypes: ['paint'] });
+            // Set founded year and location
+            modal.querySelector('#modalCompanyFounded').textContent = foundedYear;
+            modal.querySelector('#modalCompanyLocation').textContent = location;
+            
+            // Show or hide sections based on data availability
+            modal.querySelector('#foundedYearSection').style.display = foundedYear ? 'block' : 'none';
+            modal.querySelector('#locationSection').style.display = location ? 'block' : 'none';
+            
+            // Show the modal
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
         }
+    }
+    
+    // Initialize subsidiaries section interaction
+    function initSubsidiariesSection() {
+        const companyCards = document.querySelectorAll('.team-section .team-card');
+        
+        companyCards.forEach(card => {
+            card.addEventListener('click', function() {
+                showCompanyDetails(this);
+            });
+            
+            // Add pointer cursor to indicate it's clickable
+            card.style.cursor = 'pointer';
+            
+            // Add hover effect
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+                this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.08)';
+            });
+        });
     }
     
     // Initialize all functionality
@@ -557,6 +528,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add event listeners for btn-konsultasi buttons (for direct konsultasi buttons in product cards)
     document.addEventListener('DOMContentLoaded', function() {
+        // Initialize subsidiaries section
+        if (document.querySelector('.team-section#subsidiaries')) {
+            initSubsidiariesSection();
+        }
+        
         const konsultasiButtons = document.querySelectorAll('.btn-konsultasi');
         
         konsultasiButtons.forEach(button => {
