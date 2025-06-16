@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Implementasi - Elegant Color Palette</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="./css/elegant-color-palette.css" rel="stylesheet">
+    <link href="./css/app.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg nav-elegant fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-brand-primary" href="#">PT Abhiraja Konsultan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Layanan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+                <a href="#contact" class="btn btn-elegant-accent ms-3">Konsultasi Gratis</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 text-content">
+                    <div class="section-header-elegant">
+                        <h1 class="display-4 fw-bold mb-4">
+                            Solusi Konsultasi <span class="text-consultation-expertise">Profesional</span> untuk Bisnis Anda
+                        </h1>
+                        <p class="lead mb-4">
+                            Kami menyediakan layanan konsultasi bisnis terpercaya dengan pendekatan inovatif 
+                            dan strategi yang telah terbukti untuk mengembangkan bisnis Anda.
+                        </p>
+                    </div>
+                    <div class="cta-buttons d-flex gap-3">
+                        <a href="#services" class="btn btn-elegant-accent btn-lg">
+                            <i class="fas fa-rocket me-2"></i>Mulai Konsultasi
+                        </a>
+                        <a href="#about" class="btn btn-elegant-outline btn-lg">
+                            <i class="fas fa-info-circle me-2"></i>Pelajari Lebih Lanjut
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 image-content text-center">
+                    <div class="position-relative">
+                        <img src="https://via.placeholder.com/500x400/1a2f3d/ffffff?text=Konsultasi+Profesional" 
+                             alt="Konsultasi Profesional" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-5 bg-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card text-center">
+                        <div class="icon mb-3">
+                            <i class="fas fa-users fa-2x text-consultation-trust"></i>
+                        </div>
+                        <h3 class="fw-bold text-brand-primary">500+</h3>
+                        <p class="mb-0">Klien Terpuaskan</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card text-center">
+                        <div class="icon mb-3">
+                            <i class="fas fa-chart-line fa-2x text-consultation-expertise"></i>
+                        </div>
+                        <h3 class="fw-bold text-brand-primary">15+</h3>
+                        <p class="mb-0">Tahun Pengalaman</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card text-center">
+                        <div class="icon mb-3">
+                            <i class="fas fa-award fa-2x text-consultation-innovation"></i>
+                        </div>
+                        <h3 class="fw-bold text-brand-primary">50+</h3>
+                        <p class="mb-0">Penghargaan</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="stats-card text-center">
+                        <div class="icon mb-3">
+                            <i class="fas fa-handshake fa-2x text-consultation-reliability"></i>
+                        </div>
+                        <h3 class="fw-bold text-brand-primary">98%</h3>
+                        <p class="mb-0">Tingkat Kepuasan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-5" id="services">
+        <div class="container">
+            <div class="section-header-elegant text-center mb-5">
+                <h2 class="display-5 fw-bold">Layanan Konsultasi Kami</h2>
+                <p class="lead">Solusi komprehensif untuk mengembangkan bisnis Anda dengan strategi yang tepat</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card-elegant text-center h-100">
+                        <div class="icon mx-auto">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Strategi Bisnis</h3>
+                        <p>Pengembangan strategi bisnis yang komprehensif untuk mencapai tujuan jangka panjang perusahaan Anda.</p>
+                        <div class="mt-auto">
+                            <a href="#" class="btn btn-elegant-outline">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card-elegant text-center h-100">
+                        <div class="icon mx-auto">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Optimisasi Operasional</h3>
+                        <p>Meningkatkan efisiensi operasional dan produktivitas melalui analisis mendalam dan implementasi solusi.</p>
+                        <div class="mt-auto">
+                            <a href="#" class="btn btn-elegant-outline">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card-elegant text-center h-100">
+                        <div class="icon mx-auto">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3>Manajemen SDM</h3>
+                        <p>Pengembangan sistem manajemen sumber daya manusia yang efektif untuk meningkatkan kinerja tim.</p>
+                        <div class="mt-auto">
+                            <a href="#" class="btn btn-elegant-outline">Pelajari Lebih Lanjut</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-5 bg-secondary">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="quote-elegant">
+                        <p class="mb-3">
+                            "PT Abhiraja Konsultan telah membantu kami mengembangkan strategi bisnis yang tepat. 
+                            Pendekatan profesional mereka dan solusi inovatif benar-benar mengubah cara kami berbisnis."
+                        </p>
+                        <cite>— Direktur PT. Example Indonesia</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section-elegant">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Siap Mengembangkan Bisnis Anda?</h2>
+                    <p class="mb-4">
+                        Konsultasikan kebutuhan bisnis Anda dengan tim ahli kami. 
+                        Dapatkan solusi terbaik untuk mencapai tujuan perusahaan Anda.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#contact" class="btn btn-elegant-accent btn-lg">
+                            <i class="fas fa-phone me-2"></i>Hubungi Kami
+                        </a>
+                        <a href="#" class="btn btn-elegant-outline btn-lg">
+                            <i class="fas fa-download me-2"></i>Download Brosur
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-elegant">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>PT Abhiraja Konsultan</h5>
+                    <p class="text-neutral-300">
+                        Menyediakan solusi konsultasi bisnis profesional dengan pendekatan inovatif 
+                        untuk mengembangkan bisnis Anda.
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Layanan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Strategi Bisnis</a></li>
+                        <li><a href="#">Optimisasi Operasional</a></li>
+                        <li><a href="#">Manajemen SDM</a></li>
+                        <li><a href="#">Digital Transformation</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Perusahaan</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Tim</a></li>
+                        <li><a href="#">Karir</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Kontak</h5>
+                    <p class="text-neutral-300 mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Jakarta, Indonesia
+                    </p>
+                    <p class="text-neutral-300 mb-2">
+                        <i class="fas fa-phone me-2"></i>
+                        +62 21 1234 5678
+                    </p>
+                    <p class="text-neutral-300">
+                        <i class="fas fa-envelope me-2"></i>
+                        info@abhirajaconsultan.com
+                    </p>
+                </div>
+            </div>
+            <hr class="border-top mt-4 mb-3">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="text-neutral-400 mb-0">
+                        &copy; 2025 PT Abhiraja Konsultan. Seluruh hak cipta dilindungi.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Color Palette Showcase (Optional - untuk demo) -->
+    <div class="modal fade" id="colorPaletteModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Elegant Color Palette</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <h6>Primary Colors</h6>
+                            <div class="d-flex gap-2 mb-3">
+                                <div class="bg-brand-primary rounded p-3 text-white" style="min-width: 60px; height: 60px;"></div>
+                                <div>
+                                    <small class="fw-bold">Deep Navy</small><br>
+                                    <small class="text-muted">Professional & Trustworthy</small>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2 mb-3">
+                                <div class="bg-brand-secondary rounded p-3 text-white" style="min-width: 60px; height: 60px;"></div>
+                                <div>
+                                    <small class="fw-bold">Warm Charcoal</small><br>
+                                    <small class="text-muted">Professional Complement</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <h6>Accent Colors</h6>
+                            <div class="d-flex gap-2 mb-3">
+                                <div class="bg-brand-accent rounded p-3" style="min-width: 60px; height: 60px;"></div>
+                                <div>
+                                    <small class="fw-bold">Sophisticated Gold</small><br>
+                                    <small class="text-muted">Premium & Expertise</small>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2 mb-3">
+                                <div class="bg-brand-teal rounded p-3 text-white" style="min-width: 60px; height: 60px;"></div>
+                                <div>
+                                    <small class="fw-bold">Professional Teal</small><br>
+                                    <small class="text-muted">Trust & Innovation</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
