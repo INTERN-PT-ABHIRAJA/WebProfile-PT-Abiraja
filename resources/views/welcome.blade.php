@@ -713,11 +713,18 @@
                                 @endif
                                 <div class="product-overlay">
                                     <div class="product-icons">
-                                        <button class="icon-btn" title="Tambah ke Favorit">
+                                        <button class="icon-btn favorite-btn" 
+                                                data-product-id="{{ $item->id_produk }}" 
+                                                data-product-name="{{ $item->nama_produk }}" 
+                                                title="Tambah ke Favorit">
                                             <i class="fas fa-heart"></i>
                                         </button>
-                                        <button class="icon-btn" title="Konsultasi">
-                                            <i class="fas fa-comments"></i>
+                                        <button class="icon-btn whatsapp-btn" 
+                                                data-product-id="{{ $item->id_produk }}" 
+                                                data-product-name="{{ $item->nama_produk }}"
+                                                data-company-name="{{ $item->anakPerusahaan->nama_perusahaan ?? 'PT Abiraja' }}" 
+                                                title="Konsultasi via WhatsApp">
+                                            <i class="fab fa-whatsapp"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -1844,11 +1851,188 @@
             }
         }
 
+        // Product Card Interactions
+        function initProductCardInteractions() {
+            // Favorite Button Functionality
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.favorite-btn')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.favorite-btn');
+                    const productId = btn.getAttribute('data-product-id');
+                    const productName = btn.getAttribute('data-product-name');
+                    
+                    // Toggle favorite state
+                    btn.classList.toggle('favorited');
+                    
+                    // Get current favorites from localStorage
+                    let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+                    
+                    if (btn.classList.contains('favorited')) {
+                        // Add to favorites
+                        if (!favorites.includes(productId)) {
+                            favorites.push(productId);
+                            showNotification(`${productName} ditambahkan ke favorit!`, 'success');
+                        }
+                    } else {
+                        // Remove from favorites
+                        favorites = favorites.filter(id => id !== productId);
+                        showNotification(`${productName} dihapus dari favorit!`, 'info');
+                    }
+                    
+                    // Save to localStorage
+                    localStorage.setItem('favorites', JSON.stringify(favorites));
+                }
+                
+                // WhatsApp Button Functionality
+                if (e.target.closest('.whatsapp-btn')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.whatsapp-btn');
+                    const productId = btn.getAttribute('data-product-id');
+                    const productName = btn.getAttribute('data-product-name');
+                    const companyName = btn.getAttribute('data-company-name');
+                    
+                    // Open contact modal with product info
+                    const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+                    
+                    // Set product info in contact modal
+                    const productInfoDiv = document.getElementById('contactProductInfo');
+                    const productTitle = document.querySelector('#contactProductInfo .product-title');
+                    const productCode = document.querySelector('#contactProductInfo .product-code');
+                    
+                    if (productInfoDiv && productTitle) {
+                        productTitle.textContent = productName;
+                        if (productCode) productCode.textContent = `Kode: PRD-${productId || '000'}`;
+                        productInfoDiv.classList.remove('d-none');
+                        
+                        // Set hidden form fields
+                        const inputProductName = document.getElementById('productName');
+                        const inputProductCode = document.getElementById('productCode');
+                        if (inputProductName) inputProductName.value = productName;
+                        if (inputProductCode) inputProductCode.value = `PRD-${productId || '000'}`;
+                    }
+                    
+                    // Show contact modal
+                    contactModal.show();
+                    
+                    showNotification('Membuka form konsultasi...', 'success');
+                }
+            });
+            
+            // Load saved favorites on page load
+            loadSavedFavorites();
+        }
+        
+        // Load saved favorites from localStorage
+        function loadSavedFavorites() {
+            const favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+            favorites.forEach(productId => {
+                const favoriteBtn = document.querySelector(`.favorite-btn[data-product-id="${productId}"]`);
+                if (favoriteBtn) {
+                    favoriteBtn.classList.add('favorited');
+                }
+            });
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'info') {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#4CAF50' : type === 'info' ? '#2196F3' : '#FF9800'};
+                color: white;
+                padding: 12px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                font-size: 14px;
+                max-width: 300px;
+            `;
+            notification.textContent = message;
+            
+            // Add to body
+            document.body.appendChild(notification);
+            
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(400px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Initialize all product card interactions
+        initProductCardInteractions();
+
         
     </script>
 
     <!-- Custom CSS for Product Modal Fixes -->
     <style>
+        /* Product Card Icon Buttons */
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin: 5px;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Favorite Button States */
+        .favorite-btn i {
+            transition: all 0.3s ease;
+        }
+
+        .favorite-btn:hover {
+            background: rgba(255, 182, 193, 0.9);
+            color: #e91e63;
+        }
+
+        .favorite-btn.favorited {
+            background: #e91e63;
+            color: white;
+        }
+
+        .favorite-btn.favorited:hover {
+            background: #c2185b;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn:hover {
+            background: rgba(37, 211, 102, 0.9);
+            color: white;
+        }
+
+        .whatsapp-btn i {
+            font-size: 18px;
+        }
+
         /* Ensure close button is visible on dark header */
         .product-modal-header .btn-close {
             filter: invert(1) !important;
