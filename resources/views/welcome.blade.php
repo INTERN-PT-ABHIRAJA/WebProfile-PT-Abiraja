@@ -432,9 +432,21 @@
                                 <div class="card-footer-new p-4 pt-0">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="social-links">
-                                            <a href="#" class="social-link" title="WhatsApp">
-                                                <i class="fab fa-whatsapp"></i>
-                                            </a>
+                                            @if($company->telepon)
+                                                <a href="{{ formatWhatsAppNumber($company->telepon, $company->nama_perusahaan) }}" 
+                                                   class="social-link" 
+                                                   title="Hubungi {{ $company->nama_perusahaan }} via WhatsApp: {{ $company->telepon }}"
+                                                   target="_blank">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ formatWhatsAppNumber('6285156209325', $company->nama_perusahaan) }}" 
+                                                   class="social-link" 
+                                                   title="Hubungi {{ $company->nama_perusahaan }} via WhatsApp"
+                                                   target="_blank">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                         
                                     </div>
@@ -781,177 +793,166 @@
                     <div class="cta-section">
                         <h3 class="fw-bold mb-3">Tidak Menemukan Yang Anda Cari?</h3>
                         <p class="mb-4 ">Konsultasikan kebutuhan khusus Anda dengan tim ahli kami</p>
-                        <button class="btn-cta-custom" data-bs-toggle="modal" data-bs-target="#contactModal">
-                            <i class="fas fa-phone me-2"></i>Konsultasi Gratis
-                        </button>
+                        <a href="https://wa.me/6285156209325?text=Halo%20PT%20Abhiraja%2C%20saya%20ingin%20konsultasi%20tentang%20produk%20atau%20layanan%20Anda." target="_blank" class="btn-cta-custom">
+                            <i class="fab fa-whatsapp me-2"></i>Konsultasi Gratis via WhatsApp
+                        </a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-section" id="contact">
-            <div class="container">
-                <div class="text-center mb-5" data-aos="fade-up">
-                    <h2 class="fw-bold mb-3">Hubungi Kami</h2>
-                    <p class="text-white-50 mx-auto" style="max-width: 700px;">Jangan ragu untuk menghubungi kami jika
-                        Anda memiliki pertanyaan atau ingin bekerja sama.</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-5" data-aos="fade-right">
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h5>Alamat</h5>
-                                    <p>Jl. Alamanda 7 No. 39 Jatinangor, Sumedang
-                                        Jl. Raya Buahdua 2, Kec. Buahdua Sumedang</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h5>Telepon</h5>
-                                    <p>+62 889 7158 9438</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h5>Email</h5>
-                                    <p>Abhirajagiovannicompany@gmail.com</p>
-                                </div>
-                            </div>
-
-                            <div class="contact-item">
-                                <div class="contact-icon">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="contact-text">
-                                    <h5>Jam Kerja</h5>
-                                    <p>Senin - Jumat: 08.00 - 17.00</p>
-                                    <p>Sabtu: 09.00 - 14.00</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-7" data-aos="fade-left">
-
-
-                        {{-- Notifikasi Error --}}
-                        @if($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach($errors->all() as $err)
-                                        <li>{{ $err }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-
-                        <form method="POST" action="{{ route('contact.send') }}">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="text" name="name" class="form-control" placeholder="Nama Lengkap"
-                                        value="{{ old('name') }}">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="email" name="email" class="form-control" placeholder="Email"
-                                        value="{{ old('email') }}">
-                                </div>
-                            </div>
-                            <input type="text" name="subject" class="form-control mt-3" placeholder="Subjek"
-                                value="{{ old('subject') }}">
-                            <textarea name="message" class="form-control mt-3"
-                                placeholder="Pesan">{{ old('message') }}</textarea>
-                            <button type="submit" class="btn-contact mt-3">Kirim Pesan</button>
-                        </form>
-                    </div>
-
-
-
-
-
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <div class="footer-about">
-                        <div class="footer-logo">
-                            <img src="assets/img/logo/Logo.png" alt="Logo">
+    <footer class="footer-modern">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+            <div class="container">
+                <div class="row g-4">
+                    <!-- Company Info Section -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                        <div class="footer-section company-section">
+                            <div class="footer-logo-modern">
+                                <img src="assets/img/logo/Logo.png" alt="PT Abhiraja Giovanni Tryamanda">
+                                <div class="logo-glow"></div>
+                            </div>
+                            <h6 class="company-title">PT Abhiraja Giovanni Tryamanda</h6>
+                            
+                            <!-- Social Media with Modern Icons -->
+                            <div class="social-media-modern">
+                                <h6 class="social-title">Ikuti Kami</h6>
+                                <div class="social-links-grid">
+                                    <a href="#" class="social-link facebook" title="Facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <span class="social-tooltip">Facebook</span>
+                                    </a>
+                                    <a href="#" class="social-link instagram" title="Instagram">
+                                        <i class="fab fa-instagram"></i>
+                                        <span class="social-tooltip">Instagram</span>
+                                    </a>
+                                    <a href="#" class="social-link linkedin" title="LinkedIn">
+                                        <i class="fab fa-linkedin-in"></i>
+                                        <span class="social-tooltip">LinkedIn</span>
+                                    </a>
+                                    <a href="#" class="social-link youtube" title="YouTube">
+                                        <i class="fab fa-youtube"></i>
+                                        <span class="social-tooltip">YouTube</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <p>PT Abhiraja Giovanni Tryamanda adalah perusahaan jasa multiservices yang berkomitmen untuk
-                            memberikan layanan berkualitas tinggi di berbagai bidang.</p>
-                        <div class="footer-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+
+                    <!-- Quick Links and Services Combined Section -->
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-12">
+                        <div class="footer-section links-section">
+                            <h5 class="section-title">
+                                <i class="fas fa-link me-2"></i>Tautan Cepat
+                            </h5>
+                            <ul class="footer-links-modern">
+                                <li><a href="#home"><i class="fas fa-home"></i>Beranda</a></li>
+                                <li><a href="#about"><i class="fas fa-info-circle"></i>Tentang Kami</a></li>
+                                <li><a href="#services"><i class="fas fa-cogs"></i>Layanan</a></li>
+                                <li><a href="#subsidiaries"><i class="fas fa-building"></i>Anak Perusahaan</a></li>
+                                <li><a href="#products"><i class="fas fa-box"></i>Produk</a></li>
+                            </ul>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
-                    <div class="footer-links">
-                        <h5>Tautan Cepat</h5>
-                        <ul>
-                            <li><a href="#home">Beranda</a></li>
-                            <li><a href="#about">Tentang Kami</a></li>
-                            <li><a href="#services">Layanan</a></li>
-                            <li><a href="#subsidiaries">Anak Perusahaan</a>
-                            </li>
-                            <li><a href="#products">Produk</a></li>
-                            <li><a href="#contact">Kontak</a></li>
-                        </ul>
+                    <!-- Services Section -->
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-12">
+                        <div class="footer-section services-section">
+                            <h5 class="section-title">
+                                <i class="fas fa-star me-2"></i>Layanan
+                            </h5>
+                            <ul class="footer-links-modern">
+                                <li><a href="#"><i class="fas fa-graduation-cap"></i>Pendidikan</a></li>
+                                <li><a href="#"><i class="fas fa-palette"></i>Branding</a></li>
+                                <li><a href="#"><i class="fas fa-chart-line"></i>Finance</a></li>
+                                <li><a href="#"><i class="fas fa-users-cog"></i>Management</a></li>
+                                <li><a href="#"><i class="fas fa-hammer"></i>Wood Studio</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
-                    <div class="footer-links">
-                        <h5>Layanan</h5>
-                        <ul>
-                            <li><a href="#">Pendidikan</a></li>
-                            <li><a href="#">Branding</a></li>
-                            <li><a href="#">Finance</a></li>
-                            <li><a href="#">Management</a></li>
-                            <li><a href="#">Wood Studio</a></li>
-                            <li><a href="#">Agriculture</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <div class="footer-newsletter">
-                        <h5>Berlangganan</h5>
-                        <p>Berlangganan kami untuk mendapatkan informasi terbaru tentang produk dan layanan kami.</p>
-                        <form class="newsletter-form">
-                            <input type="email" class="form-control" placeholder="Email Anda">
-                            <button type="submit" class="btn">Langganan</button>
-                        </form>
+                    <!-- Contact Info Section -->
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-12">
+                        <div class="footer-section whatsapp-section">
+                            <h5 class="section-title">
+                                <i class="fab fa-whatsapp me-2"></i>Hubungi Kami
+                            </h5>
+                            
+                            <!-- Contact Info Compact -->
+                            <div class="contact-info-compact mb-3">
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Jl. Alamanda 7 No. 39 Jatinangor, Sumedang</span>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+62 851-5620-9325</span>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>Abhirajagiovannicompany@gmail.com</span>
+                                </div>
+                                <div class="contact-item-compact">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Senin - Jumat: 08.00 - 17.00</span>
+                                </div>
+                            </div>
+                            
+                            <form class="whatsapp-contact-form-modern">
+                                <div class="form-group-modern">
+                                    <input type="text" class="form-control-modern" placeholder="Nama Anda" id="footerName" required>
+                                    <div class="input-highlight"></div>
+                                </div>
+                                <div class="form-group-modern">
+                                    <textarea class="form-control-modern" placeholder="Pesan Anda..." id="footerMessage" rows="2" required></textarea>
+                                    <div class="input-highlight"></div>
+                                </div>
+                                <button type="submit" class="btn-whatsapp-modern">
+                                    <span class="btn-icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </span>
+                                    <span class="btn-text">Kirim via WhatsApp</span>
+                                    <div class="btn-glow"></div>
+                                </button>
+                            </form>
+                            
+                            <div class="whatsapp-info-modern">
+                                <div class="status-indicator">
+                                    <div class="status-dot online"></div>
+                                    <span>Online & Siap Melayani</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="footer-bottom">
+        <!-- Footer Bottom -->
+        <div class="footer-bottom-modern">
             <div class="container">
-                <p>&copy; 2023 PT Abhiraja Giovanni Tryamanda. All Rights Reserved.</p>
+                <div class="footer-bottom-content">
+                    <div class="copyright-section">
+                        <p>&copy; 2025 PT Abhiraja Giovanni Tryamanda. All Rights Reserved.</p>
+                        <p class="company-tagline">Mitra Strategis untuk Kesuksesan Anda</p>
+                    </div>
+                    <div class="footer-additional">
+                        <div class="business-hours">
+                            <i class="fas fa-business-time"></i>
+                            <span>Siap Melayani 24/7 via WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="footer-decoration">
+            <div class="decoration-line decoration-1"></div>
+            <div class="decoration-line decoration-2"></div>
+            <div class="decoration-line decoration-3"></div>
         </div>
     </footer>
 
@@ -1003,6 +1004,7 @@
 
 
     @include('modals.contactModal')
+    @include('modals.dynamicProductModal')
 
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -1014,7 +1016,7 @@
                         </div>
                         <h5 class="modal-title fw-bold mb-0">Detail Produk Unggulan</h5>
                     </div>
-                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1); opacity: 1;"></button>
                 </div>
                 <div class="modal-body product-modal-body">
                     <div class="row g-4">
@@ -1178,6 +1180,7 @@
     <script src="assets/js/script.js" defer></script>
     <script src="assets/js/interactions.js" defer></script>
     <script src="assets/js/swiper-config.js" defer></script>
+    <script src="assets/js/dynamic-product-modal.js" defer></script>
     
     <!-- Product Modal Script -->
     <script>
@@ -1251,6 +1254,63 @@
                 if (productId) {
                     fetchProductDetails(productId);
                 }
+            });
+
+            // Handle "Hubungi Kami" button click
+            productModal.addEventListener('click', function(event) {
+                if (event.target.closest('[data-action="contact"]')) {
+                    event.preventDefault();
+                    
+                    // Get current product data
+                    const productName = productModal.querySelector('.modal-title').textContent.replace('Detail ', '');
+                    const productId = productModal.getAttribute('data-current-product-id') || '';
+                    
+                    // Open contact modal with product info
+                    const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+                    
+                    // Set product info in contact modal
+                    const productInfoDiv = document.getElementById('contactProductInfo');
+                    const productTitle = document.querySelector('#contactProductInfo .product-title');
+                    const productCode = document.querySelector('#contactProductInfo .product-code');
+                    
+                    if (productInfoDiv && productTitle) {
+                        productTitle.textContent = productName;
+                        if (productCode) productCode.textContent = `Kode: PRD-${productId || '000'}`;
+                        productInfoDiv.classList.remove('d-none');
+                        
+                        // Set hidden form fields
+                        const inputProductName = document.getElementById('productName');
+                        const inputProductCode = document.getElementById('productCode');
+                        if (inputProductName) inputProductName.value = productName;
+                        if (inputProductCode) inputProductCode.value = `PRD-${productId || '000'}`;
+                    }
+                    
+                    // Close product modal and open contact modal
+                    bootstrap.Modal.getInstance(productModal).hide();
+                    contactModal.show();
+                }
+                
+                // Handle WhatsApp share button click
+                if (event.target.closest('[data-platform="whatsapp"]')) {
+                    event.preventDefault();
+                    
+                    const productName = productModal.querySelector('.modal-title').textContent.replace('Detail ', '');
+                    const shareMessage = `Lihat produk unggulan ini: ${productName}. Kunjungi website kami untuk informasi lebih lanjut: ${window.location.href}`;
+                    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+                    
+                    // Open WhatsApp share
+                    window.open(whatsappUrl, '_blank');
+                    
+                    // Track share action
+                    console.log('WhatsApp share initiated for product:', productName);
+                }
+            });
+
+            // Store current product ID for reference
+            productModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const productId = button.getAttribute('data-product-id');
+                productModal.setAttribute('data-current-product-id', productId);
             });
         });
 
@@ -1666,6 +1726,8 @@
                 }
             }
             
+           
+            
             // Code animation
             function startCodeAnimation() {
                 const codeLines = document.querySelectorAll('.code-line');
@@ -1773,7 +1835,50 @@
         
     </script>
 
-    
-</body>
+    <!-- Custom CSS for Product Modal Fixes -->
+    <style>
+        /* Ensure close button is visible on dark header */
+        .product-modal-header .btn-close {
+            filter: invert(1) !important;
+            opacity: 1 !important;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            margin: -0.5rem -0.5rem -0.5rem auto;
+        }
 
+        .product-modal-header .btn-close:hover {
+            opacity: 0.8 !important;
+            transform: scale(1.1);
+        }
+
+        /* Ensure action buttons are properly styled and clickable */
+        .btn-product-primary {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-product-primary:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            color: white;
+        }
+
+        /* Ensure all interactive elements have proper cursor */
+        .share-btn, 
+        .btn-product-primary, 
+        .btn-modal-secondary,
+        .btn-close {
+            cursor: pointer !important;
+        }
+    </style>
+
+</body>
 </html>
