@@ -81,7 +81,7 @@
                         <a class="nav-link" href="#process">Process</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-nav-cta" href="#contact">Start Project</a>
+                <a class="nav-link btn-nav-cta" href="https://wa.me/6282217184920?text=Halo%20saya%20ingin%20konsultasi%20projek%20website" target="_blank">Start Project</a>
                     </li>
                 </ul>
             </div>
@@ -420,14 +420,12 @@
                         </div>
                     </div>
                     <div class="hover-overlay pt-5">
-                        <button class="btn-explore glow-button" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#serviceModal"
-                                data-service-name="Web Development"
-                                data-service-description="Custom websites and web applications built with modern frameworks and cutting-edge technology">
+                        <a href="https://wa.me/6282217184920?text=Halo%20saya%20ingin%20konsultasi%20projek%20website" 
+                           target="_blank" 
+                           class="btn-explore glow-button">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
                   <!-- Mobile App Development -->
@@ -513,14 +511,12 @@
                         </div>
                     </div>
                     <div class="hover-overlay pt-5">
-                        <button class="btn-explore glow-button" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#serviceModal"
-                                data-service-name="Mobile App Development"
-                                data-service-description="Native and cross-platform mobile applications for iOS and Android with superior performance and user experience">
+                        <a href="https://wa.me/6282217184920?text=Halo%20saya%20ingin%20konsultasi%20projek%20mobile%20app" 
+                           target="_blank" 
+                           class="btn-explore glow-button">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -595,14 +591,12 @@
                         </div>
                     </div>
                     <div class="hover-overlay pt-5">
-                        <button class="btn-explore glow-button" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#serviceModal"
-                                data-service-name="UI/UX Design"
-                                data-service-description="Beautiful and intuitive user interfaces designed to provide exceptional user experiences across all platforms">
+                        <a href="https://wa.me/6282217184920?text=Halo%20saya%20ingin%20konsultasi%20projek%20UI/UX%20design" 
+                           target="_blank" 
+                           class="btn-explore glow-button">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -678,14 +672,12 @@
                         </div>
                     </div>
                     <div class="hover-overlay pt-5">
-                        <button class="btn-explore glow-button" 
-                                data-bs-toggle="modal" 
-                                data-bs-target="#serviceModal"
-                                data-service-name="Cloud Solutions"
-                                data-service-description="Scalable cloud infrastructure and solutions to help your business grow and adapt to changing demands">
+                        <a href="https://wa.me/6282217184920?text=Halo%20saya%20ingin%20konsultasi%20projek%20cloud%20solutions" 
+                           target="_blank" 
+                           class="btn-explore glow-button">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -757,10 +749,12 @@
                         </div>
                     </div>
                     <div class="hover-overlay pt-5">
-                        <button class="btn-explore glow-button">
+                        <a href="https://wa.me/6282217184920?text=Halo%20saya%20ingin%20konsultasi%20projek%20e-commerce" 
+                           target="_blank" 
+                           class="btn-explore glow-button">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
                 
@@ -837,11 +831,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hover-overlay pt-5"></div>
-                        <button class="btn-explore glow-button">
+                    <div class="hover-overlay pt-5">
+                        <a href="https://wa.me/6282217184920?text=Halo%20saya%20ingin%20konsultasi%20projek%20digital%20marketing" 
+                           target="_blank" 
+                           class="btn-explore glow-button">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             
@@ -872,9 +868,9 @@
                         <h3 class="ceo-name mt-3">RAJA FAKHRUROZI SAFIRA, S.M</h3>
                         <p class="ceo-title mb-3">Chief Executive Officer & Founder</p>
                         <div class="ceo-social">
-                            <a href="#" class="social-link me-3"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="social-link me-3"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/raja-f-ba98bb18b/" target="_blank" class="social-link me-3"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.instagram.com/rfakhrurazy" target="_blank" class="social-link me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="mailto:rajafakhrurazyshaf@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                         </div>
                     </div>
                 </div>
@@ -893,9 +889,9 @@
                                 <h5 class="member-name mt-3">Hasbi</h5>
                                 <p class="member-role">Frontend Developer</p>
                                 <div class="member-social">
-                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/hasbifkri__" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/hasbi-haqqul-fikri-396560338/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:hasbihaqqulfikri321@upi.edu" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -911,9 +907,9 @@
                                 <h5 class="member-name mt-3">Bintang</h5>
                                 <p class="member-role">Project Manager</p>
                                 <div class="member-social">
-                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/bintangiftitah" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/a-bintang-iftitah-fj-37ba52353" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:fj.bintangiftitah@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -923,15 +919,15 @@
                     <div class="col-lg-2 col-md-4 col-6 mb-4">
                         <div class="team-member-simple text-center">
                             <div class="member-avatar">
-                                <img src="assets/img/team/adzril.png" alt="Adzril">
+                                <img src="assets/img/team/adzril.png" alt="Zrill">
                             </div>
                             <div class="member-info-stage">
-                                <h5 class="member-name mt-3">Adzril</h5>
+                                <h5 class="member-name mt-3">Zrill</h5>
                                 <p class="member-role">Backend Developer</p>
                                 <div class="member-social">
-                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/r_adzrill" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/raffi-adzril-43260a2a4/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:zrill0612@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -941,15 +937,15 @@
                     <div class="col-lg-2 col-md-4 col-6 mb-4">
                         <div class="team-member-simple text-center">
                             <div class="member-avatar">
-                                <img src="assets/img/team/isa.png" alt="Isa">
+                                <img src="assets/img/team/hafidz.png" alt="Hafidz">
                             </div>
                             <div class="member-info-stage">
-                                <h5 class="member-name mt-3">Isa</h5>
-                                <p class="member-role">Frontend Developer</p>
+                                <h5 class="member-name mt-3">Hafidz</h5>
+                                <p class="member-role">Backend Developer</p>
                                 <div class="member-social">
-                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/hfidtantowii" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/hafidz-tantowi-a56a0836b" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:hafidztantowi89@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -959,15 +955,15 @@
                     <div class="col-lg-2 col-md-4 col-6 mb-4">
                         <div class="team-member-simple text-center">
                             <div class="member-avatar">
-                                <img src="assets/img/team/hafidz.png" alt="Hafidz">
+                                <img src="assets/img/team/isa.png" alt="Isa">
                             </div>
                             <div class="member-info-stage">
-                                <h5 class="member-name mt-3">Hafidz</h5>
-                                <p class="member-role">Backend Developer</p>
+                                <h5 class="member-name mt-3">Isa</h5>
+                                <p class="member-role">Frontend Developer</p>
                                 <div class="member-social">
-                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                    <a href="https://www.instagram.com/isaabdllah" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://www.linkedin.com/in/isaabdllah" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="mailto:isasiregar10@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -1234,7 +1230,7 @@
                                 </div>
                                 <div class="contact-details">
                                     <h4>Office</h4>
-                                    <p>Jakarta, Indonesia</p>
+                                    <p>Bandung, Indonesia</p>
                                 </div>
                             </div>
                         </div>
@@ -1394,8 +1390,7 @@
         </div>
     </div>
 
-    <!-- Service Modal -->
-    <?php echo $__env->make('modals.serviceModal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+  
 
     <!-- Back to Top -->
     <a href="#" class="back-to-top" id="backToTop">
