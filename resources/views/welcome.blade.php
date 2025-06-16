@@ -554,7 +554,7 @@
                                     </span>
                                     <div class="btn-ripple"></div>
                                 </a>
-                                <a href="{{ route('digital.services') }}" class="btn-outline-custom">
+                                <a href="https://wa.me/6285156209325?text=Halo%20PT%20Abhiraja%2C%20saya%20ingin%20konsultasi%20tentang%20layanan%20digital%20Anda." target="_blank" class="btn-outline-custom">
                                     <i class="fas fa-phone me-2"></i>
                                     Konsultasi Gratis
                                 </a>
