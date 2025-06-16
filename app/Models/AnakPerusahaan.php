@@ -30,7 +30,6 @@ class AnakPerusahaan extends Model
         'alamat',
         'telepon',
         'foto',
-        'video',
         'berdiri_sejak',
     ];
 

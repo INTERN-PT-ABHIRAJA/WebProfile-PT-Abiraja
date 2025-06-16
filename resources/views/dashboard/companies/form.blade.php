@@ -86,38 +86,19 @@
                 @enderror
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                    <label for="foto" class="block text-sm font-medium text-gray-700 mb-1">Logo Perusahaan</label>
-                    @if(isset($item) && $item->foto)
-                        <div class="mb-2">
-                            <img src="{{ Storage::url($item->foto) }}" alt="Logo" class="w-20 h-20 object-cover rounded">
-                            <p class="text-xs text-gray-500 mt-1">Logo saat ini</p>
-                        </div>
-                    @endif
-                    <input type="file" name="foto" id="foto" accept="image/*" class="w-full border border-gray-300 rounded-md p-2">
-                    <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG, GIF (Maks. 2MB)</p>
-                    @error('foto')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-                
-                <div>
-                    <label for="video" class="block text-sm font-medium text-gray-700 mb-1">Video Profil</label>
-                    @if(isset($item) && $item->video)
-                        <div class="mb-2">
-                            <video width="100" height="60" controls class="rounded">
-                                <source src="{{ Storage::url($item->video) }}" type="video/mp4">
-                            </video>
-                            <p class="text-xs text-gray-500 mt-1">Video saat ini</p>
-                        </div>
-                    @endif
-                    <input type="file" name="video" id="video" accept="video/*" class="w-full border border-gray-300 rounded-md p-2">
-                    <p class="text-xs text-gray-500 mt-1">Format: MP4, MOV, AVI (Maks. 20MB)</p>
-                    @error('video')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+            <div class="mb-6">
+                <label for="foto" class="block text-sm font-medium text-gray-700 mb-1">Logo Perusahaan</label>
+                @if(isset($item) && $item->foto)
+                    <div class="mb-2">
+                        <img src="{{ Storage::url($item->foto) }}" alt="Logo" class="w-20 h-20 object-cover rounded">
+                        <p class="text-xs text-gray-500 mt-1">Logo saat ini</p>
+                    </div>
+                @endif
+                <input type="file" name="foto" id="foto" accept="image/*" class="w-full border border-gray-300 rounded-md p-2">
+                <p class="text-xs text-gray-500 mt-1">Format: JPG, PNG, GIF (Maks. 2MB)</p>
+                @error('foto')
+                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                @enderror
             </div>
             
             <div class="flex justify-end">
