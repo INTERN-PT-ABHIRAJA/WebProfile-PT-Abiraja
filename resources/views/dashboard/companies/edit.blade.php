@@ -102,26 +102,6 @@
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
-                
-                <div>
-                    <label for="video" class="block text-sm font-medium text-gray-700 mb-1">Video Perusahaan (opsional)</label>
-                    @if($company->video)
-                        <div class="mb-2">
-                            <div class="p-2 border rounded flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                <a href="{{ asset('storage/'.$company->video) }}" target="_blank" class="text-primary-600 hover:underline text-sm">Video saat ini (klik untuk melihat)</a>
-                            </div>
-                        </div>
-                    @endif
-                    <input type="file" name="video" id="video" class="w-full border border-gray-300 rounded-md p-2">
-                    <p class="text-xs text-gray-500 mt-1">Format: MP4, MOV, OGG, QT (Maks. 20MB)</p>
-                    @error('video')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
             </div>
             
             <div class="flex justify-end">

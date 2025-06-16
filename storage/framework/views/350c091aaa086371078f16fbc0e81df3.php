@@ -27,6 +27,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     let detailFotoCount = 1;
+    let benefitCount = 1;
     
     // Add new detail foto input
     document.getElementById('add-detail-foto').addEventListener('click', function() {
@@ -44,9 +45,29 @@ document.addEventListener('DOMContentLoaded', function() {
         detailFotoCount++;
     });
     
+    // Add new benefit input
+    document.getElementById('add-benefit').addEventListener('click', function() {
+        const container = document.getElementById('benefits-container');
+        const newInput = document.createElement('div');
+        newInput.className = 'benefit-input mb-2 flex items-center';
+        newInput.innerHTML = `
+            <input type="text" name="benefits[]" placeholder="Masukkan benefit" 
+                   class="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500">
+            <button type="button" class="ml-2 px-2 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600 remove-benefit">
+                Hapus
+            </button>
+        `;
+        container.appendChild(newInput);
+        benefitCount++;
+    });
+    
     // Remove detail foto input
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('remove-detail-foto')) {
+            e.target.parentElement.remove();
+        }
+        
+        if (e.target.classList.contains('remove-benefit')) {
             e.target.parentElement.remove();
         }
     });

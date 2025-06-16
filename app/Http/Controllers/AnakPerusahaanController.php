@@ -47,7 +47,6 @@ class AnakPerusahaanController extends BaseDashboardController
             'alamat' => 'nullable|string',
             'telepon' => 'nullable|string|max:20',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20480',
             'berdiri_sejak' => 'nullable|date',
         ]);
 
@@ -55,17 +54,12 @@ class AnakPerusahaanController extends BaseDashboardController
             return back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except(['foto', 'video']);
+        $data = $request->except(['foto']);
 
         // Handle file uploads
         if ($request->hasFile('foto')) {
             $fotoPath = $request->file('foto')->store('perusahaan/foto', 'public');
             $data['foto'] = $fotoPath;
-        }
-
-        if ($request->hasFile('video')) {
-            $videoPath = $request->file('video')->store('perusahaan/video', 'public');
-            $data['video'] = $videoPath;
         }
         
         $perusahaan = AnakPerusahaan::create($data);
@@ -99,7 +93,6 @@ class AnakPerusahaanController extends BaseDashboardController
             'alamat' => 'nullable|string',
             'telepon' => 'nullable|string|max:20',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video' => 'nullable|mimes:mp4,mov,ogg,qt|max:20480',
             'berdiri_sejak' => 'nullable|date',
         ]);
 
@@ -107,7 +100,7 @@ class AnakPerusahaanController extends BaseDashboardController
             return back()->withErrors($validator)->withInput();
         }
 
-        $data = $request->except(['foto', 'video']);
+        $data = $request->except(['foto']);
 
         // Handle file uploads
         if ($request->hasFile('foto')) {
@@ -118,16 +111,6 @@ class AnakPerusahaanController extends BaseDashboardController
 
             $fotoPath = $request->file('foto')->store('perusahaan/foto', 'public');
             $data['foto'] = $fotoPath;
-        }
-
-        if ($request->hasFile('video')) {
-            // Delete old file if exists
-            if ($perusahaan->video && Storage::disk('public')->exists($perusahaan->video)) {
-                Storage::disk('public')->delete($perusahaan->video);
-            }
-
-            $videoPath = $request->file('video')->store('perusahaan/video', 'public');
-            $data['video'] = $videoPath;
         }
 
         $perusahaan->update($data);
@@ -147,10 +130,6 @@ class AnakPerusahaanController extends BaseDashboardController
         // Delete associated files
         if ($perusahaan->foto && Storage::disk('public')->exists($perusahaan->foto)) {
             Storage::disk('public')->delete($perusahaan->foto);
-        }
-
-        if ($perusahaan->video && Storage::disk('public')->exists($perusahaan->video)) {
-            Storage::disk('public')->delete($perusahaan->video);
         }
 
         $perusahaan->delete();

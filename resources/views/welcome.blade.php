@@ -744,7 +744,7 @@
                                         <span class="rating-text">({{ $item->rating }})</span>
                                     </div>
                                 </div>
-                                <p class="product-description">{{ \Str::limit($item->deskripsi_produk, 100) }}</p>
+                                <p class="product-description">{{ \Str::limit($item->deskripsi_produk , 100 ) }}</p>
                                 <div class="product-features">
                                     @foreach($item->benefits->take(3) as $benefit)
                                         <span class="feature-tag"><i class="fas fa-check me-1"></i>{{ $benefit->nama_benefit }}</span>
@@ -773,258 +773,11 @@
                         </div>
                     </div>
 
-                    <!-- Business Services -->
-                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="200">
-                        <div class="product-card-enhanced">
-                            <div class="product-image-container">
-                                <img src="assets/img/portfolio/jamur.jpg" alt="Branding UMKM" class="product-image">
-                                <div class="product-overlay">
-                                    <div class="product-icons">
-                                        <button class="icon-btn" title="Tambah ke Favorit">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <button class="icon-btn" title="Konsultasi">
-                                            <i class="fas fa-comments"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-category-tag">Bisnis</div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-header">
-                                    <h4 class="product-title">Paket Branding UMKM</h4>
-                                    <div class="product-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <span class="rating-text">(4.7)</span>
-                                    </div>
-                                </div>
-                                <p class="product-description">Tingkatkan citra bisnis Anda dengan paket branding
-                                    lengkap yang profesional dan modern.</p>
-                                <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Logo Design</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Digital Marketing</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Website</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-product-detail" data-bs-toggle="modal"
-                                        data-bs-target="#productModal">
-                                        <span>Detail Paket</span>
-                                        <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     @empty
                     <div class="col-12 text-center">
                         <p>Tidak ada produk tersedia saat ini.</p>
                     </div>
                     @endforelse
-
-                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="250">
-                        <div class="product-card-enhanced">
-                            <div class="product-image-container">
-                                <img src="assets/img/portfolio/kayu.jpg" alt="Konsultasi Keuangan"
-                                    class="product-image">
-                                <div class="product-overlay">
-                                    <div class="product-icons">
-                                        <button class="icon-btn" title="Tambah ke Favorit">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <button class="icon-btn" title="Konsultasi">
-                                            <i class="fas fa-comments"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-category-tag">Bisnis</div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-header">
-                                    <h4 class="product-title">Konsultasi Keuangan Bisnis</h4>
-                                    <div class="product-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="rating-text">(5.0)</span>
-                                    </div>
-                                </div>
-                                <p class="product-description">Dapatkan saran keuangan profesional untuk mengembangkan
-                                    dan mengelola keuangan bisnis Anda.</p>
-                                <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Analisis Keuangan</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Perencanaan</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Laporan</span>
-                                </div>
-                                <div class="product-footer">
-                                    <button class="btn-product-detail" data-bs-toggle="modal"
-                                        data-bs-target="#productModal">
-                                        <span>Detail Paket</span>
-                                        <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Craft Services -->
-                    <div class="product-item" data-category="craft" data-aos="fade-up" data-aos-delay="300">
-                        <div class="product-card-enhanced">
-                            <div class="product-image-container">
-                                <img src="assets/img/portfolio/kayu2.jpg" alt="Kerajinan Kayu" class="product-image">
-                                <div class="product-overlay">
-                                    <div class="product-icons">
-                                        <button class="icon-btn" title="Tambah ke Favorit">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <button class="icon-btn" title="Konsultasi">
-                                            <i class="fas fa-comments"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-badge custom">
-                                    <i class="fas fa-palette me-1"></i>Custom
-                                </div>
-                                <div class="product-category-tag">Kerajinan</div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-header">
-                                    <h4 class="product-title">Produk Kerajinan Kayu</h4>
-                                    <div class="product-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <span class="rating-text">(4.8)</span>
-                                    </div>
-                                </div>
-                                <p class="product-description">Kerajinan kayu berkualitas tinggi dengan desain eksklusif
-                                    dan finishing premium.</p>
-                                <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Desain Custom</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Kayu Premium</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Garansi</span>
-                                </div>
-                                <div class="product-footer">
-
-                                    <button class="btn-product-detail" data-bs-toggle="modal"
-                                        data-bs-target="#productModal">
-                                        <span>Detail Paket</span>
-                                        <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Agriculture Services -->
-                    <div class="product-item" data-category="agriculture" data-aos="fade-up" data-aos-delay="350">
-                        <div class="product-card-enhanced">
-                            <div class="product-image-container">
-                                <img src="assets/img/portfolio/sawah.jpg" alt="Konsultasi Pertanian"
-                                    class="product-image">
-                                <div class="product-overlay">
-                                    <div class="product-icons">
-                                        <button class="icon-btn" title="Tambah ke Favorit">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <button class="icon-btn" title="Konsultasi">
-                                            <i class="fas fa-comments"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-badge eco">
-                                    <i class="fas fa-leaf me-1"></i>Eco
-                                </div>
-                                <div class="product-category-tag">Pertanian</div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-header">
-                                    <h4 class="product-title">Konsultasi Pertanian Modern</h4>
-                                    <div class="product-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="rating-text">(4.9)</span>
-                                    </div>
-                                </div>
-                                <p class="product-description">Solusi pertanian modern dan berkelanjutan untuk
-                                    meningkatkan hasil panen Anda.</p>
-                                <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Teknologi Modern</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Organic</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Monitoring</span>
-                                </div>
-                                <div class="product-footer">
-
-                                    <button class="btn-product-detail" data-bs-toggle="modal"
-                                        data-bs-target="#productModal">
-                                        <span>Detail Paket</span>
-                                        <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Business Services - Catering -->
-                    <div class="product-item" data-category="business" data-aos="fade-up" data-aos-delay="400">
-                        <div class="product-card-enhanced">
-                            <div class="product-image-container">
-                                <img src="assets/img/portfolio/lada.jpg" alt="Jasa Boga Premium" class="product-image">
-                                <div class="product-overlay">
-                                    <div class="product-icons">
-                                        <button class="icon-btn" title="Tambah ke Favorit">
-                                            <i class="fas fa-heart"></i>
-                                        </button>
-                                        <button class="icon-btn" title="Konsultasi">
-                                            <i class="fas fa-comments"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="product-badge premium">
-                                    <i class="fas fa-crown me-1"></i>Premium
-                                </div>
-                                <div class="product-category-tag">Bisnis</div>
-                            </div>
-                            <div class="product-content">
-                                <div class="product-header">
-                                    <h4 class="product-title">Jasa Boga Premium</h4>
-                                    <div class="product-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <span class="rating-text">(5.0)</span>
-                                    </div>
-                                </div>
-                                <p class="product-description">Layanan katering berkualitas premium untuk acara
-                                    perusahaan dan pribadi yang berkesan.</p>
-                                <div class="product-features">
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Menu Eksklusif</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Setup Lengkap</span>
-                                    <span class="feature-tag"><i class="fas fa-check me-1"></i>Professional</span>
-                                </div>
-                                <div class="product-footer">
-
-                                    <button class="btn-product-detail" data-bs-toggle="modal"
-                                        data-bs-target="#productModal">
-                                        <span>Detail Paket</span>
-                                        <i class="fas fa-arrow-right ms-2"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Call to Action -->
@@ -1323,32 +1076,8 @@
                                     
                                     <div class="tab-content mt-3">
                                         <div class="tab-pane fade show active" id="features-tab">
-<<<<<<< HEAD
-                                            <div class="features-list">
-                                                <div class="" data-aos="fade-up" data-aos-delay="100">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Kurikulum yang disesuaikan dengan kebutuhan</span>
-                                                </div>
-                                                <div class="" data-aos="fade-up" data-aos-delay="200">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Pelatihan guru dan staf berkualitas</span>
-                                                </div>
-                                                <div class="" data-aos="fade-up" data-aos-delay="300">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Sistem manajemen pendidikan terintegrasi</span>
-                                                </div>
-                                                <div class="" data-aos="fade-up" data-aos-delay="400">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Evaluasi dan penilaian komprehensif</span>
-                                                </div>
-                                                <div class="" data-aos="fade-up">
-                                                    <i class="fas fa-check-circle text-success me-2"></i>
-                                                    <span>Dukungan teknis 24/7</span>
-                                                </div>
-=======
                                             <div class="features-list" id="benefitsList">
                                                 <!-- Benefits will be populated by JavaScript -->
->>>>>>> origin/main
                                             </div>
                                         </div>
                                     </div>
@@ -1384,17 +1113,12 @@
                             <button type="button" class="btn-modal-secondary me-2" data-bs-dismiss="modal">
                                 <i class="fas fa-times me-1"></i>Tutup
                             </button>
-                            <button type="button" class="btn-modal-primary" data-action="subscribe">
-                                <i class="fas fa-shopping-cart me-1"></i>Berlangganan Sekarang
-                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
 
     <!-- Modal untuk Detail Anak Perusahaan -->
     <div class="modal fade" id="subsidiariesModal" tabindex="-1" aria-hidden="true">
@@ -1444,89 +1168,8 @@
                                 <p class="text-muted">Belum ada data anak perusahaan.</p>
                             </div>
                         @endforelse
-                        <div class="col-md-6">
-                            <div class="subsidiary-detail-card p-4 border rounded-3">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="assets/img/portfolio/kayu.jpg" alt="Tryamanda Wood Works"
-                                        class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                    <div>
-                                        <h6 class="mb-1">Tryamanda Wood Works</h6>
-                                        <small class="text-muted">Manufaktur � Didirikan 2019</small>
-                                    </div>
-                                </div>
-                                <p class="small text-muted mb-2">Produsen furniture dan kerajinan kayu berkualitas
-                                    tinggi dengan desain eksklusif dan modern.</p>
-                                <div class="d-flex justify-content-between">
 
-                                    <small><i class="fas fa-location-dot me-1"></i>Jepara</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="subsidiary-detail-card p-4 border rounded-3">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="assets/img/portfolio/sawah.jpg" alt="Abhiraja Agri Solutions"
-                                        class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                    <div>
-                                        <h6 class="mb-1">Abhiraja Agri Solutions</h6>
-                                        <small class="text-muted">Pertanian � Didirikan 2022</small>
-                                    </div>
-                                </div>
-                                <p class="small text-muted mb-2">Solusi pertanian modern dan berkelanjutan untuk
-                                    meningkatkan produktivitas hasil pertanian.</p>
-                                <div class="d-flex justify-content-between">
 
-                                    <small><i class="fas fa-location-dot me-1"></i>Bogor</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="subsidiary-detail-card p-4 border rounded-3">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="assets/img/portfolio/kayu2.jpg" alt="Giovanni Finance Consulting"
-                                        class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                    <div>
-                                        <h6 class="mb-1">Giovanni Finance Consulting</h6>
-                                        <small class="text-muted">Keuangan � Didirikan 2020</small>
-                                    </div>
-                                </div>
-                                <p class="small text-muted mb-2">Konsultasi keuangan dan manajemen bisnis untuk
-                                    pertumbuhan yang berkelanjutan.</p>
-                                <div class="d-flex justify-content-between">
-
-                                    <small><i class="fas fa-location-dot me-1"></i>Jakarta</small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="subsidiary-detail-card p-4 border rounded-3">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="assets/img/portfolio/kayu3.jpg" alt="Tryamanda Catering Services"
-                                        class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
-                                    <div>
-                                        <h6 class="mb-1">Tryamanda Catering Services</h6>
-                                        <small class="text-muted">Jasa Boga � Didirikan 2023</small>
-                                    </div>
-                                </div>
-                                <p class="small text-muted mb-2">Layanan katering premium untuk acara korporat dan
-                                    pribadi dengan cita rasa istimewa.</p>
-                                <div class="d-flex justify-content-between">
-
-                                    <small><i class="fas fa-location-dot me-1"></i>Sumedang</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary">Hubungi Tim Partnership</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
->>>>>>> origin/main
     <!-- Scripts - Load in order for better performance -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>

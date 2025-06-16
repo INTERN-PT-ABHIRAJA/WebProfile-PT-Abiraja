@@ -95,15 +95,6 @@
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
-                
-                <div>
-                    <label for="video" class="block text-sm font-medium text-gray-700 mb-1">Video Perusahaan (opsional)</label>
-                    <input type="file" name="video" id="video" class="w-full border border-gray-300 rounded-md p-2">
-                    <p class="text-xs text-gray-500 mt-1">Format: MP4, MOV, OGG, QT (Maks. 20MB)</p>
-                    @error('video')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
             </div>
             
             <div class="flex justify-end">

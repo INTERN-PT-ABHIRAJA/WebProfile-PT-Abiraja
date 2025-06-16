@@ -2,14 +2,69 @@
 // Advanced animations & interactivity for digital services profile page
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Advanced loading screen animation
+    // Navbar scroll transparency with smooth transitions
+    const navbar = document.querySelector('.navbar') || document.querySelector('.digital-navbar');
+    let lastScrollTop = 0;
+    let ticking = false;
+    
+    function handleNavbarTransparency() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (navbar) {
+            if (scrollTop > 50) {
+                // Make navbar more transparent when scrolled
+                navbar.style.background = 'rgba(26, 26, 46, 0.2)'; // More transparent
+                navbar.style.backdropFilter = 'blur(15px)';
+                navbar.style.webkitBackdropFilter = 'blur(15px)';
+                navbar.style.borderBottom = '1px solid rgba(0, 245, 255, 0.2)';
+                navbar.style.boxShadow = '0 8px 32px rgba(0, 245, 255, 0.1)';
+                navbar.classList.add('scrolled');
+                
+                // Add subtle glow effect when scrolled
+                navbar.style.setProperty('--navbar-glow', '0 0 20px rgba(0, 245, 255, 0.1)');
+            } else {
+                // Reset to less transparent when at top
+                navbar.style.background = 'rgba(26, 26, 46, 0.95)';
+                navbar.style.backdropFilter = 'blur(20px)';
+                navbar.style.webkitBackdropFilter = 'blur(20px)';
+                navbar.style.borderBottom = '1px solid rgba(255, 255, 255, 0.1)';
+                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+                navbar.classList.remove('scrolled');
+                navbar.style.setProperty('--navbar-glow', 'none');
+            }
+        }
+        
+        lastScrollTop = scrollTop;
+        ticking = false;
+    }
+    
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(handleNavbarTransparency);
+            ticking = true;
+        }
+    }
+    
+    // Optimized scroll listener using requestAnimationFrame
+    window.addEventListener('scroll', requestTick, { passive: true });
+    window.addEventListener('resize', handleNavbarTransparency);
+    
+    // Initial call to set correct state
+    handleNavbarTransparency();
+
+    // Advanced loading screen animation with better error handling
     const loadingScreen = document.getElementById('loading-screen');
     const progressBar = document.querySelector('.progress-bar');
     const progressText = document.querySelector('.progress-text');
     
+    // Failsafe: Hide loading screen after maximum time
+    const failsafeTimeout = setTimeout(() => {
+        hideLoadingScreen();
+    }, 3000); // Maximum 3 seconds
+    
     let progress = 0;
     const loadingInterval = setInterval(() => {
-        progress += Math.random() * 25 + 5;
+        progress += Math.random() * 15 + 10; // Faster loading
         if (progress > 100) progress = 100;
         
         if (progressBar) {
@@ -24,18 +79,27 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (progress >= 100) {
             clearInterval(loadingInterval);
+            clearTimeout(failsafeTimeout);
             setTimeout(() => {
-                if (loadingScreen) {
-                    loadingScreen.style.opacity = '0';
-                    loadingScreen.style.transform = 'scale(1.1)';
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                        initializeAnimations();
-                    }, 600);
-                }
-            }, 500);
+                hideLoadingScreen();
+            }, 300); // Reduced delay
         }
-    }, 80);
+    }, 60); // Faster intervals
+    
+    function hideLoadingScreen() {
+        if (loadingScreen) {
+            // Remove loading class from body
+            document.body.classList.remove('loading');
+            
+            loadingScreen.style.opacity = '0';
+            loadingScreen.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+                loadingScreen.remove(); // Completely remove from DOM
+                initializeAnimations();
+            }, 400);
+        }
+    }
 
     // Advanced particles.js configuration
     if (typeof particlesJS !== 'undefined') {
@@ -727,4 +791,555 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(dynamicParticleStyle);
+
+    // Enhanced Services Grid Interactions
+    function initServiceCards() {
+        const serviceCards = document.querySelectorAll('.service-card.modern-card');
+        
+        serviceCards.forEach(card => {
+            // Enhanced hover effects
+            card.addEventListener('mouseenter', function() {
+                // Pause animations temporarily for better hover experience
+                const animations = this.querySelectorAll('[class*="animation"], [class*="pulse"], [class*="float"]');
+                animations.forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                });
+                
+                // Add enhanced glow effect
+                this.style.boxShadow = `
+                    0 30px 60px rgba(102, 126, 234, 0.4),
+                    0 20px 40px rgba(118, 75, 162, 0.3),
+                    inset 0 1px 0 rgba(255,255,255,0.3)
+                `;
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                // Resume animations
+                const animations = this.querySelectorAll('[class*="animation"], [class*="pulse"], [class*="float"]');
+                animations.forEach(el => {
+                    el.style.animationPlayState = 'running';
+                });
+                
+                // Reset glow effect
+                this.style.boxShadow = '';
+            });
+            
+            // Enhanced click interaction
+            card.addEventListener('click', function(e) {
+                if (!e.target.closest('.btn-explore')) {
+                    // Add ripple effect
+                    createRippleEffect(this, e);
+                    
+                    // Animate card content
+                    const content = this.querySelector('.service-content');
+                    content.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        content.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            });
+        });
+    }
+
+    // Create ripple effect on click
+    function createRippleEffect(element, event) {
+        const rect = element.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.6) 0%, transparent 70%);
+            border-radius: 50%;
+            left: ${x - 10}px;
+            top: ${y - 10}px;
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+            z-index: 10;
+        `;
+        
+        element.style.position = 'relative';
+        element.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    }
+
+    // Add ripple animation keyframes
+    if (!document.querySelector('#ripple-styles')) {
+        const style = document.createElement('style');
+        style.id = 'ripple-styles';
+        style.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Enhanced Counter Animation
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number[data-counter]');
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-counter'));
+                    animateCounter(counter, target);
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+        
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    }
+
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 60; // 60 frames for smooth animation
+        const duration = 2000; // 2 seconds
+        const stepTime = duration / 60;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current);
+        }, stepTime);
+    }
+
+    // Enhanced Progress Bar Animation
+    function animateProgressBars() {
+        const progressBars = document.querySelectorAll('.progress-bar[data-skill]');
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target;
+                    const skill = progressBar.getAttribute('data-skill');
+                    animateProgressBar(progressBar, skill);
+                    progressObserver.unobserve(progressBar);
+                }
+            });
+        }, observerOptions);
+        
+        progressBars.forEach(bar => {
+            progressObserver.observe(bar);
+        });
+    }
+
+    function animateProgressBar(element, targetWidth) {
+        let width = 0;
+        const target = parseInt(targetWidth);
+        const increment = target / 60;
+        
+        element.style.width = '0%';
+        
+        const timer = setInterval(() => {
+            width += increment;
+            if (width >= target) {
+                width = target;
+                clearInterval(timer);
+            }
+            element.style.width = width + '%';
+        }, 33); // ~60fps
+    }
+
+    // Enhanced Feature List Animation
+    function animateFeatureList() {
+        const featureLists = document.querySelectorAll('.animated-list');
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const listObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const list = entry.target;
+                    const items = list.querySelectorAll('li[data-delay]');
+                    
+                    items.forEach(item => {
+                        const delay = parseFloat(item.getAttribute('data-delay')) * 1000;
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateX(0)';
+                        }, delay);
+                    });
+                    
+                    listObserver.unobserve(list);
+                }
+            });
+        }, observerOptions);
+        
+        featureLists.forEach(list => {
+            // Initially hide items
+            const items = list.querySelectorAll('li[data-delay]');
+            items.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                item.style.transition = 'all 0.5s ease';
+            });
+            
+            listObserver.observe(list);
+        });
+    }
+
+    // Enhanced Tech Badge Animation
+    function animateTechBadges() {
+        const techStacks = document.querySelectorAll('.tech-stack');
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const badgeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stack = entry.target;
+                    const badges = stack.querySelectorAll('.animated-badge[data-delay]');
+                    
+                    badges.forEach(badge => {
+                        const delay = parseFloat(badge.getAttribute('data-delay')) * 1000;
+                        setTimeout(() => {
+                            badge.style.opacity = '1';
+                            badge.style.transform = 'translateY(0) scale(1)';
+                        }, delay);
+                    });
+                    
+                    badgeObserver.unobserve(stack);
+                }
+            });
+        }, observerOptions);
+        
+        techStacks.forEach(stack => {
+            // Initially hide badges
+            const badges = stack.querySelectorAll('.animated-badge[data-delay]');
+            badges.forEach(badge => {
+                badge.style.opacity = '0';
+                badge.style.transform = 'translateY(20px) scale(0.8)';
+                badge.style.transition = 'all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            });
+            
+            badgeObserver.observe(stack);
+        });
+    }
+
+    // Enhanced Explore Button Interactions
+    function initExploreButtons() {
+        const exploreButtons = document.querySelectorAll('.btn-explore');
+        
+        exploreButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Add click animation
+                this.style.transform = 'translateY(-2px) scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-2px) scale(1)';
+                }, 150);
+                
+                // Get service type
+                const serviceCard = this.closest('.service-card');
+                const serviceType = serviceCard.getAttribute('data-service');
+                
+                // Show service details (you can customize this)
+                showServiceDetails(serviceType);
+            });
+            
+            // Enhanced hover effect
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px)';
+                this.style.boxShadow = '0 15px 35px rgba(102, 126, 234, 0.5)';
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.4)';
+            });
+        });
+    }
+
+    // Show service details function (customizable)
+    function showServiceDetails(serviceType) {
+        // You can implement a modal or navigate to a detailed page
+        console.log(`Exploring ${serviceType} service...`);
+        
+        // Example: Create a notification
+        showNotification(`Loading ${serviceType} service details...`);
+    }
+
+    // Notification system
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Auto remove
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                notification.remove();
+            }, 300);
+        }, 3000);
+    }
+
+    // Particle System for Enhanced Visual Effects
+    function initParticleSystem() {
+        const serviceCards = document.querySelectorAll('.service-card.modern-card');
+        
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                createMouseParticles(this);
+            });
+        });
+    }
+
+    function createMouseParticles(element) {
+        const particleCount = 5;
+        
+        for (let i = 0; i < particleCount; i++) {
+            setTimeout(() => {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: radial-gradient(circle, #667eea, #764ba2);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 15;
+                    animation: mouseParticle 1s ease-out forwards;
+                `;
+                
+                // Random position within card
+                const rect = element.getBoundingClientRect();
+                const x = Math.random() * rect.width;
+                const y = Math.random() * rect.height;
+                
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                
+                element.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+            }, i * 100);
+        }
+    }
+
+    // Add mouse particle animation
+    if (!document.querySelector('#mouse-particle-styles')) {
+        const style = document.createElement('style');
+        style.id = 'mouse-particle-styles';
+        style.textContent = `
+            @keyframes mouseParticle {
+                0% {
+                    opacity: 1;
+                    transform: scale(0) translateY(0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(1) translateY(-50px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Services CTA Button Enhancement
+    function initServicesCTAButton() {
+        const ctaButton = document.querySelector('.btn-services-explore');
+        
+        if (ctaButton) {
+            // Add click ripple effect
+            ctaButton.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: rippleEffect 0.6s ease-out;
+                    pointer-events: none;
+                    z-index: 3;
+                `;
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Scroll to portfolio section
+                const portfolioSection = document.getElementById('portfolio');
+                if (portfolioSection) {
+                    portfolioSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+            
+            // Add hover magnetic effect
+            ctaButton.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const deltaX = (e.clientX - centerX) * 0.1;
+                const deltaY = (e.clientY - centerY) * 0.1;
+                
+                this.style.transform = `translateY(-8px) scale(1.05) translate(${deltaX}px, ${deltaY}px)`;
+            });
+            
+            ctaButton.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+            
+            // Add particle explosion on hover
+            ctaButton.addEventListener('mouseenter', function() {
+                createButtonParticles(this);
+            });
+        }
+    }
+    
+    // Create particle explosion for button
+    function createButtonParticles(button) {
+        const particleCount = 12;
+        const rect = button.getBoundingClientRect();
+        
+        for (let i = 0; i < particleCount; i++) {
+            setTimeout(() => {
+                const particle = document.createElement('div');
+                const angle = (360 / particleCount) * i;
+                const velocity = 50 + Math.random() * 30;
+                
+                particle.style.cssText = `
+                    position: fixed;
+                    width: 4px;
+                    height: 4px;
+                    background: linear-gradient(45deg, var(--accent-primary), var(--accent-tertiary));
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1000;
+                    left: ${rect.left + rect.width / 2}px;
+                    top: ${rect.top + rect.height / 2}px;
+                    animation: buttonParticleExplosion 1.5s ease-out forwards;
+                `;
+                
+                particle.style.setProperty('--angle', angle + 'deg');
+                particle.style.setProperty('--velocity', velocity + 'px');
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 1500);
+            }, i * 50);
+        }
+    }
+    
+    // Add ripple and particle animations
+    if (!document.querySelector('#cta-button-styles')) {
+        const style = document.createElement('style');
+        style.id = 'cta-button-styles';
+        style.textContent = `
+            @keyframes rippleEffect {
+                0% {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(1);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes buttonParticleExplosion {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(
+                        calc(cos(var(--angle)) * var(--velocity)),
+                        calc(sin(var(--angle)) * var(--velocity))
+                    ) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Initialize all enhanced features (updated)
+    function initEnhancedServicesGrid() {
+        initServiceCards();
+        animateCounters();
+        animateProgressBars();
+        animateFeatureList();
+        animateTechBadges();
+        initExploreButtons();
+        initParticleSystem();
+        initServicesCTAButton(); // Add new CTA button initialization
+    }
+
+    // Call initialization when DOM is ready
+    document.addEventListener('DOMContentLoaded', initEnhancedServicesGrid);
+
+    // Also initialize on page load to ensure all elements are ready
+    window.addEventListener('load', initEnhancedServicesGrid);
 });

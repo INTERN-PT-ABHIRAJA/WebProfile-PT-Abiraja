@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <title>Digital Services Profile - PT ABHIRAJA GIOVANNI TRYAMANDA</title>
-    <link rel="icon" href="{{ asset('assets/img/logo/Logo.png') }}" type="image/png">
+    <link rel="icon" href="<?php echo e(asset('assets/img/logo/Logo.png')); ?>" type="image/png">
 
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" as="style">
@@ -16,9 +16,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="{{ asset('assets/css/digital-profile.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/process-section.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/contact-footer.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/digital-profile.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/process-section.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/contact-footer.css')); ?>" rel="stylesheet">
 
     <!-- Non-critical CSS - load async -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -54,7 +54,7 @@
     <nav class="navbar navbar-expand-lg fixed-top digital-navbar">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('assets/img/logo/Logo.png') }}" alt="Logo" class="logo-img">
+                <img src="<?php echo e(asset('assets/img/logo/Logo.png')); ?>" alt="Logo" class="logo-img">
                 <span class="brand-text">Abhiraja<span class="brand-accent">Digital</span></span>
             </a>
             
@@ -1395,7 +1395,7 @@
     </div>
 
     <!-- Service Modal -->
-    @include('modals.serviceModal')
+    <?php echo $__env->make('modals.serviceModal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <!-- Back to Top -->
     <a href="#" class="back-to-top" id="backToTop">
@@ -1502,7 +1502,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/particles.js/particles.min.js"></script>
-    <script src="{{ asset('assets/js/digital-profile.js') }}"></script>
+    <script src="<?php echo e(asset('assets/js/digital-profile.js')); ?>"></script>
 </body>
 
 </html>
+<?php /**PATH C:\DataTamish\Projek\WebProfile-PT-Abiraja\resources\views/digital-services-profile.blade.php ENDPATH**/ ?>
