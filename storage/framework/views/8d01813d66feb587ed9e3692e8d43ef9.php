@@ -365,7 +365,7 @@
                                 <div class="card-header-new text-center p-4 position-relative">
                                     <div class="company-logo-new-container mx-auto mb-3">
                                         <?php if($company->foto): ?>
-                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
+                                            <img src="<?php echo e($company->foto_url); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="company-logo-new">
                                         <?php else: ?>
                                             <img src="assets/img/Mitra/placeholder.png" alt="<?php echo e($company->nama_perusahaan); ?>"
@@ -1134,7 +1134,7 @@
                                 <div class="subsidiary-detail-card p-4 border rounded-3">
                                     <div class="d-flex align-items-center mb-3">
                                         <?php if($company->foto): ?>
-                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
+                                            <img src="<?php echo e($company->foto_url); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                         <?php else: ?>
                                             <img src="assets/img/portfolio/placeholder.jpg"

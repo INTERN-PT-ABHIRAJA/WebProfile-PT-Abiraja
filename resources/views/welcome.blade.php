@@ -365,7 +365,7 @@
                                 <div class="card-header-new text-center p-4 position-relative">
                                     <div class="company-logo-new-container mx-auto mb-3">
                                         @if($company->foto)
-                                            <img src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}"
+                                            <img src="{{ $company->foto_url }}" alt="{{ $company->nama_perusahaan }}"
                                                 class="company-logo-new">
                                         @else
                                             <img src="assets/img/Mitra/placeholder.png" alt="{{ $company->nama_perusahaan }}"
@@ -1131,7 +1131,7 @@
                                 <div class="subsidiary-detail-card p-4 border rounded-3">
                                     <div class="d-flex align-items-center mb-3">
                                         @if($company->foto)
-                                            <img src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}"
+                                            <img src="{{ $company->foto_url }}" alt="{{ $company->nama_perusahaan }}"
                                                 class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                         @else
                                             <img src="assets/img/portfolio/placeholder.jpg"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AnakPerusahaan;
+use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -56,10 +57,9 @@ class AnakPerusahaanController extends BaseDashboardController
 
         $data = $request->except(['foto']);
 
-        // Handle file uploads
+        // Handle foto upload with dual storage
         if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('perusahaan/foto', 'public');
-            $data['foto'] = $fotoPath;
+            $data['foto'] = ImageHelper::dualUpload($request->file('foto'), 'perusahaan/foto');
         }
         
         $perusahaan = AnakPerusahaan::create($data);
@@ -102,15 +102,14 @@ class AnakPerusahaanController extends BaseDashboardController
 
         $data = $request->except(['foto']);
 
-        // Handle file uploads
+        // Handle foto upload with dual storage
         if ($request->hasFile('foto')) {
-            // Delete old file if exists
-            if ($perusahaan->foto && Storage::disk('public')->exists($perusahaan->foto)) {
-                Storage::disk('public')->delete($perusahaan->foto);
+            // Delete old file from both locations
+            if ($perusahaan->foto) {
+                ImageHelper::deleteImage($perusahaan->foto);
             }
 
-            $fotoPath = $request->file('foto')->store('perusahaan/foto', 'public');
-            $data['foto'] = $fotoPath;
+            $data['foto'] = ImageHelper::dualUpload($request->file('foto'), 'perusahaan/foto');
         }
 
         $perusahaan->update($data);
@@ -127,9 +126,9 @@ class AnakPerusahaanController extends BaseDashboardController
     {
         $perusahaan = AnakPerusahaan::findOrFail($id);
 
-        // Delete associated files
-        if ($perusahaan->foto && Storage::disk('public')->exists($perusahaan->foto)) {
-            Storage::disk('public')->delete($perusahaan->foto);
+        // Delete foto from both locations
+        if ($perusahaan->foto) {
+            ImageHelper::deleteImage($perusahaan->foto);
         }
 
         $perusahaan->delete();

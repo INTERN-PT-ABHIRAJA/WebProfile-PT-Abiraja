@@ -29,7 +29,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 @if($company->foto)
-                                    <img class="h-10 w-10 rounded-full mr-3" src="{{ Storage::url($company->foto) }}" alt="{{ $company->nama_perusahaan }}">
+                                    <img class="h-10 w-10 rounded-full mr-3" src="{{ $company->foto_url }}" alt="{{ $company->nama_perusahaan }}">
                                 @else
                                     <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center mr-3">
                                         <span class="text-sm font-medium text-gray-700">{{ substr($company->nama_perusahaan, 0, 2) }}</span>

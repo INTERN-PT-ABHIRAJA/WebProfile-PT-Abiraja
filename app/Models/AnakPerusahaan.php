@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\ImageHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -37,6 +38,14 @@ class AnakPerusahaan extends Model
     protected $casts = [
         'berdiri_sejak' => 'date',
     ];
+
+    /**
+     * Get the foto URL with fallback mechanism
+     */
+    public function getFotoUrlAttribute()
+    {
+        return ImageHelper::getImageUrl($this->foto, '/assets/img/companies/default.jpg');
+    }
 
     /**
      * Get the user that owns the anak perusahaan.
