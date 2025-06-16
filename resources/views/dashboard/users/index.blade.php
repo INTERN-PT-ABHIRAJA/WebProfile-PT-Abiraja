@@ -54,7 +54,7 @@
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                             <a href="{{ route('dashboard.users.edit', $user->id_user) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</a>
-                            @if($user->id_user !== auth()->id())
+                            @if($user->id_user !== (auth()->user()->id_user ?? 0))
                             <form action="{{ route('dashboard.users.destroy', $user->id_user) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')

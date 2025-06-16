@@ -19,4 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Public API routes
+Route::get('/products/{id}', [\App\Http\Controllers\Api\ProductApiController::class, 'getProductDetails']);
 Route::get('/product-template/{id}', [\App\Http\Controllers\Api\ProductApiController::class, 'getProductTemplate']);

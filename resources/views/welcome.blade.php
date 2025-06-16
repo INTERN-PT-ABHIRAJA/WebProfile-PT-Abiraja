@@ -1326,9 +1326,15 @@
                 .then(data => {
                     // Update benefits list
                     const benefitsList = document.getElementById('benefitsList');
+                    
+                    if (!benefitsList) {
+                        console.error('benefitsList element not found');
+                        return;
+                    }
+                    
                     benefitsList.innerHTML = '';
                     
-                    if (data.benefits && data.benefits.length) {
+                    if (data.benefits && data.benefits.length > 0) {
                         data.benefits.forEach((benefit, index) => {
                             const delay = 100 * (index + 1);
                             const benefitItem = document.createElement('div');
@@ -1378,6 +1384,12 @@
                 })
                 .catch(error => {
                     console.error('Error fetching product details:', error);
+                    
+                    // Show error message in benefits list
+                    const benefitsList = document.getElementById('benefitsList');
+                    if (benefitsList) {
+                        benefitsList.innerHTML = '<p class="text-danger">Gagal memuat detail produk. Silakan coba lagi.</p>';
+                    }
                 });
         }
     </script>

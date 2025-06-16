@@ -98,7 +98,7 @@ class DashboardController extends BaseDashboardController
             'role' => $request->role,
         ]);
 
-        return redirect()->route('dashboard.users')->with('success', 'User berhasil ditambahkan');
+        return redirect()->route('dashboard.users.index')->with('success', 'User berhasil ditambahkan');
     }
 
     public function editUser($id)
@@ -132,7 +132,7 @@ class DashboardController extends BaseDashboardController
 
         $user->update($userData);
 
-        return redirect()->route('dashboard.users')->with('success', 'User berhasil diperbarui');
+        return redirect()->route('dashboard.users.index')->with('success', 'User berhasil diperbarui');
     }
 
     public function deleteUser($id)
@@ -140,7 +140,7 @@ class DashboardController extends BaseDashboardController
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('dashboard.users')->with('success', 'User berhasil dihapus');
+        return redirect()->route('dashboard.users.index')->with('success', 'User berhasil dihapus');
     }
 
     // Management Kategori
@@ -167,7 +167,7 @@ class DashboardController extends BaseDashboardController
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('dashboard.categories')->with('success', 'Kategori berhasil ditambahkan');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Kategori berhasil ditambahkan');
     }
 
     public function editCategory($id)
@@ -190,7 +190,7 @@ class DashboardController extends BaseDashboardController
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('dashboard.categories')->with('success', 'Kategori berhasil diperbarui');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Kategori berhasil diperbarui');
     }
 
     public function deleteCategory($id)
@@ -199,12 +199,12 @@ class DashboardController extends BaseDashboardController
         
         // Check if category has companies
         if ($category->anakPerusahaan()->count() > 0) {
-            return redirect()->route('dashboard.categories')->with('error', 'Kategori tidak dapat dihapus karena digunakan oleh anak perusahaan');
+            return redirect()->route('dashboard.categories.index')->with('error', 'Kategori tidak dapat dihapus karena digunakan oleh anak perusahaan');
         }
         
         $category->delete();
 
-        return redirect()->route('dashboard.categories')->with('success', 'Kategori berhasil dihapus');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Kategori berhasil dihapus');
     }
 
     // Management Anak Perusahaan
@@ -250,7 +250,7 @@ class DashboardController extends BaseDashboardController
 
         AnakPerusahaan::create($companyData);
 
-        return redirect()->route('dashboard.companies')->with('success', 'Anak perusahaan berhasil ditambahkan');
+        return redirect()->route('dashboard.companies.index')->with('success', 'Anak perusahaan berhasil ditambahkan');
     }
 
     public function editCompany($id)
@@ -296,7 +296,7 @@ class DashboardController extends BaseDashboardController
 
         $company->update($companyData);
 
-        return redirect()->route('dashboard.companies')->with('success', 'Anak perusahaan berhasil diperbarui');
+        return redirect()->route('dashboard.companies.index')->with('success', 'Anak perusahaan berhasil diperbarui');
     }
 
     public function deleteCompany($id)
@@ -305,7 +305,7 @@ class DashboardController extends BaseDashboardController
         
         // Check if company has products
         if ($company->produk()->count() > 0) {
-            return redirect()->route('dashboard.companies')->with('error', 'Perusahaan tidak dapat dihapus karena memiliki produk');
+            return redirect()->route('dashboard.companies.index')->with('error', 'Perusahaan tidak dapat dihapus karena memiliki produk');
         }
         
         // Delete logo if exists
@@ -315,7 +315,7 @@ class DashboardController extends BaseDashboardController
         
         $company->delete();
 
-        return redirect()->route('dashboard.companies')->with('success', 'Anak perusahaan berhasil dihapus');
+        return redirect()->route('dashboard.companies.index')->with('success', 'Anak perusahaan berhasil dihapus');
     }
 
     // Management Produk
@@ -357,7 +357,7 @@ class DashboardController extends BaseDashboardController
 
         Produk::create($productData);
 
-        return redirect()->route('dashboard.products')->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->route('dashboard.products.index')->with('success', 'Produk berhasil ditambahkan');
     }
 
     public function editProduct($id)
@@ -399,7 +399,7 @@ class DashboardController extends BaseDashboardController
 
         $product->update($productData);
 
-        return redirect()->route('dashboard.products')->with('success', 'Produk berhasil diperbarui');
+        return redirect()->route('dashboard.products.index')->with('success', 'Produk berhasil diperbarui');
     }
 
     public function deleteProduct($id)
@@ -413,7 +413,7 @@ class DashboardController extends BaseDashboardController
         
         $product->delete();
 
-        return redirect()->route('dashboard.products')->with('success', 'Produk berhasil dihapus');
+        return redirect()->route('dashboard.products.index')->with('success', 'Produk berhasil dihapus');
     }
 
     // Management Media
