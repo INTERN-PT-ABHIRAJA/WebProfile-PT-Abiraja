@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use App\Models\DetailFotoProduk;
+use App\Helpers\ImageHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -69,19 +70,18 @@ class ProdukController extends BaseDashboardController
 
         $data = $request->except(['foto', 'detail_fotos', 'benefits']);
 
-        // Handle main foto upload
+        // Handle main foto upload with dual storage
         if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('produk/foto', 'public');
-            $data['foto'] = $fotoPath;
+            $data['foto'] = ImageHelper::dualUpload($request->file('foto'), 'produk/foto');
         }
 
         $produk = Produk::create($data);
 
-        // Handle multiple detail photos
+        // Handle multiple detail photos with dual storage
         if ($request->hasFile('detail_fotos')) {
             foreach ($request->file('detail_fotos') as $detailFoto) {
                 if ($detailFoto) {
-                    $detailFotoPath = $detailFoto->store('produk/detail_foto', 'public');
+                    $detailFotoPath = ImageHelper::dualUpload($detailFoto, 'produk/detail_foto');
                     DetailFotoProduk::create([
                         'id_produk' => $produk->id_produk,
                         'foto' => $detailFotoPath
@@ -143,15 +143,14 @@ class ProdukController extends BaseDashboardController
 
         $data = $request->except(['foto', 'detail_fotos', 'remove_detail_fotos', 'benefits', 'remove_benefits']);
 
-        // Handle main foto upload
+        // Handle main foto upload with dual storage
         if ($request->hasFile('foto')) {
-            // Delete old file if exists
-            if ($produk->foto && Storage::disk('public')->exists($produk->foto)) {
-                Storage::disk('public')->delete($produk->foto);
+            // Delete old file from both locations
+            if ($produk->foto) {
+                ImageHelper::deleteImage($produk->foto);
             }
 
-            $fotoPath = $request->file('foto')->store('produk/foto', 'public');
-            $data['foto'] = $fotoPath;
+            $data['foto'] = ImageHelper::dualUpload($request->file('foto'), 'produk/foto');
         }
 
         $produk->update($data);
@@ -163,20 +162,18 @@ class ProdukController extends BaseDashboardController
                 ->get();
 
             foreach ($detailFotosToRemove as $detailFoto) {
-                // Delete file from storage
-                if ($detailFoto->foto && Storage::disk('public')->exists($detailFoto->foto)) {
-                    Storage::disk('public')->delete($detailFoto->foto);
-                }
+                // Delete file from both storage locations
+                ImageHelper::deleteImage($detailFoto->foto);
                 // Delete record
                 $detailFoto->delete();
             }
         }
 
-        // Handle new detail photos
+        // Handle new detail photos with dual storage
         if ($request->hasFile('detail_fotos')) {
             foreach ($request->file('detail_fotos') as $detailFoto) {
                 if ($detailFoto) {
-                    $detailFotoPath = $detailFoto->store('produk/detail_foto', 'public');
+                    $detailFotoPath = ImageHelper::dualUpload($detailFoto, 'produk/detail_foto');
                     DetailFotoProduk::create([
                         'id_produk' => $produk->id_produk,
                         'foto' => $detailFotoPath
@@ -214,17 +211,15 @@ class ProdukController extends BaseDashboardController
     {
         $produk = Produk::findOrFail($id);
 
-        // Delete main associated files
-        if ($produk->foto && Storage::disk('public')->exists($produk->foto)) {
-            Storage::disk('public')->delete($produk->foto);
+        // Delete main foto from both locations
+        if ($produk->foto) {
+            ImageHelper::deleteImage($produk->foto);
         }
 
-        // Video field has been removed
-
-        // Delete all detail photos
+        // Delete all detail photos from both locations
         foreach ($produk->detailFoto as $detailFoto) {
-            if ($detailFoto->foto && Storage::disk('public')->exists($detailFoto->foto)) {
-                Storage::disk('public')->delete($detailFoto->foto);
+            if ($detailFoto->foto) {
+                ImageHelper::deleteImage($detailFoto->foto);
             }
             $detailFoto->delete();
         }

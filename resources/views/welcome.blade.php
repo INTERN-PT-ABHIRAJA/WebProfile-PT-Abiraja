@@ -695,11 +695,9 @@
                         <div class="product-card-enhanced">
                             <div class="product-image-container">
                                 @if($item->detailFotos->isNotEmpty())
-                                    <img src="{{ asset('storage/'.$item->detailFotos->first()->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
-                                @elseif($item->foto)
-                                    <img src="{{ asset('storage/'.$item->foto) }}" alt="{{ $item->nama_produk }}" class="product-image">
+                                    <img src="{{ $item->detailFotos->first()->foto_url }}" alt="{{ $item->nama_produk }}" class="product-image">
                                 @else
-                                    <img src="{{ asset('assets/img/portfolio/default.jpg') }}" alt="{{ $item->nama_produk }}" class="product-image">
+                                    <img src="{{ $item->foto_url }}" alt="{{ $item->nama_produk }}" class="product-image">
                                 @endif
                                 <div class="product-overlay">
                                     <div class="product-icons">
@@ -758,11 +756,9 @@
                                         data-product-category="{{ $item->anakPerusahaan->kategori->nama_kategori ?? 'Umum' }}"
                                         data-product-description="{{ $item->deskripsi_produk }}"
                                         @if($item->detailFotos->isNotEmpty())
-                                            data-product-image="{{ asset('storage/'.$item->detailFotos->first()->foto) }}"
-                                        @elseif($item->foto)
-                                            data-product-image="{{ asset('storage/'.$item->foto) }}"
+                                            data-product-image="{{ $item->detailFotos->first()->foto_url }}"
                                         @else
-                                            data-product-image="{{ asset('assets/img/portfolio/default.jpg') }}"
+                                            data-product-image="{{ $item->foto_url }}"
                                         @endif
                                         data-product-rating="{{ $item->rating }}">
                                         <span>Detail Paket</span>
@@ -1295,7 +1291,7 @@
                     
                     if (data.photos && data.photos.length) {
                         data.photos.forEach((photo, index) => {
-                            const photoUrl = `/storage/${photo.foto}`;
+                            const photoUrl = photo.foto_url;
                             const thumbnailItem = document.createElement('div');
                             thumbnailItem.className = index === 0 ? 'thumbnail-item active' : 'thumbnail-item';
                             thumbnailItem.setAttribute('data-image', photoUrl);

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class BaseDashboardController extends Controller
 {
@@ -318,8 +319,31 @@ class BaseDashboardController extends Controller
         $validationRules = [];
         foreach ($formConfig as $field => $config) {
             if (isset($config['validation'])) {
-                $rule = str_replace('[id]', $id, $config['validation']);
-                $validationRules[$field] = $rule;
+                $rule = $config['validation'];
+                
+                // Handle unique validation rules specially for update
+                if (strpos($rule, 'unique:') !== false && strpos($rule, '[' . $this->primaryKey . ']') !== false) {
+                    // Parse the unique rule and rebuild using Rule class
+                    $ruleArray = explode('|', $rule);
+                    $newRuleArray = [];
+                    
+                    foreach ($ruleArray as $singleRule) {
+                        if (strpos($singleRule, 'unique:') === 0) {
+                            // Parse unique rule: unique:table,column,[id]
+                            $uniqueParts = explode(',', str_replace('unique:', '', $singleRule));
+                            $table = $uniqueParts[0];
+                            $column = $uniqueParts[1];
+                            
+                            $newRuleArray[] = Rule::unique($table, $column)->ignore($id, $this->primaryKey);
+                        } else {
+                            $newRuleArray[] = $singleRule;
+                        }
+                    }
+                    
+                    $validationRules[$field] = $newRuleArray;
+                } else {
+                    $validationRules[$field] = $rule;
+                }
             }
         }
         

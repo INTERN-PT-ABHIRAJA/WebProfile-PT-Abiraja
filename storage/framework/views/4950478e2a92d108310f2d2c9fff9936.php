@@ -26,7 +26,7 @@
                     <tr class="hover:bg-gray-50">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <?php if($product->foto_utama): ?>
-                                <img src="<?php echo e(asset('storage/' . $product->foto_utama)); ?>" 
+                                <img src="<?php echo e($product->foto_utama_url); ?>" 
                                      alt="<?php echo e($product->nama_produk); ?>" 
                                      class="w-12 h-12 object-cover rounded-lg">
                             <?php else: ?>

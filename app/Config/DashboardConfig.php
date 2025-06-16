@@ -182,7 +182,7 @@ class DashboardConfig
                     'label' => 'Email',
                     'label_id' => 'Email',
                     'required' => true,
-                    'validation' => 'required|email|unique:users,email,[id]',
+                    'validation' => 'required|email|unique:users,email,[id_user]',
                 ],
                 'password' => [
                     'type' => 'password',
@@ -218,7 +218,7 @@ class DashboardConfig
                     'label' => 'Category Name',
                     'label_id' => 'Nama Kategori', 
                     'required' => true,
-                    'validation' => 'required|string|max:255|unique:kategori,nama_kategori,[id]',
+                    'validation' => 'required|string|max:255|unique:kategori,nama_kategori,[id_kategori]',
                 ],
                 'deskripsi_kategori' => [
                     'type' => 'textarea',
