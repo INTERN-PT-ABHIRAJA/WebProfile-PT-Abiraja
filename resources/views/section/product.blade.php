@@ -19,7 +19,10 @@
                             <div class="product-footer">
                                 <div class="product-price">Rp 5.000.000</div>
                                 <div class="d-flex">
-                                    <button class="btn-custom me-2" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
+                                    <button class="btn-custom me-2 btn-detail-product" 
+                                            data-product-id="1">
+                                        {{ __('site.details') }}
+                                    </button>
                                     <button class="btn-custom btn-konsultasi" 
                                             data-bs-toggle="modal" 
                                             data-bs-target="#contactModal" 
@@ -45,7 +48,10 @@
                             <div class="product-footer">
                                 <div class="product-price">Rp 3.500.000</div>
                                 <div class="d-flex">
-                                    <button class="btn-custom me-2" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
+                                    <button class="btn-custom me-2 btn-detail-product" 
+                                            data-product-id="2">
+                                        {{ __('site.details') }}
+                                    </button>
                                     <button class="btn-custom btn-konsultasi" 
                                             data-bs-toggle="modal" 
                                             data-bs-target="#contactModal" 
@@ -71,7 +77,10 @@
                             <div class="product-footer">
                                 <div class="product-price">Rp 2.000.000</div>
                                 <div class="d-flex">
-                                    <button class="btn-custom me-2" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
+                                    <button class="btn-custom me-2 btn-detail-product" 
+                                            data-product-id="3">
+                                        {{ __('site.details') }}
+                                    </button>
                                     <button class="btn-custom btn-konsultasi" 
                                             data-bs-toggle="modal" 
                                             data-bs-target="#contactModal" 
@@ -97,7 +106,10 @@
                             <div class="product-footer">
                                 <div class="product-price">Rp 1.500.000</div>
                                 <div class="d-flex">
-                                    <button class="btn-custom me-2" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('site.details') }}</button>
+                                    <button class="btn-custom me-2 btn-detail-product" 
+                                            data-product-id="4">
+                                        {{ __('site.details') }}
+                                    </button>
                                     <button class="btn-custom btn-konsultasi" 
                                             data-bs-toggle="modal" 
                                             data-bs-target="#contactModal" 

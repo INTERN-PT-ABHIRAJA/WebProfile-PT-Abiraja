@@ -432,9 +432,21 @@
                                 <div class="card-footer-new p-4 pt-0">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="social-links">
-                                            <a href="#" class="social-link" title="WhatsApp">
-                                                <i class="fab fa-whatsapp"></i>
-                                            </a>
+                                            @if($company->telepon)
+                                                <a href="{{ formatWhatsAppNumber($company->telepon, $company->nama_perusahaan) }}" 
+                                                   class="social-link" 
+                                                   title="Hubungi {{ $company->nama_perusahaan }} via WhatsApp: {{ $company->telepon }}"
+                                                   target="_blank">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ formatWhatsAppNumber('6285156209325', $company->nama_perusahaan) }}" 
+                                                   class="social-link" 
+                                                   title="Hubungi {{ $company->nama_perusahaan }} via WhatsApp"
+                                                   target="_blank">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </a>
+                                            @endif
                                         </div>
                                         
                                     </div>
@@ -781,9 +793,9 @@
                     <div class="cta-section">
                         <h3 class="fw-bold mb-3">Tidak Menemukan Yang Anda Cari?</h3>
                         <p class="mb-4 ">Konsultasikan kebutuhan khusus Anda dengan tim ahli kami</p>
-                        <button class="btn-cta-custom" data-bs-toggle="modal" data-bs-target="#contactModal">
-                            <i class="fas fa-phone me-2"></i>Konsultasi Gratis
-                        </button>
+                        <a href="https://wa.me/6285156209325?text=Halo%20PT%20Abhiraja%2C%20saya%20ingin%20konsultasi%20tentang%20produk%20atau%20layanan%20Anda." target="_blank" class="btn-cta-custom">
+                            <i class="fab fa-whatsapp me-2"></i>Konsultasi Gratis via WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
@@ -817,7 +829,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h5>Telepon</h5>
-                                    <p>+62 889 7158 9438</p>
+                                    <p>+62 851-5620-9325</p>
                                 </div>
                             </div>
 
@@ -1003,6 +1015,7 @@
 
 
     @include('modals.contactModal')
+    @include('modals.dynamicProductModal')
 
     <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -1014,7 +1027,7 @@
                         </div>
                         <h5 class="modal-title fw-bold mb-0">Detail Produk Unggulan</h5>
                     </div>
-                    <button type="button" class="btn-close btn-close-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1); opacity: 1;"></button>
                 </div>
                 <div class="modal-body product-modal-body">
                     <div class="row g-4">
@@ -1178,6 +1191,7 @@
     <script src="assets/js/script.js" defer></script>
     <script src="assets/js/interactions.js" defer></script>
     <script src="assets/js/swiper-config.js" defer></script>
+    <script src="assets/js/dynamic-product-modal.js" defer></script>
     
     <!-- Product Modal Script -->
     <script>
@@ -1251,6 +1265,63 @@
                 if (productId) {
                     fetchProductDetails(productId);
                 }
+            });
+
+            // Handle "Hubungi Kami" button click
+            productModal.addEventListener('click', function(event) {
+                if (event.target.closest('[data-action="contact"]')) {
+                    event.preventDefault();
+                    
+                    // Get current product data
+                    const productName = productModal.querySelector('.modal-title').textContent.replace('Detail ', '');
+                    const productId = productModal.getAttribute('data-current-product-id') || '';
+                    
+                    // Open contact modal with product info
+                    const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+                    
+                    // Set product info in contact modal
+                    const productInfoDiv = document.getElementById('contactProductInfo');
+                    const productTitle = document.querySelector('#contactProductInfo .product-title');
+                    const productCode = document.querySelector('#contactProductInfo .product-code');
+                    
+                    if (productInfoDiv && productTitle) {
+                        productTitle.textContent = productName;
+                        if (productCode) productCode.textContent = `Kode: PRD-${productId || '000'}`;
+                        productInfoDiv.classList.remove('d-none');
+                        
+                        // Set hidden form fields
+                        const inputProductName = document.getElementById('productName');
+                        const inputProductCode = document.getElementById('productCode');
+                        if (inputProductName) inputProductName.value = productName;
+                        if (inputProductCode) inputProductCode.value = `PRD-${productId || '000'}`;
+                    }
+                    
+                    // Close product modal and open contact modal
+                    bootstrap.Modal.getInstance(productModal).hide();
+                    contactModal.show();
+                }
+                
+                // Handle WhatsApp share button click
+                if (event.target.closest('[data-platform="whatsapp"]')) {
+                    event.preventDefault();
+                    
+                    const productName = productModal.querySelector('.modal-title').textContent.replace('Detail ', '');
+                    const shareMessage = `Lihat produk unggulan ini: ${productName}. Kunjungi website kami untuk informasi lebih lanjut: ${window.location.href}`;
+                    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
+                    
+                    // Open WhatsApp share
+                    window.open(whatsappUrl, '_blank');
+                    
+                    // Track share action
+                    console.log('WhatsApp share initiated for product:', productName);
+                }
+            });
+
+            // Store current product ID for reference
+            productModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const productId = button.getAttribute('data-product-id');
+                productModal.setAttribute('data-current-product-id', productId);
             });
         });
 
@@ -1773,7 +1844,119 @@
         
     </script>
 
-    
-</body>
+    <!-- Custom CSS for Product Modal Fixes -->
+    <style>
+        /* Ensure close button is visible on dark header */
+        .product-modal-header .btn-close {
+            filter: invert(1) !important;
+            opacity: 1 !important;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            margin: -0.5rem -0.5rem -0.5rem auto;
+        }
 
+        .product-modal-header .btn-close:hover {
+            opacity: 0.8 !important;
+            transform: scale(1.1);
+        }
+
+        /* Ensure action buttons are properly styled and clickable */
+        .btn-product-primary {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-product-primary:hover {
+            background: linear-gradient(135deg, #0056b3 0%, #004085 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            color: white;
+        }
+
+        /* WhatsApp share button styling */
+        .share-btn {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .share-btn:hover {
+            background: #1da851;
+            transform: scale(1.1);
+            box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Modal footer buttons */
+        .btn-modal-secondary {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-modal-secondary:hover {
+            background: #545b62;
+            transform: translateY(-1px);
+            color: white;
+        }
+
+        /* Ensure modal is responsive */
+        @media (max-width: 768px) {
+            .product-modal-header .btn-close {
+                font-size: 1rem;
+                padding: 0.25rem;
+            }
+            
+            .btn-product-primary {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Product modal specific enhancements */
+        .product-modal-content {
+            border-radius: 20px;
+            overflow: hidden;
+            border: none;
+        }
+
+        .product-modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1.5rem;
+        }
+
+        .product-modal-footer {
+            border: none;
+            background: #f8f9fa;
+            padding: 1.5rem;
+        }
+
+        /* Ensure all interactive elements have proper cursor */
+        .share-btn, 
+        .btn-product-primary, 
+        .btn-modal-secondary,
+        .btn-close {
+            cursor: pointer !important;
+        }
+    </style>
+
+</body>
 </html>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Mail;
 class ContactController extends Controller
 {
     // Default WhatsApp number - coming from site settings
-    protected $whatsappNumber = '6288971589438';  // This is the actual WhatsApp number from the contact page
+    protected $whatsappNumber = '6285156209325';  // GANTI DENGAN NOMOR WHATSAPP ANDA
 
     public function send(Request $request)
     {

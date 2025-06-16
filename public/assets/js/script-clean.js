@@ -186,13 +186,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (contactModal) {
         console.log('Contact modal found');
-        const contactForm = document.getElementById('contactForm');        const productInfoDiv = document.getElementById('contactProductInfo');
+        const contactForm = document.getElementById('contactForm');
+        const productInfoDiv = document.getElementById('contactProductInfo');
         const productTitle = productInfoDiv?.querySelector('.product-title');
         const productCode = productInfoDiv?.querySelector('.product-code');
+        const productPrice = productInfoDiv?.querySelector('.product-price');
         
         // Hidden input fields
         const inputProductName = document.getElementById('productName');
         const inputProductCode = document.getElementById('productCode');
+        const inputProductPrice = document.getElementById('productPrice');
         
         console.log('Contact form:', contactForm);
         console.log('Product info div:', productInfoDiv);
@@ -226,19 +229,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Set up event listener for all konsultasi buttons
         const konsultasiButtons = document.querySelectorAll('.btn-konsultasi');
-        konsultasiButtons.forEach(button => {            button.addEventListener('click', function() {
+        konsultasiButtons.forEach(button => {
+            button.addEventListener('click', function() {
                 const productName = this.getAttribute('data-product-name');
                 const productCodeVal = this.getAttribute('data-product-code');
+                const productPriceVal = this.getAttribute('data-product-price');
                 
                 // Update the product info display
                 if (productName && productInfoDiv) {
                     if (productTitle) productTitle.textContent = productName;
                     if (productCode) productCode.textContent = 'Kode: ' + (productCodeVal || 'PRD-000');
+                    if (productPrice) productPrice.textContent = 'Harga: ' + (productPriceVal || 'Hubungi Kami');
                     productInfoDiv.classList.remove('d-none');
                     
                     // Update hidden form fields
                     if (inputProductName) inputProductName.value = productName;
                     if (inputProductCode) inputProductCode.value = productCodeVal || 'PRD-000';
+                    if (inputProductPrice) inputProductPrice.value = productPriceVal || 'Hubungi Kami';
                 }
                 
                 // Reset form and messages
@@ -251,11 +258,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Handle when the modal is opened directly (without product)
         contactModal.addEventListener('show.bs.modal', function(event) {
             const button = event.relatedTarget;
-              // Only hide product info if no data attribute is found on the button
+            
+            // Only hide product info if no data attribute is found on the button
             if (button && !button.classList.contains('btn-konsultasi')) {
                 if (productInfoDiv) productInfoDiv.classList.add('d-none');
                 if (inputProductName) inputProductName.value = '';
                 if (inputProductCode) inputProductCode.value = '';
+                if (inputProductPrice) inputProductPrice.value = '';
             }
             
             // Reset form and messages

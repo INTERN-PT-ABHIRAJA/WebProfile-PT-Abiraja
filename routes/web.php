@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,10 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/welcome', function () {
     return view('welcome');
 });
+
+// Product routes
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/load-more', [ProductController::class, 'loadMore'])->name('products.load-more');
 
 // Test route for modal
 Route::get('/test-modal', function () {
@@ -61,7 +66,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
-    
+
     // Category management
     Route::get('/categories', [KategoriController::class, 'index'])->name('categories.index');
     Route::get('/categories/create', [KategoriController::class, 'create'])->name('categories.create');
@@ -69,7 +74,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::get('/categories/{id}/edit', [KategoriController::class, 'edit'])->name('categories.edit');
     Route::put('/categories/{id}', [KategoriController::class, 'update'])->name('categories.update');
     Route::delete('/categories/{id}', [KategoriController::class, 'destroy'])->name('categories.destroy');
-    
+
     // Company management
     Route::get('/companies', [AnakPerusahaanController::class, 'index'])->name('companies.index');
     Route::get('/companies/create', [AnakPerusahaanController::class, 'create'])->name('companies.create');
@@ -77,7 +82,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::get('/companies/{id}/edit', [AnakPerusahaanController::class, 'edit'])->name('companies.edit');
     Route::put('/companies/{id}', [AnakPerusahaanController::class, 'update'])->name('companies.update');
     Route::delete('/companies/{id}', [AnakPerusahaanController::class, 'destroy'])->name('companies.destroy');
-    
+
     // Product management
     Route::get('/products', [ProdukController::class, 'index'])->name('products.index');
     Route::get('/products/create', [ProdukController::class, 'create'])->name('products.create');
@@ -85,7 +90,7 @@ Route::prefix('dashboard')->name('dashboard.')->middleware(['auth', 'dashboard.a
     Route::get('/products/{id}/edit', [ProdukController::class, 'edit'])->name('products.edit');
     Route::put('/products/{id}', [ProdukController::class, 'update'])->name('products.update');
     Route::delete('/products/{id}', [ProdukController::class, 'destroy'])->name('products.destroy');
-    
+
     // Media management
     Route::get('/media', [MediaController::class, 'index'])->name('media.index');
     Route::get('/media/create', [MediaController::class, 'create'])->name('media.create');
