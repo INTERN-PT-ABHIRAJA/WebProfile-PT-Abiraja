@@ -22,28 +22,28 @@ if (!function_exists('generateWhatsAppLink')) {
         $message = 'Halo, saya tertarik untuk berkonsultasi';
 
         // Add product info if available
-        if (isset($data['productName'])) {
+        if (isset($data['productName']) && !empty($data['productName'])) {
             $message .= ' tentang produk: ' . $data['productName'];
 
-            if (isset($data['productCode'])) {
+            if (isset($data['productCode']) && !empty($data['productCode'])) {
                 $message .= ' (Kode: ' . $data['productCode'] . ')';
             }
         }
 
         // Add user info if available
-        if (isset($data['name'])) {
+        if (isset($data['name']) && !empty($data['name'])) {
             $message .= "\n\nNama: " . $data['name'];
         }
 
-        if (isset($data['email'])) {
+        if (isset($data['email']) && !empty($data['email'])) {
             $message .= "\nEmail: " . $data['email'];
         }
 
-        if (isset($data['phone'])) {
+        if (isset($data['phone']) && !empty($data['phone'])) {
             $message .= "\nTelepon: " . $data['phone'];
         }
 
-        if (isset($data['message'])) {
+        if (isset($data['message']) && !empty($data['message'])) {
             $message .= "\n\nPesan tambahan:\n" . $data['message'];
         }  // URL encode the message
         $encodedMessage = urlencode($message);
@@ -63,29 +63,50 @@ if (!function_exists('generateWhatsAppLink')) {
         if ($isMobile) {
             // Mobile: Use api.whatsapp.com for better app integration
             return "https://api.whatsapp.com/send?phone={$phone}&text={$encodedMessage}";
-        } elseif ($isDesktop) {
-            // Desktop: Enhanced URL with template data for web.whatsapp.com
-            $webWhatsAppLink = "https://web.whatsapp.com/send?phone={$phone}&text={$encodedMessage}";
-
-            // For desktop, also prepare a data URL for template passing
-            $templateData = base64_encode(json_encode([
-                'phone' => $phone,
-                'message' => $message,
-                'formData' => $data,
-                'timestamp' => time()
-            ]));
-
-            return json_encode([
-                'desktop_app' => "whatsapp://send?phone={$phone}&text={$encodedMessage}",
-                'web_whatsapp' => $webWhatsAppLink,
-                'web_whatsapp_enhanced' => $webWhatsAppLink . '&template=' . $templateData,
-                'wa_me' => "https://wa.me/{$phone}?text={$encodedMessage}",
-                'template_data' => $templateData,
-                'type' => 'desktop'
-            ]);
         } else {
-            // Default fallback
+            // Desktop and fallback: Use wa.me for universal compatibility
             return "https://wa.me/{$phone}?text={$encodedMessage}";
         }
+    }
+}
+
+if (!function_exists('formatWhatsAppNumber')) {
+    /**
+     * Format phone number for WhatsApp link with company-specific message
+     *
+     * @param string $phoneNumber The phone number to format
+     * @param string $companyName The name of the subsidiary company (optional)
+     * @return string The formatted WhatsApp URL with message
+     */
+    function formatWhatsAppNumber($phoneNumber, $companyName = '')
+    {
+        if (empty($phoneNumber)) {
+            return '#';
+        }
+
+        // Sanitize phone number (remove spaces, +, dashes, etc)
+        $phone = preg_replace('/[^0-9]/', '', $phoneNumber);
+
+        // Ensure phone starts with country code (Indonesia)
+        if (str_starts_with($phone, '0')) {
+            $phone = '62' . substr($phone, 1);  // Convert 08xx to 628xx format
+        } elseif (!str_starts_with($phone, '62') && strlen($phone) >= 9) {
+            $phone = '62' . $phone;  // Add country code if missing
+        }
+
+        // Create template message
+        $message = 'Halo! Saya tertarik untuk mengetahui lebih lanjut tentang layanan';
+
+        if (!empty($companyName)) {
+            $message .= ' dari ' . $companyName;
+        }
+
+        $message .= '. Bisakah Anda memberikan informasi lebih detail? Terima kasih.';
+
+        // URL encode the message
+        $encodedMessage = urlencode($message);
+
+        // Return WhatsApp link with message
+        return "https://wa.me/{$phone}?text={$encodedMessage}";
     }
 }

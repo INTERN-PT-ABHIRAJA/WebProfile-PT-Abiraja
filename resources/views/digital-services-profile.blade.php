@@ -1210,7 +1210,7 @@
                                 </div>
                                 <div class="contact-details">
                                     <h4>Phone</h4>
-                                    <p>+62 812 3456 7890</p>
+                                    <p>+62 851-5620-9325</p>
                                 </div>
                             </div>
                             
