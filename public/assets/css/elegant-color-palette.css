@@ -1,0 +1,308 @@
+/* ===== NEUTRAL PROFESSIONAL COLOR PALETTE =====
+   Sophisticated, muted, and professional color scheme
+   Perfect for consultation services - elegant without being flashy
+*/
+
+:root {
+    /* ===== PRIMARY COLOR SCHEME ===== */
+    /* Professional Slate - Main brand color (trustworthy and sophisticated) */
+    --primary-50: #f8fafc;
+    --primary-100: #f1f5f9;
+    --primary-200: #e2e8f0;
+    --primary-300: #cbd5e1;
+    --primary-400: #94a3b8;
+    --primary-500: #64748b;
+    --primary-600: #475569;
+    --primary-700: #334155;
+    --primary-800: #1e293b;
+    --primary-900: #0f172a; /* Deep professional slate */
+
+    /* ===== SECONDARY COLOR SCHEME ===== */
+    /* Sophisticated Gray - Professional complement */
+    --secondary-50: #f9fafb;
+    --secondary-100: #f3f4f6;
+    --secondary-200: #e5e7eb;
+    --secondary-300: #d1d5db;
+    --secondary-400: #9ca3af;
+    --secondary-500: #6b7280;
+    --secondary-600: #4b5563;
+    --secondary-700: #374151;
+    --secondary-800: #1f2937;
+    --secondary-900: #111827; /* Deep sophisticated gray */
+
+    /* ===== ACCENT COLORS ===== */
+    /* Muted Bronze - Subtle premium accent */
+    --accent-bronze-50: #fefaf8;
+    --accent-bronze-100: #fdf2e9;
+    --accent-bronze-200: #fce7d2;
+    --accent-bronze-300: #f9d3a8;
+    --accent-bronze-400: #f4b775;
+    --accent-bronze-500: #e8955c;
+    --accent-bronze-600: #d97846;
+    --accent-bronze-700: #b85c39;
+    --accent-bronze-800: #934a35;
+    --accent-bronze-900: #773e30;
+
+    /* Professional Blue-Gray - Trust and stability */
+    --accent-blue-50: #f0f9ff;
+    --accent-blue-100: #e0f2fe;
+    --accent-blue-200: #bae6fd;
+    --accent-blue-300: #7dd3fc;
+    --accent-blue-400: #38bdf8;
+    --accent-blue-500: #0ea5e9;
+    --accent-blue-600: #0284c7;
+    --accent-blue-700: #0369a1;
+    --accent-blue-800: #075985;
+    --accent-blue-900: #0c4a6e;    /* ===== NEUTRAL GRAYS ===== */
+    /* Cool grays for backgrounds and text */
+    --neutral-50: #fafafa;
+    --neutral-100: #f5f5f5;
+    --neutral-200: #e5e5e5;
+    --neutral-300: #d4d4d4;
+    --neutral-400: #a3a3a3;
+    --neutral-500: #737373;
+    --neutral-600: #525252;
+    --neutral-700: #404040;
+    --neutral-800: #262626;
+    --neutral-900: #171717;
+
+    /* ===== SEMANTIC COLORS ===== */
+    /* Success - Muted green */
+    --success-light: #f0fdf4;
+    --success: #22c55e;
+    --success-dark: #15803d;
+
+    /* Warning - Subtle amber */
+    --warning-light: #fffbeb;
+    --warning: #f59e0b;
+    --warning-dark: #d97706;
+
+    /* Error - Muted red */
+    --error-light: #fef2f2;
+    --error: #ef4444;
+    --error-dark: #dc2626;
+
+    /* Info - Professional blue */
+    --info-light: #eff6ff;
+    --info: #3b82f6;
+    --info-dark: #1d4ed8;
+
+    /* ===== MAIN BRAND VARIABLES ===== */
+    --brand-primary: var(--primary-700);        /* Professional slate */
+    --brand-secondary: var(--secondary-600);    /* Sophisticated gray */
+    --brand-accent: var(--accent-bronze-600);   /* Muted bronze */
+    --brand-blue: var(--accent-blue-600);       /* Professional blue */
+
+    /* ===== BACKGROUNDS ===== */
+    --bg-primary: var(--neutral-50);            /* Light background */
+    --bg-secondary: var(--primary-50);          /* Subtle background */
+    --bg-dark: var(--primary-800);              /* Dark background */
+    --bg-card: #ffffff;                         /* Card background */
+    --bg-overlay: rgba(15, 23, 42, 0.6);        /* Subtle overlay */    /* ===== TEXT COLORS ===== */
+    --text-primary: var(--secondary-800);       /* Main text */
+    --text-secondary: var(--secondary-600);     /* Secondary text */
+    --text-muted: var(--neutral-500);           /* Muted text */
+    --text-on-dark: var(--neutral-50);          /* Text on dark backgrounds */
+    --text-accent: var(--accent-bronze-700);    /* Accent text */
+
+    /* ===== BORDERS ===== */
+    --border-light: var(--neutral-200);
+    --border-medium: var(--neutral-300);
+    --border-dark: var(--secondary-400);
+
+    /* ===== SUBTLE SHADOWS ===== */
+    --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08);
+    --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08);
+    --shadow-accent: 0 8px 25px rgba(217, 120, 70, 0.10);
+
+    /* ===== SUBTLE GRADIENTS ===== */
+    --gradient-primary: linear-gradient(135deg, var(--primary-700) 0%, var(--primary-800) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--secondary-600) 0%, var(--secondary-700) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--accent-bronze-500) 0%, var(--accent-bronze-600) 100%);
+    --gradient-hero: linear-gradient(135deg, var(--primary-800) 0%, var(--secondary-700) 50%, var(--primary-700) 100%);
+    --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+    --gradient-overlay: linear-gradient(135deg, rgba(15, 23, 42, 0.6) 0%, rgba(31, 41, 55, 0.7) 100%);
+
+    /* ===== CONSULTATION SPECIFIC COLORS ===== */
+    --consultation-trust: var(--primary-600);    /* Professional trust */
+    --consultation-expertise: var(--accent-bronze-600); /* Bronze for expertise */
+    --consultation-innovation: var(--accent-blue-600); /* Blue for innovation */
+    --consultation-reliability: var(--secondary-600); /* Gray for reliability */
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Background Colors */
+.bg-brand-primary { background-color: var(--brand-primary); }
+.bg-brand-secondary { background-color: var(--brand-secondary); }
+.bg-brand-accent { background-color: var(--brand-accent); }
+.bg-brand-blue { background-color: var(--brand-blue); }
+
+/* Text Colors */
+.text-brand-primary { color: var(--brand-primary); }
+.text-brand-secondary { color: var(--brand-secondary); }
+.text-brand-accent { color: var(--brand-accent); }
+.text-brand-blue { color: var(--brand-blue); }
+.text-consultation-trust { color: var(--consultation-trust); }
+.text-consultation-expertise { color: var(--consultation-expertise); }
+
+/* Gradient Backgrounds */
+.bg-gradient-primary { background: var(--gradient-primary); }
+.bg-gradient-secondary { background: var(--gradient-secondary); }
+.bg-gradient-accent { background: var(--gradient-accent); }
+.bg-gradient-hero { background: var(--gradient-hero); }
+.bg-gradient-card { background: var(--gradient-card); }
+
+/* Border Colors */
+.border-brand-primary { border-color: var(--brand-primary); }
+.border-brand-accent { border-color: var(--brand-accent); }
+.border-light { border-color: var(--border-light); }
+
+/* Shadow Utilities */
+.shadow-elegant { box-shadow: var(--shadow-lg); }
+.shadow-accent { box-shadow: var(--shadow-accent); }
+
+/* ===== PROFESSIONAL BUTTON STYLES ===== */
+.btn-professional-primary {
+    background: var(--gradient-primary);
+    border: none;
+    color: var(--text-on-dark);
+    transition: all 0.25s ease;
+    box-shadow: var(--shadow-md);
+    font-weight: 500;
+}
+
+.btn-professional-primary:hover {
+    background: var(--brand-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-on-dark);
+}
+
+.btn-professional-accent {
+    background: var(--gradient-accent);
+    border: none;
+    color: var(--text-on-dark);
+    transition: all 0.25s ease;
+    box-shadow: var(--shadow-accent);
+    font-weight: 500;
+}
+
+.btn-professional-accent:hover {
+    background: var(--accent-bronze-700);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-on-dark);
+}
+
+.btn-professional-outline {
+    background: transparent;
+    border: 1.5px solid var(--brand-primary);
+    color: var(--brand-primary);
+    transition: all 0.25s ease;
+    font-weight: 500;
+}
+
+.btn-professional-outline:hover {
+    background: var(--brand-primary);
+    color: var(--text-on-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ===== PROFESSIONAL CARD STYLES ===== */
+.card-professional {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.25s ease;
+    overflow: hidden;
+}
+
+.card-professional:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--brand-accent);
+}
+
+.card-professional-dark {
+    background: var(--gradient-primary);
+    color: var(--text-on-dark);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ===== CONSULTATION SERVICE COLORS ===== */
+.service-trust {
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
+    border-left: 3px solid var(--consultation-trust);
+}
+
+.service-expertise {
+    background: linear-gradient(135deg, var(--accent-bronze-50) 0%, var(--accent-bronze-100) 100%);
+    border-left: 3px solid var(--consultation-expertise);
+}
+
+.service-innovation {
+    background: linear-gradient(135deg, var(--accent-blue-50) 0%, var(--accent-blue-100) 100%);
+    border-left: 3px solid var(--consultation-innovation);
+}
+
+.service-reliability {
+    background: linear-gradient(135deg, var(--secondary-50) 0%, var(--secondary-100) 100%);
+    border-left: 3px solid var(--consultation-reliability);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: var(--primary-900);
+        --bg-secondary: var(--primary-800);
+        --bg-card: var(--secondary-800);
+        --text-primary: var(--neutral-100);
+        --text-secondary: var(--neutral-300);
+        --border-light: var(--secondary-600);
+    }
+}
+
+/* ===== USAGE NOTES =====
+   
+   PROFESSIONAL NEUTRAL PALETTE - PERFECT FOR CONSULTATION SERVICES
+   
+   1. PRIMARY USAGE:
+      - var(--brand-primary) for navigation, headers, primary CTAs (Professional Slate)
+      - var(--brand-secondary) for secondary elements and supporting text (Sophisticated Gray)
+      - var(--brand-accent) for highlights and key elements (Muted Bronze)
+   
+   2. BACKGROUNDS:
+      - Use var(--bg-primary) for main page background (Clean white/light)
+      - Use var(--gradient-hero) for hero sections (Subtle professional gradient)
+      - Use var(--bg-card) for content cards (Pure white)
+   
+   3. TEXT HIERARCHY:
+      - var(--text-primary) for main content (Dark readable)
+      - var(--text-secondary) for supporting text (Medium gray)
+      - var(--text-muted) for less important information (Light gray)
+   
+   4. CONSULTATION THEME:
+      - var(--consultation-trust) for trust-building elements (Professional blue-gray)
+      - var(--consultation-expertise) for expertise showcases (Subtle bronze)
+      - var(--consultation-innovation) for innovative solutions (Professional blue)
+      - var(--consultation-reliability) for reliability features (Sophisticated gray)
+   
+   5. KEY IMPROVEMENTS FOR NEUTRALITY:
+      - Removed bright, glowing effects
+      - Reduced saturation across all colors
+      - Softer shadows and transitions
+      - More professional, less flashy appearance
+      - Perfect balance between elegant and conservative
+   
+   This refined palette provides:
+   - Professional and trustworthy appearance without being flashy
+   - Excellent readability and accessibility
+   - Sophisticated neutral tones that work well in professional contexts
+   - Subtle accents that convey expertise without being distracting
+   - Perfect for consultation services, legal firms, business advisory, etc.
+*/

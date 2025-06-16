@@ -909,7 +909,7 @@
                             </div>
                             <div class="member-info-stage">
                                 <h5 class="member-name mt-3">Bintang</h5>
-                                <p class="member-role">Projek Manager</p>
+                                <p class="member-role">Project Manager</p>
                                 <div class="member-social">
                                     <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
