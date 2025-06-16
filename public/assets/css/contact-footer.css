@@ -500,6 +500,129 @@
     box-shadow: 0 5px 15px rgba(0, 245, 255, 0.3);
 }
 
+/* Footer Contact Section */
+.footer-contact {
+    margin-bottom: 2rem;
+}
+
+.footer-contact h5 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.footer-contact h5::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+}
+
+.footer-contact .contact-item {
+    margin-bottom: 0.75rem;
+}
+
+.footer-contact .contact-item i {
+    color: var(--accent-primary);
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.footer-contact .contact-item p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.footer-contact .contact-item:hover i {
+    color: var(--accent-secondary);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+/* WhatsApp Contact Form Styles */
+.whatsapp-contact-form {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-contact-form:focus-within {
+    border-color: rgba(37, 211, 102, 0.5);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.2);
+}
+
+.whatsapp-contact-form .form-control {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-contact-form .form-control::placeholder {
+    color: var(--text-secondary);
+}
+
+.whatsapp-contact-form .form-control:focus {
+    outline: none;
+    border-color: rgba(37, 211, 102, 0.5);
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.whatsapp-contact-form .btn {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.whatsapp-contact-form .btn:hover {
+    background: linear-gradient(135deg, #128c7e, #25d366);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-info {
+    padding: 0.75rem;
+    background: rgba(37, 211, 102, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #25d366;
+}
+
+.whatsapp-info small {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.whatsapp-info i {
+    color: #25d366;
+}
+
 /* Footer Bottom */
 .footer-bottom {
     position: relative;

@@ -134,9 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]');
     popoverElements.forEach(el => new bootstrap.Popover(el));
-    
-    // Form validation and submission for general forms
-    const forms = document.querySelectorAll('.contact-form, .newsletter-form');
+      // Form validation and submission for general forms
+    const forms = document.querySelectorAll('.contact-form');
     forms.forEach(form => {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -179,7 +178,211 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, 1500);
         });
-    });
+    });    // WhatsApp contact form handler (supports both old and new forms)
+    const whatsappForm = document.querySelector('.whatsapp-contact-form');
+    const whatsappFormModern = document.querySelector('.whatsapp-contact-form-modern');
+    
+    function handleWhatsAppForm(form, isModern = false) {
+        if (!form) return;
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nameInput = document.getElementById('footerName');
+            const messageInput = document.getElementById('footerMessage');
+            const submitBtn = this.querySelector('button[type="submit"]');
+            
+            // Validation
+            let valid = true;
+            const inputs = [nameInput, messageInput];
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    valid = false;
+                    input.classList.add('is-invalid');
+                    
+                    // Add visual feedback for modern form
+                    if (isModern) {
+                        const highlight = input.nextElementSibling;
+                        if (highlight && highlight.classList.contains('input-highlight')) {
+                            highlight.style.background = 'linear-gradient(90deg, #e74c3c 0%, #c0392b 100%)';
+                            highlight.style.width = '100%';
+                            setTimeout(() => {
+                                highlight.style.background = 'linear-gradient(90deg, #25d366 0%, #7dd3fc 100%)';
+                                highlight.style.width = '0';
+                            }, 1500);
+                        }
+                    }
+                } else {
+                    input.classList.remove('is-invalid');
+                    input.classList.add('is-valid');
+                }
+            });
+            
+            if (!valid) {
+                // Custom alert for modern form
+                if (isModern) {
+                    showModernAlert('Mohon lengkapi nama dan pesan Anda untuk melanjutkan.', 'warning');
+                } else {
+                    alert('Mohon lengkapi nama dan pesan Anda.');
+                }
+                return;
+            }
+            
+            // Show loading state
+            const originalText = submitBtn.innerHTML;
+            if (isModern) {
+                submitBtn.innerHTML = `
+                    <span class="btn-icon">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                    <span class="btn-text">Menghubungkan...</span>
+                    <div class="btn-glow"></div>
+                `;
+            } else {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Menghubungkan...';
+            }
+            submitBtn.disabled = true;
+            
+            // Prepare WhatsApp message
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
+            const whatsappMessage = `Halo! Saya ${name}.\n\n${message}\n\nTerima kasih!\n\n---\nPesan dikirim melalui website PT Abhiraja Giovanni Tryamanda`;
+            const whatsappNumber = '6285156209325';
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            // Open WhatsApp after a short delay
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset form
+                form.reset();
+                
+                // Show success message
+                if (isModern) {
+                    showModernAlert('Anda akan diarahkan ke WhatsApp. Pastikan aplikasi WhatsApp sudah terinstall.', 'success');
+                } else {
+                    alert('Anda akan diarahkan ke WhatsApp. Pastikan aplikasi WhatsApp sudah terinstall.');
+                }
+                
+                // Restore button state
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Remove validation classes
+                inputs.forEach(input => {
+                    input.classList.remove('is-invalid', 'is-valid');
+                });
+                
+            }, 1000);
+        });
+    }
+    
+    // Initialize both forms
+    handleWhatsAppForm(whatsappForm, false);
+    handleWhatsAppForm(whatsappFormModern, true);
+    
+    // Modern alert function for better UX
+    function showModernAlert(message, type = 'info') {
+        // Remove existing alerts
+        const existingAlerts = document.querySelectorAll('.modern-alert');
+        existingAlerts.forEach(alert => alert.remove());
+        
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `modern-alert alert-${type}`;
+        alertDiv.innerHTML = `
+            <div class="alert-content">
+                <div class="alert-icon">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
+                </div>
+                <div class="alert-message">${message}</div>
+                <button class="alert-close" onclick="this.parentElement.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
+        
+        // Add styles if not already present
+        if (!document.querySelector('#modern-alert-styles')) {
+            const styles = document.createElement('style');
+            styles.id = 'modern-alert-styles';
+            styles.textContent = `
+                .modern-alert {
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    z-index: 9999;
+                    max-width: 400px;
+                    background: rgba(0, 0, 0, 0.9);
+                    backdrop-filter: blur(10px);
+                    border-radius: 12px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    animation: slideInRight 0.3s ease;
+                }
+                
+                .alert-content {
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem;
+                    gap: 1rem;
+                }
+                
+                .alert-icon {
+                    font-size: 1.5rem;
+                }
+                
+                .alert-success .alert-icon { color: #25d366; }
+                .alert-warning .alert-icon { color: #ff9500; }
+                .alert-info .alert-icon { color: #7dd3fc; }
+                
+                .alert-message {
+                    flex: 1;
+                    color: white;
+                    font-size: 0.9rem;
+                    line-height: 1.4;
+                }
+                
+                .alert-close {
+                    background: none;
+                    border: none;
+                    color: rgba(255, 255, 255, 0.7);
+                    cursor: pointer;
+                    padding: 0.5rem;
+                    border-radius: 6px;
+                    transition: all 0.3s ease;
+                }
+                
+                .alert-close:hover {
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                }
+                
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                
+                @media (max-width: 768px) {
+                    .modern-alert {
+                        right: 10px;
+                        left: 10px;
+                        max-width: none;
+                    }
+                }
+            `;
+            document.head.appendChild(styles);
+        }
+        
+        document.body.appendChild(alertDiv);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (alertDiv.parentElement) {
+                alertDiv.style.animation = 'slideInRight 0.3s ease reverse';
+                setTimeout(() => alertDiv.remove(), 300);
+            }
+        }, 5000);
+    }
 
     // ==================== CONTACT MODAL INTEGRATION ====================
     const contactModal = document.getElementById('contactModal');
