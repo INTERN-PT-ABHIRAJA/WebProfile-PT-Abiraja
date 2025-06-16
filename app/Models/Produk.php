@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\ImageHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -36,6 +37,14 @@ class Produk extends Model
     ];
 
     /**
+     * Get the foto URL with fallback mechanism
+     */
+    public function getFotoUrlAttribute()
+    {
+        return ImageHelper::getImageUrl($this->foto, '/assets/img/portfolio/default.jpg');
+    }
+
+    /**
      * Get the anak perusahaan that owns the produk.
      */
     public function anakPerusahaan()
@@ -58,6 +67,18 @@ class Produk extends Model
     {
         $firstDetailFoto = $this->detailFoto()->first();
         return $firstDetailFoto ? $firstDetailFoto->foto : $this->foto;
+    }
+    
+    /**
+     * Get the first photo URL from detail_foto_produk or fallback to main foto
+     */
+    public function getFotoUtamaUrlAttribute()
+    {
+        $firstDetailFoto = $this->detailFoto()->first();
+        if ($firstDetailFoto) {
+            return $firstDetailFoto->foto_url;
+        }
+        return $this->foto_url;
     }
 
     /**

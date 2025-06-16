@@ -365,7 +365,7 @@
                                 <div class="card-header-new text-center p-4 position-relative">
                                     <div class="company-logo-new-container mx-auto mb-3">
                                         <?php if($company->foto): ?>
-                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
+                                            <img src="<?php echo e($company->foto_url); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="company-logo-new">
                                         <?php else: ?>
                                             <img src="assets/img/Mitra/placeholder.png" alt="<?php echo e($company->nama_perusahaan); ?>"
@@ -698,11 +698,9 @@
                         <div class="product-card-enhanced">
                             <div class="product-image-container">
                                 <?php if($item->detailFotos->isNotEmpty()): ?>
-                                    <img src="<?php echo e(asset('storage/'.$item->detailFotos->first()->foto)); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
-                                <?php elseif($item->foto): ?>
-                                    <img src="<?php echo e(asset('storage/'.$item->foto)); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                    <img src="<?php echo e($item->detailFotos->first()->foto_url); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
                                 <?php else: ?>
-                                    <img src="<?php echo e(asset('assets/img/portfolio/default.jpg')); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
+                                    <img src="<?php echo e($item->foto_url); ?>" alt="<?php echo e($item->nama_produk); ?>" class="product-image">
                                 <?php endif; ?>
                                 <div class="product-overlay">
                                     <div class="product-icons">
@@ -761,11 +759,9 @@
                                         data-product-category="<?php echo e($item->anakPerusahaan->kategori->nama_kategori ?? 'Umum'); ?>"
                                         data-product-description="<?php echo e($item->deskripsi_produk); ?>"
                                         <?php if($item->detailFotos->isNotEmpty()): ?>
-                                            data-product-image="<?php echo e(asset('storage/'.$item->detailFotos->first()->foto)); ?>"
-                                        <?php elseif($item->foto): ?>
-                                            data-product-image="<?php echo e(asset('storage/'.$item->foto)); ?>"
+                                            data-product-image="<?php echo e($item->detailFotos->first()->foto_url); ?>"
                                         <?php else: ?>
-                                            data-product-image="<?php echo e(asset('assets/img/portfolio/default.jpg')); ?>"
+                                            data-product-image="<?php echo e($item->foto_url); ?>"
                                         <?php endif; ?>
                                         data-product-rating="<?php echo e($item->rating); ?>">
                                         <span>Detail Paket</span>
@@ -1138,7 +1134,7 @@
                                 <div class="subsidiary-detail-card p-4 border rounded-3">
                                     <div class="d-flex align-items-center mb-3">
                                         <?php if($company->foto): ?>
-                                            <img src="<?php echo e(Storage::url($company->foto)); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
+                                            <img src="<?php echo e($company->foto_url); ?>" alt="<?php echo e($company->nama_perusahaan); ?>"
                                                 class="rounded me-3" style="width: 60px; height: 60px; object-fit: cover;">
                                         <?php else: ?>
                                             <img src="assets/img/portfolio/placeholder.jpg"
@@ -1300,7 +1296,7 @@
                     
                     if (data.photos && data.photos.length) {
                         data.photos.forEach((photo, index) => {
-                            const photoUrl = `/storage/${photo.foto}`;
+                            const photoUrl = photo.foto_url;
                             const thumbnailItem = document.createElement('div');
                             thumbnailItem.className = index === 0 ? 'thumbnail-item active' : 'thumbnail-item';
                             thumbnailItem.setAttribute('data-image', photoUrl);

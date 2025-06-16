@@ -90,7 +90,7 @@
                 <label for="foto" class="block text-sm font-medium text-gray-700 mb-1">Logo Perusahaan</label>
                 @if(isset($item) && $item->foto)
                     <div class="mb-2">
-                        <img src="{{ Storage::url($item->foto) }}" alt="Logo" class="w-20 h-20 object-cover rounded">
+                        <img src="{{ $item->foto_url }}" alt="Logo" class="w-20 h-20 object-cover rounded">
                         <p class="text-xs text-gray-500 mt-1">Logo saat ini</p>
                     </div>
                 @endif

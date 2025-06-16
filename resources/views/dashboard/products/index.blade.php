@@ -28,7 +28,7 @@
                     <tr class="hover:bg-gray-50">
                         <td class="px-6 py-4 whitespace-nowrap">
                             @if($product->foto_utama)
-                                <img src="{{ asset('storage/' . $product->foto_utama) }}" 
+                                <img src="{{ $product->foto_utama_url }}" 
                                      alt="{{ $product->nama_produk }}" 
                                      class="w-12 h-12 object-cover rounded-lg">
                             @else

@@ -25,10 +25,31 @@ class ProductApiController extends Controller
             return response()->json(['message' => 'Product not found'], 404);
         }
         
+        // Prepare photos array with main photo and detail photos
+        $photos = collect();
+        
+        // Add main photo if exists
+        if ($product->foto) {
+            $photos->push([
+                'foto' => $product->foto,
+                'foto_url' => $product->foto_url,
+                'is_main' => true
+            ]);
+        }
+        
+        // Add detail photos
+        foreach ($product->detailFotos as $detailFoto) {
+            $photos->push([
+                'foto' => $detailFoto->foto,
+                'foto_url' => $detailFoto->foto_url,
+                'is_main' => false
+            ]);
+        }
+        
         return response()->json([
             'product' => $product,
             'benefits' => $product->benefits,
-            'photos' => $product->detailFotos,
+            'photos' => $photos,
             'anak_perusahaan' => $product->anakPerusahaan,
         ]);
     }

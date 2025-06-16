@@ -51,7 +51,7 @@
         <label for="foto" class="block text-sm font-medium text-gray-700 mb-1">Foto Produk</label>
         @if(isset($item) && $item->foto)
             <div class="mb-2">
-                <img src="{{ Storage::url($item->foto) }}" alt="Current Photo" class="w-20 h-20 object-cover rounded">
+                <img src="{{ $item->foto_url }}" alt="Current Photo" class="w-20 h-20 object-cover rounded">
                 <p class="text-xs text-gray-500">Foto saat ini</p>
             </div>
         @endif
@@ -116,7 +116,7 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                 @foreach($item->detailFoto as $detailFoto)
                     <div class="relative">
-                        <img src="{{ asset('storage/' . $detailFoto->foto) }}" 
+                        <img src="{{ $detailFoto->foto_url }}" 
                              alt="Detail foto" class="w-20 h-20 object-cover rounded-lg">
                         <div class="mt-1">
                             <label class="flex items-center text-xs">
