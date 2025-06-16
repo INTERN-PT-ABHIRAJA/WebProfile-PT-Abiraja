@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="<?php echo e(asset('assets/css/digital-profile.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/process-section.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('assets/css/contact-footer.css')); ?>" rel="stylesheet">
 
     <!-- Non-critical CSS - load async -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -43,7 +45,7 @@
             </div>
             <div class="loading-progress">
                 <div class="progress-bar"></div>
-                <div class="progress-text">0%</div>
+                <div class="progress-text"></div>
             </div>
         </div>
     </div>
@@ -71,9 +73,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#team">Team</a>
@@ -104,28 +103,19 @@
                         </p>
                         <div class="hero-stats">
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="150">0</span>
+                                <span class="stat-number" data-counter="0">0</span>
                                 <span class="stat-label">Projects Completed</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="98">0</span>
+                                <span class="stat-number" data-counter="0">0</span>
                                 <span class="stat-label">Client Satisfaction</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="5">0</span>
+                                <span class="stat-number" data-counter="0">0</span>
                                 <span class="stat-label">Years Experience</span>
                             </div>
                         </div>
-                        <div class="hero-cta">
-                            <button class="btn-primary">
-                                View Our Work
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <button class="btn-secondary">
-                                <i class="fas fa-play me-2"></i>
-                                Watch Demo
-                            </button>
-                        </div>
+                       
                     </div>
                 </div>                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
                     <div class="hero-visual">
@@ -347,10 +337,17 @@
                     </div>
                 </div>
             </div>
-              <div class="services-grid">                <!-- Web Development -->
+              <div class="services-grid">
+                <!-- Web Development -->
                 <div class="service-card modern-card" data-service="web" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-bg-animation"></div>
-                    <div class="floating-particles"></div>
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
                     
                     <!-- Web Development Animation -->
                     <div class="service-animation web-animation">
@@ -361,36 +358,35 @@
                                     <span class="control yellow"></span>
                                     <span class="control green"></span>
                                 </div>
-                                <div class="window-title">index.html</div>
+                                <div class="window-title"></div>
                             </div>
                             <div class="code-content">
-                                <div class="code-line">
+                                <div class="code-line typing-line" data-delay="1s">
                                     <span class="tag">&lt;div</span>
                                     <span class="attr">class=</span>
                                     <span class="string">"website"</span>
                                     <span class="tag">&gt;</span>
                                 </div>
-                                <div class="code-line">
+                                <div class="code-line typing-line" data-delay="1.5s">
                                     <span class="indent">  </span>
                                     <span class="tag">&lt;h1&gt;</span>
                                     <span class="text">Modern Web</span>
                                     <span class="tag">&lt;/h1&gt;</span>
                                 </div>
-                                <div class="code-line">
+                                <div class="code-line typing-line" data-delay="2s">
                                     <span class="tag">&lt;/div&gt;</span>
                                 </div>
                             </div>
                         </div>
                         <div class="floating-elements">
-                            <div class="element html">&lt;/&gt;</div>
-                            <div class="element css">{}</div>
-                            <div class="element js">JS</div>
+                            <div class="element html animate-float">&lt;/&gt;</div>
+                            <div class="element css animate-float">{}</div>
                         </div>
                     </div>
                     
                     <div class="service-icon-wrapper">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
+                        <div class="service-icon pulse-icon">
+                         
                             <div class="icon-glow"></div>
                         </div>
                         <div class="icon-orbit">
@@ -404,6 +400,7 @@
                         <p class="service-description">Custom websites and web applications built with modern frameworks and cutting-edge technology.</p>
                         <div class="service-progress">
                             <div class="progress-bar" data-skill="95"></div>
+                            <span class="progress-text">95%</span>
                         </div>
                         <ul class="service-features animated-list">
                             <li data-delay="0.1s"><i class="fas fa-check-circle"></i>Responsive Design</li>
@@ -411,24 +408,23 @@
                             <li data-delay="0.3s"><i class="fas fa-check-circle"></i>Fast Loading</li>
                             <li data-delay="0.4s"><i class="fas fa-check-circle"></i>Secure & Scalable</li>
                         </ul>
-                        <div class="service-tech tech-stack">
-                            <span class="tech-badge animated-badge" data-delay="0.1s">React</span>
-                            <span class="tech-badge animated-badge" data-delay="0.2s">Laravel</span>
-                            <span class="tech-badge animated-badge" data-delay="0.3s">Vue.js</span>
-                        </div>
                         <div class="service-stats">
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="150">0</span>
+                                <span class="stat-number" data-counter="1">0</span>
                                 <span class="stat-label">Projects</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="98">0</span>
+                                <span class="stat-number" data-counter="1">0</span>
                                 <span class="stat-label">Success Rate</span>
                             </div>
                         </div>
                     </div>
-                    <div class="hover-overlay">
-                        <button class="btn-explore">
+                    <div class="hover-overlay pt-5">
+                        <button class="btn-explore glow-button" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#serviceModal"
+                                data-service-name="Web Development"
+                                data-service-description="Custom websites and web applications built with modern frameworks and cutting-edge technology">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -437,41 +433,53 @@
                   <!-- Mobile App Development -->
                 <div class="service-card modern-card" data-service="mobile" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-bg-animation"></div>
-                    <div class="floating-particles"></div>
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
                     
                     <!-- Mobile App Animation -->
                     <div class="service-animation mobile-animation">
                         <div class="mobile-frame">
                             <div class="mobile-screen">
                                 <div class="mobile-header">
-                                    <div class="mobile-notch"></div>
+                                    <div class="mobile-notch pulse-notch"></div>
                                     <div class="signal-bars">
-                                        <span></span><span></span><span></span><span></span>
+                                        <span class="bar bar-1"></span>
+                                        <span class="bar bar-2"></span>
+                                        <span class="bar bar-3"></span>
+                                        <span class="bar bar-4"></span>
+                                    </div>
+                                    <div class="battery-indicator">
+                                        <div class="battery-level"></div>
                                     </div>
                                 </div>
                                 <div class="app-interface">
-                                    <div class="app-icon"></div>
-                                    <div class="app-icon"></div>
-                                    <div class="app-icon active"></div>
-                                    <div class="app-icon"></div>
+                                    <div class="app-icon bounce-icon" data-delay="0.5s"></div>
+                                    <div class="app-icon bounce-icon" data-delay="0.7s"></div>
+                                    <div class="app-icon active bounce-icon" data-delay="0.9s"></div>
+                                    <div class="app-icon bounce-icon" data-delay="1.1s"></div>
                                 </div>
                                 <div class="mobile-nav">
-                                    <div class="nav-dot active"></div>
-                                    <div class="nav-dot"></div>
-                                    <div class="nav-dot"></div>
+                                    <div class="nav-dot active pulse-dot"></div>
+                                    <div class="nav-dot pulse-dot"></div>
+                                    <div class="nav-dot pulse-dot"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="app-particles">
-                            <div class="particle"></div>
-                            <div class="particle"></div>
-                            <div class="particle"></div>
+                            <div class="particle float-particle"></div>
+                            <div class="particle float-particle"></div>
+                            <div class="particle float-particle"></div>
                         </div>
                     </div>
                     
                     <div class="service-icon-wrapper">
-                        <div class="service-icon">
-                            <i class="fas fa-mobile-alt"></i>
+                        <div class="service-icon pulse-icon">
+                          
                             <div class="icon-glow"></div>
                         </div>
                         <div class="icon-orbit">
@@ -485,6 +493,7 @@
                         <p class="service-description">Native and cross-platform mobile applications for iOS and Android with exceptional UX.</p>
                         <div class="service-progress">
                             <div class="progress-bar" data-skill="92"></div>
+                            <span class="progress-text">92%</span>
                         </div>
                         <ul class="service-features animated-list">
                             <li data-delay="0.1s"><i class="fas fa-check-circle"></i>Cross-Platform</li>
@@ -492,68 +501,67 @@
                             <li data-delay="0.3s"><i class="fas fa-check-circle"></i>Offline Support</li>
                             <li data-delay="0.4s"><i class="fas fa-check-circle"></i>Push Notifications</li>
                         </ul>
-                        <div class="service-tech tech-stack">
-                            <span class="tech-badge animated-badge" data-delay="0.1s">React Native</span>
-                            <span class="tech-badge animated-badge" data-delay="0.2s">Flutter</span>
-                            <span class="tech-badge animated-badge" data-delay="0.3s">Swift</span>
-                        </div>
                         <div class="service-stats">
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="85">0</span>
+                                <span class="stat-number" data-counter="1">0</span>
                                 <span class="stat-label">Apps Built</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="96">0</span>
+                                <span class="stat-number" data-counter="1">0</span>
                                 <span class="stat-label">User Rating</span>
                             </div>
                         </div>
                     </div>
-                    <div class="hover-overlay">
-                        <button class="btn-explore">
+                    <div class="hover-overlay pt-5">
+                        <button class="btn-explore glow-button" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#serviceModal"
+                                data-service-name="Mobile App Development"
+                                data-service-description="Native and cross-platform mobile applications for iOS and Android with superior performance and user experience">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>
-                    </ul>
-                    <div class="service-tech">
-                        <span class="tech-badge">React Native</span>
-                        <span class="tech-badge">Flutter</span>
-                        <span class="tech-badge">Swift</span>
-                    </div>
-                </div>
+                
                   <!-- UI/UX Design -->
                 <div class="service-card modern-card" data-service="design" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-bg-animation"></div>
-                    <div class="floating-particles"></div>
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                    </div>
                     
                     <!-- UI/UX Design Animation -->
                     <div class="service-animation design-animation">
                         <div class="design-canvas">
                             <div class="design-tools">
-                                <div class="tool color-picker"></div>
-                                <div class="tool brush"></div>
-                                <div class="tool pen"></div>
+                                <div class="tool color-picker active-tool" data-tool="color"></div>
+                                <div class="tool brush hover-tool" data-tool="brush"></div>
+                                <div class="tool pen hover-tool" data-tool="pen"></div>
                             </div>
                             <div class="canvas-area">
-                                <div class="design-element rectangle"></div>
-                                <div class="design-element circle"></div>
-                                <div class="design-element text-line"></div>
-                                <div class="design-element text-line short"></div>
+                                <div class="design-element rectangle draw-animation"></div>
+                                <div class="design-element circle draw-animation" data-delay="0.5s"></div>
+                                <div class="design-element text-line draw-animation" data-delay="1s"></div>
+                                <div class="design-element text-line short draw-animation" data-delay="1.2s"></div>
                             </div>
                             <div class="color-palette">
-                                <div class="color-swatch blue"></div>
-                                <div class="color-swatch pink"></div>
-                                <div class="color-swatch green"></div>
-                                <div class="color-swatch yellow"></div>
+                                <div class="color-swatch blue active-color pulse-color"></div>
+                                <div class="color-swatch pink hover-color"></div>
+                                <div class="color-swatch green hover-color"></div>
+                                <div class="color-swatch yellow hover-color"></div>
                             </div>
                         </div>
-                        <div class="design-cursor"></div>
+                        <div class="design-cursor animate-cursor"></div>
                     </div>
                     
                     <div class="service-icon-wrapper">
-                        <div class="service-icon">
-                            <i class="fas fa-paint-brush"></i>
+                        <div class="service-icon pulse-icon">
+                           
                             <div class="icon-glow"></div>
                         </div>
                         <div class="icon-orbit">
@@ -567,6 +575,7 @@
                         <p class="service-description">Beautiful and intuitive interfaces designed to enhance user experience and engagement.</p>
                         <div class="service-progress">
                             <div class="progress-bar" data-skill="92"></div>
+                            <span class="progress-text">92%</span>
                         </div>
                         <ul class="service-features animated-list">
                             <li data-delay="0.1s"><i class="fas fa-check-circle"></i>User Research</li>
@@ -574,24 +583,23 @@
                             <li data-delay="0.3s"><i class="fas fa-check-circle"></i>Wireframing</li>
                             <li data-delay="0.4s"><i class="fas fa-check-circle"></i>Design Systems</li>
                         </ul>
-                        <div class="service-tech tech-stack">
-                            <span class="tech-badge animated-badge" data-delay="0.1s">Figma</span>
-                            <span class="tech-badge animated-badge" data-delay="0.2s">Adobe XD</span>
-                            <span class="tech-badge animated-badge" data-delay="0.3s">Sketch</span>
-                        </div>
                         <div class="service-stats">
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="89">0</span>
+                                <span class="stat-number" data-counter="1">0</span>
                                 <span class="stat-label">Designs</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number" data-counter="95">0</span>
+                                <span class="stat-number" data-counter="1">0</span>
                                 <span class="stat-label">User Rating</span>
                             </div>
                         </div>
                     </div>
-                    <div class="hover-overlay">
-                        <button class="btn-explore">
+                    <div class="hover-overlay pt-5">
+                        <button class="btn-explore glow-button" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#serviceModal"
+                                data-service-name="UI/UX Design"
+                                data-service-description="Beautiful and intuitive user interfaces designed to provide exceptional user experiences across all platforms">
                             <span>Explore More</span>
                             <i class="fas fa-arrow-right"></i>
                         </button>
@@ -599,413 +607,368 @@
                 </div>
                 
                 <!-- Cloud Solutions -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud"></i>
-                        <div class="icon-bg"></div>
+                <div class="service-card modern-card" data-service="cloud" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-bg-animation"></div>
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
                     </div>
-                    <h3>Cloud Solutions</h3>
-                    <p>Scalable cloud infrastructure and deployment solutions for modern applications.</p>
-                    <ul class="service-features">
-                        <li>Auto Scaling</li>
-                        <li>High Availability</li>
-                        <li>Monitoring</li>
-                        <li>Backup & Recovery</li>
-                    </ul>
-                    <div class="service-tech">
-                        <span class="tech-badge">AWS</span>
-                        <span class="tech-badge">Google Cloud</span>
-                        <span class="tech-badge">Docker</span>
+                    
+                    <!-- Cloud Animation -->
+                    <div class="service-animation cloud-animation">
+                        <div class="cloud-container">
+                            <div class="cloud main-cloud">
+                                <div class="cloud-part part-1"></div>
+                                <div class="cloud-part part-2"></div>
+                                <div class="cloud-part part-3"></div>
+                            </div>
+                            <div class="cloud secondary-cloud">
+                                <div class="cloud-part part-1"></div>
+                                <div class="cloud-part part-2"></div>
+                            </div>
+                        </div>
+                        <div class="data-transfer">
+                            <div class="data-line line-1"></div>
+                            <div class="data-line line-2"></div>
+                            <div class="data-line line-3"></div>
+                        </div>
+                        <div class="server-rack">
+                            <div class="server server-1 active-server"></div>
+                            <div class="server server-2"></div>
+                            <div class="server server-3 active-server"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-icon-wrapper">
+                        <div class="service-icon pulse-icon">
+                           
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="icon-orbit">
+                            <div class="orbit-dot"></div>
+                            <div class="orbit-dot"></div>
+                            <div class="orbit-dot"></div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title glitch-text" data-text="Cloud Solutions">Cloud Solutions</h3>
+                        <p class="service-description">Scalable cloud infrastructure and deployment solutions for modern applications.</p>
+                        <div class="service-progress">
+                            <div class="progress-bar" data-skill="90"></div>
+                            <span class="progress-text">90%</span>
+                        </div>
+                        <ul class="service-features animated-list">
+                            <li data-delay="0.1s"><i class="fas fa-check-circle"></i>Auto Scaling</li>
+                            <li data-delay="0.2s"><i class="fas fa-check-circle"></i>High Availability</li>
+                            <li data-delay="0.3s"><i class="fas fa-check-circle"></i>Monitoring</li>
+                            <li data-delay="0.4s"><i class="fas fa-check-circle"></i>Backup & Recovery</li>
+                        </ul>
+                        <div class="service-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-counter="1">0</span>
+                                <span class="stat-label">Deployments</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-counter="1">0</span>
+                                <span class="stat-label">Uptime</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hover-overlay pt-5">
+                        <button class="btn-explore glow-button" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#serviceModal"
+                                data-service-name="Cloud Solutions"
+                                data-service-description="Scalable cloud infrastructure and solutions to help your business grow and adapt to changing demands">
+                            <span>Explore More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
                 
                 <!-- E-Commerce -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <div class="icon-bg"></div>
+                <div class="service-card modern-card" data-service="ecommerce" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-bg-animation"></div>
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>    
                     </div>
-                    <h3>E-Commerce Development</h3>
-                    <p>Complete e-commerce solutions with secure payment integration and inventory management.</p>
-                    <ul class="service-features">
-                        <li>Payment Gateway</li>
-                        <li>Inventory Management</li>
-                        <li>Order Tracking</li>
-                        <li>Analytics Dashboard</li>
-                    </ul>
-                    <div class="service-tech">
-                        <span class="tech-badge">WooCommerce</span>
-                        <span class="tech-badge">Shopify</span>
-                        <span class="tech-badge">Magento</span>
+                    
+                    <!-- E-Commerce Animation -->
+                    <div class="service-animation ecommerce-animation">
+                        <div class="shopping-interface">
+                            <div class="product-grid">
+                                <div class="product-card card-1 hover-product"></div>
+                                <div class="product-card card-2"></div>
+                                <div class="product-card card-3"></div>
+                                <div class="product-card card-4"></div>
+                            </div>
+                            <div class="shopping-cart">
+                                <div class="cart-icon bounce-cart">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    <span class="cart-count animate-count">3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-process">
+                            <div class="payment-step step-1 active-step"></div>
+                            <div class="payment-step step-2"></div>
+                            <div class="payment-step step-3"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-icon-wrapper">
+                        <div class="service-icon pulse-icon">
+                            
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="icon-orbit">
+                            <div class="orbit-dot"></div>
+                            <div class="orbit-dot"></div>
+                            <div class="orbit-dot"></div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title glitch-text" data-text="E-Commerce Development">E-Commerce Development</h3>
+                        <p class="service-description">Complete e-commerce solutions with secure payment integration and inventory management.</p>
+                        <div class="service-progress">
+                            <div class="progress-bar" data-skill="88"></div>
+                            <span class="progress-text">88%</span>
+                        </div>
+                        <ul class="service-features animated-list">
+                            <li data-delay="0.1s"><i class="fas fa-check-circle"></i>Payment Gateway</li>
+                            <li data-delay="0.2s"><i class="fas fa-check-circle"></i>Inventory Management</li>
+                            <li data-delay="0.3s"><i class="fas fa-check-circle"></i>Order Tracking</li>
+                            <li data-delay="0.4s"><i class="fas fa-check-circle"></i>Analytics Dashboard</li>
+                        </ul>
+                        <div class="service-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-counter="1">0</span>
+                                <span class="stat-label">Stores Built</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-counter="1">0</span>
+                                <span class="stat-label">Success Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hover-overlay pt-5">
+                        <button class="btn-explore glow-button">
+                            <span>Explore More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Digital Marketing -->
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                        <div class="icon-bg"></div>
+                <div class="service-card modern-card" data-service="marketing" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-bg-animation"></div>
+                    <div class="floating-particles">
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
+                        <div class="particle"></div>
                     </div>
-                    <h3>Digital Marketing</h3>
-                    <p>Strategic digital marketing solutions to grow your online presence and reach.</p>
-                    <ul class="service-features">
-                        <li>SEO Optimization</li>
-                        <li>Social Media</li>
-                        <li>Content Marketing</li>
-                        <li>Analytics & Reporting</li>
-                    </ul>
-                    <div class="service-tech">
-                        <span class="tech-badge">Google Ads</span>
-                        <span class="tech-badge">Facebook Ads</span>
-                        <span class="tech-badge">Analytics</span>
+                    
+                    <!-- Digital Marketing Animation -->
+                    <div class="service-animation marketing-animation">
+                        <div class="analytics-dashboard">
+                            <div class="chart-container">
+                                <div class="chart-bar bar-1 grow-bar" data-height="60%"></div>
+                                <div class="chart-bar bar-2 grow-bar" data-height="80%"></div>
+                                <div class="chart-bar bar-3 grow-bar" data-height="95%"></div>
+                                <div class="chart-bar bar-4 grow-bar" data-height="75%"></div>
+                            </div>
+                            <div class="metrics-display">
+                                <div class="metric metric-1">
+                                    <span class="metric-value counter-animation" data-target="15.2">0</span>
+                                    <span class="metric-label">K</span>
+                                </div>
+                                <div class="metric metric-2">
+                                    <span class="metric-value counter-animation" data-target="89">0</span>
+                                    <span class="metric-label">%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-icons">
+                            <div class="social-icon facebook pulse-social"></div>
+                            <div class="social-icon instagram pulse-social"></div>
+                            <div class="social-icon twitter pulse-social"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="service-icon-wrapper">
+                        <div class="service-icon pulse-icon">
+                           
+                            <div class="icon-glow"></div>
+                        </div>
+                        <div class="icon-orbit">
+                            <div class="orbit-dot"></div>
+                            <div class="orbit-dot"></div>
+                            <div class="orbit-dot"></div>
+                        </div>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title glitch-text" data-text="Digital Marketing">Digital Marketing</h3>
+                        <p class="service-description">Strategic digital marketing solutions to grow your online presence and reach.</p>
+                        <div class="service-progress">
+                            <div class="progress-bar" data-skill="93"></div>
+                            <span class="progress-text">93%</span>
+                        </div>
+                        <ul class="service-features animated-list">
+                            <li data-delay="0.1s"><i class="fas fa-check-circle"></i>SEO Optimization</li>
+                            <li data-delay="0.2s"><i class="fas fa-check-circle"></i>Social Media</li>
+                            <li data-delay="0.3s"><i class="fas fa-check-circle"></i>Content Marketing</li>
+                            <li data-delay="0.4s"><i class="fas fa-check-circle"></i>Analytics & Reporting</li>
+                        </ul>
+                        <div class="service-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-counter="1">0</span>
+                                <span class="stat-label">Campaigns</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-counter="1">0</span>
+                                <span class="stat-label">ROI Increase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hover-overlay pt-5"></div>
+                        <button class="btn-explore glow-button">
+                            <span>Explore More</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
-            </div>
+            
+            <!-- Services CTA Button -->
         </div>
     </section>
+    
+    </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section reveal">
-        <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
-                <h2 class="section-title">Our <span class="gradient-text">Portfolio</span></h2>
-                <p class="section-subtitle">Showcasing our latest projects and achievements</p>
-            </div>
-            
-            <!-- Portfolio Filter -->
-            <div class="portfolio-filters" data-aos="fade-up" data-aos-delay="100">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-                <button class="filter-btn" data-filter="design">UI/UX Design</button>
-                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-            </div>
-            
-            <!-- Portfolio Grid -->
-            <div class="portfolio-grid">
-                <!-- Project 1 -->
-                <div class="portfolio-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/img/portfolio/project1.jpg" alt="E-Learning Platform">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-actions">
-                                    <button class="btn-portfolio-view" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-project="1">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <a href="#" class="btn-portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">Web Development</div>
-                            <h3 class="portfolio-title">E-Learning Platform</h3>
-                            <p class="portfolio-description">Modern learning management system with interactive features</p>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">React</span>
-                                <span class="tech-tag">Laravel</span>
-                                <span class="tech-tag">MySQL</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="portfolio-item" data-category="mobile" data-aos="fade-up" data-aos-delay="200">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/img/portfolio/project2.jpg" alt="Food Delivery App">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-actions">
-                                    <button class="btn-portfolio-view" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-project="2">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <a href="#" class="btn-portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">Mobile App</div>
-                            <h3 class="portfolio-title">Food Delivery App</h3>
-                            <p class="portfolio-description">Real-time food delivery application with live tracking</p>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">React Native</span>
-                                <span class="tech-tag">Node.js</span>
-                                <span class="tech-tag">MongoDB</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="portfolio-item" data-category="ecommerce" data-aos="fade-up" data-aos-delay="300">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/img/portfolio/project3.jpg" alt="Fashion E-Store">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-actions">
-                                    <button class="btn-portfolio-view" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-project="3">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <a href="#" class="btn-portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">E-Commerce</div>
-                            <h3 class="portfolio-title">Fashion E-Store</h3>
-                            <p class="portfolio-description">Complete fashion e-commerce platform with AR try-on</p>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">Vue.js</span>
-                                <span class="tech-tag">PHP</span>
-                                <span class="tech-tag">PostgreSQL</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 4 -->
-                <div class="portfolio-item" data-category="design" data-aos="fade-up" data-aos-delay="400">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/img/portfolio/project4.jpg" alt="Banking App UI">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-actions">
-                                    <button class="btn-portfolio-view" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-project="4">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <a href="#" class="btn-portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">UI/UX Design</div>
-                            <h3 class="portfolio-title">Banking App UI</h3>
-                            <p class="portfolio-description">Modern banking interface with enhanced security features</p>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">Figma</span>
-                                <span class="tech-tag">Adobe XD</span>
-                                <span class="tech-tag">Prototyping</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 5 -->
-                <div class="portfolio-item" data-category="web" data-aos="fade-up" data-aos-delay="500">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/img/portfolio/project5.jpg" alt="Real Estate Portal">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-actions">
-                                    <button class="btn-portfolio-view" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-project="5">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <a href="#" class="btn-portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">Web Development</div>
-                            <h3 class="portfolio-title">Real Estate Portal</h3>
-                            <p class="portfolio-description">Comprehensive real estate platform with virtual tours</p>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">Angular</span>
-                                <span class="tech-tag">Django</span>
-                                <span class="tech-tag">Redis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="portfolio-item" data-category="mobile" data-aos="fade-up" data-aos-delay="600">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="assets/img/portfolio/project6.jpg" alt="Fitness Tracker">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-actions">
-                                    <button class="btn-portfolio-view" data-bs-toggle="modal" data-bs-target="#portfolioModal" data-project="6">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
-                                    <a href="#" class="btn-portfolio-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-content">
-                            <div class="portfolio-category">Mobile App</div>
-                            <h3 class="portfolio-title">Fitness Tracker</h3>
-                            <p class="portfolio-description">AI-powered fitness tracking with personalized workouts</p>
-                            <div class="portfolio-tech">
-                                <span class="tech-tag">Flutter</span>
-                                <span class="tech-tag">Firebase</span>
-                                <span class="tech-tag">ML Kit</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>    <!-- Team Section -->
+    <!-- Team Section -->
     <section id="team" class="section reveal">
         <div class="container">
-            <div class="section-header text-center">
-                <h2 class="section-title">Meet Our Expert Team</h2>
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2 class="section-title">Meet Our <span class="gradient-text">Expert Team</span></h2>
                 <p class="section-subtitle">Passionate professionals dedicated to creating exceptional digital experiences</p>
             </div>
             
-            <div class="team-grid">
-                <!-- Team Member 1 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="team-image-wrapper">
-                        <div class="team-image">
-                            <img src="assets/img/team/member1.jpg" alt="Budi Santoso">
-                            <div class="team-overlay">
-                                <div class="team-social">
-                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="team-tech-stack">
-                            <span class="tech-chip">React</span>
-                            <span class="tech-chip">Node.js</span>
-                            <span class="tech-chip">MongoDB</span>
+            <!-- CEO Section - Simple Center Layout with Stage Effect -->
+            <div class="ceo-section text-center mb-5" data-aos="fade-up">
+                <div class="ceo-simple-card">
+                    <div class="ceo-avatar">
+                        <img src="assets/img/team/CEO.png" alt="RAJA FAKHRUROZI SAFIRA, S.M">
+                        <div class="ceo-badge">
+                            <i class="fas fa-crown"></i>
                         </div>
                     </div>
-                    <div class="team-content">
-                        <h3 class="team-name">Budi Santoso</h3>
-                        <p class="team-role">Senior Full-Stack Developer</p>
-                        <p class="team-bio">Expert in modern web technologies with 8+ years of experience in building scalable applications.</p>
-                        <div class="team-stats">
-                            <div class="stat">
-                                <span class="stat-number">50+</span>
-                                <span class="stat-label">Projects</span>
-                            </div>
-                            <div class="stat">
-                                <span class="stat-number">8</span>
-                                <span class="stat-label">Years</span>
-                            </div>
+                    <div class="ceo-info-stage">
+                        <h3 class="ceo-name mt-3">RAJA FAKHRUROZI SAFIRA, S.M</h3>
+                        <p class="ceo-title mb-3">Chief Executive Officer & Founder</p>
+                        <div class="ceo-social">
+                            <a href="#" class="social-link me-3"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link me-3"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Team Member 2 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="team-image-wrapper">
-                        <div class="team-image">
-                            <img src="assets/img/team/member2.jpg" alt="Sari Wijaya">
-                            <div class="team-overlay">
-                                <div class="team-social">
+            </div>
+
+            <!-- Team Members - Single Row with Stage Effect -->
+            <div class="team-row" data-aos="fade-up" data-aos-delay="200">
+                <div class="row justify-content-center">
+                    <!-- Team Member 1 -->
+                    <div class="col-lg-2 col-md-4 col-6 mb-4">
+                        <div class="team-member-simple text-center">
+                            <div class="member-avatar">
+                                <img src="assets/img/team/hasbi.png" alt="Hasbi">
+                            </div>
+                            <div class="member-info-stage">
+                                <h5 class="member-name mt-3">Hasbi</h5>
+                                <p class="member-role">Frontend Developer</p>
+                                <div class="member-social">
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="team-tech-stack">
-                            <span class="tech-chip">Figma</span>
-                            <span class="tech-chip">Adobe XD</span>
-                            <span class="tech-chip">Sketch</span>
-                        </div>
                     </div>
-                    <div class="team-content">
-                        <h3 class="team-name">Sari Wijaya</h3>
-                        <p class="team-role">Lead UI/UX Designer</p>
-                        <p class="team-bio">Creative designer passionate about user-centered design and creating intuitive digital experiences.</p>
-                        <div class="team-stats">
-                            <div class="stat">
-                                <span class="stat-number">75+</span>
-                                <span class="stat-label">Designs</span>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="col-lg-2 col-md-4 col-6 mb-4">
+                        <div class="team-member-simple text-center">
+                            <div class="member-avatar">
+                                <img src="assets/img/team/bintang.png" alt="Bintang">
                             </div>
-                            <div class="stat">
-                                <span class="stat-number">6</span>
-                                <span class="stat-label">Years</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 3 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="team-image-wrapper">
-                        <div class="team-image">
-                            <img src="assets/img/team/member3.jpg" alt="Ahmad Rahman">
-                            <div class="team-overlay">
-                                <div class="team-social">
+                            <div class="member-info-stage">
+                                <h5 class="member-name mt-3">Bintang</h5>
+                                <p class="member-role">Projek Manager</p>
+                                <div class="member-social">
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-stack-overflow"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="team-tech-stack">
-                            <span class="tech-chip">React Native</span>
-                            <span class="tech-chip">Flutter</span>
-                            <span class="tech-chip">iOS</span>
-                        </div>
                     </div>
-                    <div class="team-content">
-                        <h3 class="team-name">Ahmad Rahman</h3>
-                        <p class="team-role">Mobile App Developer</p>
-                        <p class="team-bio">Specialist in cross-platform mobile development with expertise in native and hybrid solutions.</p>
-                        <div class="team-stats">
-                            <div class="stat">
-                                <span class="stat-number">40+</span>
-                                <span class="stat-label">Apps</span>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="col-lg-2 col-md-4 col-6 mb-4">
+                        <div class="team-member-simple text-center">
+                            <div class="member-avatar">
+                                <img src="assets/img/team/adzril.png" alt="Adzril">
                             </div>
-                            <div class="stat">
-                                <span class="stat-number">5</span>
-                                <span class="stat-label">Years</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Team Member 4 -->
-                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="team-image-wrapper">
-                        <div class="team-image">
-                            <img src="assets/img/team/member4.jpg" alt="Linda Kusuma">
-                            <div class="team-overlay">
-                                <div class="team-social">
+                            <div class="member-info-stage">
+                                <h5 class="member-name mt-3">Adzril</h5>
+                                <p class="member-role">Backend Developer</p>
+                                <div class="member-social">
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                                     <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                                    <a href="#" class="social-link"><i class="fab fa-docker"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="team-tech-stack">
-                            <span class="tech-chip">AWS</span>
-                            <span class="tech-chip">Docker</span>
-                            <span class="tech-chip">Kubernetes</span>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="col-lg-2 col-md-4 col-6 mb-4">
+                        <div class="team-member-simple text-center">
+                            <div class="member-avatar">
+                                <img src="assets/img/team/isa.png" alt="Isa">
+                            </div>
+                            <div class="member-info-stage">
+                                <h5 class="member-name mt-3">Isa</h5>
+                                <p class="member-role">Frontend Developer</p>
+                                <div class="member-social">
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="team-content">
-                        <h3 class="team-name">Linda Kusuma</h3>
-                        <p class="team-role">DevOps Engineer</p>
-                        <p class="team-bio">Cloud infrastructure expert ensuring scalable and reliable deployment of our applications.</p>
-                        <div class="team-stats">
-                            <div class="stat">
-                                <span class="stat-number">100+</span>
-                                <span class="stat-label">Deployments</span>
+                    
+                    <!-- Team Member 5 -->
+                    <div class="col-lg-2 col-md-4 col-6 mb-4">
+                        <div class="team-member-simple text-center">
+                            <div class="member-avatar">
+                                <img src="assets/img/team/hafidz.png" alt="Hafidz">
                             </div>
-                            <div class="stat">
-                                <span class="stat-number">7</span>
-                                <span class="stat-label">Years</span>
+                            <div class="member-info-stage">
+                                <h5 class="member-name mt-3">Hafidz</h5>
+                                <p class="member-role">Backend Developer</p>
+                                <div class="member-social">
+                                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1018,93 +981,217 @@
     <section id="process" class="section reveal">
         <div class="container">
             <div class="section-header text-center" data-aos="fade-up">
-                <h2 class="section-title">Our <span class="gradient-text">Development Process</span></h2>
-                <p class="section-subtitle">From concept to deployment, we follow a proven methodology</p>
+                <h2 class="section-title">Our <span class="gradient-text">Development Journey</span></h2>
+                <p class="section-subtitle">From first chat to live deployment - your idea becomes reality</p>
             </div>
             
-            <div class="process-timeline">
-                <!-- Step 1 -->
-                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3>Discovery & Planning</h3>
-                        <p>We start by understanding your business goals, target audience, and project requirements through detailed consultation and research.</p>
-                        <ul class="step-deliverables">
-                            <li>Project Scope</li>
-                            <li>Technical Requirements</li>
-                            <li>Timeline & Budget</li>
-                        </ul>
-                    </div>
+            <!-- Animated Process Flow -->
+            <div class="process-flow-container">
+                <div class="process-timeline-line">
+                    <div class="timeline-progress"></div>
                 </div>
                 
-                <!-- Step 2 -->
-                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i class="fas fa-pencil-ruler"></i>
+                <!-- Step 1: WhatsApp Consultation -->
+                <div class="process-step-new" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="step-number-new">01</div>
+                    <div class="step-icon-new whatsapp-step">
+                        <div class="icon-animation">
+                            <i class="fab fa-whatsapp"></i>
+                            <div class="chat-bubbles">
+                                <div class="chat-bubble bubble-1"></div>
+                                <div class="chat-bubble bubble-2"></div>
+                                <div class="chat-bubble bubble-3"></div>
+                            </div>
                         </div>
-                        <h3>Design & Prototype</h3>
-                        <p>Our design team creates wireframes, mockups, and interactive prototypes to visualize the final product before development.</p>
-                        <ul class="step-deliverables">
-                            <li>Wireframes</li>
-                            <li>UI/UX Design</li>
-                            <li>Interactive Prototype</li>
-                        </ul>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>WhatsApp Consultation</h3>
+                        <p>Mulai dengan chat santai di WhatsApp untuk diskusi ide dan kebutuhan project Anda</p>
+                        <div class="step-features">
+                            <span class="feature-tag">Free Consultation</span>
+                            <span class="feature-tag">24/7 Response</span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Step 3 -->
-                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                        <div class="step-icon">
+
+                <!-- Step 2: Deal Agreement -->
+                <div class="process-step-new" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="step-number-new">02</div>
+                    <div class="step-icon-new deal-step">
+                        <div class="icon-animation">
+                            <i class="fas fa-handshake"></i>
+                            <div class="deal-effect">
+                                <div class="coin coin-1"></div>
+                                <div class="coin coin-2"></div>
+                                <div class="coin coin-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Deal & Agreement</h3>
+                        <p>Sepakat harga, timeline, dan scope project dengan kontrak yang jelas dan transparan</p>
+                        <div class="step-features">
+                            <span class="feature-tag">Fixed Price</span>
+                            <span class="feature-tag">Clear Contract</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Initial Design -->
+                <div class="process-step-new" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="step-number-new">03</div>
+                    <div class="step-icon-new design-step">
+                        <div class="icon-animation">
+                            <i class="fas fa-palette"></i>
+                            <div class="design-elements">
+                                <div class="design-circle circle-1"></div>
+                                <div class="design-circle circle-2"></div>
+                                <div class="design-square"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Desain Awal</h3>
+                        <p>Tim designer membuat mockup dan prototype untuk visualisasi project Anda</p>
+                        <div class="step-features">
+                            <span class="feature-tag">UI/UX Design</span>
+                            <span class="feature-tag">Interactive Mockup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Development -->
+                <div class="process-step-new" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="step-number-new">04</div>
+                    <div class="step-icon-new development-step">
+                        <div class="icon-animation">
                             <i class="fas fa-code"></i>
+                            <div class="code-lines">
+                                <div class="code-line line-1"></div>
+                                <div class="code-line line-2"></div>
+                                <div class="code-line line-3"></div>
+                                <div class="code-line line-4"></div>
+                            </div>
                         </div>
-                        <h3>Development</h3>
-                        <p>Our developers bring the design to life using modern technologies and best practices, ensuring clean, maintainable code.</p>
-                        <ul class="step-deliverables">
-                            <li>Frontend Development</li>
-                            <li>Backend Development</li>
-                            <li>Database Design</li>
-                        </ul>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Pengerjaan</h3>
+                        <p>Developer mulai coding dengan teknologi terkini dan best practices</p>
+                        <div class="step-features">
+                            <span class="feature-tag">Clean Code</span>
+                            <span class="feature-tag">Modern Tech</span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Step 4 -->
-                <div class="process-step" data-aos="fade-up" data-aos-delay="400">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i class="fas fa-bug"></i>
+
+                <!-- Step 5: Revision -->
+                <div class="process-step-new" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="step-number-new">05</div>
+                    <div class="step-icon-new revision-step">
+                        <div class="icon-animation">
+                            <i class="fas fa-sync-alt"></i>
+                            <div class="revision-arrows">
+                                <div class="arrow arrow-1"></div>
+                                <div class="arrow arrow-2"></div>
+                            </div>
                         </div>
-                        <h3>Testing & QA</h3>
-                        <p>Comprehensive testing ensures your application works flawlessly across all devices and browsers before launch.</p>
-                        <ul class="step-deliverables">
-                            <li>Functional Testing</li>
-                            <li>Performance Testing</li>
-                            <li>Security Testing</li>
-                        </ul>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Revisi</h3>
+                        <p>Review bersama dan revisi sesuai feedback untuk hasil yang sempurna</p>
+                        <div class="step-features">
+                            <span class="feature-tag">3x Free Revision</span>
+                            <span class="feature-tag">Client Feedback</span>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Step 5 -->
-                <div class="process-step" data-aos="fade-up" data-aos-delay="500">
-                    <div class="step-number">05</div>
-                    <div class="step-content">
-                        <div class="step-icon">
+
+                <!-- Step 6: Final Fix -->
+                <div class="process-step-new" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="step-number-new">06</div>
+                    <div class="step-icon-new fix-step">
+                        <div class="icon-animation">
+                            <i class="fas fa-tools"></i>
+                            <div class="fix-sparks">
+                                <div class="spark spark-1"></div>
+                                <div class="spark spark-2"></div>
+                                <div class="spark spark-3"></div>
+                                <div class="spark spark-4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Final Fix</h3>
+                        <p>Perbaikan terakhir, testing menyeluruh, dan optimasi performa</p>
+                        <div class="step-features">
+                            <span class="feature-tag">Bug Testing</span>
+                            <span class="feature-tag">Performance Check</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 7: Deploy -->
+                <div class="process-step-new" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="step-number-new">07</div>
+                    <div class="step-icon-new deploy-step">
+                        <div class="icon-animation">
                             <i class="fas fa-rocket"></i>
+                            <div class="rocket-trail">
+                                <div class="trail-particle particle-1"></div>
+                                <div class="trail-particle particle-2"></div>
+                                <div class="trail-particle particle-3"></div>
+                            </div>
                         </div>
-                        <h3>Launch & Support</h3>
-                        <p>We deploy your application to production and provide ongoing support and maintenance to ensure optimal performance.</p>
-                        <ul class="step-deliverables">
-                            <li>Production Deployment</li>
-                            <li>Performance Monitoring</li>
-                            <li>Ongoing Support</li>
-                        </ul>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Deploy & Launch</h3>
+                        <p>Project live di server dengan monitoring dan support berkelanjutan</p>
+                        <div class="step-features">
+                            <span class="feature-tag">Live Production</span>
+                            <span class="feature-tag">24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Stats -->
+            <div class="process-stats" data-aos="fade-up" data-aos-delay="800">
+                <div class="row text-center">
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-number" data-counter="7">0</div>
+                            <div class="stat-label">Days Average</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
+                            <div class="stat-number" data-counter="100">0</div>
+                            <div class="stat-label">% Satisfaction</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-sync"></i>
+                            </div>
+                            <div class="stat-number" data-counter="3">0</div>
+                            <div class="stat-label">Free Revisions</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="stat-number" data-counter="24">0</div>
+                            <div class="stat-label">Hours Support</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1201,18 +1288,6 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="budget">Project Budget</label>
-                                <select id="budget" name="budget">
-                                    <option value="">Select budget range</option>
-                                    <option value="5-10">$5,000 - $10,000</option>
-                                    <option value="10-25">$10,000 - $25,000</option>
-                                    <option value="25-50">$25,000 - $50,000</option>
-                                    <option value="50+">$50,000+</option>
-                                </select>
-                                <span class="form-line"></span>
-                            </div>
-                            
-                            <div class="form-group">
                                 <label for="message">Project Description</label>
                                 <textarea id="message" name="message" rows="4" required></textarea>
                                 <span class="form-line"></span>
@@ -1259,7 +1334,6 @@
                             <ul>
                                 <li><a href="#team">About Us</a></li>
                                 <li><a href="#team">Our Team</a></li>
-                                <li><a href="#portfolio">Portfolio</a></li>
                                 <li><a href="#contact">Contact</a></li>
                             </ul>
                         </div>
@@ -1320,6 +1394,9 @@
         </div>
     </div>
 
+    <!-- Service Modal -->
+    <?php echo $__env->make('modals.serviceModal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+
     <!-- Back to Top -->
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
@@ -1340,6 +1417,86 @@
                     }, 300);
                 }, 2000);
             }
+        });
+        
+        // Contact Form & Back to Top JavaScript
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Add ripple effect to submit button
+                const submitBtn = this.querySelector('.btn-submit');
+                const ripple = document.createElement('span');
+                const rect = submitBtn.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('btn-ripple');
+                
+                submitBtn.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    alert('Message sent successfully! We will get back to you soon.');
+                    contactForm.reset();
+                }, 1000);
+            });
+        }
+        
+        // Newsletter Form Handler
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('Thank you for subscribing to our newsletter!');
+                    this.reset();
+                }
+            });
+        }
+        
+        // Form Input Focus Effects
+        const formInputs = document.querySelectorAll('.form-group input, .form-group select, .form-group textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
